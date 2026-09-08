@@ -1,4 +1,4 @@
-# Hifz Companion — hosted HD edition (v1.5.0)
+# Hifz Companion — hosted HD edition (v1.9.1)
 
 This folder is the **web-hosted edition** of Hifz Companion, split into small files so it can be
 published on GitHub Pages (or any static host) — every file is well under GitHub's 25 MB upload limit.
@@ -6,6 +6,7 @@ published on GitHub Pages (or any static host) — every file is well under GitH
 ```
 index.html            the app (about 1.6 MB)
 mushaf/hd/001.webp …  the 604 Madinah Mushaf pages in full colour (about 250 KB each, 146 MB in all)
+sw.js                 the service worker that makes offline use possible (Settings → Data)
 .nojekyll             tells GitHub Pages to serve the files as they are
 Code.gs               the optional cloud-sync script for Google Apps Script (see below)
 ```
@@ -22,7 +23,7 @@ audio still need internet. Audio falls back automatically from everyayah.com to 
 
 ## Publish on GitHub Pages
 1. Create a repository (for example `hifz-companion`).
-2. Upload the app files first: *Add file → Upload files*, drag in `index.html`, `.nojekyll`,
+2. Upload the app files first: *Add file → Upload files*, drag in `index.html`, `sw.js`, `.nojekyll`,
    `README.md`, `Code.gs`, *Commit changes*.
 3. Upload the pages: the web uploader accepts **100 files per upload**, so do it in seven rounds.
    Each time choose *Add file → Upload files* and drag the **`mushaf` folder** itself (containing
@@ -31,6 +32,14 @@ audio still need internet. Audio falls back automatically from everyayah.com to 
 4. *Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: main, folder: / (root) → Save.*
 5. After a minute the app is live at `https://<your-username>.github.io/hifz-companion/`.
    It works on phones and tablets too, including iPhone and iPad, because it is served over the web.
+
+## Working without internet — Offline use
+Once the site is live, open *Settings → Data → **Offline use*** on each device and tick the box: the
+browser then keeps the app itself on that device, so it opens with no internet at all. The buttons
+beside it keep the Mushaf pages you choose — this week's pages, everything you have memorised, or all
+604 pages (about 146 MB). Recitation audio is kept separately in *Settings → Audio → Audio Manager*
+and translations in *Settings → Mushaf → Meanings*. This needs `sw.js` to sit beside `index.html` on
+the site, and it only works over https (GitHub Pages is fine).
 
 ## Same progress on every device — Cloud sync
 GitHub Pages only serves the app; each browser keeps its own progress. To share progress between
@@ -54,7 +63,7 @@ web uploader. If you want to offer it for download, attach it to a **GitHub Rele
 with the `git` command line (limit 100 MB). Do not put it on the Pages site itself.
 
 ## Licence
-Hifz Companion © 2026 Prof. Dr. Mazharul Islam — CC BY-NC-ND 4.0
+Hifz Companion © 2026 — CC BY-NC-ND 4.0
 (https://creativecommons.org/licenses/by-nc-nd/4.0/). Third-party components keep their own terms:
 Madinah Mushaf page images © King Fahd Glorious Qur'an Printing Complex (free non-commercial
 distribution, no modification); PDF.js © Mozilla, Apache-2.0; quran-meta metadata, MIT; recitation
