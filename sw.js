@@ -7,7 +7,7 @@
    The page itself fills PAGES with the Mushaf images the user
    asks to keep, through caches.open(PAGES).
    ============================================================ */
-const V = '1.11.4';
+const V = '1.12.0';
 const SHELL = 'hifz-shell-' + V, PAGES = 'hifz-pages-v1';
 const SHELL_URLS = ['./', './index.html'];
 
