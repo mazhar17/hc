@@ -10,7 +10,7 @@
    asks to keep, through caches.open(PAGES). Learning data lives
    in localStorage / IndexedDB and is never touched here.
    ============================================================ */
-const V = '1.15.1';
+const V = '1.19.0';
 const SHELL = 'hifz-shell-' + V, PAGES = 'hifz-pages-v1';
 const SHELL_URLS = ['./', './index.html'];
 
