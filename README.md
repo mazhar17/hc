@@ -1,4 +1,4 @@
-# Hifz Companion — hosted HD edition (v1.20.17)
+# Hifz Companion — hosted HD edition (v1.20.18)
 
 This folder is the **web-hosted edition** of Hifz Companion, split into small files so it can be
 published on GitHub Pages (or any static host) — every file is well under GitHub's 25 MB upload limit.
@@ -146,6 +146,20 @@ weeks. Older records simply lack it; nothing is migrated or rewritten. Older app
 - [ ] Cloud sync preserves the imported lesson (it is part of the state file).
 - [ ] *Settings → Plan → run the scheduler self-test* still passes.
 - [ ] Without a Mushaf PDF the app still works in audio/tracker mode; the importer does not need the viewer.
+
+## Moving around a zoomed page (v1.20.18)
+Zoom in — pinch on a phone, `Ctrl`+wheel or `− +` on a computer — and the page grows past the edges
+of the screen. Every part of it can then be reached by scrolling or dragging: the top, the bottom and
+both side margins, in full screen exactly as in the normal view.
+
+Until v1.20.18 this was not true. The viewer centred the page with CSS flex alignment, and centring
+something larger than its scroll container parks half the overflow *before* the container's starting
+edge, where no browser will scroll back to it. The visible symptoms were that the upper part of a
+zoomed page could not be reached in full screen, and that the right-hand margin of a zoomed page —
+where every Arabic line begins — could not be reached in either view. The page is now centred with
+auto margins instead, which centre it while it fits and collapse the moment it does not, so the
+scrollable area always covers the whole page. `test79.mjs` checks this across phone portrait, phone
+landscape, tablet and desktop, in Single and Spread, at 2.4× and 4× zoom.
 
 ## Working without internet — Offline use
 Once the site is live, open *Settings → Data → **Offline use*** on each device and tick the box: the
