@@ -1,4 +1,4 @@
-# Hifz Companion — hosted HD edition (v1.20.18)
+# Hifz Companion — hosted HD edition (v1.20.19)
 
 This folder is the **web-hosted edition** of Hifz Companion, split into small files so it can be
 published on GitHub Pages (or any static host) — every file is well under GitHub's 25 MB upload limit.
@@ -61,8 +61,14 @@ displayed and copied for sharing is absolute.
 
 If you ever must rename it, keep the old name in place as well, or shared links will break.
 
+**Revision of 11 September 2026 (v1.20.19).** The tutorial was brought up to date with the app as it
+is in v1.20.18: five translations (Muhiuddin Khan withdrawn), tajwīd colours working alongside the
+word meanings and gap-fill, the ‹ › edge arrows and the ✕ that leaves full screen, the curtain being a
+Mushaf-page tool only, and the *Import weekly lesson* button on the Week tab. Every screenshot was
+retaken from the current build. Same name, same 21 pages, same size — only the revision date changed.
+
 ### Where the tutorial metadata is maintained
-The visible "PDF · 21 pages · 2.1 MB · revised 10 September 2026" line lives in **one** place in the
+The visible "PDF · 21 pages · 2.1 MB · revised 11 September 2026" line lives in **one** place in the
 source: `src/index.html`, in the Help card's `<p class="tut-meta">`. The same figures appear in the HTML
 User Guide's introduction (`Hifz-Companion-User-Guide.html`, the "Prefer a printable tutorial" box) and
 in this README. The sharing title, description and absolute URL used by *Copy tutorial link* and
