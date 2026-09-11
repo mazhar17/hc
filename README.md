@@ -1,4 +1,4 @@
-# Hifz Companion — hosted HD edition (v1.20.16)
+# Hifz Companion — hosted HD edition (v1.20.17)
 
 This folder is the **web-hosted edition** of Hifz Companion, split into small files so it can be
 published on GitHub Pages (or any static host) — every file is well under GitHub's 25 MB upload limit.
@@ -69,6 +69,83 @@ in this README. The sharing title, description and absolute URL used by *Copy tu
 *Share tutorial* are the `TUT_URL`, `TUT_TITLE` and `TUT_TEXT` constants in `src/ui.js`.
 The figures come from the PDF itself (`pdfinfo Hifz-Companion-Tutorial.pdf`). The file states no app
 version anywhere, so none is claimed for it — do not add one unless the PDF itself says so.
+
+
+## Paste weekly lesson — importing the teacher's message (v1.20.17)
+*Week → 📥 Import weekly lesson.* Paste the weekly message (the one the app itself writes under
+*Share with my teacher*, or a hand-written one in the same spirit), press **Parse lesson**, read the
+preview, then press **Import**. Nothing changes until Import is pressed.
+
+**What is read** — deterministically, with no AI and no guessing:
+
+| From the message | Recognised as |
+|---|---|
+| `হিফ্‌জ যাত্রার ২য় সপ্তাহ` · `Journey week 2` · `الأسبوع ٢ من رحلة` | journey week (the learner's own count) |
+| `সপ্তাহ ৩৭, ২০২৬` · `Week 37, 2026` | calendar week and year — stored **separately** from the journey week |
+| a heading containing মুরাজা‘আহ / রিভিশন / Revision / مراجعة | the revision section; `📖 প্রথম অংশ`, `Part 1`, `القسم ١` label each range |
+| a heading containing নতুন হিফ্‌জ / New Hifz / Sabaq / حفظ جديد | the new-hifẓ section |
+| `• Surah Qaf (سورة ق) — আয়াত ১` then `➜ Surah An-Najm (سورة النجم) — আয়াত ৪৪`, or `Surah Qaf — ayah 1 ➜ 45` on one line | one range: start surah/ayah → end surah/ayah |
+| `৬ সেপ্টেম্বর ২০২৬ — ১২ সেপ্টেম্বর ২০২৬` · `6 September 2026 — 12 September 2026` · `2026-09-06` | week start and end |
+| a line after সময়সীমা / Deadline with a date and a time (`রাত ১২:০০`, `11:59 pm`, `23:30`) | deadline, in the user's local time |
+| `(১ রবিউস সানি ১৪৪৮)` | Hijri text — kept and displayed as written, **never** used for scheduling |
+| anything else with letters | notes — kept with the week, untranslated |
+
+Surah names resolve through the app's verified Quran data only: the English transliteration the app
+uses (with common variants such as *Mumtahana*, *Yaseen*, *Fatiha*), the Arabic name (with or without
+سورة and diacritics), or the surah number. Bengali, Arabic-Indic and Persian digits are converted.
+**Bengali surah names are not resolved** — the message the app writes always carries the English and
+Arabic names, so this is rarely needed; a Bengali-only name produces a clear error.
+
+**Errors stop the import**: unknown surah, ayah outside the surah, reversed range, missing endpoint,
+impossible or reversed dates, conflicting years. **Confirmations** must be ticked before Import
+enables: a new-hifẓ range overlapping a revision range; a deadline outside the stated week.
+**Warnings** are shown but do not block: unusual Bengali ordinal wording (`২তম` where `২য়` is
+expected), a range that does not begin and end at page boundaries, a period that is not 7 days, a
+week that starts on a different day than the plan's.
+
+**What Import does** — and does not do:
+- Pages are derived from the ayah ranges through the page map. New hifẓ pages become the week's
+  **sabaq**; revision pages join **sabqi** or **manzil** according to each page's own stage in your
+  record. A revision page that your record does not show as memorised is **left out** and named in
+  the preview — importing never marks a page memorised, completed or rated, and never moves a due
+  date. Mark such pages under *Settings → Plan → Already memorised* and import again.
+- The target week is the plan week containing the message's start date (this week, or a week
+  ahead). Past weeks cannot be changed. No other week is touched.
+- *Add to the week's plan* (default) keeps what is there. If the week is still an untouched
+  proposal, its proposed sabaq page gives way to the lesson's. *Replace this week's page lists*
+  clears the three lists first. Teacher feedback, notes and pages already marked done are kept in
+  both modes.
+- Re-importing the same week merges by exact range and duplicates nothing.
+- The exact ayah ranges, the deadline, the journey and calendar weeks, the Hijri text, the notes and
+  the **whole original message** are stored on the week under `week.lesson` (`format:
+  "weekly-lesson-v1"`) and travel with JSON export/import and cloud sync like everything else.
+  Recordings remain governed by the existing recording policy (never exported, never synced).
+- Ayah ranges and curtain line ranges are separate things; nothing here changes calibration.
+
+**Where it shows**: the Week screen (an *Imported lesson* panel with *Open page* and *▶ Play range*
+for each range), Today (under the sabaq card), Study (a badge on any page inside an imported range)
+and Share (a note that the plan came from the teacher's message). *Play range* hands exactly the
+range's ayāt to the existing audio engine.
+
+**No new network destinations.** The parser runs entirely in the browser.
+
+**Schema note**: one optional field, `week.lesson`, on the current week, planned weeks and archived
+weeks. Older records simply lack it; nothing is migrated or rewritten. Older app versions ignore it.
+
+### Manual acceptance checklist
+- [ ] Paste the supplied Bengali lesson → preview shows 53:45 → 54:6, 50:1 → 53:44, 60:12 → 63:4.
+- [ ] Preview shows derived Mushaf pages (528; 518–527; 551–554) and juz (27; 26–27; 28).
+- [ ] An unknown surah name (e.g. *Al-Qamr*) gives an actionable error and Import stays disabled.
+- [ ] Ayah 99 of Al-Qamar cannot be imported.
+- [ ] The `২তম সপ্তাহ` warning is visible before confirmation.
+- [ ] Confirming creates the week; no page is marked memorised or completed.
+- [ ] Existing teacher feedback and ratings remain intact.
+- [ ] Re-importing does not duplicate the week or its ranges.
+- [ ] Imported ranges appear in Week, Today, Study and Share.
+- [ ] *Export data only (JSON)* then *Import JSON* preserves the imported lesson.
+- [ ] Cloud sync preserves the imported lesson (it is part of the state file).
+- [ ] *Settings → Plan → run the scheduler self-test* still passes.
+- [ ] Without a Mushaf PDF the app still works in audio/tracker mode; the importer does not need the viewer.
 
 ## Working without internet — Offline use
 Once the site is live, open *Settings → Data → **Offline use*** on each device and tick the box: the

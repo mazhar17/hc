@@ -242,7 +242,7 @@ html.no-js .nojs-note{display:block}
 <h1>Hifz Companion — User Guide</h1>
 <p class="lede">Everything the app can do, in the order you are likely to need it: your first session, daily practice, the Study tools, planning, how revision is scheduled, and how to keep your record safe.</p>
 <p class="nojs-note note"><b>Note</b> JavaScript is switched off, so search and the expand/collapse buttons are unavailable. The whole guide is still readable — every section below is open.</p>
-<p style="color:var(--muted);font-size:.92rem">App inspected: <b>version 1.20.16</b> · Guide written 11 September 2026 · <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a></p>
+<p style="color:var(--muted);font-size:.92rem">App inspected: <b>version 1.20.17</b> · Guide written 11 September 2026 · <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a></p>
 <div class="tip"><b>Prefer a printable tutorial? Read or download the PDF.</b><br>
 The illustrated tutorial is a separate 21-page PDF — shorter than this guide and made to be printed or read on a phone.
 <a href="./Hifz-Companion-Tutorial.pdf" target="_blank" rel="noopener">Read the tutorial (PDF)<span class="sr-only"> (opens in a new tab)</span></a> ·
@@ -518,7 +518,7 @@ If the PDF opens instead of downloading, use your browser’s download button. I
 <ul><li>Saheeh International</li><li>Al-Hilali &amp; Khan</li><li>Bridges' translation (Fadel Soliman)</li></ul></div>
 </div>
 <p>Every translation is shown as published. Nothing is generated, summarised or translated by the app itself.</p>
-<div class="note"><b>A translation that used to be here</b> The Bengali translation of Muhiuddin Khan was offered up to version 1.20.16 and has been withdrawn. If your record had it selected, the app now uses <b>Taisirul Quran</b> in its place, and any copy of its text kept on your device for offline use is deleted the next time you open the app. Nothing else in your record is changed.</div>
+<div class="note"><b>A translation that used to be here</b> The Bengali translation of Muhiuddin Khan was offered up to version 1.20.17 and has been withdrawn. If your record had it selected, the app now uses <b>Taisirul Quran</b> in its place, and any copy of its text kept on your device for offline use is deleted the next time you open the app. Nothing else in your record is changed.</div>
 
 <h4 id="gapfill">The gap-fill drill</h4>
 <p><span class="ui">Gap-fill</span> hides words so you must supply them: every 3rd word, every 5th word, the first word of each ayah, the last word, or every word. Tap a blank to check that one word, or press <span class="ui">Reveal all</span>. Gap-fill needs the word view, which tajwīd colouring no longer replaces — the two can be used at the same time.</p>
@@ -668,6 +668,12 @@ If the PDF opens instead of downloading, use your browser’s download button. I
 <li>A week runs seven days from your <span class="ui">Week starts on</span> day (Sunday by default). The deadline shown on Today is the last day of the current week.</li>
 <li>When a week ends, it is archived and a new week proposed. Unfinished work is <b>carried over</b>: an unfinished sabaq page stays sabaq, and unrated sabqi and manzil pages return in the new proposal.</li>
 </ul>
+
+<h3 id="import-lesson">Importing your teacher’s weekly message<a class="permalink" href="#import-lesson">#</a></h3>
+<p>If your teacher sends the weekly lesson as a message — the message this app writes under <span class="ui">Share with my teacher</span>, or a hand-written one in the same shape — you do not have to copy it into the plan by hand. <span class="ui">Week → 📥 Import weekly lesson</span> opens a box: paste the message, press <span class="ui">Parse lesson</span>, and read the preview.</p>
+<p>The preview has separate cards for the <b>new hifẓ</b> range, the <b>revision</b> ranges, the <b>week dates and deadline</b>, the <b>Mushaf pages and juz’</b> they cover, and any <b>warnings</b>. Every surah name and ayah number is checked against the app’s Mushaf data; an unknown name or an impossible ayah is shown as an error and the <span class="ui">Import</span> button stays off until it is fixed in the text. Some doubts need a tick before importing — a deadline outside the week, or a new-hifẓ range that overlaps a revision range. Journey week and calendar week are read separately and never confused; a Hijri date is kept as written and never used for scheduling.</p>
+<div class="note"><b>What importing does and does not do</b> It adds the new-hifẓ page to the week’s sabaq and the revision pages to sabqi or manzil according to each page’s own stage in your record. It never marks a page memorised or completed, never records a rating and never moves a due date. A revision page that your record does not show as memorised is left out and named, so you can mark it under Settings → Plan first. Teacher feedback, notes and pages already marked done are kept. Importing the same message twice changes nothing the second time. The whole original message is kept with the week and travels with backups and cloud sync.</div>
+<p>Afterwards the Week screen shows an <b>Imported lesson</b> panel with each range, its pages and juz’, the deadline, <span class="ui">Open page</span> and <span class="ui">▶ Play range</span>; Today mentions the lesson under the sabaq card; Study marks any page inside an imported range.</p>
 
 <h3 id="week-to-day">How the weekly plan becomes daily work<a class="permalink" href="#week-to-day">#</a></h3>
 <p>This is worth understanding, because the app does <b>not</b> pin pages to particular days.</p>
@@ -1171,7 +1177,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 <ul>
 <li><b>App-specific:</b> each layer loads on its own — if a translation fails, the Qur'ān text is still shown, the failure is named at the bottom of the text, and a <span class="ui">retry</span> button appears there.</li>
 <li><b>App-specific:</b> tafsīr and translations are fetched the first time and then kept on the device. Offline, anything you have not opened before is unavailable and the app says so rather than showing nothing.</li>
-<li><b>App-specific:</b> word meanings disappeared when you switched <span class="ui">Tajwīd colours</span> on? That was the behaviour up to version 1.20.16 and is fixed from 1.20.12 — the two now work together. If a visible note above the ayāt says the colouring arrived as one piece per ayah, the source did not supply the per-word version for that page; turn the colours off to bring the meanings back.</li>
+<li><b>App-specific:</b> word meanings disappeared when you switched <span class="ui">Tajwīd colours</span> on? That was the behaviour up to version 1.20.17 and is fixed from 1.20.12 — the two now work together. If a visible note above the ayāt says the colouring arrived as one piece per ayah, the source did not supply the per-word version for that page; turn the colours off to bring the meanings back.</li>
 <li><i>General:</i> a network that blocks the content hosts will prevent the first fetch.</li>
 </ul>
 </details>
@@ -1231,7 +1237,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 <!-- ==================== ABOUT ==================== -->
 <section id="about-this-guide">
 <h2>14. About this guide<a class="permalink" href="#about-this-guide">#</a></h2>
-<p><b>App version inspected:</b> Hifz Companion <b>1.20.16</b>.<br>
+<p><b>App version inspected:</b> Hifz Companion <b>1.20.17</b>.<br>
 <b>Inspection date:</b> 11 September 2026.<br>
 <b>The app:</b> <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a><br>
 <b>This guide:</b> <span class="url">https://mazhar17.github.io/hc/Hifz-Companion-User-Guide.html</span> — once it has been published there. If you are reading a local copy, that address may not be live yet.</p>
@@ -1259,7 +1265,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 </section>
 
 <footer class="pagefoot">
-<p><b>Hifz Companion — User Guide</b> · written for version 1.20.16 · 11 September 2026.</p>
+<p><b>Hifz Companion — User Guide</b> · written for version 1.20.17 · 11 September 2026.</p>
 <p>The app: <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a> · Comments and suggestions: <a href="mailto:mazhar1970@gmail.com">mazhar1970@gmail.com</a></p>
 <p>This guide describes Hifz Companion, which is licensed under CC BY-NC-ND 4.0. The Qur'ānic text is the Word of Allah and must never be altered.</p>
 </footer>
