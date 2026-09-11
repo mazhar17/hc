@@ -242,7 +242,7 @@ html.no-js .nojs-note{display:block}
 <h1>Hifz Companion — User Guide</h1>
 <p class="lede">Everything the app can do, in the order you are likely to need it: your first session, daily practice, the Study tools, planning, how revision is scheduled, and how to keep your record safe.</p>
 <p class="nojs-note note"><b>Note</b> JavaScript is switched off, so search and the expand/collapse buttons are unavailable. The whole guide is still readable — every section below is open.</p>
-<p style="color:var(--muted);font-size:.92rem">App inspected: <b>version 1.20.13</b> · Guide written 11 September 2026 · <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a></p>
+<p style="color:var(--muted);font-size:.92rem">App inspected: <b>version 1.20.16</b> · Guide written 11 September 2026 · <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a></p>
 <div class="tip"><b>Prefer a printable tutorial? Read or download the PDF.</b><br>
 The illustrated tutorial is a separate 21-page PDF — shorter than this guide and made to be printed or read on a phone.
 <a href="./Hifz-Companion-Tutorial.pdf" target="_blank" rel="noopener">Read the tutorial (PDF)<span class="sr-only"> (opens in a new tab)</span></a> ·
@@ -451,7 +451,7 @@ If the PDF opens instead of downloading, use your browser’s download button. I
 <tbody>
 <tr><td><span class="ui">Single</span> / <span class="ui">Spread</span></td><td>One page, or a two-page spread as in the printed Mushaf.</td></tr>
 <tr><td><span class="ui">Fit page</span> / <span class="ui">Fit width</span> / <span class="ui">− +</span></td><td>Zoom. On a computer Ctrl+wheel zooms and dragging pans; on a phone, pinch.</td></tr>
-<tr><td>Full-screen button</td><td>Hides everything except the page. <kbd>F</kbd> does the same.</td></tr>
+<tr><td>Full-screen button</td><td>Hides everything except the page. <kbd>F</kbd> does the same. On a computer, moving the mouse shows the toolbar for a moment and <kbd>Esc</kbd> leaves. On a phone or tablet <b>nothing appears when you touch the page</b> — swipe to turn, pinch to zoom — and a small translucent ✕ in the top corner is the one way out.</td></tr>
 <tr><td>Theme</td><td>Light or dark, in <span class="ui">Settings → Mushaf</span>; the ◐ button in the side bar toggles it directly.</td></tr>
 </tbody>
 </table>
@@ -500,6 +500,7 @@ If the PDF opens instead of downloading, use your browser’s download button. I
 
 <h3 id="text-view">Text view<a class="permalink" href="#text-view">#</a></h3>
 <p>The <span class="ui">☰ Text</span> button shows the same page ayah by ayah with the meaning of every word underneath.</p>
+<div class="note"><b>Always one page, never a curtain</b> Text view shows one page at a time and turns one page at a time, whatever <span class="ui">Single</span> or <span class="ui">Spread</span> you have chosen for the printed Mushaf — that setting is left exactly as it was for when you return. The curtain belongs to the printed page: in Text view the <span class="ui">▤ Curtain</span> button is greyed out and the Curtain drill panel is hidden, and <kbd>C</kbd> and <kbd>S</kbd> do nothing.</div>
 <ul>
 <li><b>Pinch</b>, or the <span class="ui">A− A+</span> buttons, change the size. The text re-wraps, so nothing goes off the screen.</li>
 <li><b>Tap any Arabic word</b> to mark it yellow — for the word that keeps catching your tongue. Tap again to clear it. Highlights are saved.</li>
@@ -509,16 +510,15 @@ If the PDF opens instead of downloading, use your browser’s download button. I
 </ul>
 
 <h4 id="translations">Choosing translations</h4>
-<p><span class="ui">Translations</span> opens a picker. Six are available and you may tick as many as you like; each ayah then shows them one under another with the translator named.</p>
-<table>
-<thead><tr><th>বাংলা — Bengali</th><th>English</th></tr></thead>
-<tbody>
-<tr><td>Muhiuddin Khan</td><td>Saheeh International</td></tr>
-<tr><td>Taisirul Quran (Tawheed Publication)</td><td>Al-Hilali &amp; Khan</td></tr>
-<tr><td>Sheikh Mujibur Rahman (Darussalam)</td><td>Bridges' translation (Fadel Soliman)</td></tr>
-</tbody>
-</table>
+<p><span class="ui">Translations</span> opens a picker. Five are available and you may tick as many as you like; each ayah then shows them one under another with the translator named.</p>
+<div class="cards">
+<div class="card"><h4>বাংলা — Bengali</h4>
+<ul><li>Taisirul Quran (Tawheed Publication)</li><li>Sheikh Mujibur Rahman (Darussalam)</li></ul></div>
+<div class="card"><h4>English</h4>
+<ul><li>Saheeh International</li><li>Al-Hilali &amp; Khan</li><li>Bridges' translation (Fadel Soliman)</li></ul></div>
+</div>
 <p>Every translation is shown as published. Nothing is generated, summarised or translated by the app itself.</p>
+<div class="note"><b>A translation that used to be here</b> The Bengali translation of Muhiuddin Khan was offered up to version 1.20.16 and has been withdrawn. If your record had it selected, the app now uses <b>Taisirul Quran</b> in its place, and any copy of its text kept on your device for offline use is deleted the next time you open the app. Nothing else in your record is changed.</div>
 
 <h4 id="gapfill">The gap-fill drill</h4>
 <p><span class="ui">Gap-fill</span> hides words so you must supply them: every 3rd word, every 5th word, the first word of each ayah, the last word, or every word. Tap a blank to check that one word, or press <span class="ui">Reveal all</span>. Gap-fill needs the word view, which tajwīd colouring no longer replaces — the two can be used at the same time.</p>
@@ -1171,7 +1171,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 <ul>
 <li><b>App-specific:</b> each layer loads on its own — if a translation fails, the Qur'ān text is still shown, the failure is named at the bottom of the text, and a <span class="ui">retry</span> button appears there.</li>
 <li><b>App-specific:</b> tafsīr and translations are fetched the first time and then kept on the device. Offline, anything you have not opened before is unavailable and the app says so rather than showing nothing.</li>
-<li><b>App-specific:</b> word meanings disappeared when you switched <span class="ui">Tajwīd colours</span> on? That was the behaviour up to version 1.20.13 and is fixed from 1.20.12 — the two now work together. If a visible note above the ayāt says the colouring arrived as one piece per ayah, the source did not supply the per-word version for that page; turn the colours off to bring the meanings back.</li>
+<li><b>App-specific:</b> word meanings disappeared when you switched <span class="ui">Tajwīd colours</span> on? That was the behaviour up to version 1.20.16 and is fixed from 1.20.12 — the two now work together. If a visible note above the ayāt says the colouring arrived as one piece per ayah, the source did not supply the per-word version for that page; turn the colours off to bring the meanings back.</li>
 <li><i>General:</i> a network that blocks the content hosts will prevent the first fetch.</li>
 </ul>
 </details>
@@ -1231,7 +1231,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 <!-- ==================== ABOUT ==================== -->
 <section id="about-this-guide">
 <h2>14. About this guide<a class="permalink" href="#about-this-guide">#</a></h2>
-<p><b>App version inspected:</b> Hifz Companion <b>1.20.13</b>.<br>
+<p><b>App version inspected:</b> Hifz Companion <b>1.20.16</b>.<br>
 <b>Inspection date:</b> 11 September 2026.<br>
 <b>The app:</b> <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a><br>
 <b>This guide:</b> <span class="url">https://mazhar17.github.io/hc/Hifz-Companion-User-Guide.html</span> — once it has been published there. If you are reading a local copy, that address may not be live yet.</p>
@@ -1259,7 +1259,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 </section>
 
 <footer class="pagefoot">
-<p><b>Hifz Companion — User Guide</b> · written for version 1.20.13 · 11 September 2026.</p>
+<p><b>Hifz Companion — User Guide</b> · written for version 1.20.16 · 11 September 2026.</p>
 <p>The app: <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a> · Comments and suggestions: <a href="mailto:mazhar1970@gmail.com">mazhar1970@gmail.com</a></p>
 <p>This guide describes Hifz Companion, which is licensed under CC BY-NC-ND 4.0. The Qur'ānic text is the Word of Allah and must never be altered.</p>
 </footer>
