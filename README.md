@@ -1,4 +1,4 @@
-# Hifz Companion — hosted HD edition (v1.20.11)
+# Hifz Companion — hosted HD edition (v1.20.13)
 
 This folder is the **web-hosted edition** of Hifz Companion, split into small files so it can be
 published on GitHub Pages (or any static host) — every file is well under GitHub's 25 MB upload limit.
