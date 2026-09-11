@@ -1,4 +1,4 @@
-# Hifz Companion — hosted HD edition (v1.20.20)
+# Hifz Companion — hosted HD edition (v1.21.0)
 
 This folder is the **web-hosted edition** of Hifz Companion, split into small files so it can be
 published on GitHub Pages (or any static host) — every file is well under GitHub's 25 MB upload limit.
@@ -166,6 +166,32 @@ where every Arabic line begins — could not be reached in either view. The page
 auto margins instead, which centre it while it fits and collapse the moment it does not, so the
 scrollable area always covers the whole page. `test79.mjs` checks this across phone portrait, phone
 landscape, tablet and desktop, in Single and Spread, at 2.4× and 4× zoom.
+
+## The Study tab, rearranged (v1.21.0)
+The Study tab used to put everything on screen at once. On a phone that meant **121 interactive
+controls** and a column **3,899 px tall** — about five screenfuls — with the Mushaf itself holding
+72% of the first screen. It is now **11 controls**, **1,189 px**, and one toolbar row at every
+width from 360 px up.
+
+Nothing was removed. What changed is that only what you are using is on screen:
+
+| | |
+|---|---|
+| Toolbar, one row | ‹ › page arrows and the page number · **Mushaf ⇄ Text** · **Go to ▾** · **Display ▾** · full screen · **🛠 Tools** |
+| **Go to ▾** | sūrah and juz. Below 700 px these move *into* Display ▾ — moved, not duplicated, so there is one of each in the DOM and every binding still works. Below 460 px full screen moves there too. |
+| **Display ▾** | Only what applies to the view on screen: Single/Spread and zoom on the Mushaf; the ayah layers, translations, word-meaning language and text size in Text view. The chosen translations are **named** above the picker rather than counted. |
+| Under the page | Play page · Play selection · Listen… , with the transport, presets, repeat, loop, gap, speed and A/B loop inside **Audio settings ▾**. The persistent player remains the playback surface. |
+| **Ayāt on this page** | A collapsible strip. Closed it is one control and still reports "26 ayāt · selected An-Najm 3 · 2 marked ✗". **The ✗ appears only on the selected chip** — that one change turned 52 controls into 27. |
+| **🛠 Tools** | One section at a time — Practice, Understand, Notes — as a rail beside the page on a desktop and a sheet over it on a phone. On a phone it is **always closed on arrival**: a sheet that reopens itself over what you are reading is an obstruction, so only the desktop remembers open/closed. The section choice is remembered on both. |
+
+Switching or closing a section preserves the page, the selected ayah or range, playback and the
+reading position. The unaided-recall rules are unchanged: the curtain still belongs to the printed
+page, and Text view, meanings and tafsīr stay out of reach during a revision test.
+
+`test81.mjs` covers the new layout — section switching, context preservation, the menus, the sheet's
+focus, Escape and outside-tap behaviour, the ✗ on the selected chip only — plus the budget above
+measured at 360, 390, 768 and 1280 px. Suites that drive controls which have moved use the shared
+helper in `study_ui.mjs`, which reveals whatever encloses a control before operating it.
 
 ## Full screen: the page and nothing else (v1.20.20)
 In full screen the toolbar is gone for as long as full screen lasts. Nothing brings it back — not
