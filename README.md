@@ -1,4 +1,4 @@
-# Hifz Companion — hosted HD edition (v1.20.7)
+# Hifz Companion — hosted HD edition (v1.20.9)
 
 This folder is the **web-hosted edition** of Hifz Companion, split into small files so it can be
 published on GitHub Pages (or any static host) — every file is well under GitHub's 25 MB upload limit.
@@ -9,6 +9,8 @@ mushaf/hd/001.webp …  the 604 Madinah Mushaf pages in full colour (about 250 K
 sw.js                 the service worker that makes offline use possible (Settings → Data)
 .nojekyll             tells GitHub Pages to serve the files as they are
 Code.gs               the optional cloud-sync script for Google Apps Script (see below)
+Hifz-Companion-User-Guide.html   the complete User Guide — one self-contained file, must sit
+                      beside index.html (the app links to ./Hifz-Companion-User-Guide.html)
 ```
 
 The pages are delivered in several ZIP parts (`hifz-hd-pages-part1.zip` … ) because of upload limits.

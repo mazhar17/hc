@@ -1,0 +1,1383 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hifz Companion — User Guide</title>
+<meta name="description" content="Complete user guide for Hifz Companion: daily practice, Study tools, planning, the spaced-repetition schedule, progress, teacher sharing, settings, offline use and backups.">
+<meta name="color-scheme" content="light dark">
+<script>document.documentElement.className = document.documentElement.className.replace('no-js','js');</script>
+<style>
+:root{
+  --green:#1f6f5f; --green-d:#14453c; --gold:#b8860b; --blue:#2b5f9e; --purple:#7a4b8f; --red:#c0392b;
+  --bg:#fbf9f4; --card:#ffffff; --ink:#23201b; --ink2:#4a453c; --muted:#77705f; --line:#e2d9c8;
+  --sand:#f6f1e7; --shadow:0 1px 3px rgba(0,0,0,.06);
+  --sticky:64px;
+}
+html[data-theme="dark"]{
+  --bg:#15171a; --card:#1c1f23; --ink:#e9e5dc; --ink2:#c6c0b4; --muted:#9a9384; --line:#333a3d;
+  --sand:#22262a; --green:#4fb39b; --green-d:#8fd6c4; --gold:#d9a629; --blue:#7aa8e0; --purple:#b98fd0; --red:#e0796b;
+  --shadow:0 1px 3px rgba(0,0,0,.4);
+}
+@media (prefers-color-scheme: dark){
+  html:not([data-theme="light"]){
+    --bg:#15171a; --card:#1c1f23; --ink:#e9e5dc; --ink2:#c6c0b4; --muted:#9a9384; --line:#333a3d;
+    --sand:#22262a; --green:#4fb39b; --green-d:#8fd6c4; --gold:#d9a629; --blue:#7aa8e0; --purple:#b98fd0; --red:#e0796b;
+    --shadow:0 1px 3px rgba(0,0,0,.4);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.65 "Segoe UI",system-ui,-apple-system,"Noto Sans","Helvetica Neue",Arial,sans-serif;}
+img{max-width:100%;height:auto}
+a{color:var(--green);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:3px}
+[tabindex="-1"]:focus:not(:focus-visible){outline:none}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+.top-in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--green);text-decoration:none;font-size:1.02rem;white-space:nowrap}
+.brand .mark{color:var(--gold);font-size:1.3rem;line-height:1}
+.top-actions{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{font:inherit;font-size:.86rem;padding:7px 12px;border-radius:8px;border:1px solid var(--line);
+  background:var(--card);color:var(--ink);cursor:pointer;text-decoration:none;display:inline-block}
+.btn:hover{border-color:var(--green);color:var(--green)}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+.btn.primary:hover{background:var(--green-d);color:#fff}
+.searchwrap{position:relative;flex:1 1 230px;min-width:180px;max-width:420px}
+#q{width:100%;font:inherit;font-size:.92rem;padding:8px 12px 8px 32px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.searchwrap::before{content:"";position:absolute;left:11px;top:50%;width:12px;height:12px;margin-top:-7px;
+  border:2px solid var(--muted);border-radius:50%;pointer-events:none}
+.searchwrap::after{content:"";position:absolute;left:21px;top:50%;width:7px;height:2px;background:var(--muted);
+  transform:rotate(45deg);margin-top:3px;pointer-events:none}
+#results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.14);max-height:60vh;overflow:auto;z-index:60}
+#results[hidden]{display:none}
+#results a{display:block;padding:9px 12px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+#results a:last-child{border-bottom:0}
+#results a:hover,#results a.sel{background:var(--sand)}
+#results .r-sec{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+#results .r-txt{display:block;font-size:.88rem}
+#results mark{background:#ffe873;color:#23201b;padding:0 1px;border-radius:2px}
+.r-none{padding:12px;color:var(--muted);font-size:.9rem}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:34px}
+.toc{position:sticky;top:calc(var(--sticky) + 12px);align-self:start;max-height:calc(100vh - var(--sticky) - 24px);
+  overflow:auto;padding:18px 0;font-size:.9rem}
+.toc h2{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 8px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc li{counter-increment:toc;margin:0 0 2px}
+.toc a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--ink2);border-left:3px solid transparent}
+.toc a::before{content:counter(toc) ". ";color:var(--muted)}
+.toc a:hover{background:var(--sand);color:var(--green)}
+.toc a.active{border-left-color:var(--green);background:var(--sand);color:var(--green);font-weight:600}
+main{padding:22px 0 60px;min-width:0}
+
+/* ---------- content ---------- */
+.lede{font-size:1.06rem;color:var(--ink2)}
+h1{font-size:2rem;line-height:1.25;margin:.2em 0 .3em;color:var(--green-d)}
+h2{font-size:1.45rem;margin:2.2em 0 .5em;color:var(--green);scroll-margin-top:calc(var(--sticky) + 16px);
+  padding-bottom:.25em;border-bottom:2px solid var(--line)}
+h3{font-size:1.12rem;margin:1.7em 0 .4em;color:var(--ink);scroll-margin-top:calc(var(--sticky) + 16px)}
+h4{font-size:1rem;margin:1.3em 0 .3em;color:var(--ink)}
+section{scroll-margin-top:calc(var(--sticky) + 16px)}
+p{margin:.6em 0}
+ul,ol{padding-left:1.35em;margin:.6em 0}
+li{margin:.3em 0}
+code,kbd{font-family:"Cascadia Mono",Consolas,"SF Mono",monospace;font-size:.88em;background:var(--sand);
+  padding:1px 5px;border-radius:4px;border:1px solid var(--line)}
+kbd{box-shadow:0 1px 0 var(--line)}
+.ui{font-weight:600;color:var(--green-d);background:var(--sand);padding:1px 6px;border-radius:4px;
+  border:1px solid var(--line);font-size:.92em;overflow-wrap:break-word}
+.permalink{text-decoration:none;color:var(--muted);font-size:.7em;margin-left:.4em;opacity:0;vertical-align:middle}
+h2:hover .permalink,h3:hover .permalink,.permalink:focus{opacity:1}
+
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.93rem;display:block;overflow-x:auto}
+@media (min-width:720px){table{display:table}}
+th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+th{background:var(--green);color:#fff;font-weight:600}
+html[data-theme="dark"] th{color:#0e1416}
+tbody tr:nth-child(even){background:var(--sand)}
+
+.note,.tip,.warn{margin:1.1em 0;padding:12px 15px;border-radius:10px;border-left:4px solid var(--green);
+  background:var(--sand);font-size:.95rem}
+.tip{border-left-color:var(--green)}
+.note{border-left-color:var(--blue)}
+.warn{border-left-color:var(--gold)}
+.note b:first-child,.tip b:first-child,.warn b:first-child{color:var(--green-d)}
+.note b:first-child{color:var(--blue)}
+.warn b:first-child{color:var(--gold)}
+
+details{margin:1em 0;border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}
+details > summary{cursor:pointer;padding:11px 15px;font-weight:600;color:var(--green-d);background:var(--sand);
+  list-style:none;display:flex;align-items:center;gap:8px}
+details > summary::-webkit-details-marker{display:none}
+details > summary::before{content:"›";display:inline-block;transition:transform .15s;font-size:1.2em;color:var(--muted)}
+details[open] > summary::before{transform:rotate(90deg)}
+details > *:not(summary){padding:0 15px}
+details > :last-child{padding-bottom:10px}
+details.hood > summary{background:transparent;color:var(--muted);font-weight:600;font-size:.9rem;
+  text-transform:uppercase;letter-spacing:.04em}
+details.hood{background:transparent;border-style:dashed}
+
+.steps{counter-reset:s;list-style:none;padding-left:0}
+.steps > li{counter-increment:s;position:relative;padding-left:38px;margin:.75em 0}
+.steps > li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;
+  background:var(--green);color:#fff;display:grid;place-items:center;font-size:.82rem;font-weight:700}
+html[data-theme="dark"] .steps > li::before{color:#0e1416}
+
+.cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:1.1em 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--card);box-shadow:var(--shadow)}
+.card h4{margin:0 0 .35em}
+.card p{margin:.3em 0;font-size:.93rem;color:var(--ink2)}
+.pill{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+  padding:2px 8px;border-radius:20px;background:var(--sand);border:1px solid var(--line);color:var(--muted)}
+.pill.sabaq{color:#fff;background:var(--green);border-color:var(--green)}
+.pill.sabqi{color:#fff;background:var(--blue);border-color:var(--blue)}
+.pill.manzil{color:#fff;background:var(--purple);border-color:var(--purple)}
+html[data-theme="dark"] .pill.sabaq,html[data-theme="dark"] .pill.sabqi,html[data-theme="dark"] .pill.manzil{color:#0e1416}
+
+figure{margin:1.2em 0}
+figure img{border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);display:block}
+figcaption{font-size:.85rem;color:var(--muted);margin-top:.5em;font-style:italic}
+.diagram{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;margin:1.2em 0}
+.diagram svg{display:block;width:100%;height:auto}
+
+.example{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:2px 16px 12px;
+  margin:1.2em 0;background:var(--card)}
+.example h4{color:var(--blue)}
+.state{font-family:"Cascadia Mono",Consolas,monospace;font-size:.84rem;background:var(--sand);border:1px solid var(--line);
+  border-radius:8px;padding:10px 12px;margin:.6em 0;overflow-x:auto;white-space:pre-wrap;word-break:break-word}
+
+.newtab::after{content:" ↗";font-size:.85em;color:var(--muted)}
+.url{word-break:break-all;font-family:"Cascadia Mono",Consolas,monospace;font-size:.88em}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+#totop{position:fixed;right:16px;bottom:16px;z-index:40;border-radius:50%;width:44px;height:44px;padding:0;
+  font-size:1.1rem;box-shadow:0 4px 14px rgba(0,0,0,.18);background:var(--green);color:#fff;border-color:var(--green)}
+#totop[hidden]{display:none}
+.pagefoot{border-top:1px solid var(--line);margin-top:50px;padding:22px 0 10px;color:var(--muted);font-size:.9rem}
+
+/* ---------- no-JS ---------- */
+html.no-js .js-only{display:none !important}
+html.no-js details{border-style:solid}
+.nojs-note{display:none}
+html.no-js .nojs-note{display:block}
+
+@media (max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0}
+  .toc{position:static;max-height:none;border-bottom:1px solid var(--line);padding:12px 0}
+  .toc ol{columns:2;column-gap:18px}
+  :root{--sticky:110px}
+}
+@media (max-width:560px){
+  .toc ol{columns:1}
+  .top-in{padding:8px 12px}
+  h1{font-size:1.6rem}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important;animation:none !important}
+}
+@media print{
+  .top,.toc,#totop,.js-only,.permalink,.nojs-note{display:none !important}
+  .wrap{display:block;max-width:none;padding:0}
+  body{background:#fff;color:#000;font-size:11pt}
+  details{border:0;page-break-inside:avoid}
+  details > summary{background:transparent;color:#000;padding-left:0}
+  details:not([open]) > *{display:block !important}
+  details > *:not(summary){padding:0}
+  h2{page-break-after:avoid;border-bottom:1px solid #999;color:#000}
+  h3,h4{page-break-after:avoid;color:#000}
+  table,figure,.example,.diagram{page-break-inside:avoid}
+  a{color:#000;text-decoration:underline}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555;word-break:break-all}
+  .card,.note,.tip,.warn{border:1px solid #bbb;background:#fff}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="./index.html"><span class="mark" aria-hidden="true">۞</span> Hifz Companion <span style="font-weight:400;color:var(--muted)">· User Guide</span></a>
+    <div class="searchwrap js-only">
+      <label for="q" class="sr-only">Search the guide</label>
+      <input id="q" type="search" placeholder="Search the guide…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="results" aria-autocomplete="list">
+      <div id="results" role="listbox" aria-label="Search results" hidden></div>
+    </div>
+    <div class="top-actions">
+      <button class="btn js-only" id="expandAll" type="button">Expand all</button>
+      <button class="btn js-only" id="collapseAll" type="button">Collapse all</button>
+      <button class="btn js-only" id="theme" type="button" aria-pressed="false">Dark theme</button>
+      <a class="btn primary" href="./index.html">Back to Hifz Companion</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#getting-started">Getting started</a></li>
+    <li><a href="#daily-practice">Daily practice</a></li>
+    <li><a href="#study-tools">Study tools</a></li>
+    <li><a href="#planning">Overall planning</a></li>
+    <li><a href="#weekly-planning">Weekly planning</a></li>
+    <li><a href="#spaced-repetition">How revision is scheduled</a></li>
+    <li><a href="#progress">Progress</a></li>
+    <li><a href="#teacher-sharing">Working with a teacher</a></li>
+    <li><a href="#settings">Settings</a></li>
+    <li><a href="#data-and-offline">Data, offline use and sync</a></li>
+    <li><a href="#scenarios">Practical scenarios</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+    <li><a href="#glossary">Glossary</a></li>
+    <li><a href="#about-this-guide">About this guide</a></li>
+  </ol>
+</nav>
+
+<main>
+<h1>Hifz Companion — User Guide</h1>
+<p class="lede">Everything the app can do, in the order you are likely to need it: your first session, daily practice, the Study tools, planning, how revision is scheduled, and how to keep your record safe.</p>
+<p class="nojs-note note"><b>Note</b> JavaScript is switched off, so search and the expand/collapse buttons are unavailable. The whole guide is still readable — every section below is open.</p>
+<p style="color:var(--muted);font-size:.92rem">App inspected: <b>version 1.20.8</b> · Guide written 11 September 2026 · <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a></p>
+
+<!-- ==================== GETTING STARTED ==================== -->
+<section id="getting-started">
+<h2>1. Getting started<a class="permalink" href="#getting-started" aria-label="Link to this section">#</a></h2>
+
+<p>Hifz Companion is a private study companion for memorising the Qur'an at a steady pace — one page a week by default, or a half, a third or a quarter of a page if that suits you better. It runs in a web browser on a phone, tablet or computer. There is nothing to install, no account to create, no payment and no advertising. Your record stays in your own browser unless you choose to sync it to your own Google Drive.</p>
+
+<p>It shows the printed <b>Madinah Mushaf</b> (Ḥafṣ ʿan ʿĀṣim, 604 pages), plays the recitation, proposes each week's pages, keeps your history, and writes a weekly message you can send to your teacher.</p>
+
+<h3 id="three-layers">The three layers of work<a class="permalink" href="#three-layers">#</a></h3>
+<p>The app is built around the three layers of work that huffāẓ (those who have memorised the Qur'an) have always used. The Arabic names are used throughout the app, so they are worth learning once:</p>
+
+<table>
+<caption class="sr-only">The three layers of memorisation work</caption>
+<thead><tr><th>Term</th><th>Meaning</th><th>In this app</th></tr></thead>
+<tbody>
+<tr><td><span class="pill sabaq">Sabaq</span></td><td>"Lesson" — the new material you are memorising now.</td><td>One new page (or part of a page) per week, with a different suggested task on each of the seven days.</td></tr>
+<tr><td><span class="pill sabqi">Sabqi</span></td><td>"Recent" — what you memorised in the last few weeks and are still making firm.</td><td>Pages return after 1, 3, 7, 14 and 30 days as long as you recite them well.</td></tr>
+<tr><td><span class="pill manzil">Manzil</span></td><td>"Portion/station" — everything older, in a long rotation.</td><td>Pages return roughly every 30 days by default, so nothing is lost.</td></tr>
+</tbody>
+</table>
+
+<p>Two more words you will meet:</p>
+<ul>
+<li><b>Murājaʿah</b> — revision in general; in this app, sabqi and manzil together.</li>
+<li><b>Wird</b> — a regular daily portion. The panel at the top of the <span class="ui">Today</span> tab is called <span class="ui">Today's wird</span>: it is your portion for today.</li>
+</ul>
+
+<p>You never have to plan these layers yourself. The app works out what is due, proposes a week, and tells you what to do each day.</p>
+
+<div class="diagram">
+<svg viewBox="0 0 720 190" role="img" aria-labelledby="d1t d1d">
+  <title id="d1t">How a page moves through the three layers</title>
+  <desc id="d1d">A new page is learned as sabaq during one week. When it is marked complete it becomes sabqi and returns after 1, 3, 7, 14 and 30 days. After three good ratings in a row with an interval of 30 days or more it becomes manzil and returns about every 30 days. A weak rating sends a manzil page back to sabqi.</desc>
+  <g font-family="system-ui,sans-serif" font-size="13">
+    <rect x="8" y="46" width="150" height="56" rx="10" fill="#1f6f5f"/>
+    <text x="83" y="70" fill="#fff" text-anchor="middle" font-weight="700">SABAQ</text>
+    <text x="83" y="88" fill="#cfe3dc" text-anchor="middle" font-size="11">new page, one week</text>
+
+    <rect x="230" y="46" width="185" height="56" rx="10" fill="#2b5f9e"/>
+    <text x="322" y="70" fill="#fff" text-anchor="middle" font-weight="700">SABQI</text>
+    <text x="322" y="88" fill="#d6e3f4" text-anchor="middle" font-size="11">1 → 3 → 7 → 14 → 30 days</text>
+
+    <rect x="487" y="46" width="170" height="56" rx="10" fill="#7a4b8f"/>
+    <text x="572" y="70" fill="#fff" text-anchor="middle" font-weight="700">MANZIL</text>
+    <text x="572" y="88" fill="#e8d9f0" text-anchor="middle" font-size="11">about every 30 days</text>
+
+    <path d="M162 74 L224 74" stroke="#77705f" stroke-width="2" marker-end="url(#ar)"/>
+    <text x="193" y="64" fill="#77705f" text-anchor="middle" font-size="11">complete</text>
+    <path d="M419 74 L481 74" stroke="#77705f" stroke-width="2" marker-end="url(#ar)"/>
+    <text x="450" y="64" fill="#77705f" text-anchor="middle" font-size="11">3 good</text>
+    <path d="M560 112 C540 160, 360 160, 330 112" stroke="#c0392b" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+    <text x="445" y="158" fill="#c0392b" text-anchor="middle" font-size="11">rated 0–2 (weak) — back to sabqi</text>
+    <defs>
+      <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#77705f"/></marker>
+      <marker id="arr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#c0392b"/></marker>
+    </defs>
+  </g>
+</svg>
+</div>
+
+<h3 id="first-session">Start here: your first study session<a class="permalink" href="#first-session">#</a></h3>
+<p>About fifteen minutes, once. Everything here can be changed afterwards.</p>
+
+<ol class="steps">
+<li><b>Open the app.</b> Go to <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a> in Chrome, Safari, Edge or Firefox. On a phone, open the browser menu and choose <span class="ui">Add to Home screen</span> — the app then opens with its own icon and no browser bar. This is the single most useful thing a phone user can do.</li>
+
+<li><b>Answer the two opening questions.</b> Choose <span class="ui">Continue with the built-in Mushaf</span> (all 604 pages are already included), then pick where to begin. Most people start at <b>page 604</b> and work backwards through Juz ʿAmma, which is how the shorter sūrahs are usually learned. You can type any page number instead.</li>
+
+<li><b>Tell the app what you already know</b> (skip if nothing). Go to <span class="ui">Settings → Plan → Pages I already know</span>, enter a page range, and press <span class="ui">Mark as memorized → manzil</span>. Those pages go straight into the long rotation instead of being treated as new. See <a href="#already-known">section 4.2</a> before you do this — the date you give matters.</li>
+
+<li><b>Set a workload you can keep.</b> Still in <span class="ui">Settings → Plan</span>: <span class="ui">Revision pages per day</span> (default <b>6</b>) is the ceiling on daily revision; <span class="ui">Weekly portion (sabaq)</span> (default a whole page) is how much new material you take each week. If you are new or busy, a half page and 3–4 revision pages a day is a realistic start.</li>
+
+<li><b>Create your first weekly plan.</b> Open the <span class="ui">Week</span> tab. The app has already proposed a plan. Look it over, change anything you like, then press <span class="ui">Set this week's plan</span>. Until you press it, the plan is only a <i>proposal</i> and the Today screen says so.</li>
+
+<li><b>Do your first session.</b> Open <span class="ui">Today</span>. The sabaq card names your page and suggests today's task. Press <span class="ui">Open in Study</span>, listen to the passage with the qari a few times, then turn on the <span class="ui">Curtain</span> and recite from memory, revealing one line at a time to check yourself.</li>
+
+<li><b>Finish the session.</b> Tap <span class="ui">✓ Practised today</span> on the sabaq card. If the card lists sabqi or manzil pages, recite each one and give it a rating from 0 to 5 — that rating is what decides when the page comes back (<a href="#spaced-repetition">section 6</a>).</li>
+</ol>
+
+<div class="tip"><b>Tip</b> Ten to twenty minutes every day is worth far more than three hours once a week. The day streak on the <span class="ui">Progress</span> tab quietly rewards consistency, not volume.</div>
+
+<h3 id="tour">The five tabs at a glance<a class="permalink" href="#tour">#</a></h3>
+<p>On a phone the five tabs sit along the bottom of the screen; on a computer they run down the left side. The <span class="ui">?</span> button at the top opens Help &amp; About at any time.</p>
+
+<table>
+<thead><tr><th>Tab</th><th>What it is for</th><th>Read more</th></tr></thead>
+<tbody>
+<tr><td><span class="ui">Today</span></td><td>What to do right now. Start here every day.</td><td><a href="#daily-practice">Section 2</a></td></tr>
+<tr><td><span class="ui">Study</span></td><td>The Mushaf page, the recitation, and all the learning tools.</td><td><a href="#study-tools">Section 3</a></td></tr>
+<tr><td><span class="ui">Week</span></td><td>This week's plan, and the message for your teacher.</td><td><a href="#weekly-planning">Section 5</a></td></tr>
+<tr><td><span class="ui">Progress</span></td><td>The memorisation map, calendar, streak, weak pages, projections.</td><td><a href="#progress">Section 7</a></td></tr>
+<tr><td><span class="ui">Settings</span></td><td>Plan, Audio, Mushaf, Sharing and Data. Set once, then forget.</td><td><a href="#settings">Section 9</a></td></tr>
+</tbody>
+</table>
+
+<h4 id="icons">Icons and status labels you will see</h4>
+<table>
+<thead><tr><th>Symbol or label</th><th>Where</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><span class="ui">✗</span></td><td>Beside an ayah in Study and Text view</td><td>Stumble mark. Tap to mark a slip; tap again to resolve it. Marked pages come first in the day's revision.</td></tr>
+<tr><td><span class="ui">✓ Practised today</span></td><td>Today, and the Study rating panel</td><td>Records that you worked on the page today. It does <b>not</b> reschedule anything.</td></tr>
+<tr><td><span class="ui">Mark page complete</span></td><td>Sabaq card</td><td>The page is memorised. It leaves sabaq and enters sabqi revision.</td></tr>
+<tr><td><span class="ui">proposal</span></td><td>Today banner, Week heading</td><td>This week's plan has not been committed yet.</td></tr>
+<tr><td><span class="ui">day N of 7</span></td><td>Sabaq card</td><td>Which day of the seven-day sabaq week you are on.</td></tr>
+<tr><td>Filled / outlined tile</td><td>Progress map</td><td>Filled = memorised; outlined = marked weak; a coloured frame = in this week's sabaq, sabqi or manzil.</td></tr>
+<tr><td><span class="ui">synced</span> / <span class="ui">not saved</span></td><td>Top bar, when cloud sync is on</td><td>Cloud status. <span class="ui">not saved</span> means a conflict is waiting for your decision (<a href="#sync-conflicts">section 10.6</a>).</td></tr>
+</tbody>
+</table>
+</section>
+
+<!-- ==================== DAILY PRACTICE ==================== -->
+<section id="daily-practice">
+<h2>2. Daily practice<a class="permalink" href="#daily-practice">#</a></h2>
+<p>The <span class="ui">Today</span> tab is the whole daily routine. If you only ever follow the Today card, you are doing the method correctly.</p>
+
+<h3 id="wird">Reading Today's wird<a class="permalink" href="#wird">#</a></h3>
+<p>The panel at the top gives, in one line: the date in both the Gregorian and Hijri calendars, which day of the plan week you are on (<span class="ui">day 5 of 7</span>), the week number, your journey week, an estimate of how long today's work will take, and the deadline for finishing this week's sabaq.</p>
+<p>Three counters follow: <span class="pill sabaq">sabaq</span>, <span class="pill sabqi">sabqi</span> and <span class="pill manzil">manzil</span>, each shown as <i>done / due</i>. Below them is a row of overall statistics: pages memorised, ayāt memorised, percent of the Mushaf, day streak, projected completion date, and the manzil rotation.</p>
+<div class="note"><b>Note</b> The projected completion date assumes your current pace continues unchanged. It is an estimate, not a promise — see <a href="#estimates">section 4.5</a>.</div>
+
+<h3 id="working-through">Working through the three layers<a class="permalink" href="#working-through">#</a></h3>
+<h4>The sabaq card</h4>
+<p>The card names the page and its range, shows which day of seven you are on, and suggests a task for that day. By default the seven days run: learn segment 1, learn segment 2, learn segment 3, join all segments, consolidate (recite the page three times flawlessly), link with the neighbouring pages, then recite to your teacher and catch up. You can rewrite these seven lines in <span class="ui">Settings → Plan → Weekly task template</span>.</p>
+<p>Three buttons start the work: <span class="ui">▶ Play page</span>, <span class="ui">▶ Ayah by ayah</span> and <span class="ui">Open in Study</span>. There is also <span class="ui">▶ Today's segment</span>, which plays only the lines for today's task.</p>
+<p>Two more buttons finish it: <span class="ui">✓ Practised today</span> and <span class="ui">Mark page complete</span>.</p>
+
+<h4>Sabqi and manzil cards</h4>
+<p>Below the sabaq card are today's revision pages, most urgent first. Each card opens the page in Study and carries a rating row: <span class="ui">Recited it — rate:</span> followed by the buttons <b>0 1 2 3 4 5</b>.</p>
+
+<h3 id="four-actions">Listening, practising, rating and completing — four different things<a class="permalink" href="#four-actions">#</a></h3>
+<p>These are easy to confuse, and they do genuinely different things:</p>
+<table>
+<thead><tr><th>Action</th><th>What it records</th><th>Effect on the schedule</th></tr></thead>
+<tbody>
+<tr><td>Listening / playing audio</td><td>Nothing.</td><td>None. Playing the recitation never changes any date.</td></tr>
+<tr><td><span class="ui">✓ Practised today</span></td><td>Today is added to your practice days, which drives the streak and the calendar.</td><td><b>None.</b> No due date changes.</td></tr>
+<tr><td>A rating <b>0–5</b></td><td>A review record (page, date, rating, stage) is added to your history, and the week's plan marks that page done.</td><td><b>This is the only thing that reschedules a page.</b> See <a href="#spaced-repetition">section 6</a>.</td></tr>
+<tr><td><span class="ui">Mark page complete</span></td><td>The page's status becomes <i>memorized</i>.</td><td>The page leaves sabaq and enters sabqi with its first interval of 1 day.</td></tr>
+</tbody>
+</table>
+<div class="warn"><b>Worth knowing</b> A page you practise every day but never rate will keep showing as overdue, because only a rating moves its due date. If a revision page keeps reappearing, check that you are pressing a rating button and not just <span class="ui">✓ Practised today</span>.</div>
+
+<h3 id="segments">Daily segments and the seven-day ladder<a class="permalink" href="#segments">#</a></h3>
+<p>A page is divided into <b>segments</b> — three by default, set by <span class="ui">Settings → Plan → Segments per page</span>. On days 1 to 3 the sabaq task names one segment and gives both the curtain lines and the exact ayāt for the audio, for example <i>"Segment 2 (curtain lines 6–10 · audio 89:8–15)"</i>.</p>
+<p>Inside the Study rating panel the sabaq page also shows a <b>ladder</b> of tick-boxes: learn segment 1, recite segments 1–2 together, learn segment 3, and so on, ending with reciting the whole page under the curtain. The ladder is a checklist for your own benefit — ticking boxes records practice but does not reschedule anything. If you change the number of segments or the portion, the ladder resets, because its steps no longer describe the same work.</p>
+
+<h3 id="missed">Missed and unfinished work<a class="permalink" href="#missed">#</a></h3>
+<ul>
+<li><b>Within a week:</b> pages you did not rate simply stay in the week's plan as not done. Nothing is deleted.</li>
+<li><b>When a week ends:</b> the app archives the week and proposes a new one. Anything unfinished is <b>carried over</b> into the new proposal — an unfinished sabaq page stays sabaq, and unrated sabqi and manzil pages come back.</li>
+<li><b>Overdue pages:</b> a page whose due date has passed stays due and is sorted to the front of the day's list. Overdue days do not accumulate penalties; the page simply waits.</li>
+<li><b>A long break:</b> see <a href="#scenario-return">the returning-after-a-break scenario</a>, and consider <span class="ui">Vacation mode</span> before a planned absence (<a href="#vacation">section 9.1</a>).</li>
+</ul>
+</section>
+
+<!-- ==================== STUDY TOOLS ==================== -->
+<section id="study-tools">
+<h2>3. Study tools<a class="permalink" href="#study-tools">#</a></h2>
+<p>The <span class="ui">Study</span> tab holds the page itself and every learning tool. It has two views of the same page: the printed <b>Mushaf</b> image, and <b>Text</b> view with word meanings and translations. The buttons <span class="ui">▤ Mushaf</span> and <span class="ui">☰ Text</span> switch between them.</p>
+
+<h3 id="navigating">Finding a page<a class="permalink" href="#navigating">#</a></h3>
+<ul>
+<li><b>Page</b> — type a number in the page box and press Enter, or use the ‹ › arrows.</li>
+<li><b>Sūrah</b> and <b>Juz</b> — two dropdowns above the page jump to the start of any sūrah or juz.</li>
+<li><b>Ayah chips</b> — the row of numbered chips under the page selects one ayah, or a range if you tap two. The selection is what the audio presets, the recording and the tafsīr panel act on.</li>
+<li><b>Swipe</b> left or right on a phone to turn the page — in both Mushaf and Text view.</li>
+</ul>
+
+<h3 id="page-display">Layout, zoom and theme<a class="permalink" href="#page-display">#</a></h3>
+<table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><span class="ui">Single</span> / <span class="ui">Spread</span></td><td>One page, or a two-page spread as in the printed Mushaf.</td></tr>
+<tr><td><span class="ui">Fit page</span> / <span class="ui">Fit width</span> / <span class="ui">− +</span></td><td>Zoom. On a computer Ctrl+wheel zooms and dragging pans; on a phone, pinch.</td></tr>
+<tr><td>Full-screen button</td><td>Hides everything except the page. <kbd>F</kbd> does the same.</td></tr>
+<tr><td>Theme</td><td>Light or dark, in <span class="ui">Settings → Mushaf</span>; the ◐ button in the side bar toggles it directly.</td></tr>
+</tbody>
+</table>
+
+<h3 id="curtain">The curtain — the most important tool<a class="permalink" href="#curtain">#</a></h3>
+<p>Press <span class="ui">Curtain</span> and the page is covered. Recite the line from memory <b>first</b>, then reveal it and check. Reciting from memory and checking is what builds hifz; re-reading does not.</p>
+<ul>
+<li><span class="ui">▼ reveal</span> shows one more line, <span class="ui">▲ hide</span> takes it back. On a computer the <kbd>↓</kbd> and <kbd>↑</kbd> arrow keys do the same and <kbd>C</kbd> toggles the curtain.</li>
+<li>Drag the curtain handle to move it by hand.</li>
+<li><span class="ui">Calibrate lines for this page</span> — if the reveal steps do not line up with the printed lines, set the top and bottom of the text once for that page. The calibration is stored per page.</li>
+<li>While the curtain is on, the meanings, tafsīr and video lesson are <b>hidden</b>, so nothing gives you the answer. A small note offers <span class="ui">Peek at the aids anyway</span> if you really need them.</li>
+</ul>
+<div class="note"><b>Not present</b> Earlier versions of this app had a "Blur" panel. It was removed; there is no blur control in the current version.</div>
+
+<h3 id="audio">Audio: reciters, repetition and gaps<a class="permalink" href="#audio">#</a></h3>
+<p>The audio controls sit beside the page: <span class="ui">▶ Play page</span>, <span class="ui">▶ Play selection</span> and <span class="ui">Listen…</span>, which opens a sheet with every option.</p>
+
+<h4 id="listen-sheet">The Listen sheet</h4>
+<table>
+<thead><tr><th>Control</th><th>Meaning</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><span class="ui">From</span> / <span class="ui">To</span></td><td>Any range of ayāt, not only whole pages. Quick buttons above set the current page, the page ±1 ayah, the whole sūrah or the juz.</td><td>The current page</td></tr>
+<tr><td><span class="ui">Qari</span></td><td>Which reciter for this session. Leave as <span class="ui">Default</span> to use your usual one.</td><td>ʿAbdul Bāsiṭ ʿAbd uṣ-Ṣamad</td></tr>
+<tr><td><span class="ui">Repeat each ayah</span></td><td>Plays each ayah N times before moving on. Three to five is the classic way to take a new ayah.</td><td>1</td></tr>
+<tr><td><span class="ui">Repeat the whole range</span></td><td>Plays the entire selection again from the start, N times, or loops for ever.</td><td>off</td></tr>
+<tr><td><span class="ui">Silence after each ayah</span> <span class="pill">Advanced</span></td><td>Leaves a gap for you to recite the ayah back. The gap is a percentage of how long the ayah just took at the current speed, so it scales with the ayah.</td><td>0</td></tr>
+<tr><td><span class="ui">Speed</span> <span class="pill">Advanced</span></td><td>Playback rate.</td><td>1×</td></tr>
+<tr><td><span class="ui">English translation after each ayah</span></td><td>Plays a recorded English translation (Saheeh International, read by Ibrahim Walk) after each ayah.</td><td>Follows <span class="ui">Settings → Audio</span></td></tr>
+<tr><td><span class="ui">Tafsīr after each ayah, read by the device</span></td><td>Your device's own speech engine reads the tafsīr aloud. Needs a voice installed for that language.</td><td>off</td></tr>
+</tbody>
+</table>
+
+<h4 id="repeat-difference">"Repeat each ayah" versus "repeat the whole range"</h4>
+<p>These are different and often confused:</p>
+<ul>
+<li><b>Repeat each ayah = 3</b> on ayāt 1–5 plays: <i>1 1 1, 2 2 2, 3 3 3, 4 4 4, 5 5 5</i>. Use it to take new material.</li>
+<li><b>Repeat the whole range = 3</b> on ayāt 1–5 plays: <i>1 2 3 4 5, 1 2 3 4 5, 1 2 3 4 5</i>. Use it to join a page together.</li>
+</ul>
+<p>A repeat of "each ayah" covers the <b>whole ayah unit</b>: if you have turned on the English translation or the spoken tafsīr, the repeat replays the Arabic, then the translation, then the tafsīr — not each recording separately.</p>
+
+<h4 id="presets">Quick presets and page joins</h4>
+<p>Under the audio buttons: <span class="ui">Each ayah ×5</span>, <span class="ui">Page ×3</span>, <span class="ui">Join ends ±1</span> and <span class="ui">Selection ×10</span>. <span class="ui">Join ends ±1</span> plays the last ayah of the previous page, this page, and the first ayah of the next — the joins between pages are where memory usually breaks. The player also has <span class="ui">±1 ayah</span> buttons that extend or shorten the range by one ayah at a time while it is playing.</p>
+
+<h4 id="player">The player bar</h4>
+<p>Shows what is playing, the ayah position within the selection, the repeat and loop counters, whether the audio came from the device (<span class="ui">⬇ offline</span>) or the network, and the reciter. It can be collapsed to a single line. On a phone the lock-screen controls work too.</p>
+
+<h3 id="text-view">Text view<a class="permalink" href="#text-view">#</a></h3>
+<p>The <span class="ui">☰ Text</span> button shows the same page ayah by ayah with the meaning of every word underneath.</p>
+<ul>
+<li><b>Pinch</b>, or the <span class="ui">A− A+</span> buttons, change the size. The text re-wraps, so nothing goes off the screen.</li>
+<li><b>Tap any Arabic word</b> to mark it yellow — for the word that keeps catching your tongue. Tap again to clear it. Highlights are saved.</li>
+<li><span class="ui">Tajwīd colours</span> shows the coloured text instead of the word view. Word meanings and gap-fill are unavailable in this mode, because the coloured text arrives as one piece per ayah; the app greys those controls out and says why.</li>
+<li><span class="ui">▶</span> beside an ayah plays from there to the end of the page.</li>
+<li><span class="ui">Word meanings in</span> chooses Bengali or English glosses.</li>
+</ul>
+
+<h4 id="translations">Choosing translations</h4>
+<p><span class="ui">Translations</span> opens a picker. Six are available and you may tick as many as you like; each ayah then shows them one under another with the translator named.</p>
+<table>
+<thead><tr><th>বাংলা — Bengali</th><th>English</th></tr></thead>
+<tbody>
+<tr><td>Muhiuddin Khan</td><td>Saheeh International</td></tr>
+<tr><td>Taisirul Quran (Tawheed Publication)</td><td>Al-Hilali &amp; Khan</td></tr>
+<tr><td>Sheikh Mujibur Rahman (Darussalam)</td><td>Bridges' translation (Fadel Soliman)</td></tr>
+</tbody>
+</table>
+<p>Every translation is shown as published. Nothing is generated, summarised or translated by the app itself.</p>
+
+<h4 id="gapfill">The gap-fill drill</h4>
+<p><span class="ui">Gap-fill</span> hides words so you must supply them: every 3rd word, every 5th word, the first word of each ayah, the last word, or every word. Tap a blank to check that one word, or press <span class="ui">Reveal all</span>. Gap-fill needs the word view, so turn tajwīd colouring off to use it.</p>
+
+<h3 id="understanding">Understanding: tafsīr, Tadabbur and the Corpus<a class="permalink" href="#understanding">#</a></h3>
+<p>In Study, the <span class="ui">Understand</span> panel groups the meaning tools; in Text view the tafsīr appears folded under each ayah.</p>
+
+<h4 id="tafsir">Tafsīr</h4>
+<p>Three editions are available — these, and only these:</p>
+<table>
+<thead><tr><th>Edition</th><th>Language</th><th>Publisher</th></tr></thead>
+<tbody>
+<tr><td>তাফসীর আহসানুল বায়ান</td><td>বাংলা</td><td>Bayaan Foundation</td></tr>
+<tr><td>তাফসীর ইবনে কাসীর</td><td>বাংলা</td><td>Tawheed Publication</td></tr>
+<tr><td>Tafsir Ibn Kathir</td><td>English</td><td>Abridged English edition</td></tr>
+</tbody>
+</table>
+<p>The text is shown exactly as published, with the publisher named. Where the source gives one explanation for several ayāt, the app detects that the texts are identical, says <i>"ayāt 14–25 explained together"</i>, shows it once and points the other ayāt to it.</p>
+
+<h4 id="tafsir-follow">Which ayah does the Understand panel show?</h4>
+<p>A precise answer, because it is not obvious. The tafsīr panel picks its ayah in this order:</p>
+<ol>
+<li>The ayah you moved to with the panel's own <span class="ui">◀ ▶</span> buttons (or <kbd>Alt</kbd>+<kbd>←</kbd>/<kbd>→</kbd>), if you have used them. This cursor is cleared when you change page.</li>
+<li>Otherwise, the ayah you selected with the chips.</li>
+<li>Otherwise, the first ayah of the current page.</li>
+</ol>
+<p>It does <b>not</b> follow the audio unless you tick <span class="ui">Follow the audio</span> in the panel, which is off by default. In <b>Text view</b> the behaviour is different again: tafsīr is shown under <i>every</i> ayah of the page, not one at a time.</p>
+
+<h4 id="read-aloud">Read aloud</h4>
+<p>The loudspeaker button reads the tafsīr with <b>your device's own voice</b> — a synthetic voice built into the phone or computer, not a recording, so nothing is downloaded. Choose the Bengali and English voices and the speed in <span class="ui">Settings → Audio → Read aloud</span>. The app prefers a male-sounding voice where the device's name for it suggests one, but the system does not report a voice's gender, so please check with the test buttons. If your phone has no Bengali voice, install one in its text-to-speech settings and it will appear here.</p>
+<div class="note"><b>Note</b> On some phones the speech engine itself contacts its maker's servers to fetch voices. That is a setting of your device, not of this app.</div>
+
+<h4 id="tadabbur">Tadabbur wa Amal and the Quranic Arabic Corpus</h4>
+<p>Both are <b>links out</b> to those sites for the current page or ayah — nothing is copied into the app. The Corpus grammar link is available for the sūrahs the treebank covers (1–8 and 59–114); elsewhere the app says so rather than sending you to an empty page.</p>
+
+<h4 id="video">Video lesson</h4>
+<p>Each page is linked to its lesson in the <b>"Page by Page Tafseer"</b> series of Shaykh Dr. Ahsan Hanif (Tawheed Outreach, on YouTube). Watch it beside the page or open it on YouTube. The series has reached page 342 so far; pages beyond it say <i>"no video yet"</i> rather than guessing. Watching needs internet.</p>
+
+<h3 id="mistake-tools">The tools that catch mistakes<a class="permalink" href="#mistake-tools">#</a></h3>
+<div class="cards">
+<div class="card"><h4>✗ Stumble mark</h4><p>Tap ✗ beside an ayah when you slip. Tap again when it no longer troubles you — the dates are kept either way. Pages with recent stumbles are sorted to the front of the day's revision and of the weekly manzil proposal. Can be switched off entirely in <span class="ui">Settings → Mushaf</span>.</p></div>
+<div class="card"><h4>Yellow highlight</h4><p>Tap any Arabic word in Text view to mark it. A counter in the source line lets you clear them for the page.</p></div>
+<div class="card"><h4>Notes</h4><p>Attach a note to one ayah or to the whole page: a teacher's correction, a reminder, a connection you noticed. Notes are hidden while the curtain is on.</p></div>
+<div class="card"><h4>≈ Look-alike verses</h4><p>Nearly identical ayāt shown side by side with the differing words marked — the commonest cause of mistakes in later hifz.</p></div>
+<div class="card"><h4>Recite &amp; compare</h4><p>Record yourself, then play the qari and yourself one after the other. Needs microphone permission. <b>Recordings never leave your device</b> and are not in any backup or sync.</p></div>
+</div>
+<div class="warn"><b>About the look-alike list</b> It is <i>computed</i> by comparing the Uthmani text mechanically — it is not a curated scholarly list, and the app says so. It separates identical wording, close look-alikes and shared phrases, and ignores formulas that appear in dozens of verses.</div>
+
+<h3 id="shortcuts">Keyboard shortcuts<a class="permalink" href="#shortcuts">#</a></h3>
+<table>
+<thead><tr><th>Key</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td><kbd>Space</kbd></td><td>Play / pause</td></tr>
+<tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Previous / next ayah</td></tr>
+<tr><td><kbd>↑</kbd> <kbd>↓</kbd></td><td>Hide / reveal a line under the curtain</td></tr>
+<tr><td><kbd>C</kbd></td><td>Curtain on or off</td></tr>
+<tr><td><kbd>R</kbd></td><td>Loop</td></tr>
+<tr><td><kbd>S</kbd></td><td>Single or spread</td></tr>
+<tr><td><kbd>F</kbd></td><td>Full screen</td></tr>
+<tr><td><kbd>Page Up</kbd> <kbd>Page Down</kbd></td><td>Previous / next page</td></tr>
+<tr><td><kbd>Home</kbd> <kbd>End</kbd></td><td>First / last ayah of the page</td></tr>
+<tr><td><kbd>Alt</kbd>+<kbd>←</kbd> <kbd>→</kbd></td><td>Previous / next ayah in the tafsīr panel</td></tr>
+<tr><td><kbd>Ctrl</kbd>+wheel, or pinch</td><td>Zoom</td></tr>
+</tbody>
+</table>
+<p>Shortcuts are ignored while you are typing in a field, while the Listen sheet is open, and while you are dragging the curtain handle.</p>
+</section>
+
+<!-- ==================== PLANNING ==================== -->
+<section id="planning">
+<h2>4. Overall planning<a class="permalink" href="#planning">#</a></h2>
+<p>Long-term planning lives in two places: <span class="ui">Settings → Plan</span> for the settings, and the <span class="ui">Progress</span> tab for the map and the projections.</p>
+<div class="note"><b>Note</b> Earlier versions had a separate <i>Plan</i> tab. It was removed; its panels now live in Settings → Plan and Progress. An old <code>#plan</code> link opens Settings → Plan.</div>
+
+<h3 id="map">The memorisation map<a class="permalink" href="#map">#</a></h3>
+<p>At the bottom of <span class="ui">Progress</span>, 604 numbered tiles — one for every page of the Mushaf. Tap any tile to open that page in Study.</p>
+<table>
+<thead><tr><th>Appearance</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Filled</td><td>Memorised (or marked as already known).</td></tr>
+<tr><td>Outlined</td><td>Marked weak — the last rating was 2 or below and it has not yet recovered.</td></tr>
+<tr><td>Small red dot</td><td>One or more stumbles logged on that page in the last 14 days.</td></tr>
+<tr><td>Coloured frame</td><td>The page is in this week's plan: green = sabaq, blue = sabqi, purple = manzil.</td></tr>
+<tr><td>Marked edge</td><td>The page begins a juz.</td></tr>
+</tbody>
+</table>
+
+<h3 id="already-known">Adding material you already know<a class="permalink" href="#already-known">#</a></h3>
+<p><span class="ui">Settings → Plan → Pages I already know</span>. Enter a page range and press <span class="ui">Mark as memorized → manzil</span>. Those pages get the status <i>known</i>, go straight into the manzil rotation, and are scheduled for a first review the next day so the app can see how firm they really are.</p>
+<p>Two optional fields change the result:</p>
+<ul>
+<li><span class="ui">memorized on</span> — a single date for the whole range.</li>
+<li><span class="ui">spread one page per week from the journey start</span> — instead of one date, the pages are dated one week apart from your journey start. This produces a more realistic history and a more even rotation than dating 200 pages to the same day.</li>
+</ul>
+<div class="tip"><b>Tip</b> If you are entering a lot of previously memorised material, use the spread option and expect a busy first fortnight while the app finds out which pages are actually firm. Lower <span class="ui">Revision pages per day</span> for a week or two if it is too much.</div>
+
+<h3 id="sequence">Where to start, and which direction<a class="permalink" href="#sequence">#</a></h3>
+<ul>
+<li><span class="ui">Start page</span> — or pick a sūrah or juz and the page is filled in for you.</li>
+<li><span class="ui">Direction</span> — <span class="ui">Backwards (N → N−1)</span> (the default, from 604 through Juz ʿAmma) or <span class="ui">Forwards (N → N+1)</span>.</li>
+<li><span class="ui">Weeks per page</span> — 1 by default. A value above 1 slows the pace; a value below 1 means more than one page a week.</li>
+</ul>
+<p>Press <span class="ui">Apply</span> to save. If you change the start page mid-week, the app replaces this week's unfinished sabaq page with the new one and tells you so; your history is kept.</p>
+
+<h3 id="portions">Learning part of a page<a class="permalink" href="#portions">#</a></h3>
+<p><span class="ui">Weekly portion (sabaq)</span> offers a whole page, a half, a third or a quarter. With a portion smaller than a whole page, each week's sabaq is one part, and the sabaq card shows <span class="ui">part 2 of 3</span> with the exact ayāt.</p>
+<p><b>Revision behaviour to be clear about:</b> a page enters sabqi revision only when the <i>whole page</i> is complete. Finishing part 1 of 3 records that part as done and makes part 2 next week's sabaq; it does not schedule any revision by itself. When the last part is finished, the page is completed as a whole and enters sabqi with a 1-day interval like any other page.</p>
+
+<h3 id="estimates">Workload estimates and projections<a class="permalink" href="#estimates">#</a></h3>
+<table>
+<thead><tr><th>Figure</th><th>How it is worked out</th><th>What it assumes</th></tr></thead>
+<tbody>
+<tr><td>Projected completion date</td><td>Pages left (604 − memorised) × 7 × <span class="ui">weeks per page</span>, added to today.</td><td>That you keep exactly your current pace and never pause. It ignores revision load entirely.</td></tr>
+<tr><td>Juz completion</td><td>The same arithmetic, counting only the pages left in the current juz.</td><td>The same.</td></tr>
+<tr><td>Today's estimated minutes</td><td>Pages due today × <span class="ui">Minutes per page</span> (2.5 by default).</td><td>That every page takes the same time. Adjust the setting to match yourself.</td></tr>
+<tr><td>Manzil rotation "effective"</td><td>Manzil pages ÷ the daily slots left after sabqi, compared with your configured rotation.</td><td>A rough estimate only. Sabqi always takes its slots first, so in a heavy week the real rotation is longer than shown.</td></tr>
+</tbody>
+</table>
+<div class="warn"><b>These are estimates, not promises.</b> They change as your pace changes, and none of them models real life — illness, travel, or a page that takes three weeks.</div>
+</section>
+
+<!-- ==================== WEEKLY PLANNING ==================== -->
+<section id="weekly-planning">
+<h2>5. Weekly planning<a class="permalink" href="#weekly-planning">#</a></h2>
+<p>The <span class="ui">Week</span> tab is where a week's work is agreed. The heading shows the week number, its dates in both calendars, whether the plan is a proposal or set, and how much of the week's audio is downloaded.</p>
+
+<h3 id="proposal">Proposal versus committed plan<a class="permalink" href="#proposal">#</a></h3>
+<p>The app always keeps a plan for the current week. Until you press <span class="ui">Set this week's plan</span> it is a <b>proposal</b>, and two things follow:</p>
+<ul>
+<li>A proposal is <b>live</b>. It keeps re-deriving itself, so it follows anything that changes — pages you mark as already known, ratings you give, a new start page.</li>
+<li>The moment you change something by hand, or press <span class="ui">Set this week's plan</span>, the week becomes <b>edited</b> and stops re-deriving. From then on it is your plan and the app will not silently rearrange it.</li>
+</ul>
+<p>A banner on <span class="ui">Today</span> reminds you while the plan is still a proposal. Nothing is broken if you never press the button — the proposal is a sound plan on its own — but committing it means the app stops changing it underneath you.</p>
+
+<h3 id="week-edit">Choosing the pages<a class="permalink" href="#week-edit">#</a></h3>
+<p>Four sub-tabs: <span class="ui">Sabaq</span>, <span class="ui">Sabqi</span>, <span class="ui">Manzil</span>, <span class="ui">Overview</span> and <span class="ui">Share with my teacher</span>.</p>
+<ul>
+<li>Each stage tab lists its pages and lets you <span class="ui">Add</span> a page, a range, or a whole sūrah.</li>
+<li>A <b>page map</b> under each list lets you tap pages to add or remove them.</li>
+<li>A page already memorised cannot be added as sabaq — the app says so and suggests adding it to revision instead.</li>
+<li><span class="ui">Re-propose</span> rebuilds the proposal from scratch while keeping what you have already done this week.</li>
+</ul>
+
+<h3 id="future-weeks">Future weeks, deadlines and carryover<a class="permalink" href="#future-weeks">#</a></h3>
+<ul>
+<li>The <span class="ui">Week</span> dropdown and the calendar let you look at past weeks or plan future ones ahead of time. Future plans are stored and used when that week arrives.</li>
+<li>A week runs seven days from your <span class="ui">Week starts on</span> day (Sunday by default). The deadline shown on Today is the last day of the current week.</li>
+<li>When a week ends, it is archived and a new week proposed. Unfinished work is <b>carried over</b>: an unfinished sabaq page stays sabaq, and unrated sabqi and manzil pages return in the new proposal.</li>
+</ul>
+
+<h3 id="week-to-day">How the weekly plan becomes daily work<a class="permalink" href="#week-to-day">#</a></h3>
+<p>This is worth understanding, because the app does <b>not</b> pin pages to particular days.</p>
+<p>Each day, for sabqi and for manzil separately, the Today tab takes the pages of this week's plan that are <i>not yet done</i> and suggests:</p>
+<div class="state">suggested today = ceil( pages not yet done this week ÷ days left in the week )</div>
+<p>ordered with weak pages first, then by page number. The rest are tucked under <span class="ui">Rest of the week</span>, still available if you want to get ahead.</p>
+<p>So if your week has 21 manzil pages and it is day 1 of 7, the app suggests 3. If you do nothing for three days, on day 4 the same 21 pages are divided by the 4 days left and it suggests 6. The work does not disappear; it concentrates.</p>
+<div class="tip"><b>Tip</b> This is why <span class="ui">Revision pages per day</span> matters so much: the weekly manzil budget is that number × 7. Setting it honestly is the single best defence against an unmanageable week.</div>
+</section>
+
+<!-- ==================== SPACED REPETITION ==================== -->
+<section id="spaced-repetition">
+<h2>6. How revision is scheduled<a class="permalink" href="#spaced-repetition">#</a></h2>
+<p>This section describes the <b>actual</b> rules in this app. They are custom rules written for hifz — not SM-2, not FSRS, and not any other published algorithm. Everything below was read from the app's source and the worked examples were produced by running its own scheduling functions.</p>
+
+<h3 id="sr-plain">Level 1 — in plain language<a class="permalink" href="#sr-plain">#</a></h3>
+<p><b>Why material comes back.</b> Memory fades predictably. Recalling something just before you would have forgotten it strengthens it far more than re-reading it. So each page is given a date to return, and that date moves further out each time you recite the page well, and snaps back to tomorrow when you cannot.</p>
+
+<p><b>What the three layers mean here.</b></p>
+<ul>
+<li><span class="pill sabaq">Sabaq</span> — not scheduled at all. It is this week's new page, worked on every day of the week until you mark it complete.</li>
+<li><span class="pill sabqi">Sabqi</span> — a ladder of growing gaps: <b>1 → 3 → 7 → 14 → 30 days</b>. Every good recitation moves one rung up. A bad one drops you to the bottom.</li>
+<li><span class="pill manzil">Manzil</span> — a steady long rotation, <b>30 days</b> by default. A page arrives here after it has proved itself, and drops back to sabqi if it fails.</li>
+</ul>
+
+<h4 id="ratings">What each rating means</h4>
+<table>
+<thead><tr><th>Rating</th><th>Label in the app</th><th>Use it when</th><th>What happens</th></tr></thead>
+<tbody>
+<tr><td><b>0</b></td><td>Blank</td><td>Nothing came.</td><td rowspan="3">Back to a 1-day interval, page flagged <b>weak</b>, a lapse recorded, ease reduced. A manzil page is demoted to sabqi.</td></tr>
+<tr><td><b>1</b></td><td>Mostly lost</td><td>You could not get through it.</td></tr>
+<tr><td><b>2</b></td><td>Many errors</td><td>You finished, but with many mistakes.</td></tr>
+<tr><td><b>3</b></td><td>Hesitant</td><td>You got through it, slowly, with pauses.</td><td>The gap stays the same — you repeat the rung rather than climbing. Ease reduced slightly.</td></tr>
+<tr><td><b>4</b></td><td>Minor slips</td><td>Fluent, one or two small slips.</td><td>Climb one rung of the ladder.</td></tr>
+<tr><td><b>5</b></td><td>Flawless</td><td>No errors, no hesitation.</td><td>Climb one rung, and ease increases slightly.</td></tr>
+</tbody>
+</table>
+
+<div class="tip"><b>How to choose honestly</b> Rate the recitation you just gave, not the one you hoped to give. A generous 5 buys you a longer gap and a worse surprise later; an honest 3 keeps the page close until it really is firm. The system only helps if the ratings are truthful.</div>
+
+<p><b>Practice, completion and retention are different things.</b> Practising records that you worked. Completing records that a page is memorised. Only a <i>rating</i> is evidence about retention — and only a rating changes the schedule.</p>
+
+<h3 id="sr-detail">Level 2 — how the app calculates the schedule<a class="permalink" href="#sr-detail">#</a></h3>
+
+<details class="hood" open>
+<summary>Stored fields on every page</summary>
+<table>
+<thead><tr><th>Field</th><th>Meaning</th><th>Starting value</th></tr></thead>
+<tbody>
+<tr><td><code>status</code></td><td><code>planned</code>, <code>memorized</code>, or <code>known</code> (bulk-marked as already memorised).</td><td><code>planned</code></td></tr>
+<tr><td><code>stage</code></td><td><code>sabqi</code> or <code>manzil</code>; empty before the page is completed.</td><td>empty</td></tr>
+<tr><td><code>interval</code></td><td>The current gap in days.</td><td>0</td></tr>
+<tr><td><code>dueDate</code></td><td>The date the page is next due.</td><td>empty</td></tr>
+<tr><td><code>ladderStep</code></td><td>Position on the ladder <code>[1, 3, 7, 14, 30]</code>, from 0 to 4.</td><td>−1</td></tr>
+<tr><td><code>ease</code></td><td>A multiplier used only past the top of the ladder. Range <b>1.3 – 2.8</b>.</td><td><b>2.3</b></td></tr>
+<tr><td><code>consecutiveGood</code></td><td>Ratings of 4 or 5 in a row. Reset by any rating of 3 or below.</td><td>0</td></tr>
+<tr><td><code>weak</code></td><td>Set by a rating of 0–2; cleared after two good ratings in a row.</td><td>false</td></tr>
+<tr><td><code>reps</code> / <code>lapses</code></td><td>Total ratings given / total ratings of 0–2.</td><td>0 / 0</td></tr>
+<tr><td><code>firstCompleted</code> / <code>lastReviewed</code></td><td>Dates, for your history.</td><td>empty</td></tr>
+</tbody>
+</table>
+</details>
+
+<details class="hood" open>
+<summary>The exact rules</summary>
+<p><b>When a page is completed</b> (<span class="ui">Mark page complete</span>): status becomes <code>memorized</code>, stage <code>sabqi</code>, <code>ladderStep</code> 0, <code>interval</code> 1, due <b>tomorrow</b>.</p>
+<p><b>When a page is bulk-marked as already known:</b> status <code>known</code>, stage <code>manzil</code>, <code>ladderStep</code> 4, <code>interval</code> 30, <code>consecutiveGood</code> 3 — but due <b>tomorrow</b>, so the app checks it once before trusting the 30-day rotation.</p>
+<p><b>When you give a rating</b>, <code>reps</code> increases by one, <code>lastReviewed</code> becomes today, and then:</p>
+<table>
+<thead><tr><th>Rating</th><th>Rule</th></tr></thead>
+<tbody>
+<tr><td><b>0, 1 or 2</b></td><td><code>interval</code> = 1 · <code>ladderStep</code> = 0 · <code>lapses</code> + 1 · <code>weak</code> = true · <code>consecutiveGood</code> = 0 · <code>ease</code> − 0.3 · a <code>manzil</code> page becomes <code>sabqi</code> · due = <b>today + 1</b>.</td></tr>
+<tr><td><b>3</b></td><td><code>consecutiveGood</code> = 0 · <code>ease</code> − 0.15 · <code>interval</code> unchanged (minimum 1) · due = today + interval, and for a manzil page the gap is capped at the rotation length.</td></tr>
+<tr><td><b>4 or 5</b></td><td><code>consecutiveGood</code> + 1 · a 5 also adds 0.1 to <code>ease</code> · if the page was <code>weak</code> and now has 2 good in a row, <code>weak</code> is cleared.<br>
+If the page is already <b>manzil</b>: interval = the rotation length, due = today + rotation.<br>
+If the page is <b>sabqi</b>: climb one rung — <code>ladderStep</code> + 1 and interval = the ladder value. Past the top rung, interval = round(interval × ease).<br>
+Then, if <code>consecutiveGood</code> ≥ 3 <b>and</b> interval ≥ 30, the page is promoted to <b>manzil</b> and its interval becomes the rotation length. Due = today + interval.</td></tr>
+</tbody>
+</table>
+<p><b>Ease</b> is clamped to 1.3–2.8 and only ever matters past the top of the ladder, where it multiplies the interval. On the ladder itself the intervals are fixed.</p>
+<p><b>Rounding:</b> only the ease multiplication rounds, to the nearest whole day. All other intervals are exact values from the ladder or the rotation setting.</p>
+<p><b>Two ratings on the same day:</b> each is applied in turn to the result of the last. Rating a page 2 and then 5 on the same day leaves it at the second rung with the lapse and the ease penalty already recorded — the first rating is not undone. Use the <span class="ui">↺</span> undo beside a done page if you rated by mistake; that removes it from the week's done list, though the page's interval and ease keep the change.</p>
+</details>
+
+<details class="hood" open>
+<summary>Four different things, in order</summary>
+<ol>
+<li><b>A page becomes due.</b> Its <code>dueDate</code> is today or earlier. This is purely a property of the page.</li>
+<li><b>A page is selected for a weekly plan.</b> When a week is proposed: <i>every</i> page whose stage is <code>sabqi</code> goes into the week's sabqi list, ordered by due date — a sabqi page is included whether or not it is due yet. For manzil, the budget is <span class="ui">Revision pages per day</span> × 7 minus the sabqi count, and pages are picked from the manzil pool ordered by <b>weak first, then most stumbles in the last 14 days, then oldest due date, then page number</b>.</li>
+<li><b>A page is assigned to a day.</b> It is not — not to a fixed day. Each day Today suggests <code>ceil(not-yet-done ÷ days left in the week)</code> from the week's list, weak pages first (see <a href="#week-to-day">section 5.4</a>).</li>
+<li><b>A page is practised, rated or completed.</b> Only the rating changes <code>dueDate</code>, <code>interval</code>, <code>ease</code>, <code>stage</code> and <code>weak</code>.</li>
+</ol>
+<p><b>Does a rating change the current plan immediately?</b> It marks that page done for this week straight away, and the new due date takes effect at once. But it does not rewrite the rest of the current week's list — the new due date is used the <i>next</i> time a week is proposed. One exception: while a week is still an untouched proposal, it keeps re-deriving, so ratings can change it.</p>
+</details>
+
+<details class="hood" open>
+<summary>Overdue work, vacation and dates</summary>
+<ul>
+<li><b>Overdue:</b> a page past its due date simply stays due. There is no extra penalty and no decay. It sorts ahead of pages due today when a week is proposed.</li>
+<li><b>Vacation mode</b> (<span class="ui">Settings → Plan</span>): while it is on, no revision is scheduled. When you switch it off, every page's due date is shifted forward by exactly the number of days you were away, so you resume where you left off instead of facing the whole backlog at once.</li>
+<li><b>Dates</b> are handled as local calendar dates (<code>YYYY-MM-DD</code>), not timestamps, so time zones and the clock time of day never shift a due date. "Tomorrow" means the next calendar day where you are.</li>
+<li><b>Week boundaries</b> run from your <span class="ui">Week starts on</span> day. The <b>journey start date</b> is separate: it is the day your record begins, used for the journey-week counter and for spreading previously memorised pages.</li>
+</ul>
+</details>
+
+<h3 id="sr-examples">Worked examples<a class="permalink" href="#sr-examples">#</a></h3>
+<p>These three examples were produced by running the app's own scheduling functions with the dates shown. They are illustrations, not anyone's real record.</p>
+
+<div class="example">
+<h4>Example 1 — a newly completed lesson enters revision</h4>
+<p>You finish memorising page 593 and press <span class="ui">Mark page complete</span> on <b>Monday 14 September 2026</b>.</p>
+<div class="state">Before  status: planned · stage: — · interval: 0 · ease: 2.30 · due: —
+Rule    complete → stage sabqi, ladder step 0, interval 1 day
+After   status: memorized · stage: sabqi · interval: 1 · due: 2026-09-15 (tomorrow)</div>
+<p>The next day you recite it and rate it <b>5 — Flawless</b>:</p>
+<div class="state">Rule    4 or 5 on sabqi → climb one rung: step 0 → 1, interval = 3 days
+        rating 5 → ease 2.30 + 0.10 = 2.40 · consecutiveGood = 1
+After   stage: sabqi · interval: 3 · ease: 2.40 · due: 2026-09-18</div>
+</div>
+
+<div class="example">
+<h4>Example 2 — strong ratings carry a page into long-term rotation</h4>
+<p>Page 600 is completed on <b>1 January 2026</b> and rated <b>5</b> every time it comes back. With the default 30-day rotation:</p>
+<table>
+<thead><tr><th>Rated on</th><th>Rung</th><th>New interval</th><th>Ease</th><th>Good in a row</th><th>Stage</th><th>Next due</th></tr></thead>
+<tbody>
+<tr><td>2 Jan</td><td>1</td><td>3 days</td><td>2.40</td><td>1</td><td>sabqi</td><td>5 Jan</td></tr>
+<tr><td>5 Jan</td><td>2</td><td>7 days</td><td>2.50</td><td>2</td><td>sabqi</td><td>12 Jan</td></tr>
+<tr><td>12 Jan</td><td>3</td><td>14 days</td><td>2.60</td><td>3</td><td>sabqi</td><td>26 Jan</td></tr>
+<tr><td>26 Jan</td><td>4</td><td>30 days</td><td>2.70</td><td>4</td><td><b>manzil</b></td><td>25 Feb</td></tr>
+<tr><td>25 Feb</td><td>4</td><td>30 days</td><td>2.80 (maximum)</td><td>5</td><td>manzil</td><td>27 Mar</td></tr>
+</tbody>
+</table>
+<p>Promotion happened on 26 January because two conditions were met together: three or more good ratings in a row, and an interval that had reached 30 days. From then on the page returns on the rotation, not the ladder.</p>
+</div>
+
+<div class="example">
+<h4>Example 3 — a weak rating, and the climb back</h4>
+<p>Page 585 has been in manzil for months. On <b>14 September 2026</b> it comes round and you recite it badly — rating <b>1 — Mostly lost</b>.</p>
+<div class="state">Before  stage: manzil · interval: 30 · ease: 2.40 · lapses: 0 · weak: no
+Rule    0–2 → interval 1, ladder step 0, lapse + 1, weak = true,
+        ease 2.40 − 0.30 = 2.10, manzil demoted to sabqi, due tomorrow
+After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · due: 2026-09-15</div>
+<p>The page is now outlined on the map, sorted to the front of the day's revision, and put near the top of the next weekly proposal. You rate it <b>4</b> the next day and <b>4</b> again three days later:</p>
+<div class="state">15 Sep  rating 4 → step 0 → 1, interval 3, consecutiveGood 1, still weak · due 2026-09-18
+18 Sep  rating 4 → step 1 → 2, interval 7, consecutiveGood 2 → weak CLEARED · due 2026-09-25</div>
+<p>Note that the ease penalty of 0.30 is not given back by good ratings of 4; only a 5 adds 0.10 at a time. The page must climb the whole ladder again and collect three good ratings in a row before it returns to manzil.</p>
+</div>
+
+<details class="hood">
+<summary>Two more cases worth knowing</summary>
+<p><b>A rating of 3 holds the gap.</b> A page at the 3-day rung rated 3 on 5 September stays at 3 days and returns on 8 September; its ease drops from 2.40 to 2.25 and its good-in-a-row counter resets to 0. You repeat the rung until you can do better than hesitant.</p>
+<p><b>Past the top of the ladder.</b> A sabqi page that has reached a 30-day interval with two good ratings in a row, rated 5 again, gets <code>consecutiveGood</code> = 3 and an interval of 30 — both promotion conditions — so it becomes manzil at the rotation length rather than being multiplied by ease. The ease multiplication only applies to a sabqi page past the top rung that has <i>not</i> yet met the promotion conditions.</p>
+</details>
+
+<div class="note"><b>One limitation, stated plainly</b> The app contains a general "catch-up" routine that would spread overdue pages across future days. In this version it is <b>not used by any screen</b> — daily suggestions come from the weekly plan as described in <a href="#week-to-day">section 5.4</a>. It is mentioned here only so that anyone reading the source is not misled by it.</div>
+</section>
+
+<!-- ==================== PROGRESS ==================== -->
+<section id="progress">
+<h2>7. Progress<a class="permalink" href="#progress">#</a></h2>
+<p>The <span class="ui">Progress</span> tab is the long view: what you have done, how consistently, and what still needs attention.</p>
+
+<h3 id="stats">What each statistic measures<a class="permalink" href="#stats">#</a></h3>
+<table>
+<thead><tr><th>Statistic</th><th>Exactly what it counts</th></tr></thead>
+<tbody>
+<tr><td>Weeks since your journey start</td><td>Calendar weeks from the journey start date, not weeks in which you practised.</td></tr>
+<tr><td>Minutes with Study open this week</td><td>Time the Study tab was open <b>and visible</b>. It stops when you switch tabs or lock the phone. It is a measure of attention, not of recitation.</td></tr>
+<tr><td>Weeks with records</td><td>Weeks in which at least one page was completed or rated.</td></tr>
+<tr><td>Pages memorised</td><td>Pages with status <i>memorized</i> or <i>known</i> — including pages you bulk-marked as already known.</td></tr>
+<tr><td>Recitations rated</td><td>The total number of ratings you have given.</td></tr>
+<tr><td>Average rating</td><td>The mean of those ratings.</td></tr>
+<tr><td>Practice days</td><td>Days on which you pressed <span class="ui">✓ Practised today</span> or gave any rating.</td></tr>
+<tr><td>Best streak (days)</td><td>The longest unbroken run of practice days.</td></tr>
+</tbody>
+</table>
+
+<div class="warn"><b>Completion is not the same as retention.</b> "Pages memorised" counts pages you have <i>declared</i> memorised — including any you marked as already known without ever reciting them to the app. Evidence of retention is a different thing: it lives in the ratings, the lapse counts and the weak list. A page marked known and never rated has <b>no</b> evidence behind it at all. If you want an honest picture, look at the weak pages and the mistake log, not the percentage.</div>
+
+<h3 id="panels">The panels<a class="permalink" href="#panels">#</a></h3>
+<ul>
+<li><b>Next 12 weeks</b> — which page is scheduled as sabaq each week at your current pace, with dates and juz, plus the projected completion.</li>
+<li><b>Practice calendar</b> — a grid of days, shaded by how many pages were done, with the minutes in the tooltip.</li>
+<li><b>Weak pages</b> — pages currently flagged weak. Tap one to open it in Study.</li>
+<li><b>Mistake log</b> — the ayāt you marked ✗, most frequent first, with their pages.</li>
+<li><b>Ratings over time</b> — your recent ratings, so you can see whether recitation quality is improving.</li>
+<li><b>Memorised map</b> — the 604 tiles described in <a href="#map">section 4.1</a>.</li>
+</ul>
+
+<h3 id="export-print">Exporting and printing<a class="permalink" href="#export-print">#</a></h3>
+<p>Progress figures are part of your data export (<a href="#backups">section 10.4</a>) — <span class="ui">Settings → Data → Export data only (JSON)</span> contains every review record, practice day and minute count. There is no separate "print report" button; use your browser's own print or "Save as PDF" on the Progress tab if you want a paper copy, and use the teacher message (<a href="#teacher-sharing">section 8</a>) for a written summary.</p>
+</section>
+
+<!-- ==================== TEACHER ==================== -->
+<section id="teacher-sharing">
+<h2>8. Working with a teacher<a class="permalink" href="#teacher-sharing">#</a></h2>
+
+<h3 id="teacher-message">The weekly message<a class="permalink" href="#teacher-message">#</a></h3>
+<p><span class="ui">Week → Share with my teacher</span> writes a ready-made summary of the week: what you memorised, what you revised and how it was rated, and what is planned next. Press <span class="ui">Copy</span> and paste it into WhatsApp or any other app.</p>
+<p>Three languages are available — <b>English</b>, <b>বাংলা</b> and <b>العربية</b> — chosen in <span class="ui">Settings → Sharing</span>, where you can also set your name, your teacher's name, and edit the message template itself. The template uses placeholders such as the week number, the pages and the totals, which are filled in when the message is generated.</p>
+<div class="note"><b>Note</b> The app never sends anything. It writes the text and puts it on your clipboard; you choose where it goes and when.</div>
+
+<h3 id="teacher-feedback">Recording your teacher's feedback<a class="permalink" href="#teacher-feedback">#</a></h3>
+<p>The same panel has a box for your teacher's response, stored with that week. Feedback you record appears on the relevant page cards in Today, so a correction is in front of you the next time the page comes round.</p>
+<p><b>Does it affect the schedule?</b> No. Teacher feedback is a note for you. It changes no due date, interval or stage. If your teacher says a page was weak, mark that by giving the page a low rating, or by using the ✗ stumble mark on the specific ayāt — those do affect what the app does.</p>
+</section>
+
+<!-- ==================== SETTINGS ==================== -->
+<section id="settings">
+<h2>9. Settings<a class="permalink" href="#settings">#</a></h2>
+<p>Five panes, in the order the app shows them.</p>
+
+<h3 id="set-plan">9.1 Plan<a class="permalink" href="#set-plan">#</a></h3>
+<table>
+<thead><tr><th>Setting</th><th>Options</th><th>Default</th><th>When to change it</th></tr></thead>
+<tbody>
+<tr><td>Start page / Surah / Juz</td><td>Any page 1–604, or pick a sūrah or juz</td><td>Chosen at first run</td><td>Changing direction or starting somewhere new.</td></tr>
+<tr><td>Direction</td><td>Backwards (N → N−1) · Forwards (N → N+1)</td><td>Backwards</td><td>Backwards suits starting at Juz ʿAmma; forwards suits starting at al-Baqarah.</td></tr>
+<tr><td>Weeks per page</td><td>A number</td><td>1</td><td>Raise it to slow down; a value below 1 takes more than one page a week.</td></tr>
+<tr><td>Pages I already know</td><td>Page range, date, "spread one page per week"</td><td>—</td><td>Once, when you start. See <a href="#already-known">section 4.2</a>.</td></tr>
+<tr><td>Journey start date</td><td>A date</td><td>First run</td><td>Set it to the day you actually began, or reset it to start counting again from today.</td></tr>
+<tr><td>Week starts on</td><td>Any weekday</td><td>Sunday</td><td>Match the day you meet your teacher.</td></tr>
+<tr><td>Hijri date adjustment</td><td>−1 day · Umm al-Qura (default) · +1 day</td><td>Umm al-Qura</td><td>Shift by a day to match the local moon sighting.</td></tr>
+<tr><td>Weekly portion (sabaq)</td><td>Whole page · half · third · quarter</td><td>Whole page</td><td>Reduce it if a page a week is too much. See <a href="#portions">section 4.4</a>.</td></tr>
+<tr><td>Segments per page</td><td>A number</td><td>3</td><td>How many pieces the daily sabaq tasks divide the page into.</td></tr>
+<tr><td><b>Revision pages per day</b></td><td>A number (× 7 = the weekly budget)</td><td>6</td><td>The most important workload control. Lower it when weeks feel unmanageable.</td></tr>
+<tr><td>Minutes per page (estimate)</td><td>A number</td><td>2.5</td><td>Only affects the time estimates shown; set it to your own honest pace.</td></tr>
+<tr><td>Manzil rotation</td><td>Days</td><td>30</td><td>How often long-term pages return. Shorter = more revision, more security.</td></tr>
+<tr><td id="vacation">Vacation mode</td><td>On / off</td><td>Off</td><td>Switch on before a planned break. While on, no revision is scheduled; when you switch it off, every due date is shifted forward by the days you were away.</td></tr>
+<tr><td>Weekly task template</td><td>Seven lines of text</td><td>Segment 1, 2, 3, join, consolidate, link, recite to teacher</td><td>Rewrite to match how your teacher wants the week structured.</td></tr>
+</tbody>
+</table>
+
+<h3 id="set-audio">9.2 Audio<a class="permalink" href="#set-audio">#</a></h3>
+<ul>
+<li><b>Memorisation qari (sabaq)</b> — keep one voice for new material; the ear learns the page with the voice. 25 reciters are available; ʿAbdul Bāsiṭ ʿAbd uṣ-Ṣamad is the default.</li>
+<li><b>Listening qari for revision</b> — optional second voice for revision pages only.</li>
+<li><b>Translation audio</b> — <span class="ui">Off</span> (default), <span class="ui">Arabic, then English — each ayah</span>, or <span class="ui">English only</span>. The recording is Saheeh International read by Ibrahim Walk. There is no recorded Bengali translation.</li>
+<li><b>Quality</b> — higher or lower bitrate, affecting download size.</li>
+<li><b>Audio Manager</b> — what is downloaded, how much space it uses, and where it is stored (in the browser, or in a folder you choose if your browser supports that).</li>
+<li><b>Read aloud</b> — the Bengali and English device voices used for tafsīr, with a speed control and test buttons. See <a href="#read-aloud">section 3.6.4</a>.</li>
+</ul>
+
+<h3 id="set-mushaf">9.3 Mushaf<a class="permalink" href="#set-mushaf">#</a></h3>
+<ul>
+<li><b>Theme</b> — light, dark or follow the system.</li>
+<li><b>Page source</b> — the built-in Mushaf, or your own Madinah Mushaf PDF loaded from this device.</li>
+<li><b>Layout</b> — single page or spread, and the mouse-wheel behaviour.</li>
+<li><b>Text view</b> — which translations appear, and the language of the word meanings.</li>
+<li><b>Mistake log</b> — switch the ✗ stumble marks off entirely if you would rather not use them. Existing marks are kept, just hidden.</li>
+<li><b>Meanings &amp; tafsīr</b> — download translations for offline use, see how much is cached, and delete the cache.</li>
+</ul>
+
+<h3 id="set-sharing">9.4 Sharing<a class="permalink" href="#set-sharing">#</a></h3>
+<p>Your name, your teacher's name, the message language, and the editable template used for the weekly message.</p>
+
+<h3 id="set-data">9.5 Data<a class="permalink" href="#set-data">#</a></h3>
+<p>Cloud sync, offline use, export and import, recovery, and reset — all covered in <a href="#data-and-offline">section 10</a>.</p>
+</section>
+
+<!-- ==================== DATA ==================== -->
+<section id="data-and-offline">
+<h2>10. Data, offline use and sync<a class="permalink" href="#data-and-offline">#</a></h2>
+<p>Three different things are easy to confuse. They are separate, and doing one does not do the others:</p>
+<div class="cards">
+<div class="card"><h4>1. Downloading audio</h4><p>Stores recitation files so playback works without internet. It does <b>not</b> back anything up and does not make the app itself available offline.</p></div>
+<div class="card"><h4>2. Making the app available offline</h4><p>Keeps the app and Mushaf pages on the device so it opens with no connection. It does <b>not</b> back up your progress.</p></div>
+<div class="card"><h4>3. Backing up your progress</h4><p>An export file or cloud sync. This is the only thing that protects your record if the browser's storage is cleared.</p></div>
+</div>
+
+<h3 id="where-data">10.1 Where your data lives<a class="permalink" href="#where-data">#</a></h3>
+<table>
+<thead><tr><th>What</th><th>Stored where</th><th>In a backup?</th></tr></thead>
+<tbody>
+<tr><td>Plan, pages, ratings, reviews, weeks, notes, stumbles, highlights, minutes</td><td>Browser local storage on this device</td><td><b>Yes</b></td></tr>
+<tr><td>Downloaded recitation audio</td><td>Browser database (or a folder you chose)</td><td>No — a cache, re-downloadable</td></tr>
+<tr><td>Translations and tafsīr text</td><td>Browser database</td><td>No — a cache</td></tr>
+<tr><td>Mushaf pages kept for offline use</td><td>Browser cache storage</td><td>No — a cache</td></tr>
+<tr><td><b>Voice recordings</b></td><td>Browser database on this device</td><td><b>No — never exported, never synced</b></td></tr>
+<tr><td>A PDF you loaded yourself</td><td>Browser database</td><td>No</td></tr>
+</tbody>
+</table>
+<div class="warn"><b>Clearing your browser's site data deletes all of it.</b> That includes your progress. Keep an export, or switch on cloud sync.</div>
+
+<h3 id="audio-download">10.2 Downloading audio<a class="permalink" href="#audio-download">#</a></h3>
+<p><span class="ui">Week → Download audio</span> fetches the whole week's recitation. <span class="ui">Settings → Audio</span> manages the rest: which qari, what quality, how much space is used, and where files are kept — in the browser, or in a folder you choose if your browser supports folder access. Downloaded audio plays instantly and works with no connection. A source that refuses cross-origin downloads is skipped; the player still streams those ayāt when you are online.</p>
+
+<h3 id="offline">10.3 Using the app without internet<a class="permalink" href="#offline">#</a></h3>
+<p><span class="ui">Settings → Data → Offline use</span>: tick the box and the app itself is kept on this device. Then keep as many Mushaf pages as you like — this week's pages, your memorised pages, or the whole Mushaf.</p>
+<table>
+<thead><tr><th>Works offline</th><th>Needs internet</th></tr></thead>
+<tbody>
+<tr><td>The app, once kept on the device</td><td>The first visit to any page whose Mushaf image is not kept</td></tr>
+<tr><td>Mushaf pages you kept</td><td>Recitation you have not downloaded</td></tr>
+<tr><td>Audio you downloaded</td><td>Translations, word meanings and tafsīr not yet cached</td></tr>
+<tr><td>Translations and tafsīr you have opened before</td><td>Video lessons, always</td></tr>
+<tr><td>Your whole record, plan, ratings and notes</td><td>Cloud sync, and Tadabbur / Corpus links</td></tr>
+<tr><td>Read-aloud, once a voice is installed on the device</td><td>—</td></tr>
+</tbody>
+</table>
+<p>When a new version is published the app fetches it in the background and uses it the next time you open it. If the new version cannot be fetched, the copy you already have keeps working — an update can never leave you with a broken app — and <b>pages you have kept are never removed by an update</b>.</p>
+<div class="tip"><b>Before a journey</b> Set the week's plan, press <span class="ui">Download audio</span>, and keep this week's pages. The app then works completely in the air.</div>
+
+<h3 id="backups">10.4 Backups, import and the portable app<a class="permalink" href="#backups">#</a></h3>
+<ul>
+<li><span class="ui">Export data only (JSON)</span> — a small file with your whole record. This is the backup to keep.</li>
+<li><span class="ui">Import JSON</span> — restores such a file. It is <b>checked before anything is replaced</b>: a damaged file, or one made by a newer version of the app, is refused and your current data is left exactly as it was. If some individual entries cannot be understood they are left out and listed, and the rest is imported.</li>
+<li><span class="ui">Export app + data</span> — one HTML file containing the app, the Mushaf and your record. Open it on any device to continue where you are. A PDF you loaded and your sync passphrase are not included.</li>
+<li><span class="ui">Reset everything</span> — clears the record and the recordings. Export first.</li>
+</ul>
+<div class="tip"><b>A reasonable habit</b> Export a JSON backup once a month and keep it somewhere safe. It takes five seconds.</div>
+
+<h3 id="sync">10.5 Cloud sync between devices<a class="permalink" href="#sync">#</a></h3>
+<p>Sync is optional. Nothing goes to the author or to any service belonging to this app: your data is written to a file in <b>your own</b> Google Drive, through a small script you install once in your own Google account. <span class="ui">Settings → Data → Cloud sync</span> explains the three-minute setup, and the download package contains the script (<code>Code.gs</code>) with instructions.</p>
+<p>Once it is on, the app loads the newest data when it opens and saves a few seconds after every change. A dated backup is kept in your Drive folder for 30 days.</p>
+<p><b>Moving to a new device:</b> install the app there, enter the same web-app URL and passphrase, and it will pull your record. If the new device already has its own record, see the next section — the app will ask rather than overwrite.</p>
+
+<h3 id="sync-conflicts">10.6 Conflicts, merges and recovery<a class="permalink" href="#sync-conflicts">#</a></h3>
+<p>Every save carries the <b>revision</b> it was based on, and the script accepts it only if that is still the current revision. A device whose clock is wrong can never overwrite work it has not seen.</p>
+<p>If two devices have both changed something, the second one is <b>refused and nothing is overwritten</b>. The app shows <span class="ui">This device could not save</span> with four choices:</p>
+<ol>
+<li><span class="ui">Download this device's data first</span> — a JSON copy, before you decide anything.</li>
+<li><span class="ui">Use the cloud copy on this device</span> — what it replaces can still be brought back with <span class="ui">Restore the data this device had before the last cloud load</span>.</li>
+<li><span class="ui">Overwrite the cloud with this device</span> — deliberate; the other device still holds its own copy.</li>
+<li><span class="ui">Decide later</span> — this device stops uploading until you choose, so nothing is lost while you think.</li>
+</ol>
+<p><b>Nothing is ever merged automatically.</b> Page ratings and weekly plans cannot be combined without guessing, so the app asks instead. The same choice appears the first time a device that already has its own record connects to a cloud that also has one.</p>
+<p><b>If the record in this browser cannot be read</b> — damaged data, or data from a newer version — the app keeps the original untouched, starts with an empty plan, and shows the original under <span class="ui">Settings → Data → "Data kept for recovery"</span>, where you can download it. It is never quietly overwritten.</p>
+</section>
+
+<!-- ==================== SCENARIOS ==================== -->
+<section id="scenarios">
+<h2>11. Practical scenarios<a class="permalink" href="#scenarios">#</a></h2>
+<p>Seven common situations, using only the controls described above.</p>
+
+<details open>
+<summary>A beginner learning a small weekly portion</summary>
+<ol class="steps">
+<li><span class="ui">Settings → Plan</span>: set <span class="ui">Weekly portion (sabaq)</span> to <b>A quarter of a page</b> and <span class="ui">Revision pages per day</span> to <b>3</b>.</li>
+<li>Leave <span class="ui">Segments per page</span> at 3 — with a quarter-page portion the daily tasks cover a few lines each.</li>
+<li>Open <span class="ui">Week</span>, check the proposal, press <span class="ui">Set this week's plan</span>.</li>
+<li>Each day: Today → sabaq card → <span class="ui">Open in Study</span> → listen with <span class="ui">Each ayah ×5</span> → curtain → <span class="ui">✓ Practised today</span>.</li>
+<li>When the quarter is solid, press <span class="ui">Mark part 1 complete</span>. Part 2 becomes next week's sabaq. Revision starts only when the whole page is finished.</li>
+</ol>
+</details>
+
+<details open>
+<summary>Entering sūrahs you already know</summary>
+<ol class="steps">
+<li><span class="ui">Settings → Plan → Pages I already know</span>.</li>
+<li>Enter the page range. If you are not sure of the numbers, find the sūrah in Study and read the page number from the top bar.</li>
+<li>Tick <span class="ui">spread one page per week from the journey start</span> rather than giving one date for everything — this produces a realistic history and an even rotation.</li>
+<li>Press <span class="ui">Mark as memorized → manzil</span>.</li>
+<li>Expect a busy fortnight: every page is scheduled for a first check the next day. Rate honestly — pages you have half-forgotten will drop to sabqi, which is exactly what you want to discover.</li>
+<li>If the load is too heavy, lower <span class="ui">Revision pages per day</span> for a week or two.</li>
+</ol>
+</details>
+
+<details open>
+<summary>A learner with very little time each day</summary>
+<ol class="steps">
+<li>Lower <span class="ui">Revision pages per day</span> to 2 or 3. The weekly manzil budget is this number × 7, so this is the control that matters.</li>
+<li>Consider <span class="ui">Weeks per page</span> = 2, taking a new page every fortnight.</li>
+<li>Lengthen <span class="ui">Manzil rotation</span> from 30 to 45 or 60 days if revision still crowds out new material — accepting that pages then return less often.</li>
+<li>Use <span class="ui">▶ Today's segment</span> rather than playing the whole page, and let the curtain do the work: five minutes of reciting from memory beats twenty minutes of listening.</li>
+</ol>
+</details>
+
+<details open>
+<summary>Struggling repeatedly with one page</summary>
+<ol class="steps">
+<li>Rate it honestly. A 1 or 2 sets the page to a 1-day interval and flags it <b>weak</b>, which brings it to the front of every list until it recovers.</li>
+<li>In Study, mark <span class="ui">✗</span> on the specific ayāt that break. Those are recorded with dates and appear in the mistake log.</li>
+<li>Open <span class="ui">Text view</span> and tap the words that keep catching your tongue to highlight them yellow.</li>
+<li>Check <span class="ui">≈ look-alike</span> badges on the page — a similar ayah elsewhere is the commonest cause of a page that will not settle.</li>
+<li>Use <span class="ui">Gap-fill → every 3rd word</span> to test recall rather than recognition.</li>
+<li>Use <span class="ui">Recite &amp; compare</span> to record yourself and hear the difference against the qari.</li>
+<li>Add a note with what your teacher said, so it appears next time the page comes round.</li>
+</ol>
+</details>
+
+<details open id="scenario-return">
+<summary>Returning after a break</summary>
+<ol class="steps">
+<li>If you knew the break was coming and switched on <span class="ui">Vacation mode</span>, simply switch it off. Every due date shifts forward by the days you were away and you resume where you left off.</li>
+<li>If you did not, everything is now overdue. Nothing is lost and there is no penalty — but the week's proposal will be large.</li>
+<li>Lower <span class="ui">Revision pages per day</span> before opening the Week tab, so the proposal is sized to what you can actually do.</li>
+<li>Open <span class="ui">Week</span>, press <span class="ui">Re-propose</span>, then trim the manzil list by tapping pages on the map.</li>
+<li>Press <span class="ui">Set this week's plan</span> and start. Raise the daily number again once you are back in rhythm.</li>
+</ol>
+</details>
+
+<details open>
+<summary>Preparing a report for your teacher</summary>
+<ol class="steps">
+<li>Make sure this week's ratings are entered — the message summarises what was rated, not what was merely practised.</li>
+<li><span class="ui">Week → Share with my teacher</span>, choose the language in <span class="ui">Settings → Sharing</span> if needed.</li>
+<li>Press <span class="ui">Copy</span> and paste it into WhatsApp.</li>
+<li>After the lesson, type what your teacher said into the feedback box. It will appear on those page cards in Today.</li>
+</ol>
+</details>
+
+<details open>
+<summary>Preparing for offline study</summary>
+<ol class="steps">
+<li><span class="ui">Settings → Data → Offline use</span>: tick the box, then <span class="ui">Keep this week's pages</span> (or <span class="ui">Keep memorised pages</span>).</li>
+<li><span class="ui">Week → Download audio</span> for the week's recitation.</li>
+<li>If you use translations or tafsīr, open the pages once while online so they are cached, or use <span class="ui">Settings → Mushaf → Meanings</span> to download them.</li>
+<li>Export a JSON backup before you go — offline use is not a backup.</li>
+<li>Remember that video lessons and cloud sync will not work until you are online again.</li>
+</ol>
+</details>
+</section>
+
+<!-- ==================== TROUBLESHOOTING ==================== -->
+<section id="troubleshooting">
+<h2>12. Troubleshooting<a class="permalink" href="#troubleshooting">#</a></h2>
+<p>Steps marked <b>app-specific</b> are features of Hifz Companion that are known to address the problem. Steps marked <i>general</i> are ordinary browser advice that may or may not apply.</p>
+
+<details open>
+<summary>The Mushaf page images do not appear</summary>
+<ul>
+<li><b>App-specific:</b> the hosted edition needs its <code>mushaf/hd</code> folder beside <code>index.html</code>. If you are running a copy you downloaded, check the folder came with it.</li>
+<li><b>App-specific:</b> <span class="ui">Settings → Mushaf</span> lets you load your own Madinah Mushaf PDF instead.</li>
+<li><b>App-specific:</b> the single-file edition has every page built in and never needs the network for images.</li>
+<li><i>General:</i> on a slow connection give the images a few seconds; a strict content blocker can also block them.</li>
+</ul>
+</details>
+
+<details open>
+<summary>Audio will not play</summary>
+<ul>
+<li><b>App-specific:</b> the app tries several sources in turn — a main reciter URL, a lower-quality one, then a CDN. If one host is blocked on your network the fallback usually plays; the player says <span class="ui">fallback source</span> when it does.</li>
+<li><b>App-specific:</b> <span class="ui">Settings → Audio</span> has a <span class="ui">Test sources</span> action that reports which host answers.</li>
+<li><b>App-specific:</b> download the week's audio once (<span class="ui">Week → Download audio</span>); downloaded files play with no network at all.</li>
+<li><i>General:</i> some phones refuse to start audio until you have tapped something on the page; check the device is not muted.</li>
+</ul>
+</details>
+
+<details open>
+<summary>A download stopped part-way</summary>
+<ul>
+<li><b>App-specific:</b> the progress line reports how many files failed and lists them. Press the download button again — files already stored are skipped, so it resumes rather than starting over.</li>
+<li><b>App-specific:</b> a source that refuses cross-origin downloads is skipped by design; those ayāt still stream when you are online.</li>
+<li><i>General:</i> a device low on storage will fail silently on some browsers; free some space and retry.</li>
+</ul>
+</details>
+
+<details open>
+<summary>Pages are missing from my week, or pages I did not expect appeared</summary>
+<ul>
+<li><b>App-specific:</b> check whether the week still says <span class="ui">proposal</span>. A live proposal re-derives itself, so it changes when you mark pages known or give ratings. Press <span class="ui">Set this week's plan</span> to freeze it.</li>
+<li><b>App-specific:</b> the manzil list is capped at <span class="ui">Revision pages per day</span> × 7 minus the sabqi count. If sabqi is large, few manzil pages fit — that is the budget working as intended.</li>
+<li><b>App-specific:</b> every page in the sabqi stage is included every week, whether or not it is due. Pages leave sabqi only by being promoted to manzil.</li>
+<li><b>App-specific:</b> unfinished work from last week is carried over into the new proposal.</li>
+</ul>
+</details>
+
+<details open>
+<summary>A rating or "complete" did not do what I expected</summary>
+<ul>
+<li><b>App-specific:</b> <span class="ui">✓ Practised today</span> does <b>not</b> reschedule anything. Only a rating of 0–5 moves a due date.</li>
+<li><b>App-specific:</b> a rating of <b>3</b> deliberately keeps the same gap. If a page seems stuck at 3 days, it is being rated 3.</li>
+<li><b>App-specific:</b> a page is promoted to manzil only when it has three good ratings in a row <i>and</i> an interval of 30 days or more — both conditions.</li>
+<li><b>App-specific:</b> rated by mistake? Use the <span class="ui">↺</span> beside the page under <span class="ui">Done this week</span>. That removes it from the week's done list; the interval and ease keep the change, so re-rate the page to correct them.</li>
+</ul>
+</details>
+
+<details open>
+<summary>Far too much revision</summary>
+<ul>
+<li><b>App-specific:</b> lower <span class="ui">Revision pages per day</span> — the weekly budget is that number × 7.</li>
+<li><b>App-specific:</b> lengthen <span class="ui">Manzil rotation</span> beyond 30 days.</li>
+<li><b>App-specific:</b> raise <span class="ui">Weeks per page</span> so new material arrives more slowly.</li>
+<li><b>App-specific:</b> trim this week by tapping pages off the map in the Week tab, then commit the plan.</li>
+<li><b>App-specific:</b> if you bulk-marked a large amount as already known on a single date, they all rotate together. Re-enter them with the <span class="ui">spread one page per week</span> option to even it out.</li>
+</ul>
+</details>
+
+<details open>
+<summary>My devices show different data</summary>
+<ul>
+<li><b>App-specific:</b> without cloud sync, each browser keeps its own record — that is expected. Use <span class="ui">Export data only (JSON)</span> and import on the other device, or set up sync.</li>
+<li><b>App-specific:</b> with sync on, check the status in <span class="ui">Settings → Data</span>. <span class="ui">not saved</span> means a conflict is waiting for you to choose — see <a href="#sync-conflicts">section 10.6</a>. Nothing has been overwritten.</li>
+<li><b>App-specific:</b> if you took the cloud copy and want the previous local data back, use <span class="ui">Restore the data this device had before the last cloud load</span>.</li>
+<li><b>App-specific:</b> a device on an older app version may be told to update before it can save. Open the app on that device to update it.</li>
+</ul>
+</details>
+
+<details open>
+<summary>Translations or tafsīr will not load</summary>
+<ul>
+<li><b>App-specific:</b> each layer loads on its own — if a translation fails, the Qur'ān text is still shown, the failure is named at the bottom of the text, and a <span class="ui">retry</span> button appears there.</li>
+<li><b>App-specific:</b> tafsīr and translations are fetched the first time and then kept on the device. Offline, anything you have not opened before is unavailable and the app says so rather than showing nothing.</li>
+<li><b>App-specific:</b> word meanings and gap-fill are unavailable with tajwīd colouring switched on — this is a limitation of the coloured text, and the app explains it in the tooltip.</li>
+<li><i>General:</i> a network that blocks the content hosts will prevent the first fetch.</li>
+</ul>
+</details>
+
+<details open>
+<summary>My browser storage was cleared</summary>
+<ul>
+<li><b>App-specific:</b> if you have a JSON export, <span class="ui">Settings → Data → Import JSON</span> restores everything.</li>
+<li><b>App-specific:</b> if you had cloud sync on, set it up again with the same URL and passphrase and the record will come back from your Drive; a dated backup of the last 30 days is also in that Drive folder.</li>
+<li><b>App-specific:</b> if the app found damaged data rather than none, the original is kept under <span class="ui">Settings → Data → "Data kept for recovery"</span> — download it before clearing it.</li>
+<li><i>General:</i> voice recordings cannot be recovered; they were only ever on that device.</li>
+</ul>
+</details>
+</section>
+
+<!-- ==================== GLOSSARY ==================== -->
+<section id="glossary">
+<h2>13. Glossary<a class="permalink" href="#glossary">#</a></h2>
+<table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><b>Sabaq</b></td><td>"Lesson" — the new material being memorised this week.</td></tr>
+<tr><td><b>Sabqi</b></td><td>"Recent" — material memorised in the last few weeks, still being made firm. In this app, a ladder of 1, 3, 7, 14 and 30 days.</td></tr>
+<tr><td><b>Manzil</b></td><td>"Portion, station" — older material in a long rotation, about every 30 days by default.</td></tr>
+<tr><td><b>Murājaʿah</b></td><td>Revision in general: sabqi and manzil together.</td></tr>
+<tr><td><b>Wird</b></td><td>A regular daily portion. The Today panel is "Today's wird".</td></tr>
+<tr><td><b>Hifz / ḥāfiẓ / huffāẓ</b></td><td>Memorisation / one who has memorised / the plural.</td></tr>
+<tr><td><b>Mutashābihāt</b></td><td>Similar or near-identical passages — shown in the app as "≈ look-alike" verses.</td></tr>
+<tr><td><b>Tafsīr</b></td><td>Scholarly explanation of the meaning of the Qur'an.</td></tr>
+<tr><td><b>Tadabbur</b></td><td>Reflection on the meaning; here, a link out to Tadabbur wa Amal.</td></tr>
+<tr><td><b>Tajwīd</b></td><td>The rules of correct recitation; the coloured text marks them.</td></tr>
+<tr><td><b>Juz / Hizb</b></td><td>One of the 30 parts of the Qur'an / a half of a juz.</td></tr>
+<tr><td><b>Madinah Mushaf</b></td><td>The 604-page printed edition this app follows (Ḥafṣ ʿan ʿĀṣim).</td></tr>
+<tr><td><b>Qari / qurrāʾ</b></td><td>A reciter / reciters.</td></tr>
+<tr><td><b>Uthmani script</b></td><td>The classical spelling used in printed Mushafs and in Text view.</td></tr>
+<tr><td colspan="2" style="background:var(--sand);font-weight:700">App terms</td></tr>
+<tr><td><b>Interval</b></td><td>The gap in days before a page is due again.</td></tr>
+<tr><td><b>Due date</b></td><td>The date a page is next scheduled for revision.</td></tr>
+<tr><td><b>Ladder</b></td><td>The fixed sequence of sabqi intervals: 1, 3, 7, 14, 30 days. Also the name of the seven-day sabaq checklist in Study.</td></tr>
+<tr><td><b>Ease</b></td><td>A multiplier from 1.3 to 2.8, starting at 2.3, used only past the top of the ladder.</td></tr>
+<tr><td><b>Lapse</b></td><td>A rating of 0, 1 or 2. Counted per page.</td></tr>
+<tr><td><b>Weak</b></td><td>A flag set by a lapse, cleared after two good ratings in a row. Weak pages are sorted first everywhere.</td></tr>
+<tr><td><b>Stage</b></td><td>Whether a page is in sabqi or manzil revision.</td></tr>
+<tr><td><b>Status</b></td><td><i>planned</i> (not yet memorised), <i>memorized</i> (completed in the app), <i>known</i> (bulk-marked as already memorised).</td></tr>
+<tr><td><b>Proposal</b></td><td>A weekly plan the app has generated but you have not committed. It keeps re-deriving until you edit or commit it.</td></tr>
+<tr><td><b>Carryover</b></td><td>Unfinished work moved into the next week's proposal.</td></tr>
+<tr><td><b>Segment</b></td><td>One of the parts a page is divided into for the daily sabaq tasks (three by default).</td></tr>
+<tr><td><b>Portion</b></td><td>How much new material is taken per week: a whole page, a half, a third or a quarter.</td></tr>
+<tr><td><b>Curtain</b></td><td>The cover over the page that you lift one line at a time to test yourself.</td></tr>
+<tr><td><b>Stumble mark (✗)</b></td><td>A record that you slipped on a particular ayah, kept with dates.</td></tr>
+<tr><td><b>Revision (cloud sync)</b></td><td>A number the cloud file carries so that a save based on old data is refused instead of overwriting newer work.</td></tr>
+<tr><td><b>Conflict</b></td><td>Two devices changed the record independently. The app asks you to choose; it never merges automatically.</td></tr>
+</tbody>
+</table>
+</section>
+
+<!-- ==================== ABOUT ==================== -->
+<section id="about-this-guide">
+<h2>14. About this guide<a class="permalink" href="#about-this-guide">#</a></h2>
+<p><b>App version inspected:</b> Hifz Companion <b>1.20.8</b>.<br>
+<b>Inspection date:</b> 11 September 2026.<br>
+<b>The app:</b> <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a><br>
+<b>This guide:</b> <span class="url">https://mazhar17.github.io/hc/Hifz-Companion-User-Guide.html</span> — once it has been published there. If you are reading a local copy, that address may not be live yet.</p>
+
+<h3 id="how-verified">How this guide was checked<a class="permalink" href="#how-verified">#</a></h3>
+<ul>
+<li>Control names, labels, defaults and options were read from the app's own interface markup rather than from memory.</li>
+<li>The scheduling rules in <a href="#spaced-repetition">section 6</a> were read from the scheduler source, and the three worked examples were produced by <b>running the app's own scheduling functions</b> with the dates shown — not calculated by hand.</li>
+<li>Screens were exercised in a disposable browser profile with invented data. No real learner record was opened, altered or reset, no account was connected, and no teacher message was sent.</li>
+<li>Features present in earlier versions but removed — such as the Blur panel and the separate Plan tab — are deliberately not documented, and are noted where their absence might confuse.</li>
+</ul>
+
+<h3 id="limits">Limitations<a class="permalink" href="#limits">#</a></h3>
+<ul>
+<li>Testing was done on a desktop browser. Behaviour that depends on a particular phone — microphone permission dialogs, installed speech voices, lock-screen audio controls, folder-based storage — is described from the source and may differ on your device.</li>
+<li>Time estimates, completion projections and the "effective rotation" figure are the app's own estimates. Their assumptions are stated in <a href="#estimates">section 4.5</a>.</li>
+<li>Network behaviour was exercised against stand-in servers rather than the live content hosts, so exact error wording from a real outage may differ.</li>
+<li>The app is developed actively. <b>Later updates may change behaviour described here</b> — the version above is the one this guide matches. The app's own <span class="ui">?</span> → Help is always generated from the current version.</li>
+</ul>
+
+<h3 id="sources">Sources used by the app<a class="permalink" href="#sources">#</a></h3>
+<p>The app shows no content of its own invention. Every source is named with its link and terms in the app's <span class="ui">?</span> → <span class="ui">About &amp; sources</span> pane: the Madinah Mushaf page images from the King Fahd Glorious Qur'an Printing Complex; Qur'ān text, word meanings and translations from Quran.com, Al Quran Cloud and Tanzil; recitations from EveryAyah and the Islamic Network CDN; tafsīr from QUL (Tarteel) via the tafsir_api project; video lessons linked from the Tawheed Outreach playlist; Tadabbur wa Amal and the Quranic Arabic Corpus linked, never copied.</p>
+
+<p style="margin-top:1.6em"><a class="btn primary" href="./index.html">← Back to Hifz Companion</a></p>
+</section>
+
+<footer class="pagefoot">
+<p><b>Hifz Companion — User Guide</b> · written for version 1.20.8 · 11 September 2026.</p>
+<p>The app: <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a> · Comments and suggestions: <a href="mailto:mazhar1970@gmail.com">mazhar1970@gmail.com</a></p>
+<p>This guide describes Hifz Companion, which is licensed under CC BY-NC-ND 4.0. The Qur'ānic text is the Word of Allah and must never be altered.</p>
+</footer>
+
+</main>
+</div>
+
+<button class="btn js-only" id="totop" type="button" title="Back to top" aria-label="Back to top" hidden>↑</button>
+
+<script>
+(function () {
+  'use strict';
+  var root = document.documentElement;
+
+  /* ---------- theme ---------- */
+  var tbtn = document.getElementById('theme');
+  function stored(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function store(k,v){ try { localStorage.setItem(k,v); } catch (e) {} }
+  function applyTheme(t){
+    if (t === 'dark' || t === 'light') root.setAttribute('data-theme', t); else root.removeAttribute('data-theme');
+    var dark = t === 'dark' || (!t && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+    if (tbtn){ tbtn.textContent = dark ? 'Light theme' : 'Dark theme'; tbtn.setAttribute('aria-pressed', dark ? 'true' : 'false'); }
+  }
+  applyTheme(stored('hcguide.theme'));
+  if (tbtn) tbtn.addEventListener('click', function () {
+    var now = root.getAttribute('data-theme');
+    var dark = now ? now === 'dark' : (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    store('hcguide.theme', next); applyTheme(next);
+  });
+
+  /* ---------- expand / collapse ---------- */
+  var all = function(){ return Array.prototype.slice.call(document.querySelectorAll('details')); };
+  var ea = document.getElementById('expandAll'), ca = document.getElementById('collapseAll');
+  if (ea) ea.addEventListener('click', function(){ all().forEach(function(d){ d.open = true; }); });
+  if (ca) ca.addEventListener('click', function(){ all().forEach(function(d){ d.open = false; }); });
+
+  /* ---------- reveal a target inside collapsed sections ---------- */
+  function reveal(hash){
+    if (!hash || hash.length < 2) return;
+    var el;
+    try { el = document.querySelector(hash); } catch (e) { return; }
+    if (!el) return;
+    var p = el.parentNode;
+    while (p && p !== document.body){
+      if (p.tagName === 'DETAILS') p.open = true;
+      p = p.parentNode;
+    }
+    // scroll after the browser has laid the opened sections out
+    var focusTarget = el.tagName === 'SECTION' ? (el.querySelector('h2') || el) : el;
+    requestAnimationFrame(function(){
+      el.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      if (!focusTarget.hasAttribute('tabindex')) focusTarget.setAttribute('tabindex','-1');
+      try { focusTarget.focus({ preventScroll: true }); } catch (e) {}
+    });
+  }
+  if (location.hash) setTimeout(function(){ reveal(location.hash); }, 60);
+  window.addEventListener('hashchange', function(){ reveal(location.hash); });
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var h = a.getAttribute('href');
+    if (h.length > 1){ setTimeout(function(){ reveal(h); }, 0); }
+  });
+
+  /* ---------- search index ---------- */
+  var index = [], hitSeq = 0;
+  Array.prototype.forEach.call(document.querySelectorAll('main section'), function (sec) {
+    var secName = (sec.querySelector('h2') ? sec.querySelector('h2').textContent : '').replace('#','').trim();
+    Array.prototype.forEach.call(sec.querySelectorAll('p, li, td, th, summary, h3, h4'), function (node) {
+      var txt = (node.textContent || '').replace(/\s+/g,' ').trim();
+      var pl = node.querySelector ? node.querySelector('.permalink') : null;
+      if (pl) txt = txt.replace(/#\s*$/, '').trim();          // drop the trailing permalink marker
+      if (txt.length < 12) return;
+      // the result links to the matching element itself, so opening it also opens any
+      // collapsed block it sits inside
+      if (!node.id) node.id = 'hit-' + (++hitSeq);
+      index.push({ t: txt, lc: txt.toLowerCase(), id: node.id, sec: secName, node: node });
+    });
+  });
+
+  var q = document.getElementById('q'), res = document.getElementById('results');
+  var sel = -1;
+  function esc(s){ return s.replace(/[&<>"]/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; }); }
+  function close(){ res.hidden = true; q.setAttribute('aria-expanded','false'); sel = -1; }
+  function run(){
+    var term = q.value.trim().toLowerCase();
+    if (term.length < 2){ close(); return; }
+    var hits = [], seen = {};
+    for (var i = 0; i < index.length && hits.length < 25; i++){
+      var p = index[i].lc.indexOf(term);
+      if (p < 0) continue;
+      var key = index[i].id + '|' + index[i].t.slice(0, 40);
+      if (seen[key]) continue; seen[key] = 1;
+      var start = Math.max(0, p - 45), snip = (start ? '…' : '') + index[i].t.slice(start, p + term.length + 90) + '…';
+      var hp = snip.toLowerCase().indexOf(term);
+      var html = hp < 0 ? esc(snip) : esc(snip.slice(0, hp)) + '<mark>' + esc(snip.substr(hp, term.length)) + '</mark>' + esc(snip.slice(hp + term.length));
+      var box = index[i].node.closest('details');
+      var collapsed = !!(box && !box.open);
+      hits.push('<a href="#' + index[i].id + '" role="option"><span class="r-sec">' + esc(index[i].sec) + (collapsed ? ' · in a collapsed part' : '') + '</span><span class="r-txt">' + html + '</span></a>');
+    }
+    res.innerHTML = hits.length ? hits.join('') : '<div class="r-none">Nothing found for “' + esc(q.value.trim()) + '”.</div>';
+    res.hidden = false; q.setAttribute('aria-expanded','true'); sel = -1;
+  }
+  if (q){
+    q.addEventListener('input', run);
+    q.addEventListener('focus', function(){ if (q.value.trim().length > 1) run(); });
+    q.addEventListener('keydown', function (e) {
+      var items = res.querySelectorAll('a');
+      if (e.key === 'Escape'){ close(); q.blur(); return; }
+      if (!items.length) return;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+        e.preventDefault();
+        sel = e.key === 'ArrowDown' ? Math.min(items.length - 1, sel + 1) : Math.max(0, sel - 1);
+        Array.prototype.forEach.call(items, function (a, i) { a.classList.toggle('sel', i === sel); });
+        items[sel].scrollIntoView({ block: 'nearest' });
+      } else if (e.key === 'Enter' && sel >= 0){ e.preventDefault(); items[sel].click(); }
+    });
+    res.addEventListener('click', function (e) {
+      var a = e.target.closest('a'); if (!a) return;
+      close();
+      setTimeout(function(){ reveal(a.getAttribute('href')); }, 0);
+    });
+    document.addEventListener('click', function (e) { if (!e.target.closest('.searchwrap')) close(); });
+    document.addEventListener('keydown', function (e) {
+      if ((e.key === '/' || (e.key === 'k' && (e.ctrlKey || e.metaKey))) && document.activeElement !== q) {
+        var tag = (document.activeElement.tagName || '').toLowerCase();
+        if (tag === 'input' || tag === 'textarea') return;
+        e.preventDefault(); q.focus(); q.select();
+      }
+    });
+  }
+
+  /* ---------- active section in the contents ---------- */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window && secs.length){
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
+      });
+    }, { rootMargin: '-15% 0px -70% 0px' });
+    secs.forEach(function (s) { io.observe(s); });
+  }
+
+  /* ---------- back to top ---------- */
+  var top = document.getElementById('totop');
+  if (top){
+    top.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); });
+    var onScroll = function(){ top.hidden = window.scrollY < 500; };
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  }
+
+  /* ---------- open everything for printing ---------- */
+  var wasOpen = null;
+  window.addEventListener('beforeprint', function(){ wasOpen = all().map(function(d){ var o = d.open; d.open = true; return o; }); });
+  window.addEventListener('afterprint', function(){ if (wasOpen) all().forEach(function(d, i){ d.open = wasOpen[i]; }); wasOpen = null; });
+})();
+</script>
+</body>
+</html>
