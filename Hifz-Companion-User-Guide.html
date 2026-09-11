@@ -242,7 +242,13 @@ html.no-js .nojs-note{display:block}
 <h1>Hifz Companion — User Guide</h1>
 <p class="lede">Everything the app can do, in the order you are likely to need it: your first session, daily practice, the Study tools, planning, how revision is scheduled, and how to keep your record safe.</p>
 <p class="nojs-note note"><b>Note</b> JavaScript is switched off, so search and the expand/collapse buttons are unavailable. The whole guide is still readable — every section below is open.</p>
-<p style="color:var(--muted);font-size:.92rem">App inspected: <b>version 1.20.8</b> · Guide written 11 September 2026 · <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a></p>
+<p style="color:var(--muted);font-size:.92rem">App inspected: <b>version 1.20.11</b> · Guide written 11 September 2026 · <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a></p>
+<div class="tip"><b>Prefer a printable tutorial? Read or download the PDF.</b><br>
+The illustrated tutorial is a separate 21-page PDF — shorter than this guide and made to be printed or read on a phone.
+<a href="./Hifz-Companion-Tutorial.pdf" target="_blank" rel="noopener">Read the tutorial (PDF)<span class="sr-only"> (opens in a new tab)</span></a> ·
+<a href="./Hifz-Companion-Tutorial.pdf" download="Hifz-Companion-Tutorial.pdf">Download the tutorial (PDF, 2.1 MB)</a>.
+If the PDF opens instead of downloading, use your browser’s download button. Its public link is
+<a href="https://mazhar17.github.io/hc/Hifz-Companion-Tutorial.pdf" target="_blank" rel="noopener">https://mazhar17.github.io/hc/Hifz-Companion-Tutorial.pdf<span class="sr-only"> (opens in a new tab)</span></a>.</div>
 
 <!-- ==================== GETTING STARTED ==================== -->
 <section id="getting-started">
@@ -380,11 +386,28 @@ html.no-js .nojs-note{display:block}
 <tbody>
 <tr><td>Listening / playing audio</td><td>Nothing.</td><td>None. Playing the recitation never changes any date.</td></tr>
 <tr><td><span class="ui">✓ Practised today</span></td><td>Today is added to your practice days, which drives the streak and the calendar.</td><td><b>None.</b> No due date changes.</td></tr>
-<tr><td>A rating <b>0–5</b></td><td>A review record (page, date, rating, stage) is added to your history, and the week's plan marks that page done.</td><td><b>This is the only thing that reschedules a page.</b> See <a href="#spaced-repetition">section 6</a>.</td></tr>
+<tr><td>A rating <b>0–5</b></td><td>A review record (page, date, rating, stage) is added to your history, and the week's plan marks that page done.</td><td><b>This is the only thing that reschedules a page.</b> One assessment counts per page per day — see <a href="#one-a-day">One assessment a day</a> and <a href="#spaced-repetition">section 6</a>.</td></tr>
 <tr><td><span class="ui">Mark page complete</span></td><td>The page's status becomes <i>memorized</i>.</td><td>The page leaves sabaq and enters sabqi with its first interval of 1 day.</td></tr>
 </tbody>
 </table>
 <div class="warn"><b>Worth knowing</b> A page you practise every day but never rate will keep showing as overdue, because only a rating moves its due date. If a revision page keeps reappearing, check that you are pressing a rating button and not just <span class="ui">✓ Practised today</span>.</div>
+
+<h3 id="why-today">Why a page is on Today's list<a class="permalink" href="#why-today">#</a></h3>
+<p>Today's revision list is not simply this week's plan cut into seven. It is built from two sources, then limited:</p>
+<ol>
+<li><b>This week's share.</b> From the week's sabqi and manzil lists, the pages you have not finished yet, divided by the days left in the week, weak pages first.</li>
+<li><b>Anything the schedule says is due.</b> Any memorised page whose own due date has arrived or passed, even if this week's plan does not list it. Overdue pages come first, then weak pages, then pages you have recently stumbled on.</li>
+</ol>
+<p>The two lists are combined without duplicates and then capped by <span class="ui">Settings → Plan → Revision pages per day</span>. The cap covers both stages together, so sabqi is served first and manzil takes what is left.</p>
+<p>The heading of each card tells you what happened: <i>3 of 12 done · 2 for today · 4 due</i> means two pages come from the week's share and four more were added because they are genuinely due.</p>
+<div class="note"><b>Work that did not fit</b> If more pages are due than the daily limit allows, the surplus is <b>not</b> discarded and <b>not</b> treated as reviewed. A line appears saying how many overdue pages did not fit, and they are offered again tomorrow. If that line appears often, raise <span class="ui">Revision pages per day</span>.</div>
+<p>While <span class="ui">Vacation mode</span> is on, this list is empty by design: no revision is scheduled at all.</p>
+
+<h3 id="one-a-day">One assessment a day<a class="permalink" href="#one-a-day">#</a></h3>
+<p>A page can be rated only once per day, in effect. If you rate the same page a second time on the same day, the app first rewinds that page to the state it was in this morning and then applies the new rating — so the day counts once, with the rating you finished on.</p>
+<p>This matters because ratings are not neutral: a 1 records a lapse and cuts the ease. Without this rule, rating a page 1 and then, after a better attempt, 5 would leave the lapse and the ease penalty permanently attached to a page you actually recited well. With it, the second rating simply replaces the first.</p>
+<p>Once a page has been assessed today it drops off Today's list for the rest of the day, whether it arrived there from the week's plan or from its own due date. It returns when the schedule next asks for it.</p>
+<p><b>Undo.</b> The <span class="ui">↺</span> beside a page under <span class="ui">Done this week</span> undoes the whole assessment: the tick is removed, today's review record for that page is deleted, and the page's interval, ease, ladder step, stage, weak flag and due date are restored to what they were before you rated it today. The page becomes available for rating again straight away.</p>
 
 <h3 id="segments">Daily segments and the seven-day ladder<a class="permalink" href="#segments">#</a></h3>
 <p>A page is divided into <b>segments</b> — three by default, set by <span class="ui">Settings → Plan → Segments per page</span>. On days 1 to 3 the sabaq task names one segment and gives both the curtain lines and the exact ayāt for the audio, for example <i>"Segment 2 (curtain lines 6–10 · audio 89:8–15)"</i>.</p>
@@ -716,7 +739,8 @@ Then, if <code>consecutiveGood</code> ≥ 3 <b>and</b> interval ≥ 30, the page
 </table>
 <p><b>Ease</b> is clamped to 1.3–2.8 and only ever matters past the top of the ladder, where it multiplies the interval. On the ladder itself the intervals are fixed.</p>
 <p><b>Rounding:</b> only the ease multiplication rounds, to the nearest whole day. All other intervals are exact values from the ladder or the rotation setting.</p>
-<p><b>Two ratings on the same day:</b> each is applied in turn to the result of the last. Rating a page 2 and then 5 on the same day leaves it at the second rung with the lapse and the ease penalty already recorded — the first rating is not undone. Use the <span class="ui">↺</span> undo beside a done page if you rated by mistake; that removes it from the week's done list, though the page's interval and ease keep the change.</p>
+<p><b>Two ratings on the same day:</b> the day counts once. Before a second rating is applied, the page is rewound to a snapshot taken at the day's first rating (<code>dayBase</code>), and the new rating is then applied to that. Rating a page 2 and then 5 on the same day leaves it exactly as a single 5 would have — no lapse, no ease penalty, no extra <code>reps</code>. The snapshot is discarded when the page is next completed or when the day changes.</p>
+<p><b>Undo.</b> The <span class="ui">↺</span> beside a done page restores that snapshot in full: interval, ease, ladder step, <code>consecutiveGood</code>, <code>reps</code>, <code>lapses</code>, <code>weak</code>, stage, <code>dueDate</code> and <code>lastReviewed</code> all return to their pre-rating values, today's review record for that page is deleted, and the weekly tick is removed. It is a true undo, not just a tick removal.</p>
 </details>
 
 <details class="hood" open>
@@ -724,7 +748,7 @@ Then, if <code>consecutiveGood</code> ≥ 3 <b>and</b> interval ≥ 30, the page
 <ol>
 <li><b>A page becomes due.</b> Its <code>dueDate</code> is today or earlier. This is purely a property of the page.</li>
 <li><b>A page is selected for a weekly plan.</b> When a week is proposed: <i>every</i> page whose stage is <code>sabqi</code> goes into the week's sabqi list, ordered by due date — a sabqi page is included whether or not it is due yet. For manzil, the budget is <span class="ui">Revision pages per day</span> × 7 minus the sabqi count, and pages are picked from the manzil pool ordered by <b>weak first, then most stumbles in the last 14 days, then oldest due date, then page number</b>.</li>
-<li><b>A page is assigned to a day.</b> It is not — not to a fixed day. Each day Today suggests <code>ceil(not-yet-done ÷ days left in the week)</code> from the week's list, weak pages first (see <a href="#week-to-day">section 5.4</a>).</li>
+<li><b>A page is assigned to a day.</b> It is not — not to a fixed day. Each day Today takes <code>ceil(not-yet-done ÷ days left in the week)</code> from the week's list, weak pages first, <b>and adds any page whose own <code>dueDate</code> has arrived that the week's list does not already cover</b>, up to <span class="ui">Revision pages per day</span>. Pages already assessed today are excluded, and due work beyond the daily cap is deferred to tomorrow rather than dropped (see <a href="#why-today">Why a page is on Today’s list</a> and <a href="#week-to-day">section 5.4</a>).</li>
 <li><b>A page is practised, rated or completed.</b> Only the rating changes <code>dueDate</code>, <code>interval</code>, <code>ease</code>, <code>stage</code> and <code>weak</code>.</li>
 </ol>
 <p><b>Does a rating change the current plan immediately?</b> It marks that page done for this week straight away, and the new due date takes effect at once. But it does not rewrite the rest of the current week's list — the new due date is used the <i>next</i> time a week is proposed. One exception: while a week is still an untouched proposal, it keeps re-deriving, so ratings can change it.</p>
@@ -950,17 +974,24 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 
 <h3 id="sync">10.5 Cloud sync between devices<a class="permalink" href="#sync">#</a></h3>
 <p>Sync is optional. Nothing goes to the author or to any service belonging to this app: your data is written to a file in <b>your own</b> Google Drive, through a small script you install once in your own Google account. <span class="ui">Settings → Data → Cloud sync</span> explains the three-minute setup, and the download package contains the script (<code>Code.gs</code>) with instructions.</p>
-<p>Once it is on, the app loads the newest data when it opens and saves a few seconds after every change. A dated backup is kept in your Drive folder for 30 days.</p>
+<p>Once it is on, the app loads the newest data when it opens and saves a few seconds after every change.</p>
+<p><b>What the script keeps in your Drive folder</b>, besides the live <code>state.json</code>:</p>
+<ul>
+<li><b>A daily baseline</b>, <code>state-YYYY-MM-DD.json</code>, holding the state as it was at the <i>first</i> save of that day — written only if that day's file does not already exist, so later saves can never overwrite the copy the backup exists to preserve. The newest 30 are kept.</li>
+<li><b>A displaced copy</b>, <code>displaced-rev&lt;N&gt;-&lt;timestamp&gt;.json</code>, written whenever you deliberately choose <span class="ui">Overwrite the cloud with this device</span>. The cloud state you replaced is kept under its own name so it can be recovered. The newest 20 are kept.</li>
+</ul>
+<p>A backup that fails to write never makes a successful save look like a failure: the save is reported as saved, with the backup problem noted separately.</p>
 <p><b>Moving to a new device:</b> install the app there, enter the same web-app URL and passphrase, and it will pull your record. If the new device already has its own record, see the next section — the app will ask rather than overwrite.</p>
 
 <h3 id="sync-conflicts">10.6 Conflicts, merges and recovery<a class="permalink" href="#sync-conflicts">#</a></h3>
 <p>Every save carries the <b>revision</b> it was based on, and the script accepts it only if that is still the current revision. A device whose clock is wrong can never overwrite work it has not seen.</p>
+<div class="note"><b>Looking is not adopting</b> A device's base revision advances only when it has actually <i>taken</i> the cloud copy into its own record, or when the cloud has <i>accepted</i> a save from it. Merely reading the cloud — opening the app, pressing <span class="ui">Check connection</span>, or a background poll — never advances it. This is what stops a device from silently gaining the right to overwrite work whose contents it never loaded.</div>
 <p>If two devices have both changed something, the second one is <b>refused and nothing is overwritten</b>. The app shows <span class="ui">This device could not save</span> with four choices:</p>
 <ol>
 <li><span class="ui">Download this device's data first</span> — a JSON copy, before you decide anything.</li>
 <li><span class="ui">Use the cloud copy on this device</span> — what it replaces can still be brought back with <span class="ui">Restore the data this device had before the last cloud load</span>.</li>
 <li><span class="ui">Overwrite the cloud with this device</span> — deliberate; the other device still holds its own copy.</li>
-<li><span class="ui">Decide later</span> — this device stops uploading until you choose, so nothing is lost while you think.</li>
+<li><span class="ui">Decide later</span> — this device stops uploading until you choose. The pause is <b>sticky</b>: it survives reloading the app, closing the browser and reconnecting, and it is remembered per device. Nothing is uploaded and nothing is merged until you pick one of the other three. The other device is unaffected and keeps syncing normally.</li>
 </ol>
 <p><b>Nothing is ever merged automatically.</b> Page ratings and weekly plans cannot be combined without guessing, so the app asks instead. The same choice appears the first time a device that already has its own record connects to a cloud that also has one.</p>
 <p><b>If the record in this browser cannot be read</b> — damaged data, or data from a newer version — the app keeps the original untouched, starts with an empty plan, and shows the original under <span class="ui">Settings → Data → "Data kept for recovery"</span>, where you can download it. It is never quietly overwritten.</p>
@@ -1100,7 +1131,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 <li><b>App-specific:</b> <span class="ui">✓ Practised today</span> does <b>not</b> reschedule anything. Only a rating of 0–5 moves a due date.</li>
 <li><b>App-specific:</b> a rating of <b>3</b> deliberately keeps the same gap. If a page seems stuck at 3 days, it is being rated 3.</li>
 <li><b>App-specific:</b> a page is promoted to manzil only when it has three good ratings in a row <i>and</i> an interval of 30 days or more — both conditions.</li>
-<li><b>App-specific:</b> rated by mistake? Use the <span class="ui">↺</span> beside the page under <span class="ui">Done this week</span>. That removes it from the week's done list; the interval and ease keep the change, so re-rate the page to correct them.</li>
+<li><b>App-specific:</b> rated by mistake? Use the <span class="ui">↺</span> beside the page under <span class="ui">Done this week</span>. It undoes the assessment completely — the tick, today's review record, and the page's interval, ease and due date — so you can simply rate the page again.</li>
 </ul>
 </details>
 
@@ -1190,7 +1221,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 <!-- ==================== ABOUT ==================== -->
 <section id="about-this-guide">
 <h2>14. About this guide<a class="permalink" href="#about-this-guide">#</a></h2>
-<p><b>App version inspected:</b> Hifz Companion <b>1.20.8</b>.<br>
+<p><b>App version inspected:</b> Hifz Companion <b>1.20.11</b>.<br>
 <b>Inspection date:</b> 11 September 2026.<br>
 <b>The app:</b> <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a><br>
 <b>This guide:</b> <span class="url">https://mazhar17.github.io/hc/Hifz-Companion-User-Guide.html</span> — once it has been published there. If you are reading a local copy, that address may not be live yet.</p>
@@ -1218,7 +1249,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 </section>
 
 <footer class="pagefoot">
-<p><b>Hifz Companion — User Guide</b> · written for version 1.20.8 · 11 September 2026.</p>
+<p><b>Hifz Companion — User Guide</b> · written for version 1.20.11 · 11 September 2026.</p>
 <p>The app: <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a> · Comments and suggestions: <a href="mailto:mazhar1970@gmail.com">mazhar1970@gmail.com</a></p>
 <p>This guide describes Hifz Companion, which is licensed under CC BY-NC-ND 4.0. The Qur'ānic text is the Word of Allah and must never be altered.</p>
 </footer>

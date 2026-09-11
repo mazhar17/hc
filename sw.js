@@ -6,11 +6,16 @@
                     new shell only replaces the old one once it
                     has been cached successfully
      • mushaf/…   : cache first (pages never change)
+     • *.pdf      : left entirely to the network — never precached
+                    (the tutorial is ~2 MB and most visitors never open
+                    it) and never answered with index.html, so an
+                    unavailable PDF fails as a PDF instead of quietly
+                    showing the app in its place
    The page itself fills PAGES with the Mushaf images the user
    asks to keep, through caches.open(PAGES). Learning data lives
    in localStorage / IndexedDB and is never touched here.
    ============================================================ */
-const V = '1.20.9';
+const V = '1.20.11';
 const SHELL = 'hifz-shell-' + V, PAGES = 'hifz-pages-v1';
 const SHELL_URLS = ['./', './index.html'];
 
@@ -49,6 +54,7 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;          // audio, APIs, tafsīr, YouTube — left alone
+  if (/\.pdf$/i.test(url.pathname)) return;                  // PDFs (the tutorial): straight to the network, never cached, never substituted
   if (url.pathname.includes('/mushaf/')) {                   // Mushaf pages: cache first, never evicted here
     e.respondWith((async () => {
       const c = await caches.open(PAGES);
@@ -62,7 +68,10 @@ self.addEventListener('fetch', e => {
   }
   e.respondWith((async () => {                               // app shell: network first; cached copy on network failure or a server error
     const c = await caches.open(SHELL);
-    const cached = async () => (await c.match(req, { ignoreSearch: true })) || (isNav(req) ? await c.match('./index.html') : null);
+    // the index.html fallback is only ever right for the app shell itself; any other
+    // document (a PDF, the User Guide) must fail as itself rather than become the app
+    const isShell = /(^|\/)(index\.html)?$/.test(url.pathname);
+    const cached = async () => (await c.match(req, { ignoreSearch: true })) || (isNav(req) && isShell ? await c.match('./index.html') : null);
     try {
       const res = await fetch(req);
       if (res && res.ok) { if (isNav(req) || url.pathname.endsWith('/sw.js') === false) e.waitUntil(c.put(req, res.clone())); return res; }
