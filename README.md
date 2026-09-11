@@ -1,4 +1,4 @@
-# Hifz Companion — hosted HD edition (v1.20.19)
+# Hifz Companion — hosted HD edition (v1.20.20)
 
 This folder is the **web-hosted edition** of Hifz Companion, split into small files so it can be
 published on GitHub Pages (or any static host) — every file is well under GitHub's 25 MB upload limit.
@@ -166,6 +166,26 @@ where every Arabic line begins — could not be reached in either view. The page
 auto margins instead, which centre it while it fits and collapse the moment it does not, so the
 scrollable area always covers the whole page. `test79.mjs` checks this across phone portrait, phone
 landscape, tablet and desktop, in Single and Spread, at 2.4× and 4× zoom.
+
+## Full screen: the page and nothing else (v1.20.20)
+In full screen the toolbar is gone for as long as full screen lasts. Nothing brings it back — not
+moving the mouse, not touching the page, not pressing a key. Before v1.20.20 any mouse movement or
+key press slid it in for two and a half seconds, which interrupted reading every time the reader
+pressed an arrow key.
+
+The ways out:
+
+| | |
+|---|---|
+| `Esc` | Leaves, always. In real full screen the browser takes the key itself and the app follows its `fullscreenchange`; where the browser refused full screen, the app's own handler does it. |
+| `F` | Same as the ⛶ button — toggles full screen. |
+| the ✕, on a computer | Hidden by default. Rest the pointer near the **top centre** (within 110 px of centre, in the top 64 px) and after 0.42 s it fades in; hovering the button itself makes it solid; moving away hides it at once. The dwell is measured in `ui.js`, deliberately **not** with a CSS hover zone: such a zone would have to lie over the page and would swallow clicks meant for it. Nothing is laid over the page, and only the 40 px circle takes a click, and only while it is showing. It sits 10 px down, clear of the browser's own "press Esc to exit" chrome. |
+| the ✕, on a touch device | Always faintly present in the top corner, as before: a phone has no hover and no `Esc` key. |
+
+`↓` and `↑` now scroll the page, about one line of the Mushaf per press and smoothly, so holding the
+key glides down the page — in full screen and in the normal view alike. While the **curtain** is on
+they keep their old meaning and reveal or hide a line, since that is the drill; the curtain is a
+printed-page tool, so in Text view they always scroll. `test80.mjs` covers all of this.
 
 ## Working without internet — Offline use
 Once the site is live, open *Settings → Data → **Offline use*** on each device and tick the box: the
