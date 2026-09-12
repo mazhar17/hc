@@ -1,4 +1,4 @@
-# Hifz Companion — hosted HD edition (v1.21.3)
+# Hifz Companion — hosted HD edition (v1.21.4)
 
 This folder is the **web-hosted edition** of Hifz Companion, split into small files so it can be
 published on GitHub Pages (or any static host) — every file is well under GitHub's 25 MB upload limit.
@@ -61,6 +61,12 @@ displayed and copied for sharing is absolute.
 
 If you ever must rename it, keep the old name in place as well, or shared links will break.
 
+**Revision of 12 September 2026 (v1.21.4).** Brought up to date with v1.21.2 and v1.21.3: slide 8
+describes Go to ▾ sitting with the page controls and names ⤢ Focus, slide 9 says that closing Tools
+gives its width back to the page, slide 7 points at *Edit the share template*, and slide 19 states how
+saving and syncing actually behave. Every screenshot retaken from the v1.21.3 build. Still 22 pages
+and 2.3 MB — only the revision date changed, and the Guide and the app's metadata line with it.
+
 **Revision of 11 September 2026 (v1.21.1).** The tutorial was rebuilt for the redesigned Study tab:
 slide 8 describes the one-row toolbar and the Display menu, a **new slide 9** introduces 🛠 Tools and
 its three sections, and the curtain, gap-fill, translations, stumble-mark, recording and video slides
@@ -75,7 +81,7 @@ Mushaf-page tool only, and the *Import weekly lesson* button on the Week tab. Ev
 retaken from the current build. Same name, same 21 pages, same size — only the revision date changed.
 
 ### Where the tutorial metadata is maintained
-The visible "PDF · 22 pages · 2.3 MB · revised 11 September 2026" line lives in **one** place in the
+The visible "PDF · 22 pages · 2.3 MB · revised 12 September 2026" line lives in **one** place in the
 source: `src/index.html`, in the Help card's `<p class="tut-meta">`. The same figures appear in the HTML
 User Guide's introduction (`Hifz-Companion-User-Guide.html`, the "Prefer a printable tutorial" box) and
 in this README. The sharing title, description and absolute URL used by *Copy tutorial link* and

@@ -242,7 +242,7 @@ html.no-js .nojs-note{display:block}
 <h1>Hifz Companion — User Guide</h1>
 <p class="lede">Everything the app can do, in the order you are likely to need it: your first session, daily practice, the Study tools, planning, how revision is scheduled, and how to keep your record safe.</p>
 <p class="nojs-note note"><b>Note</b> JavaScript is switched off, so search and the expand/collapse buttons are unavailable. The whole guide is still readable — every section below is open.</p>
-<p style="color:var(--muted);font-size:.92rem">App inspected: <b>version 1.21.3</b> · Guide written 11 September 2026 · <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a></p>
+<p style="color:var(--muted);font-size:.92rem">App inspected: <b>version 1.21.4</b> · Guide written 11 September 2026 · <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a></p>
 <div class="tip"><b>Prefer a printable tutorial? Read or download the PDF.</b><br>
 The illustrated tutorial is a separate 22-page PDF — shorter than this guide and made to be printed or read on a phone.
 <a href="./Hifz-Companion-Tutorial.pdf" target="_blank" rel="noopener">Read the tutorial (PDF)<span class="sr-only"> (opens in a new tab)</span></a> ·
@@ -432,7 +432,7 @@ If the PDF opens instead of downloading, use your browser’s download button. I
 <table>
 <thead><tr><th>Where</th><th>What is there</th></tr></thead>
 <tbody>
-<tr><td>The toolbar — <b>one row</b></td><td>The ‹ › page arrows and the page number · <span class="ui">▤ Mushaf</span> ⇄ <span class="ui">☰ Text</span> · <span class="ui">Go to ▾</span> · <span class="ui">Display ▾</span> · full screen · <span class="ui">🛠 Tools</span>.</td></tr>
+<tr><td>The toolbar — <b>one row</b></td><td>The ‹ › page arrows, the page number and <span class="ui">Go to ▾</span> — everything that answers "which page?" together — then <span class="ui">▤ Mushaf</span> ⇄ <span class="ui">☰ Text</span> · <span class="ui">Display ▾</span> · full screen · <span class="ui">🛠 Tools</span>.</td></tr>
 <tr><td><span class="ui">Go to ▾</span></td><td>Jump to any sūrah or juz. It sits <b>beside the page number</b>, because the arrows, the page box, the sūrah and the juz all answer the same question — which page am I on. On a phone these two appear inside <span class="ui">Display ▾</span> instead, where there is room for them.</td></tr>
 <tr><td><span class="ui">Display ▾ → ⤢ Focus</span></td><td><b>Gives the page the whole window.</b> The Tools rail and the tab bar go, the page's width limit is lifted and it is allowed to grow taller. The toolbar stays, so you can still turn pages, jump sūrah and reopen Tools — and while Focus is on, a <span class="ui">⤢ Focus on</span> button sits in the toolbar to leave again, as do <kbd>Esc</kbd> and <kbd>Shift</kbd>+<kbd>F</kbd>. <b>It is remembered between sessions.</b> It makes the greatest difference in <span class="ui">Spread</span>, where two pages compete for width: on a 1280-wide window the pages grow from about 410 px tall to about 770 px. On a phone there is nothing to hide, so it is not offered there. For reading with nothing on screen at all, use full screen.</td></tr>
 <tr><td><span class="ui">Display ▾</span></td><td>What applies to the view you are in. On the Mushaf: <span class="ui">Single</span> / <span class="ui">Spread</span> and zoom. In Text view: what is shown under each ayah (Arabic, word meanings, translation, tajwīd colours, tafsīr), which translations — <b>named, so you can see whose words you are reading without opening anything</b> — the word-meaning language, and the text size.</td></tr>
@@ -901,7 +901,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 
 <h3 id="teacher-message">The weekly message<a class="permalink" href="#teacher-message">#</a></h3>
 <p><span class="ui">Week → Share with my teacher</span> writes a ready-made summary of the week: what you memorised, what you revised and how it was rated, and what is planned next. Press <span class="ui">Copy</span> and paste it into WhatsApp or any other app.</p>
-<p>Three languages are available — <b>English</b>, <b>বাংলা</b> and <b>العربية</b> — chosen in <span class="ui">Settings → Sharing</span>, where you can also set your name, your teacher's name, and edit the message template itself. The template uses placeholders such as the week number, the pages and the totals, which are filled in when the message is generated.</p>
+<p>Three languages are available — <b>English</b>, <b>বাংলা</b> and <b>العربية</b> — chosen in <span class="ui">Settings → Sharing</span>, — reachable in one step from the <span class="ui">Edit the share template</span> button under the message itself — where you can also set your name, your teacher's name, and edit the message template itself. The template uses placeholders such as the week number, the pages and the totals, which are filled in when the message is generated.</p>
 <div class="note"><b>Note</b> The app never sends anything. It writes the text and puts it on your clipboard; you choose where it goes and when.</div>
 
 <h3 id="teacher-feedback">Recording your teacher's feedback<a class="permalink" href="#teacher-feedback">#</a></h3>
@@ -1016,7 +1016,14 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 
 <h3 id="sync">10.5 Cloud sync between devices<a class="permalink" href="#sync">#</a></h3>
 <p>Sync is optional. Nothing goes to the author or to any service belonging to this app: your data is written to a file in <b>your own</b> Google Drive, through a small script you install once in your own Google account. <span class="ui">Settings → Data → Cloud sync</span> explains the three-minute setup, and the download package contains the script (<code>Code.gs</code>) with instructions.</p>
-<p>Once it is on, the app loads the newest data when it opens and saves a few seconds after every change.</p>
+<p>Once it is on, the app loads the newest data when it opens and saves after <b>every</b> change, without your doing anything.</p>
+<div class="note"><b>When each save happens</b>
+<ul>
+<li><b>On this device, instantly.</b> Every change is written to the device the moment you make it. This never depends on sync being on, or on there being any internet.</li>
+<li><b>To your Drive, a few seconds later.</b> Changes are gathered for about three seconds before being sent, so a run of taps becomes one save rather than ten.</li>
+<li><b>And at once when you leave.</b> Closing the tab, switching to another app or locking the phone sends whatever is still waiting, instead of leaving it until the next time you open the app. Coming back, the app checks the cloud again, in case another device wrote while you were away.</li>
+</ul>
+Nothing is sent while a conflict is waiting for your decision, or while a save is already in flight — those rules are unchanged.</div>
 <p><b>What the script keeps in your Drive folder</b>, besides the live <code>state.json</code>:</p>
 <ul>
 <li><b>A daily baseline</b>, <code>state-YYYY-MM-DD.json</code>, holding the state as it was at the <i>first</i> save of that day — written only if that day's file does not already exist, so later saves can never overwrite the copy the backup exists to preserve. The newest 30 are kept.</li>
@@ -1263,7 +1270,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 <!-- ==================== ABOUT ==================== -->
 <section id="about-this-guide">
 <h2>14. About this guide<a class="permalink" href="#about-this-guide">#</a></h2>
-<p><b>App version inspected:</b> Hifz Companion <b>1.21.3</b>.<br>
+<p><b>App version inspected:</b> Hifz Companion <b>1.21.4</b>.<br>
 <b>Inspection date:</b> 11 September 2026.<br>
 <b>The app:</b> <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a><br>
 <b>This guide:</b> <span class="url">https://mazhar17.github.io/hc/Hifz-Companion-User-Guide.html</span> — once it has been published there. If you are reading a local copy, that address may not be live yet.</p>
@@ -1291,7 +1298,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 </section>
 
 <footer class="pagefoot">
-<p><b>Hifz Companion — User Guide</b> · written for version 1.21.3 · 11 September 2026.</p>
+<p><b>Hifz Companion — User Guide</b> · written for version 1.21.4 · 11 September 2026.</p>
 <p>The app: <a href="https://mazhar17.github.io/hc/">https://mazhar17.github.io/hc/</a> · Comments and suggestions: <a href="mailto:mazhar1970@gmail.com">mazhar1970@gmail.com</a></p>
 <p>This guide describes Hifz Companion, which is licensed under CC BY-NC-ND 4.0. The Qur'ānic text is the Word of Allah and must never be altered.</p>
 </footer>
