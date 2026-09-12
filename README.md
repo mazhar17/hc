@@ -1,4 +1,4 @@
-# Hifz Companion — hosted HD edition (v1.21.0)
+# Hifz Companion — hosted HD edition (v1.21.3)
 
 This folder is the **web-hosted edition** of Hifz Companion, split into small files so it can be
 published on GitHub Pages (or any static host) — every file is well under GitHub's 25 MB upload limit.
@@ -11,7 +11,7 @@ sw.js                 the service worker that makes offline use possible (Settin
 Code.gs               the optional cloud-sync script for Google Apps Script (see below)
 Hifz-Companion-User-Guide.html   the complete User Guide — one self-contained file, must sit
                       beside index.html (the app links to ./Hifz-Companion-User-Guide.html)
-Hifz-Companion-Tutorial.pdf      the illustrated 21-page tutorial — must sit beside index.html
+Hifz-Companion-Tutorial.pdf      the illustrated 22-page tutorial — must sit beside index.html
                       under exactly this name (the app links to ./Hifz-Companion-Tutorial.pdf)
 ```
 
@@ -61,6 +61,13 @@ displayed and copied for sharing is absolute.
 
 If you ever must rename it, keep the old name in place as well, or shared links will break.
 
+**Revision of 11 September 2026 (v1.21.1).** The tutorial was rebuilt for the redesigned Study tab:
+slide 8 describes the one-row toolbar and the Display menu, a **new slide 9** introduces 🛠 Tools and
+its three sections, and the curtain, gap-fill, translations, stumble-mark, recording and video slides
+now say where each lives. Every screenshot was retaken from the v1.21.0 build. **22 pages, 2.3 MB** —
+the page count and size changed, so the metadata line in the app, this README and the Guide were all
+updated to match.
+
 **Revision of 11 September 2026 (v1.20.19).** The tutorial was brought up to date with the app as it
 is in v1.20.18: five translations (Muhiuddin Khan withdrawn), tajwīd colours working alongside the
 word meanings and gap-fill, the ‹ › edge arrows and the ✕ that leaves full screen, the curtain being a
@@ -68,7 +75,7 @@ Mushaf-page tool only, and the *Import weekly lesson* button on the Week tab. Ev
 retaken from the current build. Same name, same 21 pages, same size — only the revision date changed.
 
 ### Where the tutorial metadata is maintained
-The visible "PDF · 21 pages · 2.1 MB · revised 11 September 2026" line lives in **one** place in the
+The visible "PDF · 22 pages · 2.3 MB · revised 11 September 2026" line lives in **one** place in the
 source: `src/index.html`, in the Help card's `<p class="tut-meta">`. The same figures appear in the HTML
 User Guide's introduction (`Hifz-Companion-User-Guide.html`, the "Prefer a printable tutorial" box) and
 in this README. The sharing title, description and absolute URL used by *Copy tutorial link* and
@@ -192,6 +199,53 @@ page, and Text view, meanings and tafsīr stay out of reach during a revision te
 focus, Escape and outside-tap behaviour, the ✗ on the selected chip only — plus the budget above
 measured at 360, 390, 768 and 1280 px. Suites that drive controls which have moved use the shared
 helper in `study_ui.mjs`, which reveals whatever encloses a control before operating it.
+
+## Saving, sharing and the theme (v1.21.3)
+**Saving was already automatic; what was missing was the last few seconds.** Every change writes to
+the device immediately through `Store.save()`, and that same call schedules a cloud push — 3 s after
+an ordinary change, 8 s after a quiet one (presentation preferences; it was 20 s). Cloud sync runs
+automatically whenever it is switched on in *Settings → Data*. The gap was that a push still inside
+its debounce was lost when the tab closed or the phone was locked, and waited until the next launch.
+`Sync.flush()` now sends what is owed on `pagehide` and when the page becomes hidden, and a `pull()`
+runs when it becomes visible again, in case another device wrote meanwhile. **The flush changes no
+invariant**: it does nothing while sync is off, while a conflict stands, while a push is in flight,
+or when nothing is owed — it only skips the remaining wait.
+
+**Settings → Sharing was hard to find from where it matters.** It is not a duplicate of *Week →
+Share with my teacher*: that tab produces the message, this one holds the names and the editable
+template with its placeholders. Week now carries an **Edit the share template** button that opens
+Settings on the Sharing pane.
+
+**The theme toggle was unreachable on a phone.** The ◐ button lives in `.sidenav-foot`, which is only
+shown from 900 px up, so on a phone — where the side bar becomes the bottom tab bar — it was never
+on screen, while the User Guide said it was. The mobile header now carries the same control, wired to
+the same `cycleTheme()`, and the Guide says where each one is. `test83.mjs` covers all three.
+
+## Focus, and the space the rail was wasting (v1.21.2)
+**Go to ▾ moved beside the page number.** The ‹ › arrows, the page box, the sūrah and the juz all
+answer "which page am I on", so they now sit together; the view switch no longer splits them.
+
+**Closing Tools now frees its space.** The Study layout declares `minmax(0, 1fr) 330px`, so hiding
+the rail left the 330 px track behind as dead margin — the reading column measured the same 704 px
+open or closed at 1280 px wide. The track is removed with the rail (`.study-layout.no-rail`), and in
+Spread that alone takes the pages from 412 px to 650 px tall.
+
+**⤢ Focus** (Display ▾ → Reading, `Shift`+`F`) does four things at once: drops the rail and its
+track, hides the tab bar, lifts `main`'s 1400 px width cap and raises the viewer's height cap from
+84 vh to 92 vh. The toolbar stays — so pages still turn — and while Focus is on a `⤢ Focus on`
+button sits in the toolbar to leave, as do `Esc` and `Shift`+`F`. Measured at 1280×860, page 526:
+
+| | reading column | a spread |
+|---|---|---|
+| Tools open | 704 px | 412 px tall |
+| Tools closed | 1046 px | 650 px tall |
+| Focus | 1250 px | 772 px tall |
+
+A single page at *Fit page* is limited by height rather than width, so it gains from the taller
+viewer (703 → 772 px) rather than from the width. **Focus is remembered between sessions**, per
+device, in `settings.studyFocus`. It is a Study-tab mode: every other tab gets its tab bar back, and
+below 1000 px it is neither offered nor applied — there is nothing beside the page to hide there, and
+the tab bar is the only way between tabs. `test82.mjs` covers all of it.
 
 ## Full screen: the page and nothing else (v1.20.20)
 In full screen the toolbar is gone for as long as full screen lasts. Nothing brings it back — not

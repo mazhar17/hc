@@ -48,12 +48,13 @@
 
 var FOLDER_NAME = 'Hifz Companion';
 var STATE_FILE = 'state.json';
-var KEEP_BACKUPS = 30;
+var KEEP_BACKUPS = 30;      // daily baselines kept (one per day, the state at that day's first save)
+var KEEP_DISPLACED = 20;    // copies kept of states displaced by a deliberate "replace the cloud"
 
 function doGet(e) {
   try {
     var p = (e && e.parameter) || {};
-    if (p.action === 'ping') return respond({ ok: true, time: new Date().toISOString(), version: 2, revisions: true });
+    if (p.action === 'ping') return respond({ ok: true, time: new Date().toISOString(), version: 3, revisions: true, opIds: true });
     requireKey(p.key);
     if (p.action === 'load') return respond(loadState());
     return respond({ error: 'unknown action' });
@@ -64,7 +65,7 @@ function doPost(e) {
   try {
     var body = JSON.parse((e && e.postData && e.postData.contents) || '{}');
     requireKey(body.key);
-    if (body.action === 'save') return respond(saveState(body.state, body.savedAt, body.device, body.baseRev));
+    if (body.action === 'save') return respond(saveState(body.state, body.savedAt, body.device, body.baseRev, body.opId, body.replaceRev));
     if (body.action === 'load') return respond(loadState());
     return respond({ error: 'unknown action' });
   } catch (err) { return respond({ error: String(err) }); }
@@ -96,9 +97,11 @@ function revOf(doc) { return doc && typeof doc.rev === 'number' && doc.rev >= 0 
 
 function loadState() {
   var f = stateFile();
-  if (!f) return { state: null, savedAt: null, rev: 0 };
+  if (!f) return { state: null, savedAt: null, rev: 0, opId: null };
   var doc = JSON.parse(f.getBlob().getDataAsString('UTF-8'));
-  return { state: doc.state, savedAt: doc.savedAt, device: doc.device || '', updated: f.getLastUpdated().toISOString(), rev: revOf(doc) };
+  // opId identifies the last accepted write. A client whose connection dropped can ask
+  // "did MY operation land?" and get a definite answer — a timestamp cannot prove that.
+  return { state: doc.state, savedAt: doc.savedAt, device: doc.device || '', updated: f.getLastUpdated().toISOString(), rev: revOf(doc), opId: doc.opId || null };
 }
 
 /**
@@ -106,10 +109,11 @@ function loadState() {
  * script lock that must still be the current revision, or nothing is written.
  * Timestamps are kept for display only — they never decide who may write.
  */
-function saveState(state, savedAt, device, baseRev) {
+function saveState(state, savedAt, device, baseRev, opId, replaceRev) {
   if (!state || typeof state !== 'object') throw new Error('No state given.');
   var lock = LockService.getScriptLock(); lock.waitLock(10000);
   try {
+    // EVERYTHING that decides whether to write happens inside this lock.
     var existing = stateFile();
     var cur = existing ? JSON.parse(existing.getBlob().getDataAsString('UTF-8')) : null;
     var curRev = revOf(cur);
@@ -119,26 +123,69 @@ function saveState(state, savedAt, device, baseRev) {
       return { ok: false, upgrade: true, rev: curRev, savedAt: cur ? cur.savedAt : null, device: cur ? (cur.device || '') : '',
                error: 'This device is running an older version of Hifz Companion that cannot save safely. Open the app on this device to update it, then try again — nothing was changed in the cloud.' };
     }
-    if (Number(baseRev) !== curRev) {
+
+    // Idempotency: a dropped connection can make the browser resend the same POST.
+    // If the stored document was written by THIS operation, the write already happened;
+    // answer success instead of a spurious conflict, and write nothing twice.
+    if (opId && cur && cur.opId && String(cur.opId) === String(opId)) {
+      return { ok: true, rev: curRev, savedAt: cur.savedAt, bytes: 0, duplicate: true };
+    }
+
+    var forced = (replaceRev !== undefined && replaceRev !== null && Number(replaceRev) === curRev);
+    if (Number(baseRev) !== curRev && !forced) {
       return { ok: false, conflict: true, rev: curRev, savedAt: cur ? cur.savedAt : null, device: cur ? (cur.device || '') : '', baseRev: Number(baseRev) };
     }
 
+    // Preserve what we are about to displace BEFORE overwriting it. A deliberate
+    // replacement keeps its own named snapshot so the displaced copy is recoverable.
+    var displaced = null, backupError = null;
+    try { if (cur && forced) displaced = snapshotDisplaced(cur, curRev); } catch (e1) { backupError = String(e1); }
+    try { if (cur) dailyBaseline(cur); } catch (e2) { if (!backupError) backupError = String(e2); }
+
     var newRev = curRev + 1;
-    var doc = JSON.stringify({ app: 'hifz-companion', rev: newRev, savedAt: savedAt || new Date().toISOString(), device: device || '', state: state });
+    var doc = JSON.stringify({ app: 'hifz-companion', rev: newRev, opId: opId || null,
+                               savedAt: savedAt || new Date().toISOString(), device: device || '', state: state });
     if (existing) existing.setContent(doc); else folder().createFile(STATE_FILE, doc, 'application/json');
-    dailyBackup(doc);
-    return { ok: true, rev: newRev, savedAt: savedAt, bytes: doc.length };
+
+    // The main save has succeeded by this point. Housekeeping below must never turn a
+    // successful save into a reported failure, because the client would retry it.
+    try { pruneBackups(); } catch (e3) { if (!backupError) backupError = String(e3); }
+    return { ok: true, rev: newRev, savedAt: savedAt, bytes: doc.length, displaced: displaced, backupError: backupError };
   } finally { lock.releaseLock(); }
 }
 
-function dailyBackup(doc) {
+/** A named copy of the state being deliberately displaced, so "replace the cloud" is recoverable. */
+function snapshotDisplaced(cur, curRev) {
+  var name = 'displaced-rev' + curRev + '-' + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd-HHmmss') + '.json';
+  folder().createFile(name, JSON.stringify(cur), 'application/json');
+  return name;
+}
+
+/**
+ * One backup per day holding the state as it was at the FIRST save of that day — the
+ * baseline you would want to go back to. Written only if that day's file does not exist,
+ * so later saves cannot overwrite the very copy the backup exists to preserve.
+ */
+function dailyBaseline(cur) {
   var day = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd');
   var name = 'state-' + day + '.json';
   var fo = folder(); var it = fo.getFilesByName(name);
-  if (it.hasNext()) it.next().setContent(doc); else fo.createFile(name, doc, 'application/json');
-  // prune old backups
-  var files = []; var all = fo.getFiles();
-  while (all.hasNext()) { var f = all.next(); if (/^state-\d{4}-\d{2}-\d{2}\.json$/.test(f.getName())) files.push(f); }
-  files.sort(function (a, b) { return a.getName() < b.getName() ? 1 : -1; });
-  for (var i = KEEP_BACKUPS; i < files.length; i++) files[i].setTrashed(true);
+  if (it.hasNext()) return;                     // today's baseline is already kept — do not replace it
+  fo.createFile(name, JSON.stringify(cur), 'application/json');
+}
+
+/** Retention: the newest KEEP_BACKUPS daily baselines, and the newest KEEP_DISPLACED displaced copies. */
+function pruneBackups() {
+  var fo = folder();
+  var daily = [], displaced = [];
+  var all = fo.getFiles();
+  while (all.hasNext()) {
+    var f = all.next(), nm = f.getName();
+    if (/^state-\d{4}-\d{2}-\d{2}\.json$/.test(nm)) daily.push(f);
+    else if (/^displaced-rev\d+-/.test(nm)) displaced.push(f);
+  }
+  var byNameDesc = function (a, b) { return a.getName() < b.getName() ? 1 : -1; };
+  daily.sort(byNameDesc); displaced.sort(byNameDesc);
+  for (var i = KEEP_BACKUPS; i < daily.length; i++) daily[i].setTrashed(true);
+  for (var j = KEEP_DISPLACED; j < displaced.length; j++) displaced[j].setTrashed(true);
 }
