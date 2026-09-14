@@ -1,4 +1,4 @@
-# Hifz Companion — hosted HD edition (v1.23.0)
+# Hifz Companion — hosted HD edition (v1.22.4)
 
 This folder is the **web-hosted edition** of Hifz Companion, split into small files so it can be
 published on GitHub Pages (or any static host) — every file is well under GitHub's 25 MB upload limit.
@@ -252,91 +252,6 @@ viewer (703 → 772 px) rather than from the width. **Focus is remembered betwee
 device, in `settings.studyFocus`. It is a Study-tab mode: every other tab gets its tab bar back, and
 below 1000 px it is neither offered nor applied — there is nothing beside the page to hide there, and
 the tab bar is the only way between tabs. `test82.mjs` covers all of it.
-
-## Import Feedback — reading a teacher's Hifz Mentor report (v1.23.0)
-
-**Progress → Import Feedback** (Bengali: **ফিডব্যাক আমদানি**). The student copies the teacher's
-whole WhatsApp message from Hifz Mentor, pastes it into a dialog, checks the preview, and presses
-Import. No API, no sign-in, no file upload, no clipboard reading.
-
-### How the message is read
-
-Hifz Mentor ends its message with one versioned block:
-
-```
-[HIFZ_MENTOR_FEEDBACK_V1]
-{ …one line of JSON… }
-[/HIFZ_MENTOR_FEEDBACK_V1]
-```
-
-`src/feedback.js` is a pure module — no DOM, no storage, no network — so every rule can be
-exercised directly. It extracts **exactly one** block, ignoring the surrounding prose and
-tolerating CRLF and whitespace around the JSON. Nothing is ever guessed from the prose: no block
-means no import. It refuses a missing, truncated, empty, duplicated, malformed or
-unsupported-version block, each with a plain-language reason.
-
-**This is not a backup.** It carries one lesson's corrections and never reaches the full-state
-importer that replaces everything.
-
-### Treating the message as untrusted text
-
-* Parsed with `JSON.parse`, never `eval`.
-* Keys that could reach `Object.prototype` (`__proto__`, `constructor`, `prototype`) are refused
-  anywhere in the tree; a test asserts `({}).polluted` stays undefined afterwards.
-* Input bounded to 1 MB, marks to 500, and every string to the contract's limit.
-* Everything imported is rendered as **text**. A note containing `<img src=x onerror=…>` shows
-  those characters literally: the browser test asserts no element was created and no script ran.
-* The report is rebuilt from validated fields only, so nothing unexpected reaches storage.
-
-### Validation
-
-Top level: `format`, `version`, `lessonId` (≤100), `studentName` (≤300), `teacher` (≤100), a real
-`YYYY-MM-DD` date, integer `from`/`to` in 1–604 with `to >= from`, and `marks` (≤500, may be
-empty — an empty report is a valid "no mistakes" result).
-
-Each mark: id, a page inside `from..to`, `x`/`y` in [0,1], one of the six categories, bounded
-reference and note, boolean `selfCorrected`/`resolved`, and a location of point / reference /
-text / area (absent = legacy point). **Text** marks add `verseKey`, `selectedText` and inclusive
-`wordStart`/`wordEnd`; the sūrah and āyah are checked against the app's own Qur'ān data, and a
-verse that sits on a different page is rejected with both page numbers named. **Area** marks add
-positive `width`/`height` with `x+width <= 1.001` and `y+height <= 1.001`.
-
-### Stored separately
-
-A new `teacherFeedback` collection sits beside the existing ones in the defaults, the validation
-model and the backup/export path. Importing does **not** touch pages, ratings, memorisation
-progress, weekly plans or the learner's own ✗ mistake log — the browser test compares eight
-collections before and after an import. The learner's own reading of a correction (*Reviewed* /
-*Needs practice*) is a separate `review` map keyed by mark id, so it never edits what the teacher
-wrote.
-
-Duplicates are handled by `lessonId`: an identical re-import is a no-op that says so; a changed
-report with the same id asks for explicit confirmation, replaces the old one, and **keeps the
-review status of every mark that is still present**. The whole report is validated before anything
-is written, and a storage failure rolls the change back and reports it.
-
-### Highlights, and the overlay we refuse to draw
-
-A teacher's text selection is highlighted in Text view **only** where the word list actually
-fetched confirms the range. If the two apps tokenise differently the range is dropped and the
-Arabic is shown as a quotation instead — a guessed highlight would point at the wrong words.
-
-Point and area marks are positions on Hifz Mentor's own uncropped page images. This app cannot
-know its Mushaf edition shares that coordinate system, so **no overlay is drawn**: the page
-reference is given with a line explaining why. A mark in the wrong place is worse than no mark.
-A `reference` mark carries no image position at all and gets no such note.
-
-### Tests
-
-* **test88** — 68 unit checks on the parser: the happy path in English, Bengali and Arabic; every
-  mark position including legacy; CRLF and whitespace; no block, truncated, empty, doubled,
-  malformed, wrong format, unsupported version, over 1 MB; prototype-reaching keys; every field
-  and mark rule; HTML-looking notes; and telling a re-paste from a revised report.
-* **test89** — 65 browser checks: the button in Progress, preview before storing, nothing stored
-  until confirmed, the eight untouched collections, duplicates and updates with review status
-  preserved, seven errors explained in the dialog with nothing stored, safe rendering, an empty
-  report, persistence across a reload, the Bengali interface, export round-trip, Open in Study,
-  and the refusal to draw or guess.
 
 ## The wheel change reaches existing users too (v1.22.4)
 

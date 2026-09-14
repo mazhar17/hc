@@ -474,7 +474,7 @@ If the PDF opens instead of downloading, use your browser’s download button. I
 <thead><tr><th>Control</th><th>What it does</th></tr></thead>
 <tbody>
 <tr><td><span class="ui">Single</span> / <span class="ui">Spread</span> <span class="muted">(in <span class="ui">Display ▾</span>)</span></td><td>One page, or a two-page spread as in the printed Mushaf. Text view is always one page at a time.</td></tr>
-<tr><td><span class="ui">Fit page</span> / <span class="ui">Fit width</span> / <span class="ui">− +</span> <span class="muted">(in <span class="ui">Display ▾</span>)</span></td><td>Zoom. On a computer Ctrl+wheel zooms and dragging pans; on a phone, pinch. Once the page is larger than the screen you can scroll or drag to every part of it — top, bottom and both edges — in full screen as well as in the normal view.</td></tr>
+<tr><td><span class="ui">Fit page</span> / <span class="ui">Fit width</span> / <span class="ui">− +</span> <span class="muted">(in <span class="ui">Display ▾</span>)</span></td><td>Zoom. On a computer the wheel scrolls the page and <b>Ctrl+wheel</b> zooms (dragging pans); on a phone, pinch. Once the page is larger than the screen you can scroll or drag to every part of it — top, bottom and both edges — in full screen as well as in the normal view.</td></tr>
 <tr><td>Full-screen button</td><td>Hides everything except the page. <kbd>F</kbd> does the same. <b>Nothing else appears at any time</b> — not when you move the mouse, touch the page or press a key. On a computer <kbd>Esc</kbd> or <kbd>F</kbd> leaves, and resting the pointer at the <b>top centre</b> of the screen fades in a faint ✕ to click instead. On a phone or tablet, which has no <kbd>Esc</kbd> key, a small translucent ✕ in the top corner is always there. Swipe to turn, pinch to zoom, drag or <kbd>↓</kbd> <kbd>↑</kbd> to move around a zoomed page.</td></tr>
 <tr><td>Theme</td><td>Light or dark, in <span class="ui">Settings → Mushaf</span>. The <b>◐</b> button cycles it directly — in the side bar on a computer, and in the header at the top of the screen on a phone. It steps through <i>follow the device → light → dark</i>.</td></tr>
 </tbody>
@@ -544,6 +544,10 @@ If the PDF opens instead of downloading, use your browser’s download button. I
 <ul><li>Taisirul Quran (Tawheed Publication)</li><li>Sheikh Mujibur Rahman (Darussalam)</li></ul></div>
 </div>
 <p>Every translation is shown as published. Nothing is generated, summarised or translated by the app itself.</p>
+<div class="note"><b>Teacher’s feedback — Import Feedback (from version 1.23.0)</b> If your teacher marks your lesson in <b>Hifz Mentor</b>, the message they send ends with a block this app can read. Go to <span class="ui">Progress → Import Feedback</span>, paste the <b>whole</b> message, check the student name, teacher and date shown in the preview — a message meant for someone else will be obvious there — and press <span class="ui">Import</span>.<br><br>
+<b>It is kept separately.</b> Imported corrections never change your pages, ratings, memorisation progress, weekly plans or your own ✗ mistake log, and they travel with your backups and cloud sync like everything else. Pasting the same message twice does nothing. A revised report for the same lesson asks before replacing the earlier one, and anything you have already marked <span class="ui">Reviewed</span> is kept.<br><br>
+<b>Opening a report</b> lists every correction with its type, page, āyah reference, your teacher’s note and the Arabic they selected. <span class="ui">Open in Study</span> goes to that page; where the word list confirms the teacher’s selection, those words are highlighted in Text view. A mark your teacher placed on their own page image is <i>not</i> drawn on the Mushaf here — the page reference is shown instead, because the two apps need not use the same page images and a mark in the wrong place would mislead you. You can mark each correction <span class="ui">Reviewed</span> or <span class="ui">Needs practice</span>; neither changes what your teacher wrote.</div>
+
 <div class="note"><b>Bengali interface (from version 1.22.0)</b> The <span class="ui">EN</span> / <span class="ui">BN</span> button at the top of every screen, beside the theme and help buttons, shows the language you are in — <b>EN</b> for English, <b>BN</b> for বাংলা (the standard two-letter codes) — and one tap switches. <span class="ui">Settings → 📖 Mushaf → Interface language</span> does the same thing and switches the whole interface between <b>English</b> (the default) and <b>বাংলা</b>: the tabs, buttons, labels, settings, the day plan, the messages the app shows you, and the day and month names in dates. Your choice is remembered and travels with your record through cloud sync.<br><br>
 <b>What is never translated:</b> the Qur’ān text and the Mushaf pages; your own notes, plan, weekly template and your teacher’s feedback; sūrah names, translator and publisher names, and links; and this Guide and the in-app <span class="ui">Help &amp; About</span> tab. A few technical corners of Settings are also still English. Nothing ever goes blank — an untranslated string stays in English.<br><br>
 <b>The Bengali is new.</b> It has not yet been checked by a native reviewer, so corrections are very welcome; a single file holds every string, so a fix is quick to apply.</div>
@@ -614,7 +618,9 @@ If the PDF opens instead of downloading, use your browser’s download button. I
 <tr><td><kbd>Page Up</kbd> <kbd>Page Down</kbd></td><td>Previous / next page</td></tr>
 <tr><td><kbd>Home</kbd> <kbd>End</kbd></td><td>First / last ayah of the page</td></tr>
 <tr><td><kbd>Alt</kbd>+<kbd>←</kbd> <kbd>→</kbd></td><td>Previous / next ayah in the tafsīr panel</td></tr>
+<tr><td>wheel</td><td>Scroll the Mushaf up and down</td></tr>
 <tr><td><kbd>Ctrl</kbd>+wheel, or pinch</td><td>Zoom</td></tr>
+<tr><td><kbd>Shift</kbd>+wheel</td><td>Move sideways on a page wider than the window</td></tr>
 </tbody>
 </table>
 <p>Shortcuts are ignored while you are typing in a field, while the Listen sheet is open, and while you are dragging the curtain handle.</p>
@@ -956,7 +962,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 <ul>
 <li><b>Theme</b> — light, dark or follow the system.</li>
 <li><b>Page source</b> — the built-in Mushaf, or your own Madinah Mushaf PDF loaded from this device.</li>
-<li><b>Layout</b> — single page or spread, and the mouse-wheel behaviour.</li>
+<li><b>Layout</b> — single page or spread, and the mouse-wheel behaviour: <span class="ui">Scrolls (hold Ctrl to zoom)</span> from version 1.22.3, or <span class="ui">Zooms (hold Shift to scroll)</span> if you prefer the older behaviour.</li>
 <li><b>Text view</b> — which translations appear, and the language of the word meanings.</li>
 <li><b>Mistake log</b> — switch the ✗ stumble marks off entirely if you would rather not use them. Existing marks are kept, just hidden.</li>
 <li><b>Meanings &amp; tafsīr</b> — download translations for offline use, see how much is cached, and delete the cache.</li>
