@@ -1,4 +1,4 @@
-# Hifz Companion — hosted HD edition (v1.22.1)
+# Hifz Companion — hosted HD edition (v1.22.0)
 
 This folder is the **web-hosted edition** of Hifz Companion, split into small files so it can be
 published on GitHub Pages (or any static host) — every file is well under GitHub's 25 MB upload limit.
@@ -252,21 +252,6 @@ viewer (703 → 772 px) rather than from the width. **Focus is remembered betwee
 device, in `settings.studyFocus`. It is a Study-tab mode: every other tab gets its tab bar back, and
 below 1000 px it is neither offered nor applied — there is nothing beside the page to hide there, and
 the tab bar is the only way between tabs. `test82.mjs` covers all of it.
-
-## The language is visible on every screen (v1.22.1)
-
-An **EN / BN** pill sits at the top of the screen beside ◐ and ? — in the sidebar on a computer,
-in the header bar on a phone. It shows the language you are in (the ISO 639-1 codes, `en` / `bn`,
-the same codes the app stores internally) and one tap switches. The tooltip names the language in
-full and says what a tap will do, in whichever language you are currently reading.
-
-The code itself is never translated — `data-notr` keeps the walker off it — because EN and BN are
-codes, not words, and a reader who cannot read the current language needs them to stay legible.
-
-**One regression, caught and fixed.** On a 360 px phone the header bar is `nowrap`, so the extra
-button squeezed the brand text and pushed the version tag onto a second line — 44 px to 52 px.
-The pill is now tighter below 400 px and the version tag is hidden in that bar (it is still on
-every Settings screen and in About). Measured back at **44 px in both languages**.
 
 ## A Bengali interface (v1.22.0)
 

@@ -1,0 +1,819 @@
+<!doctype html><meta charset="utf-8"><title>Hifz Companion — Bengali review sheet</title>
+<style>
+ body{font:15px/1.5 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;margin:0;padding:24px;background:#faf8f4;color:#23201b}
+ h1{font-family:Cambria,Georgia,serif;color:#1F6F5F;margin:0 0 4px} .sub{color:#5D564B;margin:0 0 20px}
+ .box{background:#EFF5F2;border:1px solid #E2D9C8;border-radius:10px;padding:14px 16px;margin:0 0 20px}
+ table{border-collapse:collapse;width:100%;background:#fff;border:1px solid #E2D9C8;border-radius:8px;overflow:hidden}
+ th{background:#1F6F5F;color:#fff;text-align:left;padding:8px 10px;font-size:13px;position:sticky;top:0}
+ td{padding:7px 10px;border-top:1px solid #efe9dc;vertical-align:top}
+ td:first-child{width:46%;color:#5D564B}
+ td.bn{font-family:'Noto Sans Bengali UI','Noto Sans Bengali','Nirmala UI','SolaimanLipi',sans-serif;line-height:1.6}
+ tr.kept td:last-child{color:#857C6D;font-style:italic}
+ input{width:100%;box-sizing:border-box;border:1px solid #E2D9C8;border-radius:5px;padding:5px 7px;font:inherit}
+ .n{color:#B8860B;font-weight:700}
+</style>
+<h1>Bengali review sheet</h1>
+<p class="sub">Hifz Companion — interface strings. English on the left, the current Bengali on the right.</p>
+<div class="box"><b>How to use this.</b> Read the Bengali against the English and correct anything that is wrong,
+awkward, or the wrong register for a ḥifẓ app. The right-hand cells are editable — type over them, then send the
+file back, or simply list the ones to change. Every correction goes into one file
+(<code>src/strings-bn.json</code>); no code has to be touched.<br><br>
+<b>Please keep unchanged:</b> anything inside <span class="n">{curly braces}</span> — those are placeholders the app
+fills in with numbers, dates and names. Leave symbols, arrows and emoji (▶ ⬇ ✓ ✗ ⤢ ▤) as they are. Proper nouns,
+sūrah names, URLs and source names are deliberately still in English.</div>
+
+
+<p><b>791</b> strings · <b>787</b> translated · <b>4</b> deliberately left as-is (proper nouns, URLs, symbols).</p>
+<table><tr><th>English</th><th>বাংলা — correct here</th></tr>
+<tr><td> — flagged weak</td><td class="bn"><input value=" — দুর্বল হিসেবে চিহ্নিত"></td></tr>
+<tr><td> — no pages in long-term rotation yet</td><td class="bn"><input value=" — এখনো দীর্ঘমেয়াদি আবর্তনে কোনো পৃষ্ঠা নেই"></td></tr>
+<tr><td>(640 pages; Mushaf page = PDF page − 3); it is stored in this browser only. Any Madinah Mushaf PDF with the same page order works — check that page 604 shows Al-Ikhlāṣ, Al-Falaq and An-Nās.</td><td class="bn"><input value="(৬৪০ পৃষ্ঠা; মুসহাফ পৃষ্ঠা = PDF পৃষ্ঠা − ৩); এটি কেবল এই ব্রাউজারেই থাকে। একই পৃষ্ঠাক্রমের যেকোনো মদীনা মুসহাফ PDF চলবে — মিলিয়ে নিন ৬০৪ পৃষ্ঠায় সূরা ইখলাস, ফালাক ও নাস আছে কি না।"></td></tr>
+<tr><td>(opens in a new tab)</td><td class="bn"><input value="(নতুন ট্যাবে খোলে)"></td></tr>
+<tr><td>) or</td><td class="bn"><input value=") বা"></td></tr>
+<tr><td>) you can load it now or later from Settings for full-colour, high-resolution pages — it stays in this browser and is never uploaded.</td><td class="bn"><input value=") থাকলে পূর্ণ রঙিন, উচ্চ রেজ়লিউশনের পৃষ্ঠার জন্য এখনই বা পরে সেটিংস থেকে লোড করতে পারেন — এটি এই ব্রাউজারেই থাকে, কখনো আপলোড হয় না।"></td></tr>
+<tr><td>+ line</td><td class="bn"><input value="+ লাইন"></td></tr>
+<tr><td>+1 after ▸</td><td class="bn"><input value="+১ পরে ▸"></td></tr>
+<tr><td>+1 day</td><td class="bn"><input value="+১ দিন"></td></tr>
+<tr><td>, ayah by ayah (EveryAyah / Islamic Network CDN). With it on, “Play page” goes ayah by ayah, each one recited by the qari and then read in English; the player shows “· English” while the reading plays. No Bengali recording of this kind is published anywhere we can cite, so none is offered.</td><td class="bn"><input value=", আয়াতভিত্তিক (EveryAyah / Islamic Network CDN)। এটি চালু থাকলে “পৃষ্ঠা শুনুন” আয়াতভিত্তিকভাবে চলে — প্রতিটি আয়াত কারী তিলাওয়াত করেন, তারপর ইংরেজিতে পড়া হয়; পড়ার সময় প্লেয়ারে “· English” দেখায়। এ ধরনের কোনো বাংলা রেকর্ডিং উল্লেখযোগ্য কোথাও প্রকাশিত নেই, তাই কোনোটি দেওয়া হয়নি।"></td></tr>
+<tr><td>, read by</td><td class="bn"><input value=", পাঠ করেছেন"></td></tr>
+<tr><td>25 minutes on page {p} — a short break, then recite it once from memory</td><td class="bn"><input value="পৃষ্ঠা {p}-এ ২৫ মিনিট — একটু বিরতি নিন, তারপর একবার স্মৃতি থেকে তিলাওয়াত করুন"></td></tr>
+<tr><td>604 tiles, one per page. Filled = memorized · outlined = weak · ring = this week’s sabaq · red dot = recent stumbles. Tap a tile to open that page in Study.</td><td class="bn"><input value="৬০৪টি ঘর, প্রতি পৃষ্ঠার জন্য একটি। ভরাট = মুখস্থ · রেখাঙ্কিত = দুর্বল · বৃত্ত = এই সপ্তাহের সবক · লাল বিন্দু = সাম্প্রতিক আটকে যাওয়া। কোনো ঘরে চাপলে সেই পৃষ্ঠা অধ্যয়নে খোলে।"></td></tr>
+<tr><td>; a folder beside this file (</td><td class="bn"><input value="; এই ফাইলের পাশের একটি ফোল্ডার ("></td></tr>
+<tr><td>; only “Remove kept pages” below deletes them.</td><td class="bn"><input value="; কেবল নিচের “রাখা পৃষ্ঠা সরান” সেগুলো মোছে।"></td></tr>
+<tr><td>; the gap-fill drill is in</td><td class="bn"><input value="; শূন্যস্থান পূরণ অনুশীলন আছে"></td></tr>
+<tr><td>A folder on this computer</td><td class="bn"><input value="এই কম্পিউটারের একটি ফোল্ডারে"></td></tr>
+<tr><td>A quarter of a page</td><td class="bn"><input value="এক-চতুর্থাংশ পৃষ্ঠা"></td></tr>
+<tr><td>A third of a page</td><td class="bn"><input value="এক-তৃতীয়াংশ পৃষ্ঠা"></td></tr>
+<tr><td>A whole page</td><td class="bn"><input value="পুরো এক পৃষ্ঠা"></td></tr>
+<tr><td>A/B loop</td><td class="bn"><input value="A/B লুপ"></td></tr>
+<tr><td>About</td><td class="bn"><input value="পরিচিতি"></td></tr>
+<tr><td>Add</td><td class="bn"><input value="যোগ করুন"></td></tr>
+<tr><td>Add a note to the selected ayah (tap a chip first) or to the page</td><td class="bn"><input value="নির্বাচিত আয়াতে (আগে একটি চিপে চাপুন) বা পৃষ্ঠায় নোট যোগ করুন"></td></tr>
+<tr><td>Add one ayah after the selection (the next page)</td><td class="bn"><input value="নির্বাচনের পরের একটি আয়াত যোগ করুন (পরের পৃষ্ঠা)"></td></tr>
+<tr><td>Add one ayah from before the selection (the previous page)</td><td class="bn"><input value="নির্বাচনের আগের একটি আয়াত যোগ করুন (আগের পৃষ্ঠা)"></td></tr>
+<tr><td>Add page(s)</td><td class="bn"><input value="পৃষ্ঠা যোগ করুন"></td></tr>
+<tr><td>Add pages in Week</td><td class="bn"><input value="সপ্তাহে পৃষ্ঠা যোগ করুন"></td></tr>
+<tr><td>Add to the week’s plan (keeps what is there)</td><td class="bn"><input value="সপ্তাহের পরিকল্পনায় যোগ করুন (যা আছে তা রেখে)"></td></tr>
+<tr><td>Adjust where the parts split</td><td class="bn"><input value="অংশগুলো কোথায় ভাগ হবে ঠিক করুন"></td></tr>
+<tr><td>Advanced</td><td class="bn"><input value="উন্নত"></td></tr>
+<tr><td>ahead</td><td class="bn"><input value="সামনের"></td></tr>
+<tr><td>All pages memorised so far</td><td class="bn"><input value="এ পর্যন্ত মুখস্থ সব পৃষ্ঠা"></td></tr>
+<tr><td>All settings explained</td><td class="bn"><input value="সব সেটিংসের ব্যাখ্যা"></td></tr>
+<tr><td>all words</td><td class="bn"><input value="সব শব্দ"></td></tr>
+<tr><td>all {n} pages</td><td class="bn"><input value="সব {n}টি পৃষ্ঠা"></td></tr>
+<tr><td>Allow access</td><td class="bn"><input value="অনুমতি দিন"></td></tr>
+<tr><td>also works.</td><td class="bn"><input value="তাও কাজ করে।"></td></tr>
+<tr><td>and</td><td class="bn"><input value="এবং"></td></tr>
+<tr><td>Apply</td><td class="bn"><input value="প্রয়োগ করুন"></td></tr>
+<tr><td>Apr</td><td class="bn"><input value="এপ্রি"></td></tr>
+<tr><td>Arabic, then English — each ayah</td><td class="bn"><input value="আরবি, তারপর ইংরেজি — প্রতি আয়াতে"></td></tr>
+<tr><td>as the qari and fill in the URLs: files must be named</td><td class="bn"><input value="কারী হিসেবে, আর URL গুলো পূরণ করুন: ফাইলের নাম হতে হবে"></td></tr>
+<tr><td>Audio</td><td class="bn"><input value="শ্রবণ"></td></tr>
+<tr><td>audio</td><td class="bn"><input value="শ্রবণ"></td></tr>
+<tr><td>Audio and the tracker still work.</td><td class="bn"><input value="শ্রবণ ও হিসাব-রক্ষা তবুও কাজ করবে।"></td></tr>
+<tr><td>Audio downloaded for {a} of {b} pages</td><td class="bn"><input value="{b}টি পৃষ্ঠার মধ্যে {a}টির শ্রবণ নামানো হয়েছে"></td></tr>
+<tr><td>Audio Manager</td><td class="bn"><input value="শ্রবণ ব্যবস্থাপক"></td></tr>
+<tr><td>Audio player</td><td class="bn"><input value="শ্রবণ প্লেয়ার"></td></tr>
+<tr><td>Audio settings ▾</td><td class="bn"><input value="শ্রবণ সেটিংস ▾"></td></tr>
+<tr><td>Aug</td><td class="bn"><input value="আগ"></td></tr>
+<tr><td>auto</td><td class="bn"><input value="স্বয়ংক্রিয়"></td></tr>
+<tr><td>Automatic (spread on wide screens)</td><td class="bn"><input value="স্বয়ংক্রিয় (চওড়া পর্দায় দ্বিপৃষ্ঠা)"></td></tr>
+<tr><td>average rating</td><td class="bn"><input value="গড় মূল্যায়ন"></td></tr>
+<tr><td>Avg rating</td><td class="bn"><input value="গড় মূল্যায়ন"></td></tr>
+<tr><td>ayāt memorized</td><td class="bn"><input value="আয়াত মুখস্থ"></td></tr>
+<tr><td>Ayāt on this page</td><td class="bn"><input value="এই পৃষ্ঠার আয়াতসমূহ"></td></tr>
+<tr><td>Ayāt on this page — tap one to play it, tap two to select a range ·</td><td class="bn"><input value="এই পৃষ্ঠার আয়াতসমূহ — একটিতে চাপলে সেটি বাজে, দুটিতে চাপলে পরিসর নির্বাচিত হয় ·"></td></tr>
+<tr><td>ayāt you marked ✗ in Study · most stumbles first</td><td class="bn"><input value="অধ্যয়নে আপনি ✗ দিয়ে চিহ্নিত আয়াত · সবচেয়ে বেশি আটকে যাওয়াগুলো আগে"></td></tr>
+<tr><td>Back to the printed Mushaf page</td><td class="bn"><input value="মুদ্রিত মুসহাফ পৃষ্ঠায় ফিরুন"></td></tr>
+<tr><td>Backups, offline use, and sync</td><td class="bn"><input value="ব্যাকআপ, ইন্টারনেট ছাড়া ব্যবহার ও সিংক"></td></tr>
+<tr><td>Backwards</td><td class="bn"><input value="পেছনে"></td></tr>
+<tr><td>backwards</td><td class="bn"><input value="পেছনে"></td></tr>
+<tr><td>Backwards (N → N−1)</td><td class="bn"><input value="পেছনে (N → N−১)"></td></tr>
+<tr><td>Bengali voice</td><td class="bn"><input value="বাংলা কণ্ঠ"></td></tr>
+<tr><td>Best available</td><td class="bn"><input value="সর্বোত্তম প্রাপ্য"></td></tr>
+<tr><td>best streak (days)</td><td class="bn"><input value="সেরা ধারা (দিন)"></td></tr>
+<tr><td>Blank</td><td class="bn"><input value="কিছুই আসেনি"></td></tr>
+<tr><td>Both</td><td class="bn"><input value="উভয়"></td></tr>
+<tr><td>Both copies kept. Cloud sync stays paused until you choose — nothing will be uploaded.</td><td class="bn"><input value="দুটি অনুলিপিই রাখা হয়েছে। আপনি না বাছা পর্যন্ত ক্লাউড সিংক স্থগিত থাকবে — কিছুই আপলোড হবে না।"></td></tr>
+<tr><td>Cached meanings and tafsīr deleted</td><td class="bn"><input value="সংরক্ষিত অর্থ ও তাফসীর মুছে ফেলা হয়েছে"></td></tr>
+<tr><td>Calendar</td><td class="bn"><input value="পঞ্জিকা"></td></tr>
+<tr><td>Calibrate lines for this page</td><td class="bn"><input value="এই পৃষ্ঠার লাইন সমন্বয় করুন"></td></tr>
+<tr><td>Cancel</td><td class="bn"><input value="বাতিল"></td></tr>
+<tr><td>Change the range, qari or repeats</td><td class="bn"><input value="পরিসর, কারী বা পুনরাবৃত্তি বদলান"></td></tr>
+<tr><td>Change…</td><td class="bn"><input value="বদলান…"></td></tr>
+<tr><td>Choose a range, qari and repeats</td><td class="bn"><input value="পরিসর, কারী ও পুনরাবৃত্তি বাছুন"></td></tr>
+<tr><td>Choose a start page</td><td class="bn"><input value="একটি শুরুর পৃষ্ঠা বাছুন"></td></tr>
+<tr><td>Choose folder…</td><td class="bn"><input value="ফোল্ডার বাছুন…"></td></tr>
+<tr><td>Choose one in Week → Sabaq</td><td class="bn"><input value="সপ্তাহ → সবক-এ একটি বাছুন"></td></tr>
+<tr><td>Choose translations ▾</td><td class="bn"><input value="অনুবাদ বাছুন ▾"></td></tr>
+<tr><td>Close</td><td class="bn"><input value="বন্ধ করুন"></td></tr>
+<tr><td>Close (Esc)</td><td class="bn"><input value="বন্ধ করুন (Esc)"></td></tr>
+<tr><td>Close study tools</td><td class="bn"><input value="অধ্যয়ন সরঞ্জাম বন্ধ করুন"></td></tr>
+<tr><td>Cloud connection works</td><td class="bn"><input value="ক্লাউড সংযোগ কাজ করছে"></td></tr>
+<tr><td>Cloud sync</td><td class="bn"><input value="ক্লাউড সিংক"></td></tr>
+<tr><td>Cloud test failed: </td><td class="bn"><input value="ক্লাউড পরীক্ষা ব্যর্থ: "></td></tr>
+<tr><td>Collapse / expand</td><td class="bn"><input value="সংকুচিত / প্রসারিত"></td></tr>
+<tr><td>Collapse or expand the player</td><td class="bn"><input value="প্লেয়ার সংকুচিত বা প্রসারিত করুন"></td></tr>
+<tr><td>complete ✓</td><td class="bn"><input value="সম্পন্ন ✓"></td></tr>
+<tr><td>Consolidate — recite the page 3× flawlessly</td><td class="bn"><input value="দৃঢ় করুন — পৃষ্ঠাটি ৩ বার নির্ভুল তিলাওয়াত করুন"></td></tr>
+<tr><td>Continue with part {i} of {n} now</td><td class="bn"><input value="এখনই {n}-এর {i} নম্বর অংশ নিয়ে এগোন"></td></tr>
+<tr><td>Continue with the built-in Mushaf</td><td class="bn"><input value="অন্তর্নির্মিত মুসহাফ দিয়ে চালিয়ে যান"></td></tr>
+<tr><td>Continuing with part {i} of {n} this week</td><td class="bn"><input value="এই সপ্তাহে {n}-এর {i} নম্বর অংশ নিয়ে চলছে"></td></tr>
+<tr><td>Copied</td><td class="bn"><input value="কপি হয়েছে"></td></tr>
+<tr><td>Copied — paste into WhatsApp</td><td class="bn"><input value="কপি হয়েছে — হোয়াটসঅ্যাপে পেস্ট করুন"></td></tr>
+<tr><td>Copy</td><td class="bn"><input value="কপি"></td></tr>
+<tr class="kept"><td>Corpus ↗</td><td class="bn"><input value="Corpus ↗"></td></tr>
+<tr><td>Could not play the recording</td><td class="bn"><input value="রেকর্ডিং চালানো যায়নি"></td></tr>
+<tr><td>Could not store the PDF: </td><td class="bn"><input value="PDF সংরক্ষণ করা যায়নি: "></td></tr>
+<tr><td>Curtain drill</td><td class="bn"><input value="পর্দা অনুশীলন"></td></tr>
+<tr><td>Curtain drill (C)</td><td class="bn"><input value="পর্দা অনুশীলন (C)"></td></tr>
+<tr><td>curtain lines {a}–{b}</td><td class="bn"><input value="পর্দার লাইন {a}–{b}"></td></tr>
+<tr><td>Curtain, audio drills, meanings and notes</td><td class="bn"><input value="পর্দা, শ্রবণ-অনুশীলন, অর্থ ও নোট"></td></tr>
+<tr><td>Custom fallback base URL</td><td class="bn"><input value="নিজস্ব বিকল্প বেস URL"></td></tr>
+<tr><td>Custom primary base URL</td><td class="bn"><input value="নিজস্ব প্রধান বেস URL"></td></tr>
+<tr><td>Custom source</td><td class="bn"><input value="নিজস্ব উৎস"></td></tr>
+<tr><td>Custom third source (ayah by ayah, Islamic Network numbering)</td><td class="bn"><input value="নিজস্ব তৃতীয় উৎস (আয়াতভিত্তিক, Islamic Network ক্রম)"></td></tr>
+<tr><td>d</td><td class="bn"><input value="দিন"></td></tr>
+<tr><td>Dark</td><td class="bn"><input value="গাঢ়"></td></tr>
+<tr><td>dark</td><td class="bn"><input value="গাঢ়"></td></tr>
+<tr><td>Data kept for recovery</td><td class="bn"><input value="পুনরুদ্ধারের জন্য রাখা ডেটা"></td></tr>
+<tr><td>Dates</td><td class="bn"><input value="তারিখ"></td></tr>
+<tr><td>day streak</td><td class="bn"><input value="দিনের ধারা"></td></tr>
+<tr><td>day {d} of 7</td><td class="bn"><input value="৭ দিনের {d} নম্বর দিন"></td></tr>
+<tr><td>Day {n}</td><td class="bn"><input value="দিন {n}"></td></tr>
+<tr><td>deadline {d}</td><td class="bn"><input value="সময়সীমা {d}"></td></tr>
+<tr><td>Dec</td><td class="bn"><input value="ডিসে"></td></tr>
+<tr><td>Decide later</td><td class="bn"><input value="পরে ঠিক করব"></td></tr>
+<tr><td>Default page layout in Study</td><td class="bn"><input value="অধ্যয়নে পৃষ্ঠার ডিফল্ট বিন্যাস"></td></tr>
+<tr><td>Delete all downloaded audio</td><td class="bn"><input value="ডাউনলোড করা সব শ্রবণ মুছুন"></td></tr>
+<tr><td>Delete cached meanings &amp; tafsīr</td><td class="bn"><input value="সংরক্ষিত অর্থ ও তাফসীর মুছুন"></td></tr>
+<tr><td>Delete this page’s stumble history</td><td class="bn"><input value="এই পৃষ্ঠার আটকে যাওয়ার ইতিহাস মুছুন"></td></tr>
+<tr><td>Deleted</td><td class="bn"><input value="মুছে ফেলা হয়েছে"></td></tr>
+<tr><td>Direction</td><td class="bn"><input value="দিক"></td></tr>
+<tr><td>Discard</td><td class="bn"><input value="বাতিল করুন"></td></tr>
+<tr><td>Display &amp; study aids</td><td class="bn"><input value="প্রদর্শন ও অধ্যয়ন সহায়ক"></td></tr>
+<tr><td>Display ▾</td><td class="bn"><input value="প্রদর্শন ▾"></td></tr>
+<tr><td>Done this week — {n}</td><td class="bn"><input value="এই সপ্তাহে সম্পন্ন — {n}"></td></tr>
+<tr><td>Done — {size} downloaded</td><td class="bn"><input value="সম্পন্ন — {size} নামানো হয়েছে"></td></tr>
+<tr><td>Download for offline, instant playback</td><td class="bn"><input value="ইন্টারনেট ছাড়া তাৎক্ষণিক শোনার জন্য ডাউনলোড"></td></tr>
+<tr><td>Download paused — run it again to continue; finished files are kept</td><td class="bn"><input value="ডাউনলোড থেমেছে — চালিয়ে যেতে আবার চালান; সম্পন্ন ফাইলগুলো রাখা আছে"></td></tr>
+<tr><td>Downloaded audio deleted</td><td class="bn"><input value="নামানো শ্রবণ ফাইল মুছে ফেলা হয়েছে"></td></tr>
+<tr><td>Downloaded this device’s data — keep it until you have decided</td><td class="bn"><input value="এই ডিভাইসের ডেটা নামানো হয়েছে — সিদ্ধান্ত না নেওয়া পর্যন্ত রেখে দিন"></td></tr>
+<tr><td>Downloading meanings for {what}…</td><td class="bn"><input value="{what}-এর অর্থ নামানো হচ্ছে…"></td></tr>
+<tr><td>Downloading recitation for {n} pages ({what})…</td><td class="bn"><input value="{n}টি পৃষ্ঠার তিলাওয়াত নামানো হচ্ছে ({what})…"></td></tr>
+<tr><td>Draft for a future week — adjust, then save it</td><td class="bn"><input value="ভবিষ্যৎ সপ্তাহের খসড়া — ঠিক করে নিয়ে সংরক্ষণ করুন"></td></tr>
+<tr><td>Drag the two handles onto the first and last line of text. Saved per page.</td><td class="bn"><input value="দুটি হাতল টেনে লেখার প্রথম ও শেষ লাইনে বসান। প্রতিটি পৃষ্ঠার জন্য আলাদা করে সংরক্ষিত হয়।"></td></tr>
+<tr><td>due today — added by your schedule</td><td class="bn"><input value="আজ নির্ধারিত — আপনার সূচি থেকে যুক্ত"></td></tr>
+<tr><td>due {n} days ago — added by your schedule</td><td class="bn"><input value="{n} দিন আগে নির্ধারিত ছিল — আপনার সূচি থেকে যুক্ত"></td></tr>
+<tr><td>e.g. Office PC, my phone</td><td class="bn"><input value="যেমন অফিসের পিসি, আমার ফোন"></td></tr>
+<tr><td>Each ayah five times, then the next</td><td class="bn"><input value="প্রতিটি আয়াত পাঁচবার, তারপর পরেরটি"></td></tr>
+<tr><td>Each ayah five times, then the next — the classic first-hearing pattern</td><td class="bn"><input value="প্রতিটি আয়াত পাঁচবার, তারপর পরেরটি — প্রথম শোনার প্রচলিত ধারা"></td></tr>
+<tr><td>Each ayah ×5</td><td class="bn"><input value="প্রতি আয়াত ×৫"></td></tr>
+<tr><td>Edit the share template</td><td class="bn"><input value="বার্তার ছাঁচ সম্পাদনা করুন"></td></tr>
+<tr><td>Edition</td><td class="bn"><input value="সংস্করণ"></td></tr>
+<tr><td>End revision and bring the text and the aids back</td><td class="bn"><input value="মুরাজা‘আহ শেষ করে টেক্সট ও সহায়ক উপকরণ ফিরিয়ে আনুন"></td></tr>
+<tr><td>English</td><td class="bn"><input value="ইংরেজি"></td></tr>
+<tr><td>English only</td><td class="bn"><input value="কেবল ইংরেজি"></td></tr>
+<tr><td>English reading:</td><td class="bn"><input value="ইংরেজি পাঠ:"></td></tr>
+<tr><td>English translation after each ayah</td><td class="bn"><input value="প্রতিটি আয়াতের পর ইংরেজি অনুবাদ"></td></tr>
+<tr><td>English voice</td><td class="bn"><input value="ইংরেজি কণ্ঠ"></td></tr>
+<tr><td>Enter a page number or choose a surah</td><td class="bn"><input value="একটি পৃষ্ঠা নম্বর দিন বা একটি সূরা বাছুন"></td></tr>
+<tr><td>Enter the URL and passphrase and tick “Sync on” first</td><td class="bn"><input value="আগে URL ও পাসফ্রেজ দিন এবং “সিংক চালু” টিক দিন"></td></tr>
+<tr><td>every 3rd word</td><td class="bn"><input value="প্রতি ৩য় শব্দ"></td></tr>
+<tr><td>every 5th word</td><td class="bn"><input value="প্রতি ৫ম শব্দ"></td></tr>
+<tr><td>EveryAyah is not reachable — playing ayah by ayah from the Islamic Network CDN</td><td class="bn"><input value="EveryAyah-এ পৌঁছানো যাচ্ছে না — Islamic Network CDN থেকে আয়াতভিত্তিকভাবে চালানো হচ্ছে"></td></tr>
+<tr><td>expand all</td><td class="bn"><input value="সব খুলুন"></td></tr>
+<tr><td>Export</td><td class="bn"><input value="এক্সপোর্ট"></td></tr>
+<tr><td>Export data only (JSON)</td><td class="bn"><input value="কেবল ডেটা রপ্তানি (JSON)"></td></tr>
+<tr><td>Export failed: </td><td class="bn"><input value="রপ্তানি ব্যর্থ: "></td></tr>
+<tr><td>Export history as CSV</td><td class="bn"><input value="ইতিহাস CSV আকারে রপ্তানি"></td></tr>
+<tr><td>Export the whole app with my data</td><td class="bn"><input value="আমার ডেটাসহ পুরো অ্যাপ রপ্তানি করুন"></td></tr>
+<tr><td>Exported {mb} MB — the file opens anywhere with your data inside</td><td class="bn"><input value="{mb} MB রপ্তানি হয়েছে — ফাইলটি যেকোনো জায়গায় খুললে আপনার ডেটাসহ চলবে"></td></tr>
+<tr><td>Faster</td><td class="bn"><input value="দ্রুত"></td></tr>
+<tr><td>Feb</td><td class="bn"><input value="ফেব্রু"></td></tr>
+<tr><td>Feedback saved</td><td class="bn"><input value="মতামত সংরক্ষিত হয়েছে"></td></tr>
+<tr><td>file in the download package explains the 3‑minute set‑up). Nothing goes anywhere else.</td><td class="bn"><input value="ফাইলটিতে ৩ মিনিটের সেটআপ বলা আছে)। আর কোথাও কিছু যায় না।"></td></tr>
+<tr><td>Files</td><td class="bn"><input value="ফাইল"></td></tr>
+<tr><td>Filled = memorized · outlined = weak · green / blue / purple frame = this week’s sabaq / sabqi / manzil.</td><td class="bn"><input value="ভরাট = মুখস্থ · রেখাঙ্কিত = দুর্বল · সবুজ / নীল / বেগুনি রেখা = এই সপ্তাহের সবক / সবকি / মনজিল।"></td></tr>
+<tr><td>first word of each ayah</td><td class="bn"><input value="প্রতি আয়াতের প্রথম শব্দ"></td></tr>
+<tr><td>Fit page</td><td class="bn"><input value="পুরো পৃষ্ঠা"></td></tr>
+<tr><td>Fit whole page</td><td class="bn"><input value="পুরো পৃষ্ঠা মাপে"></td></tr>
+<tr><td>Fit width</td><td class="bn"><input value="প্রস্থ অনুযায়ী"></td></tr>
+<tr><td>flagged by low ratings · most lapses first</td><td class="bn"><input value="কম মূল্যায়নের কারণে চিহ্নিত · সবচেয়ে বেশি বিচ্যুতি আগে"></td></tr>
+<tr><td>Flawless</td><td class="bn"><input value="নির্ভুল"></td></tr>
+<tr><td>Follow the audio</td><td class="bn"><input value="তিলাওয়াত অনুসরণ করুন"></td></tr>
+<tr><td>Follow the device</td><td class="bn"><input value="ডিভাইস অনুসরণ করুন"></td></tr>
+<tr><td>Forwards</td><td class="bn"><input value="সামনে"></td></tr>
+<tr><td>forwards</td><td class="bn"><input value="সামনে"></td></tr>
+<tr><td>Forwards (N → N+1)</td><td class="bn"><input value="সামনে (N → N+১)"></td></tr>
+<tr><td>Found by comparing the Qur’ān’s own words (see About); differing words are marked. Confusing two look-alikes is the commonest slip in later hifz — read both, then recite the one you are learning.</td><td class="bn"><input value="কুরআনের নিজস্ব শব্দ মিলিয়ে বের করা হয়েছে (পরিচিতি দেখুন); যেসব শব্দ আলাদা সেগুলো চিহ্নিত। দুটি সদৃশ আয়াত গুলিয়ে ফেলা পরবর্তী হিফ্‌জের সবচেয়ে সাধারণ ভুল — দুটিই পড়ুন, তারপর যেটি শিখছেন সেটি তিলাওয়াত করুন।"></td></tr>
+<tr><td>Fri</td><td class="bn"><input value="শুক্র"></td></tr>
+<tr><td>Friday</td><td class="bn"><input value="শুক্রবার"></td></tr>
+<tr><td>From</td><td class="bn"><input value="থেকে"></td></tr>
+<tr><td>from</td><td class="bn"><input value="থেকে"></td></tr>
+<tr><td>From ayah</td><td class="bn"><input value="আয়াত থেকে"></td></tr>
+<tr><td>From page</td><td class="bn"><input value="পৃষ্ঠা থেকে"></td></tr>
+<tr><td>From surah</td><td class="bn"><input value="সূরা থেকে"></td></tr>
+<tr><td>Full screen (F)</td><td class="bn"><input value="পূর্ণ পর্দা (F)"></td></tr>
+<tr><td>Gap</td><td class="bn"><input value="বিরতি"></td></tr>
+<tr><td>Gap-fill</td><td class="bn"><input value="শূন্যস্থান পূরণ"></td></tr>
+<tr><td>Gap-fill drill</td><td class="bn"><input value="শূন্যস্থান পূরণ অনুশীলন"></td></tr>
+<tr><td>Go to</td><td class="bn"><input value="যান"></td></tr>
+<tr><td>Go to ▾</td><td class="bn"><input value="যান ▾"></td></tr>
+<tr><td>Half a page</td><td class="bn"><input value="অর্ধ পৃষ্ঠা"></td></tr>
+<tr><td>Help &amp; About</td><td class="bn"><input value="সহায়িকা ও পরিচিতি"></td></tr>
+<tr><td>Help and About</td><td class="bn"><input value="সহায়িকা ও পরিচিতি"></td></tr>
+<tr><td>Hesitant</td><td class="bn"><input value="আটকে আটকে"></td></tr>
+<tr><td>Hide</td><td class="bn"><input value="লুকান"></td></tr>
+<tr><td>hide all</td><td class="bn"><input value="সব লুকান"></td></tr>
+<tr><td>Hide all (Home)</td><td class="bn"><input value="সব লুকান (Home)"></td></tr>
+<tr><td>Hide one line (↑)</td><td class="bn"><input value="এক লাইন লুকান (↑)"></td></tr>
+<tr><td>Hide the side panels and give the page the width (Shift+F)</td><td class="bn"><input value="পাশের প্যানেল লুকিয়ে পৃষ্ঠাকে পুরো প্রস্থ দিন (Shift+F)"></td></tr>
+<tr><td>Hifz Companion is a single HTML file. Nothing leaves this device: no accounts, no analytics. Page structure follows the 604-page Madinah Mushaf (Ḥafṣ ʿan ʿĀṣim); the PDF page equals the Mushaf page + 3. The</td><td class="bn"><input value="Hifz Companion একটি একক HTML ফাইল। কিছুই এই ডিভাইস ছেড়ে যায় না: কোনো অ্যাকাউন্ট নেই, কোনো বিশ্লেষণ-সংগ্রহ নেই। পৃষ্ঠার গঠন ৬০৪ পৃষ্ঠার মদীনা মুসহাফ অনুসারে (হাফ্‌স ‘আন ‘আসিম); PDF পৃষ্ঠা = মুসহাফ পৃষ্ঠা + ৩। এই"></td></tr>
+<tr><td>Hijri date adjustment</td><td class="bn"><input value="হিজরি তারিখ সমন্বয়"></td></tr>
+<tr><td>How daily practice works</td><td class="bn"><input value="দৈনিক অনুশীলন কীভাবে চলে"></td></tr>
+<tr><td>How many times the whole selection is played</td><td class="bn"><input value="পুরো নির্বাচন কতবার চালানো হবে"></td></tr>
+<tr><td>How planning works</td><td class="bn"><input value="পরিকল্পনা কীভাবে কাজ করে"></td></tr>
+<tr><td>How spaced repetition works</td><td class="bn"><input value="ব্যবধানসহ পুনরাবৃত্তি কীভাবে কাজ করে"></td></tr>
+<tr><td>How weekly plans work</td><td class="bn"><input value="সাপ্তাহিক পরিকল্পনা কীভাবে কাজ করে"></td></tr>
+<tr><td>Idle</td><td class="bn"><input value="নিষ্ক্রিয়"></td></tr>
+<tr><td>If a source fails, the player moves to the next one automatically (EveryAyah → Islamic Network CDN, ayah by ayah). For your own files choose</td><td class="bn"><input value="কোনো উৎস ব্যর্থ হলে প্লেয়ার নিজে থেকেই পরেরটিতে যায় (EveryAyah → Islamic Network CDN, আয়াতভিত্তিক)। নিজের ফাইলের জন্য বাছুন"></td></tr>
+<tr><td>If this panel stays blank, the site does not allow itself to be shown inside other pages — use “Open in new tab”. Content © Qur’an Tadabbur wa Amal, Al-Manhaj Center; shown live from altadabbur.com, not stored in this app.</td><td class="bn"><input value="এই প্যানেল ফাঁকা থাকলে বুঝতে হবে সাইটটি অন্য পৃষ্ঠার ভেতরে দেখানোর অনুমতি দেয় না — “নতুন ট্যাবে খুলুন” ব্যবহার করুন। বিষয়বস্তু © Qur’an Tadabbur wa Amal, Al-Manhaj Center; সরাসরি altadabbur.com থেকে দেখানো হয়, এই অ্যাপে সংরক্ষিত হয় না।"></td></tr>
+<tr><td>Import</td><td class="bn"><input value="ইমপোর্ট"></td></tr>
+<tr><td>Import failed — nothing was changed</td><td class="bn"><input value="ইমপোর্ট ব্যর্থ — কিছুই বদলানো হয়নি"></td></tr>
+<tr><td>Import JSON</td><td class="bn"><input value="JSON ইমপোর্ট"></td></tr>
+<tr><td>Import weekly lesson</td><td class="bn"><input value="সাপ্তাহিক পাঠ ইমপোর্ট করুন"></td></tr>
+<tr><td>in this week’s plan for today</td><td class="bn"><input value="এই সপ্তাহের পরিকল্পনায়, আজকের জন্য"></td></tr>
+<tr><td>in this week’s plan · due today</td><td class="bn"><input value="এই সপ্তাহের পরিকল্পনায় · আজ নির্ধারিত"></td></tr>
+<tr><td>in this week’s plan · due {n} days ago</td><td class="bn"><input value="এই সপ্তাহের পরিকল্পনায় · {n} দিন আগে নির্ধারিত ছিল"></td></tr>
+<tr><td>Interface language</td><td class="bn"><input value="ইন্টারফেসের ভাষা"></td></tr>
+<tr><td>Interface language changed</td><td class="bn"><input value="ইন্টারফেসের ভাষা বদলেছে"></td></tr>
+<tr><td>It has been 30+ days since your last backup — export from Settings</td><td class="bn"><input value="আপনার শেষ ব্যাকআপের পর ৩০+ দিন হয়ে গেছে — সেটিংস থেকে রপ্তানি করুন"></td></tr>
+<tr><td>Jan</td><td class="bn"><input value="জানু"></td></tr>
+<tr><td>Join all segments — recite the full page from memory</td><td class="bn"><input value="সব খণ্ড জোড়া লাগান — পুরো পৃষ্ঠা স্মৃতি থেকে তিলাওয়াত করুন"></td></tr>
+<tr><td>Join ends ±1</td><td class="bn"><input value="দুই প্রান্ত জোড়া ±১"></td></tr>
+<tr><td>Joined with the last ayah before and the first ayah after this page</td><td class="bn"><input value="এই পৃষ্ঠার আগের শেষ আয়াত ও পরের প্রথম আয়াতের সঙ্গে জুড়ে"></td></tr>
+<tr><td>Journey start date</td><td class="bn"><input value="যাত্রা শুরুর তারিখ"></td></tr>
+<tr><td>journey week {w}</td><td class="bn"><input value="যাত্রার সপ্তাহ {w}"></td></tr>
+<tr><td>Jul</td><td class="bn"><input value="জুলা"></td></tr>
+<tr><td>Jump to a sūrah or juz</td><td class="bn"><input value="সূরা বা পারায় যান"></td></tr>
+<tr><td>Jump to juz</td><td class="bn"><input value="পারায় যান"></td></tr>
+<tr><td>Jump to surah</td><td class="bn"><input value="সূরায় যান"></td></tr>
+<tr><td>Jun</td><td class="bn"><input value="জুন"></td></tr>
+<tr><td>Juz</td><td class="bn"><input value="পারা"></td></tr>
+<tr><td>Juz {j}</td><td class="bn"><input value="পারা {j}"></td></tr>
+<tr><td>Keep a copy of everything I stream (cache as you play)</td><td class="bn"><input value="যা কিছু চালানো হয় তার অনুলিপি রাখুন (চালানোর সময়ই সংরক্ষণ)"></td></tr>
+<tr><td>Keep all 604 pages (~146 MB)</td><td class="bn"><input value="সব ৬০৪ পৃষ্ঠা রাখুন (~১৪৬ MB)"></td></tr>
+<tr><td>Keep consolidating until the page is flawless, then mark it complete</td><td class="bn"><input value="পৃষ্ঠাটি নির্ভুল না হওয়া পর্যন্ত দৃঢ় করতে থাকুন, তারপর সম্পন্ন হিসেবে চিহ্নিত করুন"></td></tr>
+<tr><td>Keep downloads in</td><td class="bn"><input value="ডাউনলোড রাখুন"></td></tr>
+<tr><td>Keep memorised pages</td><td class="bn"><input value="মুখস্থ পৃষ্ঠা রাখুন"></td></tr>
+<tr><td>Keep the app itself — and as many Mushaf pages as you like — on this device, so it opens and works with no internet at all. Recitation audio is kept separately in Settings → Audio, and translations in Mushaf → Meanings.</td><td class="bn"><input value="অ্যাপটি নিজে — আর আপনি যত খুশি মুসহাফ পৃষ্ঠা — এই ডিভাইসে রেখে দিন, যাতে ইন্টারনেট ছাড়াই খোলে ও চলে। তিলাওয়াতের শ্রবণ আলাদাভাবে সেটিংস → শ্রবণে রাখা হয়, আর অনুবাদ মুসহাফ → অর্থে।"></td></tr>
+<tr><td>Keep the same progress on your desktop, phone and tablet. Your data is saved to a file in</td><td class="bn"><input value="আপনার কম্পিউটার, ফোন ও ট্যাবলেটে একই অগ্রগতি রাখুন। আপনার ডেটা সংরক্ষিত হয় একটি ফাইলে —"></td></tr>
+<tr><td>Keep this week’s pages</td><td class="bn"><input value="এই সপ্তাহের পৃষ্ঠা রাখুন"></td></tr>
+<tr><td>Kept Mushaf pages removed</td><td class="bn"><input value="রাখা মুসহাফ পৃষ্ঠা সরানো হয়েছে"></td></tr>
+<tr><td>Keyboard in Study: Space play/pause · ←/→ ayah · R loop · C curtain · Shift+F focus · ↓/↑ scroll the page (reveal/hide a line while the curtain is on) · Home/End · F full screen · Esc leave full screen · PgUp/PgDn page · S single/spread · Ctrl+wheel or pinch to zoom.</td><td class="bn"><input value="অধ্যয়নে কীবোর্ড: Space চালু/বিরতি · ←/→ আয়াত · R লুপ · C পর্দা · Shift+F ফোকাস · ↓/↑ পৃষ্ঠা স্ক্রল (পর্দা চালু থাকলে এক লাইন দেখান/লুকান) · Home/End · F পূর্ণ পর্দা · Esc পূর্ণ পর্দা ছাড়ুন · PgUp/PgDn পৃষ্ঠা · S একক/দ্বিপৃষ্ঠা · Ctrl+হুইল বা পিঞ্চ করে জুম।"></td></tr>
+<tr><td>Language</td><td class="bn"><input value="ভাষা"></td></tr>
+<tr><td>Larger text</td><td class="bn"><input value="লেখা বড়"></td></tr>
+<tr><td>Last ayah of the previous page + this page + first ayah of the next page, so the joins are learnt</td><td class="bn"><input value="আগের পৃষ্ঠার শেষ আয়াত + এই পৃষ্ঠা + পরের পৃষ্ঠার প্রথম আয়াত, যাতে জোড়াগুলো রপ্ত হয়"></td></tr>
+<tr><td>last word of each ayah</td><td class="bn"><input value="প্রতি আয়াতের শেষ শব্দ"></td></tr>
+<tr><td>last {d}</td><td class="bn"><input value="সর্বশেষ {d}"></td></tr>
+<tr><td>Layout</td><td class="bn"><input value="বিন্যাস"></td></tr>
+<tr><td>Layout, zoom and what is shown</td><td class="bn"><input value="বিন্যাস, জুম ও কী দেখানো হবে"></td></tr>
+<tr><td>Learn segment 1: listen ×5, repeat ×5, recite under the curtain, verify</td><td class="bn"><input value="খণ্ড ১ শিখুন: ৫ বার শুনুন, ৫ বার পুনরাবৃত্তি করুন, পর্দার নিচে তিলাওয়াত করুন, মিলিয়ে নিন"></td></tr>
+<tr><td>Learn segment 2: listen ×5, repeat ×5, recite under the curtain, verify</td><td class="bn"><input value="খণ্ড ২ শিখুন: ৫ বার শুনুন, ৫ বার পুনরাবৃত্তি করুন, পর্দার নিচে তিলাওয়াত করুন, মিলিয়ে নিন"></td></tr>
+<tr><td>Learn segment 3: listen ×5, repeat ×5, recite under the curtain, verify</td><td class="bn"><input value="খণ্ড ৩ শিখুন: ৫ বার শুনুন, ৫ বার পুনরাবৃত্তি করুন, পর্দার নিচে তিলাওয়াত করুন, মিলিয়ে নিন"></td></tr>
+<tr><td>Learn segment {k} (lines {lines}) with the qari, then recite it from memory</td><td class="bn"><input value="কারীর সঙ্গে খণ্ড {k} (লাইন {lines}) শিখুন, তারপর স্মৃতি থেকে তিলাওয়াত করুন"></td></tr>
+<tr><td>Learn segment {k} with the qari, then recite it from memory</td><td class="bn"><input value="কারীর সঙ্গে খণ্ড {k} শিখুন, তারপর স্মৃতি থেকে তিলাওয়াত করুন"></td></tr>
+<tr><td>Leave empty for today; a past date if you began before using the app</td><td class="bn"><input value="আজকের জন্য ফাঁকা রাখুন; অ্যাপ ব্যবহারের আগে শুরু করে থাকলে আগের কোনো তারিখ দিন"></td></tr>
+<tr><td>Leave Focus and bring the side panels back (Esc)</td><td class="bn"><input value="ফোকাস ছেড়ে পাশের প্যানেল ফিরিয়ে আনুন (Esc)"></td></tr>
+<tr><td>Leave full screen</td><td class="bn"><input value="পূর্ণ পর্দা থেকে বেরোন"></td></tr>
+<tr><td>Leave full screen (Esc)</td><td class="bn"><input value="পূর্ণ পর্দা থেকে বেরোন (Esc)"></td></tr>
+<tr><td>Leave revision</td><td class="bn"><input value="মুরাজা‘আহ শেষ করুন"></td></tr>
+<tr><td>Light</td><td class="bn"><input value="উজ্জ্বল"></td></tr>
+<tr><td>light</td><td class="bn"><input value="উজ্জ্বল"></td></tr>
+<tr><td>Link — recite from the last 2 lines of the previous page through the first 2 of the next</td><td class="bn"><input value="সংযোগ — আগের পৃষ্ঠার শেষ ২ লাইন থেকে পরের পৃষ্ঠার প্রথম ২ লাইন পর্যন্ত তিলাওয়াত করুন"></td></tr>
+<tr><td>Listen</td><td class="bn"><input value="শুনুন"></td></tr>
+<tr><td>Listening qari for revision (optional)</td><td class="bn"><input value="মুরাজা‘আহ শোনার কারী (ঐচ্ছিক)"></td></tr>
+<tr><td>Load a Mushaf PDF (replaces the built-in pages)</td><td class="bn"><input value="একটি মুসহাফ PDF লোড করুন (অন্তর্নির্মিত পৃষ্ঠার বদলে)"></td></tr>
+<tr><td>Load from cloud now</td><td class="bn"><input value="এখনই ক্লাউড থেকে আনুন"></td></tr>
+<tr><td>Load the Mushaf PDF</td><td class="bn"><input value="মুসহাফ PDF লোড করুন"></td></tr>
+<tr><td>Load the original PDF</td><td class="bn"><input value="মূল PDF লোড করুন"></td></tr>
+<tr><td>Loaded your data from the cloud</td><td class="bn"><input value="ক্লাউড থেকে আপনার ডেটা আনা হয়েছে"></td></tr>
+<tr><td>Loaded your latest data from the cloud</td><td class="bn"><input value="ক্লাউড থেকে আপনার সর্বশেষ ডেটা আনা হয়েছে"></td></tr>
+<tr><td>Loading both ayāt…</td><td class="bn"><input value="দুটি আয়াতই লোড হচ্ছে…"></td></tr>
+<tr><td>Loading PDF…</td><td class="bn"><input value="PDF লোড হচ্ছে…"></td></tr>
+<tr><td>Loading tafsīr…</td><td class="bn"><input value="তাফসীর লোড হচ্ছে…"></td></tr>
+<tr><td>Loading…</td><td class="bn"><input value="লোড হচ্ছে…"></td></tr>
+<tr><td>long-term revision</td><td class="bn"><input value="দীর্ঘমেয়াদি মুরাজা‘আহ"></td></tr>
+<tr><td>Long-term revision: the rotation through everything memorized. Weak and most-overdue pages come first in the proposal.</td><td class="bn"><input value="দীর্ঘমেয়াদি মুরাজা‘আহ: যা কিছু মুখস্থ, তার আবর্তন। প্রস্তাবে দুর্বল ও সবচেয়ে বিলম্বিত পৃষ্ঠাগুলো আগে আসে।"></td></tr>
+<tr><td>Look-alike verses</td><td class="bn"><input value="সদৃশ আয়াত"></td></tr>
+<tr><td>Loop</td><td class="bn"><input value="লুপ"></td></tr>
+<tr><td>Loop (whole selection)</td><td class="bn"><input value="লুপ (পুরো নির্বাচন)"></td></tr>
+<tr><td>Main</td><td class="bn"><input value="প্রধান"></td></tr>
+<tr><td>Many errors</td><td class="bn"><input value="অনেক ভুল"></td></tr>
+<tr><td>Manzil</td><td class="bn"><input value="মনজিল"></td></tr>
+<tr><td>manzil</td><td class="bn"><input value="মনজিল"></td></tr>
+<tr><td>Manzil rotation</td><td class="bn"><input value="মনজিল আবর্তন"></td></tr>
+<tr><td>manzil rotation (set {n})</td><td class="bn"><input value="মনজিল আবর্তন (নির্ধারিত {n})"></td></tr>
+<tr><td>Mar</td><td class="bn"><input value="মার্চ"></td></tr>
+<tr><td>Mark as memorized → manzil</td><td class="bn"><input value="মুখস্থ হিসেবে চিহ্নিত করুন → মনজিল"></td></tr>
+<tr><td>Mark page complete</td><td class="bn"><input value="পৃষ্ঠা সম্পন্ন হিসেবে চিহ্নিত করুন"></td></tr>
+<tr><td>Mark page complete (last part)</td><td class="bn"><input value="পৃষ্ঠা সম্পন্ন হিসেবে চিহ্নিত করুন (শেষ অংশ)"></td></tr>
+<tr><td>Mark part {i} complete</td><td class="bn"><input value="{i} নম্বর অংশ সম্পন্ন হিসেবে চিহ্নিত করুন"></td></tr>
+<tr><td>May</td><td class="bn"><input value="মে"></td></tr>
+<tr><td>Memorisation qari (sabaq — keep one voice throughout)</td><td class="bn"><input value="মুখস্থের কারী (সবক — শুরু থেকে শেষ পর্যন্ত একই কণ্ঠ রাখুন)"></td></tr>
+<tr><td>Memorisation qari: {name}</td><td class="bn"><input value="মুখস্থের কারী: {name}"></td></tr>
+<tr><td>Memorized map</td><td class="bn"><input value="মুখস্থের মানচিত্র"></td></tr>
+<tr><td>memorized on</td><td class="bn"><input value="মুখস্থ হয়েছে"></td></tr>
+<tr><td>Minor slips</td><td class="bn"><input value="সামান্য ভুল"></td></tr>
+<tr><td>Minutes per page (estimate)</td><td class="bn"><input value="প্রতি পৃষ্ঠায় মিনিট (আনুমানিক)"></td></tr>
+<tr><td>minutes with Study open this week</td><td class="bn"><input value="এই সপ্তাহে অধ্যয়ন খোলা থাকার মিনিট"></td></tr>
+<tr><td>Minutes with the Study tab open and visible — not a measure of recitation</td><td class="bn"><input value="অধ্যয়ন ট্যাব খোলা ও দৃশ্যমান থাকা মিনিট — এটি তিলাওয়াতের পরিমাপ নয়"></td></tr>
+<tr><td>Mistake log</td><td class="bn"><input value="ভুলের খাতা"></td></tr>
+<tr><td>Mon</td><td class="bn"><input value="সোম"></td></tr>
+<tr><td>Monday</td><td class="bn"><input value="সোমবার"></td></tr>
+<tr><td>Morphology ↗</td><td class="bn"><input value="শব্দরূপ ↗"></td></tr>
+<tr><td>Mostly lost</td><td class="bn"><input value="প্রায় সবই ভুলে গেছি"></td></tr>
+<tr><td>Mouse wheel in Study</td><td class="bn"><input value="অধ্যয়নে মাউস হুইল"></td></tr>
+<tr><td>Move to the ayah being recited (off by default so reading is not interrupted)</td><td class="bn"><input value="যে আয়াত তিলাওয়াত হচ্ছে সেখানে সরে যান (ডিফল্টে বন্ধ, যাতে পড়ায় ব্যাঘাত না ঘটে)"></td></tr>
+<tr><td>Mushaf</td><td class="bn"><input value="মুসহাফ"></td></tr>
+<tr><td>Mushaf loaded: {name}</td><td class="bn"><input value="মুসহাফ লোড হয়েছে: {name}"></td></tr>
+<tr><td>Mushaf page number</td><td class="bn"><input value="মুসহাফ পৃষ্ঠা নম্বর"></td></tr>
+<tr><td>Mushaf pages</td><td class="bn"><input value="মুসহাফ পৃষ্ঠা"></td></tr>
+<tr><td>Mushaf pages memorized</td><td class="bn"><input value="মুখস্থ মুসহাফ পৃষ্ঠা"></td></tr>
+<tr><td>Mushaf pages you have kept are never removed by an update</td><td class="bn"><input value="আপনি যে মুসহাফ পৃষ্ঠাগুলো রেখেছেন হালনাগাদ সেগুলো কখনো মোছে না"></td></tr>
+<tr><td>mutashābihāt on this page</td><td class="bn"><input value="এই পৃষ্ঠার মুতাশাবিহাত"></td></tr>
+<tr><td>My notes</td><td class="bn"><input value="আমার নোট"></td></tr>
+<tr><td>Names &amp; share template</td><td class="bn"><input value="নাম ও বার্তার ছাঁচ"></td></tr>
+<tr><td>New here?</td><td class="bn"><input value="নতুন এসেছেন?"></td></tr>
+<tr><td>new lesson</td><td class="bn"><input value="নতুন পাঠ"></td></tr>
+<tr><td>New memorization for the week — normally one page. Pages already memorized cannot be sabaq; add them to revision instead.</td><td class="bn"><input value="এই সপ্তাহের নতুন মুখস্থ — সাধারণত এক পৃষ্ঠা। আগে থেকে মুখস্থ পৃষ্ঠা সবক হতে পারে না; সেগুলো বরং মুরাজা‘আহয় যোগ করুন।"></td></tr>
+<tr><td>Next</td><td class="bn"><input value="পরের"></td></tr>
+<tr><td>next</td><td class="bn"><input value="পরবর্তী"></td></tr>
+<tr><td>Next 12 weeks</td><td class="bn"><input value="আগামী ১২ সপ্তাহ"></td></tr>
+<tr><td>Next ayah</td><td class="bn"><input value="পরের আয়াত"></td></tr>
+<tr><td>Next ayah (Alt+→)</td><td class="bn"><input value="পরের আয়াত (Alt+→)"></td></tr>
+<tr><td>Next ayah ▶</td><td class="bn"><input value="পরের আয়াত ▶"></td></tr>
+<tr><td>Next Mushaf page</td><td class="bn"><input value="পরের মুসহাফ পৃষ্ঠা"></td></tr>
+<tr><td>Next Mushaf page (higher number)</td><td class="bn"><input value="পরের মুসহাফ পৃষ্ঠা (বড় সংখ্যা)"></td></tr>
+<tr><td>No completed weeks yet</td><td class="bn"><input value="এখনো কোনো সপ্তাহ সম্পূর্ণ হয়নি"></td></tr>
+<tr><td>No further page in this direction</td><td class="bn"><input value="এই দিকে আর কোনো পৃষ্ঠা নেই"></td></tr>
+<tr><td>No Mushaf pages in this build.</td><td class="bn"><input value="এই সংস্করণে কোনো মুসহাফ পৃষ্ঠা নেই।"></td></tr>
+<tr><td>No notes for this page yet.</td><td class="bn"><input value="এই পৃষ্ঠার কোনো নোট এখনো নেই।"></td></tr>
+<tr><td>No open stumbles on this page.</td><td class="bn"><input value="এই পৃষ্ঠায় অমীমাংসিত কোনো আটকে যাওয়া নেই।"></td></tr>
+<tr><td>No pages in this selection yet.</td><td class="bn"><input value="এই নির্বাচনে এখনো কোনো পৃষ্ঠা নেই।"></td></tr>
+<tr><td>No pages to keep</td><td class="bn"><input value="রাখার মতো কোনো পৃষ্ঠা নেই"></td></tr>
+<tr><td>No pages.</td><td class="bn"><input value="কোনো পৃষ্ঠা নেই।"></td></tr>
+<tr><td>No recitations rated for this page yet.</td><td class="bn"><input value="এই পৃষ্ঠার কোনো তিলাওয়াত এখনো মূল্যায়ন করা হয়নি।"></td></tr>
+<tr><td>No record for that week</td><td class="bn"><input value="সেই সপ্তাহের কোনো রেকর্ড নেই"></td></tr>
+<tr><td>No recordings for this page yet.</td><td class="bn"><input value="এই পৃষ্ঠার কোনো রেকর্ডিং এখনো নেই।"></td></tr>
+<tr><td>No recordings on this device yet.</td><td class="bn"><input value="এই ডিভাইসে এখনো কোনো রেকর্ডিং নেই।"></td></tr>
+<tr><td>No sabaq page this week.</td><td class="bn"><input value="এই সপ্তাহে কোনো সবকের পৃষ্ঠা নেই।"></td></tr>
+<tr><td>No voice installed for this language</td><td class="bn"><input value="এই ভাষার জন্য কোনো কণ্ঠ ইনস্টল করা নেই"></td></tr>
+<tr><td>No weak pages — al-ḥamdu lillāh.</td><td class="bn"><input value="কোনো দুর্বল পৃষ্ঠা নেই — আলহামদুলিল্লাহ।"></td></tr>
+<tr><td>No weeks yet.</td><td class="bn"><input value="এখনো কোনো সপ্তাহ নেই।"></td></tr>
+<tr><td>Normal</td><td class="bn"><input value="স্বাভাবিক"></td></tr>
+<tr><td>Not yet scheduled</td><td class="bn"><input value="এখনো সূচিভুক্ত নয়"></td></tr>
+<tr><td>Notes</td><td class="bn"><input value="নোট"></td></tr>
+<tr><td>Nothing downloaded yet.</td><td class="bn"><input value="এখনো কিছু নামানো হয়নি।"></td></tr>
+<tr><td>Nothing further due today for {stage} — al-ḥamdu lillāh.</td><td class="bn"><input value="{stage}-এর জন্য আজ আর কিছু নির্ধারিত নেই — আলহামদুলিল্লাহ।"></td></tr>
+<tr><td>Nothing has been overwritten. Both copies still exist: this device&#x27;s data is untouched, and the cloud still holds the other device&#x27;s save. Nothing is merged automatically — page ratings and weekly plans cannot be combined safely without guessing.</td><td class="bn"><input value="কিছুই মুছে যায়নি। দুটি অনুলিপিই আছে: এই ডিভাইসের ডেটা অক্ষত, আর ক্লাউডে অন্য ডিভাইসের সংরক্ষণ রয়ে গেছে। কিছুই স্বয়ংক্রিয়ভাবে মেলানো হয় না — অনুমান ছাড়া পৃষ্ঠার মূল্যায়ন ও সাপ্তাহিক পরিকল্পনা নিরাপদে একত্র করা যায় না।"></td></tr>
+<tr><td>Nothing logged yet — tap ✗ beside an ayah in Study when you stumble.</td><td class="bn"><input value="এখনো কিছু লিপিবদ্ধ হয়নি — আটকে গেলে অধ্যয়নে আয়াতের পাশে ✗-এ চাপুন।"></td></tr>
+<tr><td>Nothing planned this week</td><td class="bn"><input value="এই সপ্তাহে কিছু পরিকল্পনা করা নেই"></td></tr>
+<tr><td>Nothing to download</td><td class="bn"><input value="নামানোর কিছু নেই"></td></tr>
+<tr><td>Nov</td><td class="bn"><input value="নভে"></td></tr>
+<tr><td>now</td><td class="bn"><input value="এখন"></td></tr>
+<tr><td>Now you</td><td class="bn"><input value="এখন আপনি"></td></tr>
+<tr><td>Oct</td><td class="bn"><input value="অক্টো"></td></tr>
+<tr><td>of the Mushaf</td><td class="bn"><input value="মুসহাফের অংশ"></td></tr>
+<tr><td>off</td><td class="bn"><input value="বন্ধ"></td></tr>
+<tr><td>Off</td><td class="bn"><input value="বন্ধ"></td></tr>
+<tr><td>Offline use</td><td class="bn"><input value="ইন্টারনেট ছাড়া ব্যবহার"></td></tr>
+<tr><td>Offline use turned off (kept Mushaf pages are still there until you remove them)</td><td class="bn"><input value="ইন্টারনেট ছাড়া ব্যবহার বন্ধ করা হয়েছে (রাখা মুসহাফ পৃষ্ঠাগুলো না সরানো পর্যন্ত থেকে যাবে)"></td></tr>
+<tr><td>One HTML file — the app, the built-in Mushaf, your history, this week and every planned week. Open it on any device to continue exactly where you are. (A PDF you loaded and your cloud‑sync passphrase are not included; enter them again there.)</td><td class="bn"><input value="একটি HTML ফাইল — অ্যাপ, অন্তর্নির্মিত মুসহাফ, আপনার ইতিহাস, এই সপ্তাহ ও পরিকল্পিত প্রতিটি সপ্তাহ। যেকোনো ডিভাইসে খুলে ঠিক যেখানে আছেন সেখান থেকেই চালিয়ে যান। (আপনি যে PDF লোড করেছেন এবং ক্লাউড সিংকের পাসফ্রেজ এতে থাকে না; সেখানে আবার দিতে হবে।)"></td></tr>
+<tr><td>One juz</td><td class="bn"><input value="এক পারা"></td></tr>
+<tr><td>One page</td><td class="bn"><input value="এক পৃষ্ঠা"></td></tr>
+<tr><td>Open About</td><td class="bn"><input value="পরিচিতি খুলুন"></td></tr>
+<tr><td>Open in new tab ↗</td><td class="bn"><input value="নতুন ট্যাবে খুলুন ↗"></td></tr>
+<tr><td>Open in Study</td><td class="bn"><input value="অধ্যয়নে খুলুন"></td></tr>
+<tr><td>Open page</td><td class="bn"><input value="পৃষ্ঠা খুলুন"></td></tr>
+<tr><td>Open page ↗</td><td class="bn"><input value="পৃষ্ঠা খুলুন ↗"></td></tr>
+<tr><td>Open the comprehensive User Guide</td><td class="bn"><input value="সম্পূর্ণ ব্যবহারিকা খুলুন"></td></tr>
+<tr><td>Open the page in Study while playing</td><td class="bn"><input value="চালানোর সময় পৃষ্ঠাটি অধ্যয়নে খুলুন"></td></tr>
+<tr><td>Open Week</td><td class="bn"><input value="সপ্তাহ খুলুন"></td></tr>
+<tr><td>Optional — leave empty for today</td><td class="bn"><input value="ঐচ্ছিক — আজকের জন্য ফাঁকা রাখুন"></td></tr>
+<tr><td>Or page</td><td class="bn"><input value="অথবা পৃষ্ঠা"></td></tr>
+<tr><td>or surah</td><td class="bn"><input value="অথবা সূরা"></td></tr>
+<tr><td>Overview</td><td class="bn"><input value="সারসংক্ষেপ"></td></tr>
+<tr><td>Overwrite the cloud with this device</td><td class="bn"><input value="এই ডিভাইস দিয়ে ক্লাউড প্রতিস্থাপন করুন"></td></tr>
+<tr><td>Page</td><td class="bn"><input value="পৃষ্ঠা"></td></tr>
+<tr><td>page</td><td class="bn"><input value="পৃষ্ঠা"></td></tr>
+<tr><td>Page 2 forwards</td><td class="bn"><input value="পৃষ্ঠা ২ থেকে সামনে"></td></tr>
+<tr><td>Page 2, forwards</td><td class="bn"><input value="পৃষ্ঠা ২, সামনের দিকে"></td></tr>
+<tr><td>Page 604 backwards (Juz ʿAmma)</td><td class="bn"><input value="পৃষ্ঠা ৬০৪ থেকে পেছনে (জুজ ‘আম্মা)"></td></tr>
+<tr><td>Page 604, backwards (Juz ʿAmma)</td><td class="bn"><input value="পৃষ্ঠা ৬০৪, পেছনের দিকে (জুজ ‘আম্মা)"></td></tr>
+<tr class="kept"><td>Page by Page Tafseer · Shaykh Dr. Ahsan Hanif (Tawheed Outreach)</td><td class="bn"><input value="Page by Page Tafseer · Shaykh Dr. Ahsan Hanif (Tawheed Outreach)"></td></tr>
+<tr><td>Page history</td><td class="bn"><input value="পৃষ্ঠার ইতিহাস"></td></tr>
+<tr><td>Page layout</td><td class="bn"><input value="পৃষ্ঠা বিন্যাস"></td></tr>
+<tr><td>Page map — tap a page to add or remove it</td><td class="bn"><input value="পৃষ্ঠা মানচিত্র — যোগ বা বাদ দিতে কোনো পৃষ্ঠায় চাপুন"></td></tr>
+<tr><td>Page {p}</td><td class="bn"><input value="পৃষ্ঠা {p}"></td></tr>
+<tr><td>Page {p} is already memorized — add it to sabqi or manzil instead</td><td class="bn"><input value="পৃষ্ঠা {p} ইতিমধ্যেই মুখস্থ — বরং সবকি বা মনজিলে যোগ করুন"></td></tr>
+<tr><td>Page {p} rated {r}/5</td><td class="bn"><input value="পৃষ্ঠা {p}-এর মূল্যায়ন {r}/৫"></td></tr>
+<tr><td>Page {p}: today’s rating undone and its schedule restored</td><td class="bn"><input value="পৃষ্ঠা {p}: আজকের মূল্যায়ন বাতিল, সূচি আগের অবস্থায় ফিরেছে"></td></tr>
+<tr><td>Page {p}: {a} of {b} lines revealed — ↓ to reveal, ↑ to hide</td><td class="bn"><input value="পৃষ্ঠা {p}: {b} লাইনের {a}টি দেখানো হয়েছে — দেখাতে ↓, লুকাতে ↑"></td></tr>
+<tr><td>Page ×3</td><td class="bn"><input value="পৃষ্ঠা ×৩"></td></tr>
+<tr><td>Pages</td><td class="bn"><input value="পৃষ্ঠা"></td></tr>
+<tr><td>Pages I already know</td><td class="bn"><input value="যে পৃষ্ঠাগুলো আমার আগে থেকেই মুখস্থ"></td></tr>
+<tr><td>pages memorized</td><td class="bn"><input value="পৃষ্ঠা মুখস্থ"></td></tr>
+<tr><td>pages memorized ({n} in-app)</td><td class="bn"><input value="পৃষ্ঠা মুখস্থ ({n} অ্যাপে)"></td></tr>
+<tr><td>pages memorized, week by week</td><td class="bn"><input value="সপ্তাহে সপ্তাহে মুখস্থ পৃষ্ঠা"></td></tr>
+<tr><td>Parse again</td><td class="bn"><input value="আবার বিশ্লেষণ করুন"></td></tr>
+<tr><td>Parse lesson</td><td class="bn"><input value="পাঠ বিশ্লেষণ করুন"></td></tr>
+<tr><td>part</td><td class="bn"><input value="অংশ"></td></tr>
+<tr><td>part {i} of {n}</td><td class="bn"><input value="{n}-এর {i} নম্বর অংশ"></td></tr>
+<tr><td>parts done: {n}</td><td class="bn"><input value="সম্পন্ন অংশ: {n}"></td></tr>
+<tr><td>Passphrase (the KEY you set)</td><td class="bn"><input value="পাসফ্রেজ (আপনি যে KEY দিয়েছেন)"></td></tr>
+<tr><td>past</td><td class="bn"><input value="অতীত"></td></tr>
+<tr><td>Past week — read-only</td><td class="bn"><input value="অতীত সপ্তাহ — কেবল পাঠযোগ্য"></td></tr>
+<tr><td>Paste the lesson message first</td><td class="bn"><input value="আগে পাঠের বার্তাটি পেস্ট করুন"></td></tr>
+<tr><td>Paste the weekly lesson message here</td><td class="bn"><input value="সাপ্তাহিক পাঠের বার্তা এখানে পেস্ট করুন"></td></tr>
+<tr><td>Paste the weekly message from your teacher (Bengali, Arabic or English). Nothing is changed until you press</td><td class="bn"><input value="আপনার উস্তাদের সাপ্তাহিক বার্তা পেস্ট করুন (বাংলা, আরবি বা ইংরেজি)। আপনি না চাপা পর্যন্ত কিছুই বদলায় না —"></td></tr>
+<tr><td>Paste the weekly message from your teacher and turn it into this week’s plan</td><td class="bn"><input value="আপনার উস্তাদের সাপ্তাহিক বার্তা পেস্ট করে এই সপ্তাহের পরিকল্পনায় পরিণত করুন"></td></tr>
+<tr><td>Paste what your teacher replied. It appears in next week’s message and on the relevant page cards.</td><td class="bn"><input value="আপনার উস্তাদ যা উত্তর দিয়েছেন তা এখানে বসান। এটি পরের সপ্তাহের বার্তায় ও সংশ্লিষ্ট পৃষ্ঠার কার্ডে দেখা যাবে।"></td></tr>
+<tr><td>Pasted lesson text</td><td class="bn"><input value="পেস্ট করা পাঠের লেখা"></td></tr>
+<tr><td>Pause</td><td class="bn"><input value="বিরতি"></td></tr>
+<tr><td>Peek at the aids anyway</td><td class="bn"><input value="তবুও সহায়ক উপকরণ একনজর দেখুন"></td></tr>
+<tr><td>Placeholders: {journeyWeek} {weekYear} {revision} {newHifz} {weekFrom} {weekTo} {weekFromH} {weekToH} {hijriRange} {deadlineDay} {deadlineDate} {weekNo} {dates} {student} {teacher} {page} {range} {juz} {dayPlan} {sabqi} {manzil} {lastWeek} {total} {feedback}</td><td class="bn"><input value="প্লেসহোল্ডার: {journeyWeek} {weekYear} {revision} {newHifz} {weekFrom} {weekTo} {weekFromH} {weekToH} {hijriRange} {deadlineDay} {deadlineDate} {weekNo} {dates} {student} {teacher} {page} {range} {juz} {dayPlan} {sabqi} {manzil} {lastWeek} {total} {feedback}"></td></tr>
+<tr><td>Planned</td><td class="bn"><input value="পরিকল্পিত"></td></tr>
+<tr><td>planned for this week, not needed today</td><td class="bn"><input value="এই সপ্তাহের পরিকল্পনায় আছে, আজ প্রয়োজন নেই"></td></tr>
+<tr><td>Planned future weeks were cleared because the week boundaries changed</td><td class="bn"><input value="সপ্তাহের সীমা বদলে যাওয়ায় পরিকল্পিত ভবিষ্যৎ সপ্তাহগুলো মুছে দেওয়া হয়েছে"></td></tr>
+<tr><td>Play from downloaded files when available</td><td class="bn"><input value="ডাউনলোড করা ফাইল থাকলে সেখান থেকে চালান"></td></tr>
+<tr><td>Play or pause</td><td class="bn"><input value="চালান বা থামান"></td></tr>
+<tr><td>Playing {a} → {b}</td><td class="bn"><input value="চলছে {a} → {b}"></td></tr>
+<tr><td>Please send your comments, suggestions and feedback to</td><td class="bn"><input value="আপনার মন্তব্য, পরামর্শ ও মতামত পাঠান"></td></tr>
+<tr><td>Practice</td><td class="bn"><input value="অনুশীলন"></td></tr>
+<tr><td>Practice calendar</td><td class="bn"><input value="অনুশীলন পঞ্জিকা"></td></tr>
+<tr><td>practice days of 1</td><td class="bn"><input value="১-এর মধ্যে অনুশীলনের দিন"></td></tr>
+<tr><td>Practice logged — keep the streak going</td><td class="bn"><input value="অনুশীলন লিপিবদ্ধ হয়েছে — ধারা বজায় রাখুন"></td></tr>
+<tr><td>Previous</td><td class="bn"><input value="আগের"></td></tr>
+<tr><td>Previous ayah</td><td class="bn"><input value="আগের আয়াত"></td></tr>
+<tr><td>Previous ayah (Alt+←)</td><td class="bn"><input value="আগের আয়াত (Alt+←)"></td></tr>
+<tr><td>Previous Mushaf page</td><td class="bn"><input value="আগের মুসহাফ পৃষ্ঠা"></td></tr>
+<tr><td>Previous Mushaf page (lower number)</td><td class="bn"><input value="আগের মুসহাফ পৃষ্ঠা (ছোট সংখ্যা)"></td></tr>
+<tr><td>Previous weeks</td><td class="bn"><input value="আগের সপ্তাহগুলো"></td></tr>
+<tr><td>Primary audio source unavailable — trying 64 kbps</td><td class="bn"><input value="প্রধান শ্রবণ উৎস মিলছে না — ৬৪ kbps চেষ্টা করা হচ্ছে"></td></tr>
+<tr><td>Print this page</td><td class="bn"><input value="এই পৃষ্ঠা মুদ্রণ করুন"></td></tr>
+<tr><td>Progress</td><td class="bn"><input value="অগ্রগতি"></td></tr>
+<tr><td>projected completion</td><td class="bn"><input value="সম্ভাব্য সমাপ্তি"></td></tr>
+<tr><td>Proposal — adjust the pages, then set the plan</td><td class="bn"><input value="প্রস্তাব — পৃষ্ঠাগুলো ঠিক করে নিন, তারপর পরিকল্পনা নির্ধারণ করুন"></td></tr>
+<tr><td>Qari</td><td class="bn"><input value="কারী"></td></tr>
+<tr><td>Qari first — then you</td><td class="bn"><input value="আগে কারী — তারপর আপনি"></td></tr>
+<tr><td>Quality</td><td class="bn"><input value="মান"></td></tr>
+<tr><td>Quick:</td><td class="bn"><input value="দ্রুত:"></td></tr>
+<tr class="kept"><td>Quranic Arabic Corpus</td><td class="bn"><input value="Quranic Arabic Corpus"></td></tr>
+<tr><td>Range</td><td class="bn"><input value="পরিসর"></td></tr>
+<tr><td>Ranges are read exactly as written and checked against the Mushaf data. Unknown names and impossible ayah numbers stop the import.</td><td class="bn"><input value="পরিসর ঠিক যেমন লেখা তেমনই পড়া হয় এবং মুসহাফের তথ্যের সঙ্গে মিলিয়ে দেখা হয়। অচেনা নাম ও অসম্ভব আয়াত নম্বর থাকলে ইমপোর্ট থেমে যায়।"></td></tr>
+<tr><td>Rate this page</td><td class="bn"><input value="এই পৃষ্ঠার মূল্যায়ন করুন"></td></tr>
+<tr><td>Re-propose</td><td class="bn"><input value="আবার প্রস্তাব করুন"></td></tr>
+<tr><td>Read aloud (tafsīr)</td><td class="bn"><input value="উচ্চারণ করে শোনানো (তাফসীর)"></td></tr>
+<tr><td>Read the illustrated tutorial</td><td class="bn"><input value="সচিত্র টিউটোরিয়াল পড়ুন"></td></tr>
+<tr><td>Read the tutorial (PDF)</td><td class="bn"><input value="টিউটোরিয়াল পড়ুন (PDF)"></td></tr>
+<tr><td>Reading</td><td class="bn"><input value="পঠন"></td></tr>
+<tr><td>Ready.</td><td class="bn"><input value="প্রস্তুত।"></td></tr>
+<tr><td>Rebuild the proposal (keeps what you have already done)</td><td class="bn"><input value="প্রস্তাব নতুন করে তৈরি করুন (যা সম্পন্ন করেছেন তা থাকবে)"></td></tr>
+<tr><td>recent revision</td><td class="bn"><input value="সাম্প্রতিক মুরাজা‘আহ"></td></tr>
+<tr><td>Recent revision: pages memorized in the last few weeks, revised every week until stable.</td><td class="bn"><input value="সাম্প্রতিক মুরাজা‘আহ: গত কয়েক সপ্তাহে মুখস্থ করা পৃষ্ঠা, দৃঢ় না হওয়া পর্যন্ত প্রতি সপ্তাহে মুরাজা‘আহ।"></td></tr>
+<tr><td>recitations rated</td><td class="bn"><input value="মূল্যায়িত তিলাওয়াত"></td></tr>
+<tr><td>Recite &amp; compare</td><td class="bn"><input value="তিলাওয়াত ও মিলিয়ে দেখা"></td></tr>
+<tr><td>Recite from memory and tap a blank to check that word.</td><td class="bn"><input value="স্মৃতি থেকে তিলাওয়াত করুন, আর কোনো শব্দ মিলিয়ে দেখতে শূন্যস্থানে চাপুন।"></td></tr>
+<tr><td>Recite from memory, then reveal line by line to check.</td><td class="bn"><input value="স্মৃতি থেকে তিলাওয়াত করুন, তারপর লাইন ধরে ধরে মিলিয়ে দেখুন।"></td></tr>
+<tr><td>Recite it once more under the curtain with no slips</td><td class="bn"><input value="পর্দার নিচে আরও একবার নির্ভুলভাবে তিলাওয়াত করুন"></td></tr>
+<tr><td>Recite segments 1 – {k} together from memory</td><td class="bn"><input value="খণ্ড ১ – {k} একসঙ্গে স্মৃতি থেকে তিলাওয়াত করুন"></td></tr>
+<tr><td>Recite segments 1 – {k} together — the whole {what} from memory</td><td class="bn"><input value="খণ্ড ১ – {k} একসঙ্গে — পুরো {what} স্মৃতি থেকে তিলাওয়াত করুন"></td></tr>
+<tr><td>Recite to teacher · rest · catch-up</td><td class="bn"><input value="উস্তাদকে শোনান · বিশ্রাম · বাকি কাজ"></td></tr>
+<tr><td>Recited it — rate:</td><td class="bn"><input value="তিলাওয়াত করেছি — মূল্যায়ন:"></td></tr>
+<tr><td>Reciting</td><td class="bn"><input value="তিলাওয়াত চলছে"></td></tr>
+<tr><td>Recording not found</td><td class="bn"><input value="রেকর্ডিং পাওয়া যায়নি"></td></tr>
+<tr><td>Recording stopped and saved</td><td class="bn"><input value="রেকর্ডিং থেমেছে ও সংরক্ষিত হয়েছে"></td></tr>
+<tr><td>Recording… 0:00</td><td class="bn"><input value="রেকর্ড হচ্ছে… ০:০০"></td></tr>
+<tr><td>Remove kept pages</td><td class="bn"><input value="রাখা পৃষ্ঠা সরান"></td></tr>
+<tr><td>Remove the added ayah at the end</td><td class="bn"><input value="শেষে যোগ করা আয়াত সরান"></td></tr>
+<tr><td>Remove the added ayah at the start</td><td class="bn"><input value="শুরুতে যোগ করা আয়াত সরান"></td></tr>
+<tr><td>Repeat</td><td class="bn"><input value="পুনরাবৃত্তি"></td></tr>
+<tr><td>Repeat each</td><td class="bn"><input value="প্রতিটির পুনরাবৃত্তি"></td></tr>
+<tr><td>Repeat each ayah</td><td class="bn"><input value="প্রতিটি আয়াতের পুনরাবৃত্তি"></td></tr>
+<tr><td>Repeat the whole range</td><td class="bn"><input value="পুরো পরিসরের পুনরাবৃত্তি"></td></tr>
+<tr><td>Replace this week’s page lists with the lesson</td><td class="bn"><input value="এই সপ্তাহের পৃষ্ঠা-তালিকা পাঠ দিয়ে প্রতিস্থাপন করুন"></td></tr>
+<tr><td>reset</td><td class="bn"><input value="রিসেট"></td></tr>
+<tr><td>Reset everything</td><td class="bn"><input value="সব রিসেট করুন"></td></tr>
+<tr><td>Reset template</td><td class="bn"><input value="ছাঁচ রিসেট করুন"></td></tr>
+<tr><td>Reset to defaults</td><td class="bn"><input value="ডিফল্টে ফেরান"></td></tr>
+<tr><td>Resolve all on this page</td><td class="bn"><input value="এই পৃষ্ঠার সবগুলো মীমাংসিত করুন"></td></tr>
+<tr><td>Rest of the week — {n} more pages</td><td class="bn"><input value="সপ্তাহের বাকি অংশ — আরও {n}টি পৃষ্ঠা"></td></tr>
+<tr><td>Restart</td><td class="bn"><input value="আবার শুরু"></td></tr>
+<tr><td>Restart current</td><td class="bn"><input value="বর্তমানটি আবার শুরু"></td></tr>
+<tr><td>Restore the data this device had before the last cloud load</td><td class="bn"><input value="সর্বশেষ ক্লাউড-লোডের আগে এই ডিভাইসে যে ডেটা ছিল তা ফিরিয়ে আনুন"></td></tr>
+<tr><td>Restored in memory, but this browser would not store it — export a JSON backup now</td><td class="bn"><input value="মেমরিতে ফেরানো হয়েছে, কিন্তু এই ব্রাউজার তা সংরক্ষণ করেনি — এখনই একটি JSON ব্যাকআপ রপ্তানি করুন"></td></tr>
+<tr><td>Restored the earlier data from this device</td><td class="bn"><input value="এই ডিভাইসের আগের ডেটা ফিরিয়ে আনা হয়েছে"></td></tr>
+<tr><td>Reveal all</td><td class="bn"><input value="সব দেখান"></td></tr>
+<tr><td>Reveal one line (↓)</td><td class="bn"><input value="এক লাইন দেখান (↓)"></td></tr>
+<tr><td>Revision</td><td class="bn"><input value="মুরাজা‘আহ"></td></tr>
+<tr><td>Revision done</td><td class="bn"><input value="সম্পন্ন মুরাজা‘আহ"></td></tr>
+<tr><td>Revision ended — the text and the aids are back</td><td class="bn"><input value="মুরাজা‘আহ শেষ — টেক্সট ও সহায়ক উপকরণ ফিরে এসেছে"></td></tr>
+<tr><td>Revision pages per day (× 7 = the weekly budget the proposal fills)</td><td class="bn"><input value="প্রতিদিন মুরাজা‘আহর পৃষ্ঠা (× ৭ = প্রস্তাব যে সাপ্তাহিক পরিমাণ পূরণ করে)"></td></tr>
+<tr><td>Run scheduler self-test</td><td class="bn"><input value="সূচি-নির্ধারকের স্ব-পরীক্ষা চালান"></td></tr>
+<tr><td>Sabaq</td><td class="bn"><input value="সবক"></td></tr>
+<tr><td>sabaq</td><td class="bn"><input value="সবক"></td></tr>
+<tr><td>Sabaq ladder</td><td class="bn"><input value="সবকের ধাপ"></td></tr>
+<tr><td>Sabaq page</td><td class="bn"><input value="সবকের পৃষ্ঠা"></td></tr>
+<tr><td>Sabaq set to page {p}, {dir}</td><td class="bn"><input value="সবক নির্ধারিত হলো পৃষ্ঠা {p}, {dir}"></td></tr>
+<tr><td>Sabqi</td><td class="bn"><input value="সবকি"></td></tr>
+<tr><td>sabqi</td><td class="bn"><input value="সবকি"></td></tr>
+<tr><td>Same as memorisation qari</td><td class="bn"><input value="মুখস্থের কারীর মতোই"></td></tr>
+<tr><td>same wording</td><td class="bn"><input value="একই শব্দ"></td></tr>
+<tr><td>Sat</td><td class="bn"><input value="শনি"></td></tr>
+<tr><td>Saturday</td><td class="bn"><input value="শনিবার"></td></tr>
+<tr><td>Save</td><td class="bn"><input value="সংরক্ষণ"></td></tr>
+<tr><td>Save plan for this week</td><td class="bn"><input value="এই সপ্তাহের পরিকল্পনা সংরক্ষণ করুন"></td></tr>
+<tr><td>Save to cloud now</td><td class="bn"><input value="এখনই ক্লাউডে পাঠান"></td></tr>
+<tr><td>Saved</td><td class="bn"><input value="সংরক্ষিত হয়েছে"></td></tr>
+<tr><td>Schedule</td><td class="bn"><input value="সূচি"></td></tr>
+<tr><td>Scrolls (hold Ctrl to zoom)</td><td class="bn"><input value="স্ক্রল করে (জুম করতে Ctrl চেপে ধরুন)"></td></tr>
+<tr><td>Seek</td><td class="bn"><input value="অবস্থান"></td></tr>
+<tr><td>Segment {i}</td><td class="bn"><input value="খণ্ড {i}"></td></tr>
+<tr><td>Segments per page</td><td class="bn"><input value="প্রতি পৃষ্ঠায় খণ্ড"></td></tr>
+<tr><td>Selection ten times</td><td class="bn"><input value="নির্বাচিত অংশ দশবার"></td></tr>
+<tr><td>Selection ×10</td><td class="bn"><input value="নির্বাচন ×১০"></td></tr>
+<tr><td>Selection:</td><td class="bn"><input value="নির্বাচন:"></td></tr>
+<tr><td>Sep</td><td class="bn"><input value="সেপ্ট"></td></tr>
+<tr><td>Set this week’s plan</td><td class="bn"><input value="এই সপ্তাহের পরিকল্পনা নির্ধারণ করুন"></td></tr>
+<tr><td>Settings</td><td class="bn"><input value="সেটিংস"></td></tr>
+<tr><td>Settings sections</td><td class="bn"><input value="সেটিংসের বিভাগ"></td></tr>
+<tr><td>Share template</td><td class="bn"><input value="বার্তার ছাঁচ"></td></tr>
+<tr><td>Share with my teacher</td><td class="bn"><input value="আমার উস্তাদকে পাঠান"></td></tr>
+<tr><td>shares a phrase</td><td class="bn"><input value="একটি বাক্যাংশ অভিন্ন"></td></tr>
+<tr><td>Share…</td><td class="bn"><input value="শেয়ার…"></td></tr>
+<tr><td>show all</td><td class="bn"><input value="সব দেখান"></td></tr>
+<tr><td>Show all (End)</td><td class="bn"><input value="সব দেখান (End)"></td></tr>
+<tr><td>Show beside the Mushaf</td><td class="bn"><input value="মুসহাফের পাশে দেখান"></td></tr>
+<tr><td>Show text-block handles</td><td class="bn"><input value="লেখার ব্লকের হাতল দেখান"></td></tr>
+<tr><td>Show the message for this week</td><td class="bn"><input value="এই সপ্তাহের বার্তা দেখান"></td></tr>
+<tr><td>Show the original message</td><td class="bn"><input value="মূল বার্তা দেখান"></td></tr>
+<tr><td>Show the ✗ “I stumbled on this ayah” buttons (mistake log) in Study and Text view</td><td class="bn"><input value="অধ্যয়ন ও টেক্সট দৃশ্যে ✗ “এই আয়াতে আটকে গিয়েছি” বোতাম (ভুলের খাতা) দেখান"></td></tr>
+<tr><td>Show under each ayah</td><td class="bn"><input value="প্রতিটি আয়াতের নিচে দেখান"></td></tr>
+<tr><td>Silence after each ayah (to recite)</td><td class="bn"><input value="প্রতিটি আয়াতের পর নীরবতা (তিলাওয়াতের জন্য)"></td></tr>
+<tr><td>similar</td><td class="bn"><input value="সদৃশ"></td></tr>
+<tr><td>since the journey start (up to 60 weeks) · darker = more pages recited</td><td class="bn"><input value="যাত্রা শুরুর পর থেকে (৬০ সপ্তাহ পর্যন্ত) · যত গাঢ়, তত বেশি পৃষ্ঠা তিলাওয়াত"></td></tr>
+<tr><td>Single page</td><td class="bn"><input value="এক পৃষ্ঠা"></td></tr>
+<tr><td>Size</td><td class="bn"><input value="আকার"></td></tr>
+<tr><td>Skip to content</td><td class="bn"><input value="মূল অংশে যান"></td></tr>
+<tr><td>Slow</td><td class="bn"><input value="ধীর"></td></tr>
+<tr><td>Smaller files</td><td class="bn"><input value="ছোট ফাইল"></td></tr>
+<tr><td>Smaller text</td><td class="bn"><input value="লেখা ছোট"></td></tr>
+<tr><td>Speed</td><td class="bn"><input value="গতি"></td></tr>
+<tr><td>spread one page per week from the journey start</td><td class="bn"><input value="যাত্রা শুরুর দিন থেকে সপ্তাহে এক পৃষ্ঠা করে ছড়িয়ে দিন"></td></tr>
+<tr><td>Start</td><td class="bn"><input value="শুরু"></td></tr>
+<tr><td>Start page</td><td class="bn"><input value="শুরুর পৃষ্ঠা"></td></tr>
+<tr><td>Starting point &amp; pace</td><td class="bn"><input value="শুরুর স্থান ও গতি"></td></tr>
+<tr><td>Starts</td><td class="bn"><input value="শুরু"></td></tr>
+<tr><td>Still loading from the cloud — it will appear when it arrives</td><td class="bn"><input value="এখনো ক্লাউড থেকে আসছে — পৌঁছালেই দেখা যাবে"></td></tr>
+<tr><td>Stop</td><td class="bn"><input value="থামান"></td></tr>
+<tr><td>Stop and close player</td><td class="bn"><input value="প্লেয়ার থামিয়ে বন্ধ করুন"></td></tr>
+<tr><td>Stop using folder</td><td class="bn"><input value="ফোল্ডার ব্যবহার বন্ধ করুন"></td></tr>
+<tr><td>Store this week’s recitation in the browser so it plays instantly and offline</td><td class="bn"><input value="এই সপ্তাহের তিলাওয়াত ব্রাউজারে রাখুন, যাতে তা তাৎক্ষণিকভাবে ও ইন্টারনেট ছাড়া চলে"></td></tr>
+<tr><td>Stored recitation</td><td class="bn"><input value="সংরক্ষিত তিলাওয়াত"></td></tr>
+<tr><td>Storing…</td><td class="bn"><input value="সংরক্ষণ করা হচ্ছে…"></td></tr>
+<tr><td>Student name</td><td class="bn"><input value="শিক্ষার্থীর নাম"></td></tr>
+<tr><td>Study</td><td class="bn"><input value="অধ্যয়ন"></td></tr>
+<tr><td>Study tools</td><td class="bn"><input value="অধ্যয়ন সরঞ্জাম"></td></tr>
+<tr><td>Study tools and controls</td><td class="bn"><input value="অধ্যয়নের সরঞ্জাম ও নিয়ন্ত্রণ"></td></tr>
+<tr><td>Stumbles on this page</td><td class="bn"><input value="এই পৃষ্ঠায় আটকে যাওয়া"></td></tr>
+<tr><td>Suggested today</td><td class="bn"><input value="আজকের জন্য প্রস্তাবিত"></td></tr>
+<tr><td>Sun</td><td class="bn"><input value="রবি"></td></tr>
+<tr><td>Sunday</td><td class="bn"><input value="রবিবার"></td></tr>
+<tr><td>Surah</td><td class="bn"><input value="সূরা"></td></tr>
+<tr><td>Switch to Text</td><td class="bn"><input value="টেক্সট দৃশ্যে যান"></td></tr>
+<tr><td>Sync on (load on start, save after every change)</td><td class="bn"><input value="সিংক চালু (শুরুতে লোড, প্রতিটি পরিবর্তনের পর সংরক্ষণ)"></td></tr>
+<tr><td>Syntax treebank ↗</td><td class="bn"><input value="বাক্যগঠন ট্রিব্যাংক ↗"></td></tr>
+<tr><td>Sūrah</td><td class="bn"><input value="সূরা"></td></tr>
+<tr><td>tab introduces the app and lists every source it uses, with links.</td><td class="bn"><input value="ট্যাবে অ্যাপের পরিচয় এবং ব্যবহৃত প্রতিটি উৎসের তালিকা ও লিংক আছে।"></td></tr>
+<tr><td>tab.</td><td class="bn"><input value="ট্যাবে।"></td></tr>
+<tr><td>Tadabbur pauses, guidance, deeds, word meanings and tafsīr for this Mushaf page, from altadabbur.com (same 604-page numbering).</td><td class="bn"><input value="এই মুসহাফ পৃষ্ঠার তাদাব্বুর-বিরতি, দিকনির্দেশনা, আমল, শব্দার্থ ও তাফসীর — altadabbur.com থেকে (একই ৬০৪ পৃষ্ঠার ক্রম)।"></td></tr>
+<tr><td>Tadabbur wa Amal</td><td class="bn"><input value="তাদাব্বুর ওয়া আমল"></td></tr>
+<tr><td>Tadabbur ↗</td><td class="bn"><input value="তাদাব্বুর ↗"></td></tr>
+<tr><td>Tafsir / তাফসীর</td><td class="bn"><input value="তাফসীর"></td></tr>
+<tr><td>Tafsir edition</td><td class="bn"><input value="তাফসীর সংস্করণ"></td></tr>
+<tr><td>Tafsīr</td><td class="bn"><input value="তাফসীর"></td></tr>
+<tr><td>Tafsīr after each ayah, read by the device</td><td class="bn"><input value="প্রতিটি আয়াতের পর তাফসীর, ডিভাইস পড়ে শোনাবে"></td></tr>
+<tr><td>Tajwīd colours</td><td class="bn"><input value="তাজবীদের রঙ"></td></tr>
+<tr><td>tap</td><td class="bn"><input value="চাপুন"></td></tr>
+<tr><td>Tap an ayah (or two, for a range) first</td><td class="bn"><input value="আগে একটি আয়াতে চাপুন (পরিসরের জন্য দুটি)"></td></tr>
+<tr><td>Tap an ayah chip above to point these links at that ayah; otherwise they open the first ayah of the page.</td><td class="bn"><input value="উপরের কোনো আয়াত চিপে চাপলে এই লিংকগুলো সেই আয়াতে যাবে; না চাপলে পৃষ্ঠার প্রথম আয়াত খুলবে।"></td></tr>
+<tr><td>tap for {lang}</td><td class="bn"><input value="{lang}-এ যেতে চাপুন"></td></tr>
+<tr><td>Tap one ayah chip (or two for a range), record yourself reciting it from memory, then listen to the qari and to yourself one after the other. Recordings stay on this device only.</td><td class="bn"><input value="একটি আয়াত চিপে চাপুন (পরিসরের জন্য দুটি), স্মৃতি থেকে তিলাওয়াত করে নিজের কণ্ঠ রেকর্ড করুন, তারপর কারীর ও নিজের তিলাওয়াত পরপর শুনুন। রেকর্ডিং কেবল এই ডিভাইসেই থাকে।"></td></tr>
+<tr><td>Tap one or two ayah chips first to choose the selection</td><td class="bn"><input value="নির্বাচন করতে আগে এক বা দুটি আয়াত চিপে চাপুন"></td></tr>
+<tr><td>Tap the map to add or remove pages.</td><td class="bn"><input value="পৃষ্ঠা যোগ বা বাদ দিতে মানচিত্রে চাপুন।"></td></tr>
+<tr><td>Tap to expand or collapse the player</td><td class="bn"><input value="প্লেয়ার খুলতে বা গুটাতে চাপুন"></td></tr>
+<tr><td>Tap ✗ on the selected ayah in</td><td class="bn"><input value="নির্বাচিত আয়াতের ✗-এ চাপুন"></td></tr>
+<tr><td>Teacher feedback</td><td class="bn"><input value="উস্তাদের মতামত"></td></tr>
+<tr><td>Teacher feedback, notes and pages already marked done are kept either way. Nothing is marked memorised or completed by an import.</td><td class="bn"><input value="উস্তাদের মতামত, নোট ও ইতিমধ্যে সম্পন্ন চিহ্নিত পৃষ্ঠা দুই ক্ষেত্রেই থেকে যায়। ইমপোর্টের মাধ্যমে কিছুই মুখস্থ বা সম্পন্ন হিসেবে চিহ্নিত হয় না।"></td></tr>
+<tr><td>Teacher name</td><td class="bn"><input value="উস্তাদের নাম"></td></tr>
+<tr><td>Teacher:</td><td class="bn"><input value="উস্তাদ:"></td></tr>
+<tr><td>Teacher’s feedback for this week</td><td class="bn"><input value="এই সপ্তাহে উস্তাদের মতামত"></td></tr>
+<tr><td>Template saved</td><td class="bn"><input value="ছাঁচ সংরক্ষিত হয়েছে"></td></tr>
+<tr><td>Test audio sources</td><td class="bn"><input value="শ্রবণ উৎস পরীক্ষা করুন"></td></tr>
+<tr><td>Test connection</td><td class="bn"><input value="সংযোগ পরীক্ষা করুন"></td></tr>
+<tr><td>Test sources / advanced</td><td class="bn"><input value="উৎস পরীক্ষা / উন্নত"></td></tr>
+<tr><td>Testing… (up to 15 s per source)</td><td class="bn"><input value="পরীক্ষা চলছে… (প্রতি উৎসে সর্বোচ্চ ১৫ সেকেন্ড)"></td></tr>
+<tr><td>Text</td><td class="bn"><input value="টেক্সট"></td></tr>
+<tr><td>Text size</td><td class="bn"><input value="লেখার আকার"></td></tr>
+<tr><td>Text view</td><td class="bn"><input value="টেক্সট দৃশ্য"></td></tr>
+<tr><td>That copy could not be restored — nothing was changed. </td><td class="bn"><input value="সেই অনুলিপি ফেরানো যায়নি — কিছুই বদলানো হয়নি। "></td></tr>
+<tr><td>That copy is no longer in this browser</td><td class="bn"><input value="সেই অনুলিপি আর এই ব্রাউজারে নেই"></td></tr>
+<tr><td>The app could not use what it found in this browser&#x27;s storage, so it started with an empty plan and kept the original untouched. Download it before clearing it — it may be repairable, and it is the only copy on this device.</td><td class="bn"><input value="এই ব্রাউজারের সঞ্চয়ে যা পাওয়া গেছে অ্যাপ তা ব্যবহার করতে পারেনি, তাই খালি পরিকল্পনা দিয়ে শুরু করেছে এবং মূলটি অক্ষত রেখেছে। মোছার আগে নামিয়ে নিন — এটি হয়তো মেরামতযোগ্য, আর এই ডিভাইসে এটিই একমাত্র অনুলিপি।"></td></tr>
+<tr><td>The app includes a compact edition of the Madinah Mushaf, so you can start right away. If you have the original PDF (</td><td class="bn"><input value="অ্যাপে মদীনা মুসহাফের একটি হালকা সংস্করণ আছে, তাই এখনই শুরু করতে পারেন। মূল PDF ("></td></tr>
+<tr><td>The app ships with a compact built-in edition of the 604-page Madinah Mushaf (black text, grey ornament, ~40 KB a page). For the full-colour, high-resolution original load</td><td class="bn"><input value="অ্যাপের সঙ্গেই ৬০৪ পৃষ্ঠার মদীনা মুসহাফের একটি হালকা সংস্করণ আছে (কালো লেখা, ধূসর নকশা, পৃষ্ঠাপ্রতি ~৪০ KB)। পূর্ণ রঙিন, উচ্চ রেজ়লিউশনের মূল সংস্করণের জন্য লোড করুন"></td></tr>
+<tr><td>The cloud copy could not be loaded — nothing was changed</td><td class="bn"><input value="ক্লাউডের অনুলিপি আনা যায়নি — কিছুই বদলানো হয়নি"></td></tr>
+<tr><td>The Corpus syntax treebank covers sūrahs 1–8 and 59–114 only; word-by-word and morphology cover every ayah.</td><td class="bn"><input value="Corpus-এর বাক্যগঠন ট্রিব্যাংকে কেবল সূরা ১–৮ ও ৫৯–১১৪ আছে; শব্দে শব্দে ও শব্দরূপ সব আয়াতেই আছে।"></td></tr>
+<tr><td>The gap-fill drill works on the</td><td class="bn"><input value="শূন্যস্থান পূরণ অনুশীলন কাজ করে"></td></tr>
+<tr><td>the page</td><td class="bn"><input value="পৃষ্ঠাটি"></td></tr>
+<tr><td>The printed Madinah Mushaf page</td><td class="bn"><input value="মুদ্রিত মদীনা মুসহাফের পৃষ্ঠা"></td></tr>
+<tr><td>The printed Mushaf pages remain the reference for memorising; this list is for understanding. Text and meanings come from the sources named in the</td><td class="bn"><input value="মুখস্থ করার ভিত্তি থাকবে মুদ্রিত মুসহাফের পৃষ্ঠাই; এই তালিকা বোঝার জন্য। টেক্সট ও অর্থ এসেছে সেই উৎসগুলো থেকে যেগুলোর নাম আছে"></td></tr>
+<tr><td>The Qur’ān text, your own notes and the Help &amp; About tab are never translated. Bengali covers the interface; anything not yet translated stays in English.</td><td class="bn"><input value="কুরআনের পাঠ, আপনার নিজের নোট এবং সহায়িকা ও পরিচিতি ট্যাব কখনো অনুবাদ করা হয় না। বাংলা ইন্টারফেসকে ঢেকে রাখে; যা এখনো অনুবাদ হয়নি তা ইংরেজিতেই থাকে।"></td></tr>
+<tr><td>The same page as text: ayah by ayah, with meanings and drills</td><td class="bn"><input value="একই পৃষ্ঠা টেক্সট আকারে: আয়াতভিত্তিক, অর্থ ও অনুশীলনসহ"></td></tr>
+<tr><td>The selected ayāt (tap two chips) ten times</td><td class="bn"><input value="নির্বাচিত আয়াতগুলো (দুটি চিপে চাপুন) দশবার"></td></tr>
+<tr><td>The weekly plan and its deadline follow the start day: a week is seven days from it, and the deadline is midnight at the end of the seventh. Week numbers count from the week containing 1 January. Hijri dates use the Umm al-Qura calendar; shift them by a day if the local moon sighting differs.</td><td class="bn"><input value="সাপ্তাহিক পরিকল্পনা ও তার সময়সীমা শুরুর দিন ধরে চলে: সেদিন থেকে সাত দিনে এক সপ্তাহ, আর সময়সীমা সপ্তম দিনের শেষ মধ্যরাত। সপ্তাহের নম্বর গোনা হয় ১ জানুয়ারি যে সপ্তাহে পড়ে সেটি থেকে। হিজরি তারিখে উম্মুল কুরা পঞ্জিকা ব্যবহৃত হয়; স্থানীয় চাঁদ দেখা ভিন্ন হলে এক দিন সরিয়ে নিন।"></td></tr>
+<tr><td>The whole page three times without stopping</td><td class="bn"><input value="পুরো পৃষ্ঠা না থেমে তিনবার"></td></tr>
+<tr><td>The whole page, three times</td><td class="bn"><input value="পুরো পৃষ্ঠা, তিনবার"></td></tr>
+<tr><td>The whole Qur’an</td><td class="bn"><input value="পুরো কুরআন"></td></tr>
+<tr><td>The wording, and your name and your teacher&#x27;s, come from a template you can change:</td><td class="bn"><input value="বার্তার ভাষা এবং আপনার ও আপনার উস্তাদের নাম আসে একটি ছাঁচ থেকে, যা আপনি বদলাতে পারেন:"></td></tr>
+<tr><td>Theme</td><td class="bn"><input value="থিম"></td></tr>
+<tr><td>Theme: {x}</td><td class="bn"><input value="থিম: {x}"></td></tr>
+<tr><td>They skip sabaq and enter the long-term rotation immediately. Giving a date (or spreading them from the journey start, in your memorization direction) makes History and the revision schedule reflect when you really learnt them.</td><td class="bn"><input value="এগুলো সবক এড়িয়ে সরাসরি দীর্ঘমেয়াদি আবর্তনে যায়। তারিখ দিলে (বা যাত্রা শুরুর দিন থেকে আপনার মুখস্থের দিক অনুসারে ছড়িয়ে দিলে) ইতিহাস ও মুরাজা‘আহর সূচি আপনি আসলে কখন শিখেছেন তা অনুযায়ী হয়।"></td></tr>
+<tr><td>Third‑party components keep their own terms and are not covered by this licence: Mushaf page images from the Madinah Mushaf © King Fahd Glorious Qur’an Printing Complex (free non‑commercial distribution, no modification); PDF.js © Mozilla (Apache‑2.0); Qur’an page/sūrah metadata from quran‑meta (MIT); recitation streamed from everyayah.com; Tadabbur wa Amal and the Quranic Arabic Corpus are linked, never copied.</td><td class="bn"><input value="তৃতীয় পক্ষের উপাদানগুলোর নিজস্ব শর্ত বহাল থাকে এবং সেগুলো এই লাইসেন্সের আওতায় পড়ে না: মুসহাফ পৃষ্ঠার ছবি মদীনা মুসহাফ © কিং ফাহাদ গ্লোরিয়াস কুরআন প্রিন্টিং কমপ্লেক্স (অবাণিজ্যিক বিতরণ অবাধ, পরিবর্তন নিষিদ্ধ); PDF.js © Mozilla (Apache‑2.0); কুরআনের পৃষ্ঠা/সূরার তথ্য quran‑meta থেকে (MIT); তিলাওয়াত everyayah.com থেকে সরাসরি আসে; তাদাব্বুর ওয়া আমল ও Quranic Arabic Corpus কেবল লিংক করা হয়, কখনো অনুলিপি করা হয় না।"></td></tr>
+<tr><td>This browser (works everywhere)</td><td class="bn"><input value="এই ব্রাউজারে (সবখানে কাজ করে)"></td></tr>
+<tr><td>This browser has no speech engine</td><td class="bn"><input value="এই ব্রাউজারে কোনো কণ্ঠ-ইঞ্জিন নেই"></td></tr>
+<tr><td>This device could not save — you decide what to keep</td><td class="bn"><input value="এই ডিভাইস সংরক্ষণ করতে পারেনি — কোনটি রাখবেন আপনি ঠিক করুন"></td></tr>
+<tr><td>This device now matches the cloud copy</td><td class="bn"><input value="এই ডিভাইস এখন ক্লাউডের অনুলিপির সঙ্গে মিলে গেছে"></td></tr>
+<tr><td>This device’s name</td><td class="bn"><input value="এই ডিভাইসের নাম"></td></tr>
+<tr><td>this page</td><td class="bn"><input value="এই পৃষ্ঠা"></td></tr>
+<tr><td>this week</td><td class="bn"><input value="এই সপ্তাহ"></td></tr>
+<tr><td>This week’s pages</td><td class="bn"><input value="এই সপ্তাহের পৃষ্ঠা"></td></tr>
+<tr><td>This week’s plan is a proposal — review the pages under Week, then press “Set this week’s plan”.</td><td class="bn"><input value="এই সপ্তাহের পরিকল্পনাটি একটি প্রস্তাব — সপ্তাহ ট্যাবে পৃষ্ঠাগুলো দেখে নিন, তারপর “এই সপ্তাহের পরিকল্পনা নির্ধারণ করুন”-এ চাপুন।"></td></tr>
+<tr><td>through a small script you install once (the</td><td class="bn"><input value="একটি ছোট স্ক্রিপ্টের মাধ্যমে, যা একবারই বসাতে হয় ("></td></tr>
+<tr><td>Thu</td><td class="bn"><input value="বৃহঃ"></td></tr>
+<tr><td>Thursday</td><td class="bn"><input value="বৃহস্পতিবার"></td></tr>
+<tr><td>Time on the Study tab today (all pages) · this page</td><td class="bn"><input value="আজ অধ্যয়ন ট্যাবে সময় (সব পৃষ্ঠা) · এই পৃষ্ঠা"></td></tr>
+<tr><td>to</td><td class="bn"><input value="পর্যন্ত"></td></tr>
+<tr><td>To</td><td class="bn"><input value="পর্যন্ত"></td></tr>
+<tr><td>To ayah</td><td class="bn"><input value="আয়াত পর্যন্ত"></td></tr>
+<tr><td>To surah</td><td class="bn"><input value="সূরা পর্যন্ত"></td></tr>
+<tr><td>Today</td><td class="bn"><input value="আজ"></td></tr>
+<tr><td>today</td><td class="bn"><input value="আজ"></td></tr>
+<tr><td>Today’s wird</td><td class="bn"><input value="আজকের ওয়ির্দ"></td></tr>
+<tr><td>Toggle light or dark theme</td><td class="bn"><input value="উজ্জ্বল বা গাঢ় থিম বদলান"></td></tr>
+<tr><td>Toggle theme</td><td class="bn"><input value="থিম বদলান"></td></tr>
+<tr><td>Tool sections</td><td class="bn"><input value="সরঞ্জামের বিভাগ"></td></tr>
+<tr><td>Tools</td><td class="bn"><input value="সরঞ্জাম"></td></tr>
+<tr><td>Tools → Practice</td><td class="bn"><input value="সরঞ্জাম → অনুশীলন"></td></tr>
+<tr><td>Translation</td><td class="bn"><input value="অনুবাদ"></td></tr>
+<tr><td>Translation audio</td><td class="bn"><input value="অনুবাদের শ্রবণ"></td></tr>
+<tr><td>Translations</td><td class="bn"><input value="অনুবাদসমূহ"></td></tr>
+<tr><td>Translations shown in Text view</td><td class="bn"><input value="টেক্সট দৃশ্যে যেসব অনুবাদ দেখানো হবে"></td></tr>
+<tr><td>Translations: Bengali — Taisirul Quran, Sheikh Mujibur Rahman (Quran.com); English — Saheeh International (Al Quran Cloud / Tanzil), Al-Hilali &amp; Khan, Bridges’ translation (Quran.com). Word meanings: Quran.com. Shown as published, with their sources; nothing is altered.</td><td class="bn"><input value="অনুবাদ: বাংলা — তাইসীরুল কুরআন, শায়খ মুজীবুর রহমান (Quran.com); ইংরেজি — Saheeh International (Al Quran Cloud / Tanzil), Al-Hilali &amp; Khan, Bridges’ translation (Quran.com)। শব্দার্থ: Quran.com। প্রকাশিত রূপেই দেখানো হয়, উৎসের নামসহ; কিছুই পরিবর্তন করা হয় না।"></td></tr>
+<tr><td>Try again</td><td class="bn"><input value="আবার চেষ্টা করুন"></td></tr>
+<tr><td>Tue</td><td class="bn"><input value="মঙ্গল"></td></tr>
+<tr><td>Tuesday</td><td class="bn"><input value="মঙ্গলবার"></td></tr>
+<tr><td>Turn the curtain on (toolbar or C), recite from memory, then reveal line by line to check.</td><td class="bn"><input value="পর্দা চালু করুন (টুলবার বা C), স্মৃতি থেকে তিলাওয়াত করুন, তারপর লাইন ধরে ধরে মিলিয়ে দেখুন।"></td></tr>
+<tr><td>Tutorial (PDF):</td><td class="bn"><input value="টিউটোরিয়াল (PDF):"></td></tr>
+<tr><td>Two facing pages, as in the printed Mushaf</td><td class="bn"><input value="মুখোমুখি দুই পৃষ্ঠা, মুদ্রিত মুসহাফের মতো"></td></tr>
+<tr><td>Two-page spread</td><td class="bn"><input value="দ্বিপৃষ্ঠা"></td></tr>
+<tr><td>Umm al-Qura (default)</td><td class="bn"><input value="উম্মুল কুরা (ডিফল্ট)"></td></tr>
+<tr><td>unaided — the text and the aids are hidden.</td><td class="bn"><input value="সহায়তা ছাড়া — টেক্সট ও সহায়ক উপকরণ লুকানো আছে।"></td></tr>
+<tr><td>under the Mushaf to mark a stumble.</td><td class="bn"><input value="মুসহাফের নিচে, আটকে যাওয়া চিহ্নিত করতে।"></td></tr>
+<tr><td>Understand</td><td class="bn"><input value="অনুধাবন"></td></tr>
+<tr><td>Understanding your progress</td><td class="bn"><input value="আপনার অগ্রগতি বোঝা"></td></tr>
+<tr><td>Use the built-in pages</td><td class="bn"><input value="অন্তর্নির্মিত পৃষ্ঠা ব্যবহার করুন"></td></tr>
+<tr><td>Use the cloud copy on this device</td><td class="bn"><input value="এই ডিভাইসে ক্লাউডের অনুলিপি ব্যবহার করুন"></td></tr>
+<tr><td>Use this app offline (keep it installed on this device)</td><td class="bn"><input value="এই অ্যাপ ইন্টারনেট ছাড়া ব্যবহার করুন (এই ডিভাইসে রেখে দিন)"></td></tr>
+<tr><td>User Guide:</td><td class="bn"><input value="ব্যবহারিকা:"></td></tr>
+<tr><td>Vacation</td><td class="bn"><input value="বিরতি"></td></tr>
+<tr><td>Vacation mode (freeze all due dates)</td><td class="bn"><input value="বিরতি মোড (সব নির্ধারিত তারিখ স্থগিত)"></td></tr>
+<tr><td>Vacation mode on — due dates frozen</td><td class="bn"><input value="বিরতি মোড চালু — নির্ধারিত তারিখ স্থগিত"></td></tr>
+<tr><td>Video lesson</td><td class="bn"><input value="ভিডিও পাঠ"></td></tr>
+<tr><td>View</td><td class="bn"><input value="দৃশ্য"></td></tr>
+<tr><td>view.</td><td class="bn"><input value="দৃশ্যে।"></td></tr>
+<tr><td>weak</td><td class="bn"><input value="দুর্বল"></td></tr>
+<tr><td>Weak pages</td><td class="bn"><input value="দুর্বল পৃষ্ঠা"></td></tr>
+<tr><td>Web app URL (…/exec)</td><td class="bn"><input value="ওয়েব অ্যাপ URL (…/exec)"></td></tr>
+<tr><td>Wed</td><td class="bn"><input value="বুধ"></td></tr>
+<tr><td>Wednesday</td><td class="bn"><input value="বুধবার"></td></tr>
+<tr><td>Week</td><td class="bn"><input value="সপ্তাহ"></td></tr>
+<tr><td>Week by week</td><td class="bn"><input value="সপ্তাহে সপ্তাহে"></td></tr>
+<tr><td>Week now starts on {day}</td><td class="bn"><input value="সপ্তাহ এখন শুরু হবে {day}"></td></tr>
+<tr><td>Week starts on</td><td class="bn"><input value="সপ্তাহ শুরু হয়"></td></tr>
+<tr><td>Week {n}</td><td class="bn"><input value="সপ্তাহ {n}"></td></tr>
+<tr><td>week {w}</td><td class="bn"><input value="সপ্তাহ {w}"></td></tr>
+<tr><td>Weekly day template</td><td class="bn"><input value="সাপ্তাহিক দিনের ছাঁচ"></td></tr>
+<tr><td>Weekly plan text</td><td class="bn"><input value="সাপ্তাহিক পরিকল্পনার লেখা"></td></tr>
+<tr><td>Weekly portion (sabaq)</td><td class="bn"><input value="সাপ্তাহিক অংশ (সবক)"></td></tr>
+<tr><td>Weeks per page</td><td class="bn"><input value="প্রতি পৃষ্ঠায় সপ্তাহ"></td></tr>
+<tr><td>weeks since {d}</td><td class="bn"><input value="{d} থেকে সপ্তাহ"></td></tr>
+<tr><td>weeks with records</td><td class="bn"><input value="রেকর্ডসহ সপ্তাহ"></td></tr>
+<tr><td>Welcome back — due dates shifted by {n} days</td><td class="bn"><input value="স্বাগতম — নির্ধারিত তারিখগুলো {n} দিন পিছিয়ে দেওয়া হয়েছে"></td></tr>
+<tr><td>What</td><td class="bn"><input value="কী"></td></tr>
+<tr><td>What is shown under each ayah is in</td><td class="bn"><input value="প্রতিটি আয়াতের নিচে কী দেখানো হবে তা আছে"></td></tr>
+<tr><td>WhatsApp</td><td class="bn"><input value="হোয়াটসঅ্যাপ"></td></tr>
+<tr><td>When a new version is published the app fetches it in the background and uses it the next time you open the app. If the new version cannot be fetched, the copy you already have keeps working — an update can never leave you with a broken app.</td><td class="bn"><input value="নতুন সংস্করণ প্রকাশ হলে অ্যাপ সেটি পেছনে নামিয়ে নেয় এবং পরেরবার খোলার সময় ব্যবহার করে। নতুন সংস্করণ আনা না গেলে আপনার কাছে থাকা অনুলিপিই চলতে থাকে — হালনাগাদের কারণে অ্যাপ কখনো অচল হয়ে পড়বে না।"></td></tr>
+<tr><td>when you stumble on an ayah</td><td class="bn"><input value="যখন কোনো আয়াতে আটকে যান"></td></tr>
+<tr><td>Where do you want to begin?</td><td class="bn"><input value="কোথা থেকে শুরু করতে চান?"></td></tr>
+<tr><td>Whole page (tap a chip to pick an ayah)</td><td class="bn"><input value="পুরো পৃষ্ঠা (আয়াত বাছতে একটি চিপে চাপুন)"></td></tr>
+<tr><td>Word by word ↗</td><td class="bn"><input value="শব্দে শব্দে ↗"></td></tr>
+<tr><td>Word meanings</td><td class="bn"><input value="শব্দার্থ"></td></tr>
+<tr><td>Word meanings in</td><td class="bn"><input value="শব্দার্থের ভাষা"></td></tr>
+<tr><td>Word meanings in Text view</td><td class="bn"><input value="টেক্সট দৃশ্যে শব্দার্থ"></td></tr>
+<tr><td>Word-meaning language</td><td class="bn"><input value="শব্দার্থের ভাষা"></td></tr>
+<tr><td>You are offline — connect to the internet to download audio</td><td class="bn"><input value="আপনি অফলাইনে আছেন — শ্রবণ নামাতে ইন্টারনেটে যুক্ত হন"></td></tr>
+<tr><td>You can change this any time in Settings → Plan, where you can also mark pages you already know.</td><td class="bn"><input value="এটি যেকোনো সময় সেটিংস → পরিকল্পনায় বদলাতে পারেন; সেখানেই আগে থেকে মুখস্থ পৃষ্ঠাও চিহ্নিত করতে পারবেন।"></td></tr>
+<tr><td>Your browser cleared the Mushaf file — please select it once more</td><td class="bn"><input value="আপনার ব্রাউজার মুসহাফ ফাইলটি মুছে ফেলেছে — অনুগ্রহ করে আবার বেছে নিন"></td></tr>
+<tr><td>your device’s own voice — synthetic, not a recording</td><td class="bn"><input value="আপনার ডিভাইসের নিজস্ব কণ্ঠ — কৃত্রিম, কোনো রেকর্ডিং নয়"></td></tr>
+<tr><td>your own Google Drive</td><td class="bn"><input value="আপনার নিজের গুগল ড্রাইভে"></td></tr>
+<tr><td>Your record was updated in another tab — this tab has reloaded it</td><td class="bn"><input value="অন্য একটি ট্যাবে আপনার রেকর্ড হালনাগাদ হয়েছে — এই ট্যাব তা আবার লোড করেছে"></td></tr>
+<tr><td>your voice · the qari</td><td class="bn"><input value="আপনার কণ্ঠ · কারীর কণ্ঠ"></td></tr>
+<tr><td>Zoom</td><td class="bn"><input value="জুম"></td></tr>
+<tr><td>Zoom in</td><td class="bn"><input value="বড় করুন"></td></tr>
+<tr><td>Zoom out</td><td class="bn"><input value="ছোট করুন"></td></tr>
+<tr><td>Zooms (hold Shift to scroll)</td><td class="bn"><input value="জুম করে (স্ক্রল করতে Shift চেপে ধরুন)"></td></tr>
+<tr><td>{a} of {b} ayāt</td><td class="bn"><input value="{b} আয়াতের {a}টি"></td></tr>
+<tr><td>{a} of {b} done</td><td class="bn"><input value="{b}-এর মধ্যে {a} সম্পন্ন"></td></tr>
+<tr><td>{a} of {b} steps done</td><td class="bn"><input value="{b} ধাপের {a}টি সম্পন্ন"></td></tr>
+<tr><td>{n} ayāt</td><td class="bn"><input value="{n} আয়াত"></td></tr>
+<tr><td>{n} due</td><td class="bn"><input value="{n} নির্ধারিত"></td></tr>
+<tr><td>{n} for today</td><td class="bn"><input value="আজকের জন্য {n}"></td></tr>
+<tr><td>{n} lapses</td><td class="bn"><input value="{n} বার বিচ্যুতি"></td></tr>
+<tr><td>{n} lines</td><td class="bn"><input value="{n} লাইন"></td></tr>
+<tr><td>{n} min</td><td class="bn"><input value="{n} মিনিট"></td></tr>
+<tr><td>{n} min on p.{p}</td><td class="bn"><input value="পৃষ্ঠা {p}-এ {n} মিনিট"></td></tr>
+<tr><td>{n} min today</td><td class="bn"><input value="আজ {n} মিনিট"></td></tr>
+<tr><td>{n} overdue deferred</td><td class="bn"><input value="{n} বিলম্বিত স্থগিত"></td></tr>
+<tr><td>{n} overdue pages did not fit today’s limit of {cap} revision pages a day. They are still waiting — not reviewed — and will be offered again tomorrow. Raise “Revision pages per day” in Settings → Plan if you want more each day.</td><td class="bn"><input value="{n}টি বিলম্বিত পৃষ্ঠা আজকের সীমা (দিনে {cap}টি মুরাজা‘আহ পৃষ্ঠা) ছাড়িয়ে গেছে। সেগুলো এখনো অপেক্ষায় আছে — মুরাজা‘আহ হয়নি — এবং আগামীকাল আবার দেখানো হবে। প্রতিদিন বেশি চাইলে সেটিংস → পরিকল্পনায় “প্রতিদিন মুরাজা‘আহর পৃষ্ঠা” বাড়িয়ে নিন।"></td></tr>
+<tr><td>{n} pages from this week’s plan remain for the days ahead.</td><td class="bn"><input value="এই সপ্তাহের পরিকল্পনার {n}টি পৃষ্ঠা সামনের দিনগুলোর জন্য রয়ে গেছে।"></td></tr>
+<tr><td>{n} reviews</td><td class="bn"><input value="{n} বার মুরাজা‘আহ"></td></tr>
+<tr><td>© 2026. Licensed under</td><td class="bn"><input value="© ২০২৬। লাইসেন্স"></td></tr>
+<tr class="kept"><td>আরবি / Arabic</td><td class="bn"><input value="আরবি / Arabic"></td></tr>
+<tr><td>— it opens in a new tab and your setup stays as it is.</td><td class="bn"><input value="— এটি নতুন ট্যাবে খোলে, আপনার সেটআপ যেমন আছে তেমনই থাকে।"></td></tr>
+<tr><td>— on this device, across reloads and reconnections — until you pick one of the three options above. Nothing is uploaded and nothing is merged in the meantime.</td><td class="bn"><input value="— এই ডিভাইসে, পুনরায় চালু বা পুনঃসংযোগের পরেও — যতক্ষণ না আপনি উপরের তিনটির একটি বাছেন। ইতিমধ্যে কিছুই আপলোড হয় না, কিছুই মেলানো হয় না।"></td></tr>
+<tr><td>— you may copy and share this file freely for non‑commercial use with attribution, but not sell it or distribute modified versions.</td><td class="bn"><input value="— আপনি এই ফাইলটি অবাণিজ্যিক ব্যবহারের জন্য উৎসের নাম উল্লেখ করে অবাধে অনুলিপি ও বিতরণ করতে পারেন, তবে বিক্রি করতে বা পরিবর্তিত সংস্করণ ছড়াতে পারবেন না।"></td></tr>
+<tr><td>— you may copy and share this file freely for non‑commercial use with attribution, but not sell it or distribute modified versions. The Qur’anic text is the Word of Allah and must never be altered; the NoDerivatives condition is there to protect it.</td><td class="bn"><input value="— আপনি এই ফাইলটি অবাণিজ্যিক ব্যবহারের জন্য উৎসের নাম উল্লেখ করে অবাধে অনুলিপি ও বিতরণ করতে পারেন, তবে বিক্রি করতে বা পরিবর্তিত সংস্করণ ছড়াতে পারবেন না। কুরআনের পাঠ আল্লাহর বাণী, তা কখনোই পরিবর্তন করা যাবে না; NoDerivatives শর্তটি তারই সুরক্ষার জন্য।"></td></tr>
+<tr><td>“Decide later” keeps both copies and leaves cloud sync paused</td><td class="bn"><input value="“পরে ঠিক করব” দুটি অনুলিপিই রাখে এবং ক্লাউড সিংক স্থগিত রাখে"></td></tr>
+<tr><td>− line</td><td class="bn"><input value="− লাইন"></td></tr>
+<tr><td>−1 day</td><td class="bn"><input value="−১ দিন"></td></tr>
+<tr><td>≈ {n} MB to download.</td><td class="bn"><input value="নামাতে ≈ {n} MB লাগবে।"></td></tr>
+<tr><td>■ Stop</td><td class="bn"><input value="■ থামান"></td></tr>
+<tr><td>▤ Curtain</td><td class="bn"><input value="▤ পর্দা"></td></tr>
+<tr><td>▯ Single</td><td class="bn"><input value="▯ একক"></td></tr>
+<tr><td>▯▯ Spread</td><td class="bn"><input value="▯▯ দ্বিপৃষ্ঠা"></td></tr>
+<tr><td>▲ hide</td><td class="bn"><input value="▲ লুকান"></td></tr>
+<tr><td>▶ Ayah by ayah</td><td class="bn"><input value="▶ আয়াতে আয়াতে"></td></tr>
+<tr><td>▶ Listen</td><td class="bn"><input value="▶ শুনুন"></td></tr>
+<tr><td>▶ Page</td><td class="bn"><input value="▶ পৃষ্ঠা"></td></tr>
+<tr><td>▶ Play page</td><td class="bn"><input value="▶ পৃষ্ঠা শুনুন"></td></tr>
+<tr><td>▶ Play part {i}</td><td class="bn"><input value="▶ {i} নম্বর অংশ শুনুন"></td></tr>
+<tr><td>▶ Play selection</td><td class="bn"><input value="▶ নির্বাচিত অংশ শুনুন"></td></tr>
+<tr><td>▶ Play today’s {n}</td><td class="bn"><input value="▶ আজকের {n}টি শুনুন"></td></tr>
+<tr><td>▶ Test Bengali</td><td class="bn"><input value="▶ বাংলা পরীক্ষা"></td></tr>
+<tr><td>▶ Test English</td><td class="bn"><input value="▶ ইংরেজি পরীক্ষা"></td></tr>
+<tr><td>▶ Today’s segment</td><td class="bn"><input value="▶ আজকের খণ্ড"></td></tr>
+<tr><td>▶ Video lesson ↗</td><td class="bn"><input value="▶ ভিডিও পাঠ ↗"></td></tr>
+<tr><td>▶ Whole page</td><td class="bn"><input value="▶ পুরো পৃষ্ঠা"></td></tr>
+<tr><td>▼ reveal</td><td class="bn"><input value="▼ দেখান"></td></tr>
+<tr><td>◀ Prev ayah</td><td class="bn"><input value="◀ আগের আয়াত"></td></tr>
+<tr><td>◂ +1 before</td><td class="bn"><input value="◂ +১ আগে"></td></tr>
+<tr><td>● Record</td><td class="bn"><input value="● রেকর্ড"></td></tr>
+<tr><td>☁ Data</td><td class="bn"><input value="☁ ডেটা"></td></tr>
+<tr><td>✉ Sharing</td><td class="bn"><input value="✉ শেয়ার"></td></tr>
+<tr><td>✓ Audio for {what} is downloaded{size} — plays instantly, also offline.</td><td class="bn"><input value="{what}-এর শ্রবণ নামানো হয়েছে{size} — তাৎক্ষণিকভাবে চলে, ইন্টারনেট ছাড়াও।"></td></tr>
+<tr><td>✓ memorized</td><td class="bn"><input value="✓ মুখস্থ"></td></tr>
+<tr><td>✓ part {i} done</td><td class="bn"><input value="✓ {i} নম্বর অংশ সম্পন্ন"></td></tr>
+<tr><td>✓ Plan set — edits are saved immediately</td><td class="bn"><input value="✓ পরিকল্পনা নির্ধারিত — পরিবর্তন সঙ্গে সঙ্গে সংরক্ষিত হয়"></td></tr>
+<tr><td>✓ Planned ahead — it becomes the active plan when the week arrives</td><td class="bn"><input value="✓ আগাম পরিকল্পিত — সপ্তাহ এলে এটিই সক্রিয় পরিকল্পনা হবে"></td></tr>
+<tr><td>✓ Practised today</td><td class="bn"><input value="✓ আজ অনুশীলন করেছি"></td></tr>
+<tr><td>✗ marked — {ref}</td><td class="bn"><input value="✗ চিহ্নিত — {ref}"></td></tr>
+<tr><td>⤢ Focus on</td><td class="bn"><input value="⤢ ফোকাস চালু"></td></tr>
+<tr><td>⤢ Focus — give the page the room</td><td class="bn"><input value="⤢ ফোকাস — পৃষ্ঠাকে পুরো জায়গা দিন"></td></tr>
+<tr><td>⬇ Download</td><td class="bn"><input value="⬇ ডাউনলোড"></td></tr>
+<tr><td>⬇ Download audio</td><td class="bn"><input value="⬇ শ্রবণ ডাউনলোড করুন"></td></tr>
+<tr><td>⬇ Download Text-view content for this week’s pages</td><td class="bn"><input value="⬇ এই সপ্তাহের পৃষ্ঠার টেক্সট-দৃশ্যের বিষয়বস্তু ডাউনলোড করুন"></td></tr>
+<tr><td>⬇ Download this device&#x27;s data first</td><td class="bn"><input value="⬇ আগে এই ডিভাইসের ডেটা নামিয়ে নিন"></td></tr>
+<tr><td>⬇ Export app + data</td><td class="bn"><input value="⬇ অ্যাপ + ডেটা রপ্তানি"></td></tr>
+<tr><td>⬇ Whole Qur’an</td><td class="bn"><input value="⬇ পুরো কুরআন"></td></tr>
+<tr><td>＋ Next page</td><td class="bn"><input value="＋ পরের পৃষ্ঠা"></td></tr>
+<tr><td>＋ note</td><td class="bn"><input value="＋ নোট"></td></tr>
+<tr><td>🎧 Listen…</td><td class="bn"><input value="🎧 শুনুন…"></td></tr>
+<tr><td>🎧 Range…</td><td class="bn"><input value="🎧 পরিসর…"></td></tr>
+<tr><td>📖 Mushaf</td><td class="bn"><input value="📖 মুসহাফ"></td></tr>
+<tr><td>📥 Import weekly lesson</td><td class="bn"><input value="📥 সাপ্তাহিক পাঠ ইমপোর্ট করুন"></td></tr>
+<tr><td>🔊 Audio</td><td class="bn"><input value="🔊 শ্রবণ"></td></tr>
+<tr><td>🔊 Read aloud</td><td class="bn"><input value="🔊 উচ্চারণ করে শোনান"></td></tr>
+<tr><td>🗓 Plan</td><td class="bn"><input value="🗓 পরিকল্পনা"></td></tr>
+</table>
