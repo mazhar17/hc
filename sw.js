@@ -15,7 +15,7 @@
    asks to keep, through caches.open(PAGES). Learning data lives
    in localStorage / IndexedDB and is never touched here.
    ============================================================ */
-const V = '1.23.0';
+const V = '1.23.2';
 const SHELL = 'hifz-shell-' + V, PAGES = 'hifz-pages-v1';
 const SHELL_URLS = ['./', './index.html'];
 
@@ -28,6 +28,12 @@ self.addEventListener('install', e => {
       const keys = await caches.keys(); const olds = keys.filter(k => k.startsWith('hifz-shell-') && k !== SHELL);
       if (olds.length) { const old = await caches.open(olds[olds.length - 1]); for (const u of SHELL_URLS) { const r = await old.match(u); if (r) await c.put(u, r); } }
       if (!(await c.match('./index.html'))) { await caches.delete(SHELL); throw err; }   // nothing usable: abort this install, the previous worker stays
+    }
+    /* The manifest and its icons are cached one at a time, ignoring failures: they matter only
+       when the app is being installed to a home screen, and one missing icon must never be able
+       to abort the install of the app itself the way an addAll() would. */
+    for (const u of ['./manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-512-maskable.png']) {
+      try { await c.add(u); } catch (_) { }
     }
     self.skipWaiting();
   })());
