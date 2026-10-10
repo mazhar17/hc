@@ -6,6 +6,8 @@
                     new shell only replaces the old one once it
                     has been cached successfully
      • mushaf/…   : cache first (pages never change)
+     • text/…     : the built-in Qur'an text + translations, stored at
+                    install, cache first, kept across updates
      • *.pdf      : left entirely to the network — never precached
                     (the tutorial is ~2 MB and most visitors never open
                     it) and never answered with index.html, so an
@@ -15,8 +17,11 @@
    asks to keep, through caches.open(PAGES). Learning data lives
    in localStorage / IndexedDB and is never touched here.
    ============================================================ */
-const V = '1.28.3';
-const SHELL = 'hifz-shell-' + V, PAGES = 'hifz-pages-v1';
+const V = '1.29.0';
+const SHELL = 'hifz-shell-' + V, PAGES = 'hifz-pages-v1', TEXT = 'hifz-text-v1';
+/* The built-in Qur’ān text and translations: stored with the app and kept across updates (a
+   different TEXT name is used only if the files themselves ever change). */
+const TEXT_URLS = ['quran-uthmani.json', 'tr-en-sahih.json', 'tr-en-hilali.json', 'tr-bn-muhiuddin.json', 'tr-bn-zakaria.json'].map(f => './text/' + f);
 const SHELL_URLS = ['./', './index.html'];
 
 self.addEventListener('install', e => {
@@ -35,6 +40,7 @@ self.addEventListener('install', e => {
     for (const u of ['./manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-512-maskable.png']) {
       try { await c.add(u); } catch (_) { }
     }
+    { const t = await caches.open(TEXT); for (const u of TEXT_URLS) { try { if (!(await t.match(u))) await t.add(u); } catch (_) { } } }
     self.skipWaiting();
   })());
 });
@@ -61,6 +67,17 @@ self.addEventListener('fetch', e => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;          // audio, APIs, tafsīr, YouTube — left alone
   if (/\.pdf$/i.test(url.pathname)) return;                  // PDFs (the tutorial): straight to the network, never cached, never substituted
+  if (url.pathname.includes('/text/')) {                     // built-in Qur'an text: cache first, kept across updates
+    e.respondWith((async () => {
+      const c = await caches.open(TEXT);
+      const hit = await c.match(req, { ignoreSearch: true });
+      if (hit) return hit;
+      const res = await fetch(req);
+      if (res && res.ok) e.waitUntil(c.put(req, res.clone()));
+      return res;
+    })());
+    return;
+  }
   if (url.pathname.includes('/mushaf/')) {                   // Mushaf pages: cache first, never evicted here
     e.respondWith((async () => {
       const c = await caches.open(PAGES);
