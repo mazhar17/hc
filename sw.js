@@ -17,7 +17,7 @@
    asks to keep, through caches.open(PAGES). Learning data lives
    in localStorage / IndexedDB and is never touched here.
    ============================================================ */
-const V = '1.29.0';
+const V = '1.29.1';
 const SHELL = 'hifz-shell-' + V, PAGES = 'hifz-pages-v1', TEXT = 'hifz-text-v1';
 /* The built-in Qur’ān text and translations: stored with the app and kept across updates (a
    different TEXT name is used only if the files themselves ever change). */
