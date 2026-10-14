@@ -5485,23 +5485,33 @@ const Meanings = (() => {
       `tj` is the SAME word with tajwid markup (<rule class=...>), asked for in the same
       request as the glosses, so tajwid colouring and word meanings can be shown together
       at no extra cost. `hasTajweed` says whether the API actually supplied it. */
+  /** Quran.com's text carries the small-meem (iqlab) mark U+06E2 / U+06ED after tanween in places where the
+      Madinah Mushaf has none. Keep it only where the next word begins with ba; drop it elsewhere.
+      Without `next`, the text is scanned and the mark is kept only when ba follows (tags and spaces skipped). */
+  const MEEM_MARK = /[\u06E2\u06ED]/g;
+  function fixMeem(s, next) {
+    if (!s) return s;
+    if (next !== undefined) return /^[\u0628]/.test(String(next).replace(/<[^>]*>/g, '').replace(/^[\s\u0600-\u0605\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED]+/, '')) ? s : s.replace(MEEM_MARK, '');
+    return s.replace(/([\u06E2\u06ED])(?!(?:<[^>]*>|\s)*\u0628)/g, '');
+  }
   function words(page, lang) {
     const l = lang === 'bn' ? 'bn' : 'en';
     return cached(`wbw2:${l}:${page}`, async () => {
       const j = await getJSON(QCOM + `verses/by_page/${page}?language=${l}&words=true&word_fields=text_uthmani,text_uthmani_tajweed&per_page=50`);
       const verses = (j.verses || []).map(v => ({ key: v.verse_key, words: (v.words || []).filter(w => w.char_type_name === 'word').map(w => ({ ar: w.text_uthmani, gloss: w.translation && w.translation.text || '', tl: w.transliteration && w.transliteration.text || '', tj: w.text_uthmani_tajweed || '', ln: w.line_number || 0 })) }));
+      verses.forEach(v => v.words.forEach((w, i) => { const nx = v.words[i + 1]; w.ar = fixMeem(w.ar, nx && nx.ar); w.tj = fixMeem(w.tj, nx && nx.ar); }));
       const hasTajweed = verses.some(v => v.words.some(w => w.tj));
       return { lang: l, verses, hasTajweed };
     });
   }
   /** Uthmani text with tajweed markup for one sūrah: { [ayah]: rawString } (sanitised at render). */
-  function tajweed(surah) { return cached(`tj:${surah}`, async () => { const j = await getJSON(QCOM + `quran/verses/uthmani_tajweed?chapter_number=${surah}`); const out = {}; (j.verses || []).forEach(v => { const a = +String(v.verse_key || '').split(':')[1] || 0; if (a) out[a] = v.text_uthmani_tajweed || ''; }); return out; }); }
+  function tajweed(surah) { return cached(`tj:${surah}`, async () => { const j = await getJSON(QCOM + `quran/verses/uthmani_tajweed?chapter_number=${surah}`); const out = {}; (j.verses || []).forEach(v => { const a = +String(v.verse_key || '').split(':')[1] || 0; if (a) out[a] = fixMeem(v.text_uthmani_tajweed || ''); }); return out; }); }
   /** Plain Uthmani text (no markup) for one sūrah. */
   function uthmani(surah) {
     const k = `utb:${surah}`; if (mem[k]) return Promise.resolve(mem[k]);
     return bundle('quran-uthmani.json').then(j => (mem[k] = asAyahs(j.surahs[surah - 1]))).catch(() => uthmaniOnline(surah));
   }
-  function uthmaniOnline(surah) { return cached(`ut:${surah}`, async () => { const j = await getJSON(QCOM + `quran/verses/uthmani?chapter_number=${surah}`); const out = {}; (j.verses || []).forEach(v => { const a = +String(v.verse_key || '').split(':')[1] || 0; if (a) out[a] = v.text_uthmani || ''; }); return out; }); }
+  function uthmaniOnline(surah) { return cached(`ut:${surah}`, async () => { const j = await getJSON(QCOM + `quran/verses/uthmani?chapter_number=${surah}`); const out = {}; (j.verses || []).forEach(v => { const a = +String(v.verse_key || '').split(':')[1] || 0; if (a) out[a] = fixMeem(v.text_uthmani || ''); }); return out; }); }
 
   // Frequent function words / particles hidden from the vocabulary list (bare consonantal skeleton compared)
   const STRIP = s => (s || '').replace(/[ً-ْٰۖ-ۭـؐ-ؚ۟-ۨ]/g, '').replace(/[ٱأإآ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه');
