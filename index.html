@@ -4112,8 +4112,13 @@ const Viewer = (() => {
   async function hdImage(p) {
     if (HD.cache.has(p)) return HD.cache.get(p);
     if (HD.failed.has(p)) return null;
-    try { const im = await loadImg(hdBase() + String(p).padStart(3, '0') + '.webp'); HD.cache.set(p, im); if (HD.cache.size > 12) HD.cache.delete(HD.cache.keys().next().value); return im; }
-    catch (_) { HD.failed.add(p); return null; }
+    const url = hdBase() + String(p).padStart(3, '0') + '.webp';
+    for (let attempt = 0; attempt < 2; attempt++) {     // one retry: a first load can fail on a flaky connection or a service worker still starting
+      try { const im = await loadImg(url); HD.cache.set(p, im); if (HD.cache.size > 12) HD.cache.delete(HD.cache.keys().next().value); return im; }
+      catch (_) { if (attempt === 0) await new Promise(r => setTimeout(r, 400)); }
+    }
+    HD.failed.add(p); setTimeout(() => HD.failed.delete(p), 15000);   // not permanent, so the page loads once the connection returns
+    return null;
   }
   function embeddedAvailable() { return !!((document.querySelector('script.mushaf-pages') && document.getElementById('mushaf-frames')) || remoteBase() || hdBase()); }
   async function embIndex() {
@@ -8097,8 +8102,14 @@ Total memorized: {total}
     if (!$('#view-settings').hidden) renderSettings();
   }
   async function mushafSyncFlag() {                       // pages kept by an earlier version count as downloaded
-    if (!mushafGated() || mushafDownloaded()) return;
-    const s = await Offline.stats(); if (s.files >= 604) { st.settings.mushafDownloaded = true; Store.save({ quiet: true }); }
+    if (!mushafGated()) return;
+    try { if (navigator.storage && navigator.storage.persist && !(await navigator.storage.persisted())) await navigator.storage.persist(); } catch (_) { }
+    const s = await Offline.stats();
+    if (!mushafDownloaded()) { if (s.files >= 604) { st.settings.mushafDownloaded = true; Store.save({ quiet: true }); } return; }
+    // the flag is synced and the browser may have evicted pages: quietly fetch whatever is missing
+    if (s.files < 604 && navigator.onLine !== false && !mfBusy && !offBusy) {
+      Offline.keep(ALL_PAGES).catch(() => { }).then(renderOffline);
+    }
   }
   let mfBusy = false;
   async function mushafDownload() {
