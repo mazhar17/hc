@@ -8451,7 +8451,10 @@ Total memorized: {total}
     $('#toolsBtn').addEventListener('click', () => toolsOpen(!toolsShowing()));
     $('#toolsClose').addEventListener('click', () => toolsOpen(false));
     $$('.tool-tabs [data-tool]').forEach(b => b.addEventListener('click', () => showTool(b.dataset.tool)));
-    $('#viewMushaf').addEventListener('click', () => setViewMode('mushaf'));
+    $('#viewMushaf').addEventListener('click', () => goMushaf());
+    /* Choosing Mushaf opens the printed page full screen; choosing Text turns Focus on. */
+    function goMushaf() { setViewMode('mushaf'); if (!document.body.classList.contains('zen')) enterZen(); }
+    function goText() { setViewMode('list'); if (listShowing() && !focusWanted()) { st.settings.studyFocus = true; Store.save({ quiet: true }); applyFocus(); if (st.settings.listMushafLines) renderList(); } }
     $('#gapToText').addEventListener('click', () => { setViewMode('list'); showTool('practice'); });
     /* One menu open at a time, and a click outside closes it. */
     $$('details.pop').forEach(d => d.addEventListener('toggle', () => { if (d.open) $$('details.pop').forEach(o => { if (o !== d) o.open = false; }); }));
@@ -8472,7 +8475,7 @@ Total memorized: {total}
     Viewer.on('curtain', d => { $('#curtainStatus').textContent = d.on ? t('Page {p}: {a} of {b} lines revealed — ↓ to reveal, ↑ to hide', { p: d.page, a: d.revealed, b: d.lines }) : t('Turn the curtain on (toolbar or C), recite from memory, then reveal line by line to check.'); });
     // audio
     $('#playPage').addEventListener('click', () => { if (listMode() && listAllowed()) { AudioEngine.set({ label: 'study' }); AudioEngine.playPagesByAyah([studyPage], 'study'); } else AudioEngine.playPage(studyPage); }); $('#playSel').addEventListener('click', playSelection);
-    $('#layoutList').addEventListener('click', () => { const oneBtn = window.matchMedia('(max-width: 460px)').matches; setViewMode(oneBtn ? (listShowing() ? 'mushaf' : 'list') : 'list'); });
+    $('#layoutList').addEventListener('click', () => { const oneBtn = window.matchMedia('(max-width: 460px)').matches; if (oneBtn && listShowing()) goMushaf(); else goText(); });
     [['#lsArabic', 'listArabic'], ['#lsWords', 'listWords'], ['#lsTr', 'listTr'], ['#lsTajweed', 'listTajweed'], ['#lsFb', 'listFb'], ['#lsMushafLines', 'listMushafLines']].forEach(([id, k]) => $(id).addEventListener('change', e => { st.settings[k] = e.target.checked; Store.save({ quiet: true }); renderList(); }));
     // --- recite & compare
     $('#recStart').addEventListener('click', async () => {
