@@ -942,6 +942,11 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
 .qw.hl.thl .qar { color: #1a1a1a; } .qw.hl.thl .qg { color: #3a3a3a; }
 @media (max-width: 560px) { .fb-row { grid-template-columns: 1fr auto auto; } .fb-row .fb-when { grid-column: 1 / -1; flex-direction: row; gap: 6px; align-items: baseline; } }
 
+/* Respect the OS "reduce motion" setting; layout and colours are unchanged. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
 </style>
 <script>window.MUSHAF_HD = /*__HD__*/'mushaf/hd/'; window.TEXT_BASE = 'text/';</script>
 <link rel="manifest" href="./manifest.webmanifest">
