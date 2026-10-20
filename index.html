@@ -140,6 +140,14 @@ details.panel > summary { cursor: pointer; }
 .notice { background: color-mix(in srgb, var(--warn) 12%, var(--card)); border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent); border-radius: 10px; padding: 10px 14px; margin: 10px 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .notice.info { background: color-mix(in srgb, var(--sabqi) 10%, var(--card)); border-color: color-mix(in srgb, var(--sabqi) 40%, transparent); }
 
+/* Bookmarks: headings and saved ayahs stay readable at narrow widths. */
+.bookmark-entry { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 0; border-top:1px solid var(--line); }
+.bookmark-entry > div:first-child { min-width:0; flex:1; overflow-wrap:anywhere; }
+.bookmark-entry .row { flex-wrap:wrap; }
+.bookmark-note { white-space:pre-wrap; margin:6px 0 0; }
+.bookmark-group h2 { overflow-wrap:anywhere; }
+#view-bookmarks textarea { width:100%; font:inherit; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:8px; }
+@media(max-width:600px) { .bookmark-entry { align-items:stretch; flex-direction:column; } .tab { min-width:0; font-size:.7em; } }
 /* stats */
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
 .stat { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; }
@@ -586,6 +594,9 @@ body.player-mini .player-info > #plSub { flex: 1 1 auto; min-width: 0; }
 .qv.playing { background: color-mix(in srgb, var(--accent) 10%, transparent); }
 .qv-h { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
 .qnum { display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 24px; padding: 0 6px; border-radius: 12px; background: var(--accent); color: var(--accent-ink); font-size: .8em; font-weight: 700; }
+.qbookmark { border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 999px; min-width: 26px; min-height: 24px; padding: 0 6px; cursor: pointer; opacity: .45; }
+.qbookmark:hover, .qbookmark:focus-visible, .qbookmark.has { color: var(--accent2); border-color: var(--accent2); opacity: 1; }
+@media (hover:hover) { .qbookmark:not(.has) { opacity: 0; pointer-events: none; } .qv:hover .qbookmark, .qv:focus-within .qbookmark { opacity: 1; pointer-events: auto; } }
 .qv-h .qplay { margin-left: auto; }
 .qwords { display: flex; flex-wrap: wrap; direction: rtl; gap: .75em .6em; justify-content: flex-start; }
 .qw { display: flex; flex-direction: column; align-items: center; gap: 1em; padding: 4px 6px; border-radius: 8px; cursor: default; }
@@ -632,9 +643,12 @@ body.player-mini .player-info > #plSub { flex: 1 1 auto; min-width: 0; }
 @media (max-width: 599px) { .dd-body { left: 0; right: auto; min-width: 240px; } }
 
 /* mistake log */
-.chipw { display: inline-flex; align-items: stretch; }
-.chipw .chip { border-radius: 999px 0 0 999px; border-right: 0; }
-.chip-err { border: 1px solid var(--line); background: var(--bg2); color: var(--muted); border-radius: 0 999px 999px 0; padding: 0 9px 0 7px; font-size: .8em; cursor: pointer; min-height: 32px; }
+.chipw { display: inline-flex; align-items: stretch; gap: 2px; }
+.chipw .chip { border-radius: 999px; border-right: 1px solid var(--line); }
+.chip-bookmark { display: none; border: 1px solid var(--line); border-radius: 999px; background: var(--bg2); color: var(--muted); padding: 0 7px; font-size: .82em; cursor: pointer; min-height: 32px; }
+.chipw:hover .chip-bookmark, .chipw:focus-within .chip-bookmark, .chip-bookmark.show { display: inline-block; }
+.chip-bookmark:hover, .chip-bookmark:focus-visible, .chip-bookmark.has { color: var(--accent2); background: color-mix(in srgb, var(--accent2) 12%, var(--bg2)); }
+.chip-err { border: 1px solid var(--line); background: var(--bg2); color: var(--muted); border-radius: 999px; padding: 0 9px 0 7px; font-size: .8em; cursor: pointer; min-height: 32px; }
 .chip-err:hover { color: var(--weak); border-color: var(--weak); }
 .chip-err.has { color: #fff; background: var(--weak); border-color: var(--weak); font-weight: 700; }
 .errpanel { margin-top: 8px; padding: 8px 10px; border-radius: 8px; background: color-mix(in srgb, var(--weak) 10%, var(--card)); border: 1px solid color-mix(in srgb, var(--weak) 40%, var(--line)); }
@@ -960,6 +974,7 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
     <button data-tab="study" class="tab"><span class="ti">📖</span><span>Study</span></button>
     <button data-tab="week" class="tab"><span class="ti">✉</span><span>Week</span></button>
     <button data-tab="history" class="tab"><span class="ti">📈</span><span>Progress</span></button>
+    <button data-tab="bookmarks" class="tab"><span class="ti">☆</span><span>Bookmarks</span></button>
     <button data-tab="settings" class="tab"><span class="ti">⚙</span><span>Settings</span></button>
   </div>
   <div class="sidenav-foot">
@@ -974,6 +989,32 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
 <button id="zenExit" aria-label="Leave full screen" title="Leave full screen (Esc)">✕</button>
 <div id="zenFit" role="group" aria-label="Fit the page"><button id="zenFitW" type="button" class="zfit" title="Fit width" aria-label="Fit width" aria-pressed="false">↔</button><button id="zenFitH" type="button" class="zfit" title="Fit whole page" aria-label="Fit whole page" aria-pressed="true">↕</button></div>
 <main id="main">
+  <section id="view-bookmarks" class="view" data-view="bookmarks" hidden>
+    <div class="panel">
+      <h1 style="margin:0 0 6px;font-size:1.35em">Bookmarks</h1>
+      <p class="muted small">Keep ayahs under your own headings, with an optional title and note. Open any bookmark to return to that ayah in Study.</p>
+      <form id="bookmarkGroupForm" class="row" style="align-items:end">
+        <label class="field" style="flex:1;min-width:160px">New heading<input id="bookmarkNewGroup" maxlength="100" required placeholder="e.g. Continue reading, Du‘a, Review"></label>
+        <button class="btn" type="submit">Create heading</button>
+        <button class="btn primary" id="bookmarkAdd" type="button">＋ Add bookmark</button>
+      </form>
+      <p id="bookmarkPending" class="notice info small" hidden></p>
+    </div>
+    <form id="bookmarkEditor" class="panel" hidden>
+      <h2 id="bookmarkEditorTitle" class="panel-title">Add bookmark</h2>
+      <div class="grid2">
+        <label class="field">Heading<select id="bookmarkGroup" required></select></label>
+        <label class="field">Surah<select id="bookmarkSurah" required></select></label>
+        <label class="field">Ayah<input id="bookmarkAyah" type="number" min="1" max="7" required value="1"></label>
+        <label class="field">Title (optional)<input id="bookmarkTitle" maxlength="160"></label>
+      </div>
+      <label class="field">Note (optional)<textarea id="bookmarkNote" rows="3" maxlength="2000"></textarea></label>
+      <p id="bookmarkError" class="small" role="alert" style="color:var(--danger)" hidden></p>
+      <div class="row"><button class="btn primary" type="submit">Save bookmark</button><button id="bookmarkCancel" class="btn" type="button">Cancel</button></div>
+    </form>
+    <label class="field">Find bookmarks<input id="bookmarkSearch" type="search" placeholder="Search headings, titles, notes or surah names"></label>
+    <div id="bookmarkGroups" data-notr></div>
+  </section>
   <!-- ================= TODAY ================= -->
   <section id="view-today" class="view" data-view="today">
     <div id="wird" class="panel wird"></div>
@@ -3076,6 +3117,36 @@ const I18N = (() => {
  "pages memorized": "পৃষ্ঠা মুখস্থ",
  "ayāt memorized": "আয়াত মুখস্থ",
  "of the Mushaf": "মুসহাফের অংশ",
+ "Bookmarks": "বুকমার্ক",
+ "New heading": "নতুন শিরোনাম",
+ "Create heading": "শিরোনাম তৈরি করুন",
+ "＋ Add bookmark": "＋ বুকমার্ক যোগ করুন",
+ "Add bookmark": "বুকমার্ক যোগ করুন",
+ "Edit bookmark": "বুকমার্ক সম্পাদনা",
+ "Heading": "শিরোনাম",
+ "Ayah": "আয়াত",
+ "Title (optional)": "শিরোনাম (ঐচ্ছিক)",
+ "Note (optional)": "নোট (ঐচ্ছিক)",
+ "Save bookmark": "বুকমার্ক সংরক্ষণ",
+ "Find bookmarks": "বুকমার্ক খুঁজুন",
+ "Add this ayah to bookmarks": "এই আয়াতটি বুকমার্কে যোগ করুন",
+ "Bookmarked — add under another heading": "বুকমার্ক করা — অন্য শিরোনামে যোগ করুন",
+ "Rename": "নাম পরিবর্তন",
+ "Remove heading": "শিরোনাম সরান",
+ "Edit / move": "সম্পাদনা / স্থানান্তর",
+ "Create a heading first": "প্রথমে একটি শিরোনাম তৈরি করুন",
+ "Create a heading to start collecting ayahs.": "আয়াত সংরক্ষণ করতে একটি শিরোনাম তৈরি করুন।",
+ "No bookmarks under this heading yet.": "এই শিরোনামে এখনো কোনো বুকমার্ক নেই।",
+ "No matching bookmarks": "কোনো বুকমার্ক মেলেনি",
+ "That heading already exists": "এই শিরোনামটি ইতিমধ্যে আছে",
+ "Move or remove the bookmarks before removing this heading": "শিরোনাম সরানোর আগে বুকমার্কগুলো স্থানান্তর করুন বা সরান",
+ "Select an ayah first": "প্রথমে একটি আয়াত নির্বাচন করুন",
+ "Choose a heading": "একটি শিরোনাম বেছে নিন",
+ "Choose a valid ayah": "একটি সঠিক আয়াত বেছে নিন",
+ "This ayah is already saved under that heading": "এই আয়াতটি এই শিরোনামে আগেই সংরক্ষিত আছে",
+ "Bookmark saved": "বুকমার্ক সংরক্ষিত হয়েছে",
+ "Bookmark removed": "বুকমার্ক সরানো হয়েছে",
+ "Keep ayahs under your own headings, with an optional title and note. Open any bookmark to return to that ayah in Study.": "নিজের শিরোনামে আয়াত সংরক্ষণ করুন, চাইলে নাম ও নোট যোগ করুন। বুকমার্ক খুললে অধ্যয়নে সেই আয়াতে ফিরে যাবেন।",
  "day streak": "দিনের ধারা",
  "projected completion": "সম্ভাব্য সমাপ্তি",
  "manzil rotation (set {n})": "মনজিল আবর্তন (নির্ধারিত {n})",
@@ -3779,6 +3850,8 @@ const Store = (() => {
       partial: {},        // "529": { of, done, bounds[] }  sabaq pages memorised in parts
       notes: {},          // "529": free text — the student's own notes per page
       errors: {},         // "529": { "112:3": { n, last, hist[] } }  stumbles logged per ayah (mistake log)
+      bookmarkGroups: [], // { id, name } — custom headings
+      bookmarks: [],      // { id, groupId, surah, ayah, title, note, createdAt }
       ayahNotes: {},      // "112:3": free text — notes attached to one ayah
       marks: {},          // "112:3": [wordIndex, …]  words highlighted in List mode
       minutes: {}         // "2026-09-09": { total, pages: { "604": minutes } }  time on the Study tab
@@ -3892,7 +3965,7 @@ const Store = (() => {
        warning → one bad row is dropped and reported; the rest is kept
      Unknown top-level keys and unknown fields inside settings are preserved. */
   const OBJ_COLLECTIONS = ['pages', 'calib', 'partial', 'notes', 'errors', 'ayahNotes', 'marks', 'minutes', 'futureWeeks', 'teacherFeedback'];
-  const ARR_COLLECTIONS = ['reviews', 'weeks'];
+  const ARR_COLLECTIONS = ['reviews', 'weeks', 'bookmarkGroups', 'bookmarks'];
   const STAGES = ['sabaq', 'sabqi', 'manzil', 'done', 'known', 'memorized', 'new'];
   const isPlainObj = v => !!v && typeof v === 'object' && !Array.isArray(v);
   const isISODate = v => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && !isNaN(Date.parse(v));
@@ -3959,6 +4032,20 @@ const Store = (() => {
       if (r.date != null && !isISODate(r.date)) { warnings.push(`Review ${i + 1} had no usable date — it was left out.`); return false; }
       if (r.rating != null && !(Number(r.rating) >= 0 && Number(r.rating) <= 5)) { warnings.push(`Review ${i + 1} had a rating outside 0–5 — it was left out.`); return false; }
       return true;
+    });
+    // Bookmark references are validated against the app's own Quran data on every import/load.
+    const groupIds = new Set(), bookmarkIds = new Set(), bookmarkRefs = new Set();
+    s.bookmarkGroups = s.bookmarkGroups.filter(g => {
+      if (!isPlainObj(g) || typeof g.id !== 'string' || !g.id || groupIds.has(g.id) || typeof g.name !== 'string' || !g.name.trim()) { warnings.push('An invalid bookmark heading was left out.'); return false; }
+      groupIds.add(g.id); g.name = g.name.trim().slice(0, 100); return true;
+    });
+    s.bookmarks = s.bookmarks.filter(b => {
+      const su = isPlainObj(b) && Quran.surah(b.surah);
+      const ref = isPlainObj(b) ? JSON.stringify([b.groupId, b.surah, b.ayah]) : '';
+      if (!isPlainObj(b) || typeof b.id !== 'string' || !b.id || bookmarkIds.has(b.id) || !groupIds.has(b.groupId) || !Number.isInteger(b.surah) || !su || !Number.isInteger(b.ayah) || b.ayah < 1 || b.ayah > su.ayahs || bookmarkRefs.has(ref)) { warnings.push('An invalid or duplicate bookmark was left out.'); return false; }
+      bookmarkIds.add(b.id); bookmarkRefs.add(ref);
+      b.title = typeof b.title === 'string' ? b.title.slice(0, 160) : '';
+      b.note = typeof b.note === 'string' ? b.note.slice(0, 2000) : ''; return true;
     });
     s.weeks = s.weeks.filter((w, i) => { if (isPlainObj(w)) return true; warnings.push(`Week ${i + 1} was not a week record — it was left out.`); return false; });
 
@@ -5898,6 +5985,7 @@ Total memorized: {total}
     $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
     location.hash = name;
     applyFocus();   /* a Study-tab mode: the tab bar comes back on every other tab */
+    if (name === 'bookmarks') renderBookmarks();
     if (name === 'today') renderToday(); if (name === 'week') renderWeek(); if (name === 'history') { renderHistory(); renderPlan(); renderFeedback(); } if (name === 'settings') { renderSettings(); renderPlan(); }
     if (name === 'help' || name === 'about') window.scrollTo(0, 0);
     /* Leaving Study ends the test: you are no longer reciting that page, and a flag that
@@ -6204,6 +6292,110 @@ Total memorized: {total}
     toast(`Segment ${seg + 1}${pr ? ` of part ${pr.idx}` : ''}: ${Quran.surah(a0[0]).en} ${a0[0]}:${a0[1]}${a1[0] !== a0[0] || a1[1] !== a0[1] ? ` – ${a1[0] !== a0[0] ? Quran.surah(a1[0]).en + ' ' + a1[0] + ':' : ''}${a1[1]}` : ''} (${q.length} ayah${q.length === 1 ? '' : 's'})${pr ? '' : ' · the curtain lines are a separate, approximate division'}`);
   }
 
+  // ---------- BOOKMARKS ----------
+  let bookmarkEditing = null;
+  let bookmarkPending = null;
+  const bookmarkId = () => 'bm-' + (globalThis.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2));
+  function bookmarkData() { st.bookmarkGroups ||= []; st.bookmarks ||= []; return st; }
+  function bookmarkMessage(message) { const el = $('#bookmarkError'); el.hidden = !message; el.textContent = message || ''; }
+  function bookmarkAyahLimit() { const s = Quran.surah(Number($('#bookmarkSurah').value)); $('#bookmarkAyah').max = s ? s.ayahs : 1; }
+  function editBookmark(id = null, ref = null) {
+    bookmarkData(); if (ref) bookmarkPending = ref; showTab('bookmarks'); bookmarkEditing = id;
+    const b = id ? st.bookmarks.find(x => x.id === id) : null;
+    const form = $('#bookmarkEditor'); form.reset();
+    $('#bookmarkEditorTitle').textContent = b ? t('Edit bookmark') : t('Add bookmark');
+    $('#bookmarkGroup').innerHTML = st.bookmarkGroups.map(g => '<option value="' + esc(g.id) + '">' + esc(g.name) + '</option>').join('');
+    if (!st.bookmarkGroups.length) {
+      form.hidden = true;
+      const p = $('#bookmarkPending');
+      p.hidden = !bookmarkPending;
+      if (bookmarkPending) p.textContent = `${ayLabel(bookmarkPending[0], bookmarkPending[1])} is ready to bookmark. Create a heading; the bookmark form will open automatically.`;
+      toast(t('Create a heading first'), 'error'); $('#bookmarkNewGroup').focus(); return;
+    }
+    $('#bookmarkPending').hidden = true;
+    $('#bookmarkSurah').innerHTML = Object.values(Quran.SURAH).map(s => '<option value="' + s.num + '">' + s.num + '. ' + esc(s.en) + ' — ' + esc(s.ar) + '</option>').join('');
+    if (b) $('#bookmarkGroup').value = b.groupId;
+    $('#bookmarkSurah').value = b ? b.surah : ref ? ref[0] : 1;
+    bookmarkAyahLimit(); $('#bookmarkAyah').value = b ? b.ayah : ref ? ref[1] : 1;
+    $('#bookmarkTitle').value = b ? b.title : ''; $('#bookmarkNote').value = b ? b.note : '';
+    bookmarkMessage(''); form.hidden = false; form.scrollIntoView({ block: 'start' }); $('#bookmarkGroup').focus();
+    if (ref) bookmarkPending = null;
+  }
+  function renderBookmarks() {
+    bookmarkData();
+    const query = ($('#bookmarkSearch').value || '').trim().toLocaleLowerCase();
+    const root = $('#bookmarkGroups'); root.replaceChildren();
+    if (!st.bookmarkGroups.length) { root.innerHTML = '<div class="empty">' + esc(t('Create a heading to start collecting ayahs.')) + '</div>'; return; }
+    let shown = 0;
+    for (const g of st.bookmarkGroups) {
+      const all = st.bookmarks.filter(b => b.groupId === g.id);
+      const entries = all.filter(b => [g.name, b.title, b.note, Quran.surah(b.surah).en, Quran.surah(b.surah).ar, b.surah + ':' + b.ayah].join(' ').toLocaleLowerCase().includes(query));
+      if (query && !entries.length && !g.name.toLocaleLowerCase().includes(query)) continue;
+      shown++;
+      const section = document.createElement('section'); section.className = 'panel bookmark-group';
+      section.innerHTML = '<div class="row between"><h2 class="panel-title" data-notr>' + esc(g.name) + ' <span class="badge">' + all.length + '</span></h2><div class="row"><button type="button" class="btn small" data-bm-rename>' + esc(t('Rename')) + '</button><button type="button" class="btn small" data-bm-remove-group>' + esc(t('Remove heading')) + '</button></div></div><form class="row" data-bm-rename-form hidden><label class="field" style="flex:1">' + esc(t('Heading')) + '<input required maxlength="100" value="' + esc(g.name) + '"></label><button class="btn small" type="submit">' + esc(t('Save')) + '</button></form><div class="bookmark-entries"></div>';
+      section.querySelector('[data-bm-rename]').onclick = () => { const form = section.querySelector('form'); form.hidden = !form.hidden; if (!form.hidden) form.querySelector('input').focus(); };
+      section.querySelector('form').onsubmit = e => {
+        e.preventDefault(); const name = e.currentTarget.querySelector('input').value.trim(); if (!name) return;
+        if (st.bookmarkGroups.some(x => x.id !== g.id && x.name.toLocaleLowerCase() === name.toLocaleLowerCase())) return toast(t('That heading already exists'), 'error');
+        g.name = name; Store.save(); renderBookmarks(); $('#bookmarkEditor').hidden = true;
+      };
+      section.querySelector('[data-bm-remove-group]').onclick = () => {
+        if (all.length) return toast(t('Move or remove the bookmarks before removing this heading'), 'error');
+        st.bookmarkGroups = st.bookmarkGroups.filter(x => x.id !== g.id); Store.save(); renderBookmarks(); $('#bookmarkEditor').hidden = true;
+      };
+      const list = section.querySelector('.bookmark-entries');
+      for (const b of entries) {
+        const item = document.createElement('article'); item.className = 'bookmark-entry';
+        item.innerHTML = '<div><strong data-notr>' + esc(b.title || ayLabel(b.surah, b.ayah)) + '</strong><div class="small muted" data-notr>' + esc(Quran.surah(b.surah).en) + ' ' + b.surah + ':' + b.ayah + ' · ' + esc(t('Page')) + ' ' + Quran.pageOfAyah(b.surah, b.ayah) + '</div>' + (b.note ? '<p class="bookmark-note" data-notr>' + esc(b.note) + '</p>' : '') + '</div><div class="row"><button class="btn small primary" type="button" data-bm-open>' + esc(t('Open in Study')) + '</button><button class="btn small" type="button" data-bm-edit>' + esc(t('Edit / move')) + '</button><button class="btn small" type="button" data-bm-remove>' + esc(t('Remove')) + '</button></div>';
+        item.querySelector('[data-bm-open]').onclick = () => {
+          openStudy(Quran.pageOfAyah(b.surah, b.ayah));
+          const i = Quran.ayahsOnPage(studyPage).findIndex(([s, a]) => s === b.surah && a === b.ayah);
+          sel = { a: i, b: null }; renderChips(); renderNotes();
+          $('#ayahStrip').open = true; $('#ayahChips').querySelector('[data-ai="' + i + '"]')?.focus();
+        };
+        item.querySelector('[data-bm-edit]').onclick = () => editBookmark(b.id);
+        item.querySelector('[data-bm-remove]').onclick = () => {
+          st.bookmarks = st.bookmarks.filter(x => x.id !== b.id); Store.save(); renderBookmarks();
+          toast(t('Bookmark removed')); // Recoverable immediately with Undo, without altering other bookmarks.
+          const undo = document.createElement('button'); undo.type = 'button'; undo.className = 'btn small'; undo.textContent = t('Undo');
+          undo.onclick = () => { if (!st.bookmarks.some(x => x.id === b.id) && st.bookmarkGroups.some(g => g.id === b.groupId) && !st.bookmarks.some(x => x.groupId === b.groupId && x.surah === b.surah && x.ayah === b.ayah)) { st.bookmarks.push(b); Store.save(); renderBookmarks(); } undo.remove(); };
+          root.prepend(undo);
+          if (bookmarkEditing === b.id) $('#bookmarkEditor').hidden = true;
+        };
+        list.appendChild(item);
+      }
+      if (!entries.length) list.innerHTML = '<p class="muted small">' + esc(t('No bookmarks under this heading yet.')) + '</p>';
+      root.appendChild(section);
+    }
+    if (!shown) root.innerHTML = '<div class="empty">' + esc(t('No matching bookmarks')) + '</div>';
+  }
+  function wireBookmarks() {
+    $('#bookmarkGroupForm').addEventListener('submit', e => {
+      e.preventDefault(); bookmarkData(); const name = $('#bookmarkNewGroup').value.trim(); if (!name) return;
+      if (st.bookmarkGroups.some(g => g.name.toLocaleLowerCase() === name.toLocaleLowerCase())) return toast(t('That heading already exists'), 'error');
+      const id = bookmarkId(), pending = bookmarkPending;
+      st.bookmarkGroups.push({ id, name }); Store.save(); e.currentTarget.reset(); renderBookmarks(); $('#bookmarkEditor').hidden = true;
+      if (pending) { bookmarkPending = null; editBookmark(null, pending); $('#bookmarkGroup').value = id; }
+    });
+    $('#bookmarkAdd').onclick = () => editBookmark();
+    $('#bookmarkSearch').oninput = renderBookmarks;
+    $('#bookmarkSurah').onchange = () => { bookmarkAyahLimit(); $('#bookmarkAyah').value = 1; };
+    $('#bookmarkCancel').onclick = () => { $('#bookmarkEditor').hidden = true; bookmarkEditing = null; bookmarkPending = null; $('#bookmarkPending').hidden = true; };
+    $('#bookmarkEditor').onsubmit = e => {
+      e.preventDefault(); bookmarkData();
+      const groupId = $('#bookmarkGroup').value, surah = Number($('#bookmarkSurah').value), ayah = Number($('#bookmarkAyah').value), su = Quran.surah(surah);
+      if (!st.bookmarkGroups.some(g => g.id === groupId)) return bookmarkMessage(t('Choose a heading'));
+      if (!su || !Number.isInteger(ayah) || ayah < 1 || ayah > su.ayahs) return bookmarkMessage(t('Choose a valid ayah'));
+      if (st.bookmarks.some(b => b.id !== bookmarkEditing && b.groupId === groupId && b.surah === surah && b.ayah === ayah)) return bookmarkMessage(t('This ayah is already saved under that heading'));
+      const existing = st.bookmarks.find(b => b.id === bookmarkEditing);
+      if (bookmarkEditing && !existing) return bookmarkMessage(t('This bookmark has changed. Open it again.'));
+      const entry = { id: existing ? existing.id : bookmarkId(), groupId, surah, ayah, title: $('#bookmarkTitle').value.trim(), note: $('#bookmarkNote').value.trim(), createdAt: existing ? existing.createdAt : new Date().toISOString() };
+      if (existing) Object.assign(existing, entry); else st.bookmarks.push(entry);
+      Store.save(); bookmarkEditing = null; bookmarkPending = null; $('#bookmarkEditor').hidden = true; $('#bookmarkSearch').value = ''; renderBookmarks(); toast(t('Bookmark saved'));
+    };
+  }
+
   // ---------- TODAY ----------
   function renderToday() {
     const T = today(); const w = ensureWeek(); const s = st.settings;
@@ -6217,7 +6409,7 @@ Total memorized: {total}
 
     // headline — today's wird
     const di = dayIndex(); const doneCount = k => w[k].filter(p => w.done[p]).length;
-    $('#wird').innerHTML = `<div class="wird-head"><div><div class="wird-title">${esc(t('Today’s wird'))} <span class="muted">(وِرد)</span></div><div class="muted">${esc(t(DAY[Sched.parseISO(T).getDay()]))} ${fmtNoDay(T)} ${Sched.parseISO(T).getFullYear()}${hijri(T) ? ` · ${hijri(T)} AH` : ''} · ${esc(t('day {d} of 7', { d: di + 1 }))} · ${esc(t('week {w}', { w: weekNumber(w.startDate) }))} · <b>${esc(t('journey week {w}', { w: journeyWeek(w.startDate) }))}</b> · ≈ ${esc(t('{n} min', { n: weekMinutesToday() }))} · ${esc(t('deadline {d}', { d: fmt(w.endDate) }))}</div></div>
+    $('#wird').innerHTML = `<div class="wird-head"><div><div class="wird-title">${esc(t('Today’s wird'))} <span class="muted">(وِرد)</span></div><div class="muted">${esc(t(DAY[Sched.parseISO(T).getDay()]))} ${fmtNoDay(T)} ${Sched.parseISO(T).getFullYear()}${hijri(T) ? ` · ${hijri(T)} AH` : ''}</div></div>
       <div class="wird-stats">${STAGES.map(k => `<span class="badge ${k}">${esc(t(k))}: ${doneCount(k)} / ${w[k].length}</span>`).join('')}</div></div>`;
 
     const b = [];
@@ -6712,7 +6904,9 @@ Total memorized: {total}
         const note = (st.ayahNotes || {})[key]; const sims = SIM[key] || [];
         const extra = `${note && !studyTestMode ? `<div class="qnote">✎ ${esc(note)}</div>` : ''}${sims.length ? `<div class="qsim">≈ ${simGroups(sims).map(([k, g]) => `<span class="simgrp"><span class="muted">${KIND[k]}:</span> ${g.slice(0, 5).map(m => simBtn(key, m, 'data-qsim')).join('')}${g.length > 5 ? `<span class="muted"> +${g.length - 5}</span>` : ''}</span>`).join(' ')}</div>` : ''}`;
         const tfh = s.listTafsir ? `<div class="qtf" data-qtf="${key}"><span class="qtf-lbl">Loading tafsīr…</span></div>` : '';
-        return `${first}<div class="qv ${cur === key ? 'playing' : ''} ${Err.active(page, key) ? 'err' : ''}" data-qv="${key}"><div class="qv-h"><span class="qnum">${su}:${ay}</span><button class="qerr ${Err.active(page, key) ? 'has' : ''}" data-qerr="${key}" title="${Err.active(page, key) ? 'Marked as a stumble — tap to resolve (dates kept)' : 'I stumbled on this ayah'}" aria-label="${Err.active(page, key) ? 'Resolve stumble on' : 'Mark a stumble on'} ${esc(Quran.surah(su).en)} ${su}:${ay}" aria-pressed="${Err.active(page, key) ? 'true' : 'false'}">✗</button><button class="btn small qplay" data-qplay="${key}" title="Play from here to the end of the page" aria-label="Play from ${esc(Quran.surah(su).en)} ${su}:${ay} to the end of the page">▶</button></div>${arabic}${trh ? `<div class="qtr" data-qtrbox="${key}" hidden>${trh}</div>` : ''}${extra}${tfh}</div>`;
+        const bm = (st.bookmarks || []).some(b => b.surah === su && b.ayah === ay);
+        const bmHint = bm ? t('Bookmarked — add under another heading') : t('Add this ayah to bookmarks');
+        return `${first}<div class="qv ${cur === key ? 'playing' : ''} ${Err.active(page, key) ? 'err' : ''}" data-qv="${key}"><div class="qv-h"><span class="qnum">${su}:${ay}</span><button class="qbookmark ${bm ? 'has' : ''}" data-bmark="${key}" title="${esc(bmHint)}" aria-label="${esc(bmHint)} — ${esc(Quran.surah(su).en)} ${su}:${ay}" aria-pressed="${bm ? 'true' : 'false'}">${bm ? '★' : '☆'}</button><button class="qerr ${Err.active(page, key) ? 'has' : ''}" data-qerr="${key}" title="${Err.active(page, key) ? 'Marked as a stumble — tap to resolve (dates kept)' : 'I stumbled on this ayah'}" aria-label="${Err.active(page, key) ? 'Resolve stumble on' : 'Mark a stumble on'} ${esc(Quran.surah(su).en)} ${su}:${ay}" aria-pressed="${Err.active(page, key) ? 'true' : 'false'}">✗</button><button class="btn small qplay" data-qplay="${key}" title="Play from here to the end of the page" aria-label="Play from ${esc(Quran.surah(su).en)} ${su}:${ay} to the end of the page">▶</button></div>${arabic}${trh ? `<div class="qtr" data-qtrbox="${key}" hidden>${trh}</div>` : ''}${extra}${tfh}</div>`;
       }).join('');
       body.querySelectorAll('[data-qsim]').forEach(b => b.addEventListener('click', () => {
         const [k1, k2, kind] = b.dataset.qsim.split('|'); const qv = b.closest('.qv'); let box = qv.querySelector('.simcmp');
@@ -7316,7 +7510,9 @@ Total memorized: {total}
       const playing = a.mode === 'ayah' && a.current && a.current[0] === s && a.current[1] === ay && a.status !== 'idle' && a.status !== 'done';
       const newS = i === 0 || list[i - 1][0] !== s;
       const n = Err.active(studyPage, errKey(s, ay)) ? 1 : 0; const hn = !!((st.ayahNotes || {})[errKey(s, ay)]);
-      return `<span class="chipw"><button class="chip ${inSel ? 'sel' : ''} ${playing ? 'playing' : ''} ${hn ? 'hasnote' : ''}" data-ai="${i}" title="${esc(Quran.surah(s).en)} ${s}:${ay} — tap to play this ayah, tap a second chip to select a range" aria-label="${esc(Quran.surah(s).en)} ${s}:${ay}">${newS ? esc(Quran.surah(s).en) + ' ' : ''}${ay}</button><button class="chip-err ${n ? 'has' : ''}" ${inSel || n ? '' : 'hidden'} data-err="${errKey(s, ay)}" title="${n ? 'Marked as a stumble — tap to resolve (dates kept)' : 'I stumbled on ' + esc(Quran.surah(s).en) + ' ' + ay}" aria-label="${n ? 'Resolve stumble on' : 'Mark a stumble on'} ${esc(Quran.surah(s).en)} ${s}:${ay}" aria-pressed="${n ? 'true' : 'false'}">✗</button></span>`;
+      const bm = (st.bookmarks || []).some(b => b.surah === s && b.ayah === ay);
+      const bmHint = bm ? t('Bookmarked — add under another heading') : t('Add this ayah to bookmarks');
+      return `<span class="chipw"><button class="chip ${inSel ? 'sel' : ''} ${playing ? 'playing' : ''} ${hn ? 'hasnote' : ''}" data-ai="${i}" title="${esc(Quran.surah(s).en)} ${s}:${ay} — tap to play this ayah, tap a second chip to select a range" aria-label="${esc(Quran.surah(s).en)} ${s}:${ay}">${newS ? esc(Quran.surah(s).en) + ' ' : ''}${ay}</button><button class="chip-bookmark ${inSel ? 'show' : ''} ${bm ? 'has' : ''}" data-bmark="${s}:${ay}" title="${esc(bmHint)}" aria-label="${esc(bmHint)} — ${esc(Quran.surah(s).en)} ${s}:${ay}" aria-pressed="${bm ? 'true' : 'false'}">${bm ? '★' : '☆'}</button><button class="chip-err ${n ? 'has' : ''}" ${inSel || n ? '' : 'hidden'} data-err="${errKey(s, ay)}" title="${n ? 'Marked as a stumble — tap to resolve (dates kept)' : 'I stumbled on ' + esc(Quran.surah(s).en) + ' ' + ay}" aria-label="${n ? 'Resolve stumble on' : 'Mark a stumble on'} ${esc(Quran.surah(s).en)} ${s}:${ay}" aria-pressed="${n ? 'true' : 'false'}">✗</button></span>`;
     }).join('');
     /* Collapsed, the strip still says what is on the page and what is selected, so it can
        stay shut on a phone without hiding information. */
@@ -8378,6 +8574,7 @@ Total memorized: {total}
         if (!pages.length) return toast(t('Enter a page number or choose a surah'), 'error');
         const r = weekAdd(stage, pages); toast(`${r.n} page${r.n === 1 ? '' : 's'} added to ${stage}${r.created ? ` (${r.created} newly marked as memorized)` : ''}${r.skipped ? ` · ${r.skipped} skipped: already memorized` : ''}`); renderWeek(); }
       if (b.dataset.rate != null) { const p = Number(b.closest('[data-rate-page]').dataset.ratePage); rate(p, Number(b.dataset.rate)); }
+      if (b.dataset.bmark) { const [su, ay] = b.dataset.bmark.split(':').map(Number); editBookmark(null, [su, ay]); return; }
       if (b.dataset.err) { markErr(studyPage, b.dataset.err); return; }
       if (b.dataset.ai != null) { const i = Number(b.dataset.ai); if (sel.a == null || (sel.a != null && sel.b != null)) { sel = { a: i, b: null }; AudioEngine.playRange(studyPage, i, i); } else { sel.b = i; playSelection(); } renderChips(); renderCorpus(); renderRec(); renderNotes(); tfCursor = null; renderTafsir(); }
       if (b.dataset.start) { $('#startPage').value = b.dataset.start; $('#direction').value = b.dataset.dir; applyStart(b.dataset.start, b.dataset.dir); }
@@ -8527,6 +8724,7 @@ Total memorized: {total}
     $('#ttsRate').addEventListener('change', e => { st.settings.ttsRate = Number(e.target.value) || 1; Store.save({ quiet: true }); });
     $('#ttsTestEn').addEventListener('click', () => ttsSpeak('In the name of Allah, the Entirely Merciful, the Especially Merciful. This is your device’s English voice — a synthetic voice, not a recording.', 'en'));
     // --- notes
+    wireBookmarks();
     $('#noteAdd').addEventListener('click', () => { const r = selRange(); noteEditing = r ? errKey(r.ayahs[0][0], r.ayahs[0][1]) : 'page'; renderNotes(); const t = $('#noteText'); if (t) { t.focus(); t.scrollIntoView({ block: 'nearest' }); } });
     // --- sabaq ladder
     $('#ratePanel').addEventListener('change', e => { const cb = e.target.closest('[data-ladder]'); if (!cb) return; const w = ensureWeek(); w.edited = true; w.ladder = w.ladder || {}; const sig = ladderSig(studyPage); let rec = w.ladder[studyPage]; if (!rec || Array.isArray(rec) || rec.sig !== sig) rec = w.ladder[studyPage] = { sig, done: Array.isArray(rec) && !rec.sig ? rec : [] }; rec.done[Number(cb.dataset.ladder)] = cb.checked; w.edited = true; logPractice(); Store.save(); renderRatePanel(); });
@@ -8745,6 +8943,7 @@ Total memorized: {total}
      Study also re-reads its page so the rating panel cannot act on a stale page state. */
   function adoptReplacedState(reason) {
     st = Store.get();
+    bookmarkEditing = null; bookmarkPending = null; $('#bookmarkEditor').hidden = true; $('#bookmarkPending').hidden = true;
     ensureWeek();
     refreshAll();
     if (reason === 'another-tab' && typeof toast === 'function') toast(t('Your record was updated in another tab — this tab has reloaded it'), 'error');
