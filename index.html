@@ -6210,8 +6210,8 @@ Total memorized: {total}
     const proj = Sched.projection(st, T); const rot = Sched.effectiveRotation(st);
     const ayahs = Object.entries(st.pages).filter(([, p]) => isMem(p)).reduce((n, [pg]) => n + Quran.ayahsOnPage(Number(pg)).length, 0);
     $('#stats').innerHTML = [
-      [proj.memorized, t('pages memorized')], [ayahs.toLocaleString(), t('ayāt memorized')], [(proj.memorized / 604 * 100).toFixed(1) + ' %', t('of the Mushaf')],
-      [streak(), t('day streak')], [fmtNoDay(proj.completionDate) + ' ' + Sched.parseISO(proj.completionDate).getFullYear(), t('projected completion')],
+      [(proj.memorized / 604 * 100).toFixed(1) + ' %', t('of the Mushaf')],
+      [fmtNoDay(proj.completionDate) + ' ' + Sched.parseISO(proj.completionDate).getFullYear(), t('projected completion')],
       [rot.effective + ' ' + t('d'), t('manzil rotation (set {n})', { n: rot.configured })]
     ].map(([v, l]) => `<div class="stat"><div class="v">${v}</div><div class="l">${l}</div></div>`).join('');
 
