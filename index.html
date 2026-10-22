@@ -182,7 +182,7 @@ details.panel > summary { cursor: pointer; }
 .tbtn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
 .toolbar select { min-height: 36px; padding: 4px 8px; max-width: 200px; }
 #zoomSlider { width: 110px; min-height: 24px; } #zoomPct { min-width: 4em; }
-.pgfield { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: .9em; } .pgfield input { width: 5.5em; min-height: 36px; padding: 4px 6px; text-align: center; font-variant-numeric: tabular-nums; }
+.pgfield { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: .9em; } .pgfield select { width: 6em; min-height: 36px; padding: 4px 24px 4px 8px; text-align: center; font-variant-numeric: tabular-nums; cursor: pointer; }
 .viewer { position: relative; background: var(--bg2); border: 1px solid var(--line); border-radius: var(--radius); height: min(84vh, 1100px); overflow: hidden; }
 .page-slot { position: relative; flex: none; } .page-slot canvas { display: block; background: #fff; border-radius: 4px; box-shadow: 0 2px 12px rgba(0,0,0,.15); transition: filter .15s; }
 .page-slot .slot-num { position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); font-size: .72em; color: var(--muted); background: color-mix(in srgb, var(--card) 80%, transparent); padding: 0 6px; border-radius: 6px; pointer-events: none; opacity: 0; }
@@ -392,6 +392,10 @@ body.has-player { padding-bottom: calc(var(--tabh) + 190px + env(safe-area-inset
 .wird-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
 .wird-title { font-size: 1.25em; font-weight: 800; letter-spacing: -.01em; }
 .wird-stats { display: flex; gap: 6px; flex-wrap: wrap; }
+.today-continue { margin: 0 0 10px; }
+.today-continue .btn { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px; text-align: left; }
+.today-continue .task-name { font-weight: 750; }
+.today-continue .task-page { font-size: .82em; font-weight: 500; opacity: .88; }
 .row.between { justify-content: space-between; }
 .wtabs { display: flex; gap: 4px; margin: 10px 0 6px; overflow-x: auto; }
 .wtab { flex: none; border: 1px solid var(--line); background: var(--card); color: var(--ink2); border-radius: 999px; padding: 8px 14px; font: inherit; font-weight: 600; font-size: .9em; cursor: pointer; min-height: 38px; }
@@ -430,6 +434,7 @@ select, input[type=text], input[type=date], .field { max-width: 100%; }
   .wtab { padding: 8px 12px; font-size: .85em; }
   .wird-title { font-size: 1.1em; }
   .stats { grid-template-columns: repeat(3, 1fr); gap: 6px; } .stat { padding: 8px; } .stat .v { font-size: 1.15em; } .stat .l { font-size: .72em; }
+  .today-continue .btn { align-items: flex-start; flex-direction: column; gap: 2px; }
   .card .pg { font-size: 1.2em; }
   .btn { padding: 8px 12px; }
   .share { font-size: .78em; white-space: pre-wrap; }
@@ -1016,6 +1021,7 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
   <section id="view-today" class="view" data-view="today">
     <div id="wird" class="panel wird"></div>
     <div id="banners"></div>
+    <div id="todayContinue" class="today-continue" hidden></div>
     <div class="stats" id="stats"></div>
     <p class="guide-ctx"><a href="./Hifz-Companion-User-Guide.html#daily-practice" target="_blank" rel="noopener">How daily practice works<span class="ext" aria-hidden="true"> ↗</span><span class="sr-only"> (opens in a new tab)</span></a></p>
     <h2 class="sec-title">Sabaq <small>new lesson</small></h2>
@@ -1033,7 +1039,7 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
         <div class="toolbar">
           <div class="tb-group">
             <button id="pgPrev" class="tbtn" aria-label="Previous Mushaf page" title="Previous Mushaf page (lower number)">‹</button>
-            <label class="pgfield">Page <input id="pgInput" type="number" min="1" max="604" inputmode="numeric" aria-label="Mushaf page number"></label>
+            <label class="pgfield">Page <select id="pgInput" aria-label="Mushaf page number"></select></label>
             <button id="pgNext" class="tbtn" aria-label="Next Mushaf page" title="Next Mushaf page (higher number)">›</button>
             <details class="pop" id="popGoto">
               <summary class="tbtn" title="Jump to a sūrah or juz">Go to ▾</summary>
@@ -1610,10 +1616,10 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
     </div>
     <div class="panel">
       <div class="panel-title">The tabs</div>
-      <p><b>Today</b> — the day’s wird: the sabaq page (the day’s suggested task for it is in Study → 🛠 Tools → Practice), today’s sabqi and manzil pages, each with Play, Ayah by ayah, Open in Study, Tadabbur, Corpus and the rating buttons.</p>
+      <p><b>Today</b> — the day’s wird. <b>Continue today’s practice</b> opens the first unfinished task in order: sabaq, sabqi, then manzil. The sabaq page’s suggested task is in Study → 🛠 Tools → Practice; today’s sabqi and manzil pages include Play, Ayah by ayah, Open in Study, Tadabbur, Corpus and the rating buttons.</p>
       <p><b>Mouse.</b> In Study the wheel <b>scrolls</b> the Mushaf up and down, as in any other document reader, and <b>Ctrl+wheel</b> (⌘+wheel on a Mac, or a trackpad pinch) zooms around the pointer. Shift+wheel moves sideways on a page wider than the window, and you can drag the page with the left button when it is larger than the window. If you prefer the wheel to zoom, Settings → 📖 Mushaf → <b>Mouse wheel in Study</b> swaps the two; Ctrl+wheel zooms either way.</p>
       <p><b>Turning the page.</b> The ‹ › arrows beside the page box step one page (or one whole spread) at a time, lower and higher number; on a computer or tablet there are also large buttons in the margin at each side of the page — left for the next page, right for the previous, as a Mushaf turns. They grey out on page 1 and page 604 and never wrap round. Turning the page <b>does not stop the recitation</b>, keeps the curtain on if it was on, moves the tafīsr panel to the new page, and clears the ayah selection.</p>
-      <p><b>Study</b> — the Mushaf page, and the tools for working on it. <b>The toolbar is one row:</b> the page arrows and number, the <b>Mushaf ⇄ Text</b> switch, <b>Go to ▾</b> (sūrah, juz — beside the page number, since both answer “which page?”), <b>Display ▾</b> and <b>🛠 Tools</b>. Point at the page number and scroll the mouse wheel to move through the pages. Display holds <b>⤢ Focus</b> — which hides the side panels and the tab bar and gives the page the whole window, keeping the toolbar so you can still turn pages (<kbd>Shift</kbd>+<kbd>F</kbd>, and <kbd>Esc</kbd> or the ⤢ button in the toolbar to leave; it is remembered between sessions). In Text view, beside Focus, a <b>Mushaf lines</b> option shows every word on the page in one continuous strip broken exactly where the printed Mushaf's own lines break — including where a line is shared between two āyāt, with a small ring marking where each ayah ends — instead of however the browser fits the words otherwise; it needs Focus on and a wide screen, and does nothing until both are true. Display also holds what applies to the view you are in — single page or spread, and zoom, on the Mushaf; what appears under each ayah, the translations, the word-meaning language and the text size in Text view. Under the page sit <b>Play page</b>, <b>Play selection</b> and <b>Listen…</b>, with the repeats, loop, gap and speed folded into <b>Audio settings ▾</b>, and <b>Ayāt on this page</b>, which opens to the ayah chips (tap one to play it, two for a range; the ✗ for marking a stumble appears on the ayah you have selected). <b>🛠 Tools</b> opens one section at a time — <b>Practice</b> (curtain, gap-fill, recite &amp; compare, look-alike verses, and rating the page when it is due), <b>Understand</b> (video lesson, tafsīr, Tadabbur wa Amal, Quranic Arabic Corpus) and <b>Notes</b> (your notes and the stumbles on this page). Beside the page on a computer, a sheet over it on a phone, closed until you ask for it there. Nothing you have going — the page, the ayah you picked, a recitation playing — is disturbed by opening, switching or closing a section. Full screen (⛶ or <kbd>F</kbd>: only the page, centred — <b>nothing else appears at any time</b>, whatever you touch, move or press. On a computer, <kbd>Esc</kbd> or <kbd>F</kbd> leaves, and resting the pointer at the <b>top centre</b> of the screen brings up a faint ✕ if you would rather click your way out; on a phone or tablet, where there is no Esc key, the small ✕ in the top corner is always faintly there — swipe to turn, pinch to zoom, drag to move around a zoomed page, ↓ ↑ to read down a zoomed page), and the <b>curtain</b> that hides the text line by line so you can test yourself. Tadabbur wa Amal (altadabbur.com) can open beside the page; the Quranic Arabic Corpus link follows the ayah being played.</p>
+      <p><b>Study</b> — the Mushaf page, and the tools for working on it. <b>The toolbar is one row:</b> the page arrows and page dropdown, the <b>Mushaf ⇄ Text</b> switch, <b>Go to ▾</b> (sūrah, juz — beside the page number, since both answer “which page?”), <b>Display ▾</b> and <b>🛠 Tools</b>. Choose any page from 1 to 604 in the dropdown; pointing at it and scrolling the mouse wheel also moves through the pages. Display holds <b>⤢ Focus</b> — which hides the side panels and the tab bar and gives the page the whole window, keeping the toolbar so you can still turn pages (<kbd>Shift</kbd>+<kbd>F</kbd>, and <kbd>Esc</kbd> or the ⤢ button in the toolbar to leave; it is remembered between sessions). In Text view, beside Focus, a <b>Mushaf lines</b> option shows every word on the page in one continuous strip broken exactly where the printed Mushaf's own lines break — including where a line is shared between two āyāt, with a small ring marking where each ayah ends — instead of however the browser fits the words otherwise; it needs Focus on and a wide screen, and does nothing until both are true. Display also holds what applies to the view you are in — single page or spread, and zoom, on the Mushaf; what appears under each ayah, the translations, the word-meaning language and the text size in Text view. Under the page sit <b>Play page</b>, <b>Play selection</b> and <b>Listen…</b>, with the repeats, loop, gap and speed folded into <b>Audio settings ▾</b>, and <b>Ayāt on this page</b>, which opens to the ayah chips (tap one to play it, two for a range; the ✗ for marking a stumble appears on the ayah you have selected). <b>🛠 Tools</b> opens one section at a time — <b>Practice</b> (curtain, gap-fill, recite &amp; compare, look-alike verses, and rating the page when it is due), <b>Understand</b> (video lesson, tafsīr, Tadabbur wa Amal, Quranic Arabic Corpus) and <b>Notes</b> (your notes and the stumbles on this page). Beside the page on a computer, a sheet over it on a phone, closed until you ask for it there. Nothing you have going — the page, the ayah you picked, a recitation playing — is disturbed by opening, switching or closing a section. Full screen (⛶ or <kbd>F</kbd>: only the page, centred — <b>nothing else appears at any time</b>, whatever you touch, move or press. On a computer, <kbd>Esc</kbd> or <kbd>F</kbd> leaves, and resting the pointer at the <b>top centre</b> of the screen brings up a faint ✕ if you would rather click your way out; on a phone or tablet, where there is no Esc key, the small ✕ in the top corner is always faintly there — swipe to turn, pinch to zoom, drag to move around a zoomed page, ↓ ↑ to read down a zoomed page), and the <b>curtain</b> that hides the text line by line so you can test yourself. Tadabbur wa Amal (altadabbur.com) can open beside the page; the Quranic Arabic Corpus link follows the ayah being played.</p>
       <p><b>Learning part of a page.</b> Settings → Plan → “Weekly portion” lets the sabaq be half, a third or a quarter of a page. The page is split at ayah boundaries (adjustable on the Today card), each week takes the next part, “Play part” and the daily segments cover only that part, and the page enters revision once its last part is done. The teacher message names the ayāt and the part.</p>
       <p><b>Text view.</b> The <b>☰ Text</b> button in Study shows the same page as text, ayah by ayah: the Arabic text with a word-by-word meaning under each word, and the translation of each ayah from any of the five translations you tick (<b>Display ▾</b> — Bengali: Taisirul Quran, Sheikh Mujibur Rahman; English: Saheeh International, Al-Hilali &amp; Khan, Bridges). The ayah being recited is highlighted. Tajwīd colouring is optional, and works alongside the word meanings and gap-fill — the coloured text comes per word in the same request as the glosses. It is for understanding while you learn, so it is always <b>one page at a time</b> whatever Single/Spread you use on the Mushaf, and the curtain does not apply to it — the Curtain button is greyed out there and works again on the printed page. During revision testing and in full screen the printed page is shown instead. <b>▤ Mushaf</b> returns to the page. If the <b>☰ Text</b> button is greyed out, the app names the reason when you tap it: the curtain is on, you are in full screen, or the page was opened for <b>revision</b> from a Today or Week card — in which case a band above the page reads <b>“Reciting page N unaided”</b> and <b>Leave revision ✕</b> brings the text and the aids back (rating the page, or leaving the Study tab, ends revision too). What is shown under each ayah — Arabic, word meanings, translations, tajwīd colours, tafsīr — is in <b>Display ▾</b>, and the gap-fill drill is in <b>Tools → Practice</b>. <b>Tap any Arabic word to highlight it in yellow</b> (tap again to remove; “clear” at the bottom removes all on the page) — for the words that keep tripping you. Highlights are saved with your data. To make the text bigger, pinch on the list (or A−/A+, or Ctrl + wheel): the text grows and re-wraps, so nothing goes off the edge of the screen. Settings → Mushaf can download the list text for offline use.</p>
       <p><b>Keyboard in Study.</b> Space play/pause · <kbd>Shift</kbd>+<kbd>F</kbd> Focus on/off · ← → previous/next ayah · <b>↓ ↑ scroll down and up the page</b> — while the curtain is on they reveal and hide a line instead · Home/End hide/show all · PageUp/PageDown turn the page · C curtain · F full screen · <kbd>Esc</kbd> leave full screen · S single/spread · + − zoom · <b>Alt+← / Alt+→</b> previous/next ayah in the Tafsīr panel (when it is open). Keys are ignored while you type in a field, and a focused control (curtain handle, gap-fill word, button) keeps its own key.</p>
@@ -3106,6 +3112,7 @@ const I18N = (() => {
  "Teacher feedback, notes and pages already marked done are kept either way. Nothing is marked memorised or completed by an import.": "উস্তাদের মতামত, নোট ও ইতিমধ্যে সম্পন্ন চিহ্নিত পৃষ্ঠা দুই ক্ষেত্রেই থেকে যায়। ইমপোর্টের মাধ্যমে কিছুই মুখস্থ বা সম্পন্ন হিসেবে চিহ্নিত হয় না।",
  "Placeholders: {journeyWeek} {weekYear} {revision} {newHifz} {weekFrom} {weekTo} {weekFromH} {weekToH} {hijriRange} {deadlineDay} {deadlineDate} {weekNo} {dates} {student} {teacher} {page} {range} {juz} {dayPlan} {sabqi} {manzil} {lastWeek} {total} {feedback}": "প্লেসহোল্ডার: {journeyWeek} {weekYear} {revision} {newHifz} {weekFrom} {weekTo} {weekFromH} {weekToH} {hijriRange} {deadlineDay} {deadlineDate} {weekNo} {dates} {student} {teacher} {page} {range} {juz} {dayPlan} {sabqi} {manzil} {lastWeek} {total} {feedback}",
  "Today’s wird": "আজকের ওয়ির্দ",
+ "Continue today’s practice": "আজকের অনুশীলন চালিয়ে যান",
  "day {d} of 7": "৭ দিনের {d} নম্বর দিন",
  "week {w}": "সপ্তাহ {w}",
  "journey week {w}": "যাত্রার সপ্তাহ {w}",
@@ -6217,6 +6224,17 @@ Total memorized: {total}
     return { shown: [...fromPlan, ...extra.slice(0, take)], extra: extra.slice(0, take), deferred: Math.max(0, extra.length - take), budget };
   }
   function weekMinutesToday() { const s = st.settings; return Math.round((suggestedCount('sabqi') + suggestedCount('manzil')) * s.minutesPerPage + (remaining('sabaq').length ? 3 * s.minutesPerPage : 0)); }
+  /** The single next action on Today: new lesson first, then today's recent and long-term revision. */
+  function nextTodayTask() {
+    const w = ensureWeek();
+    const sabaq = w.sabaq.find(p => !w.done[p]);
+    if (sabaq != null) return { page: sabaq, stage: 'sabaq' };
+    for (const stage of ['sabqi', 'manzil']) {
+      const page = todaysQueue(stage).shown.find(p => !w.done[p] && !ratedToday(p));
+      if (page != null) return { page, stage };
+    }
+    return null;
+  }
 
   // ---------- page actions ----------
   function completeSabaq(p) {
@@ -6411,6 +6429,9 @@ Total memorized: {total}
     if (beforeStart()) b.push(`<div class="notice info">Your hifz journey begins on <b>${fmtLong(journeyStart())}</b>${hijri(journeyStart()) ? ` (${hijri(journeyStart())} AH)` : ''} — in ${Sched.diffDays(today(), journeyStart())} day${Sched.diffDays(today(), journeyStart()) === 1 ? '' : 's'}. Below is the plan for your first week; adjust it under Week. Nothing is counted until then.</div>`);
     if (s.vacation && s.vacation.active) b.push(`<div class="notice">Vacation mode is on — due dates are frozen. Turn it off in Settings when you return.</div>`);
     $('#banners').innerHTML = b.join('');
+    const next = !beforeStart() && !(s.vacation && s.vacation.active) ? nextTodayTask() : null;
+    const continueBox = $('#todayContinue'); continueBox.hidden = !next;
+    continueBox.innerHTML = next ? `<button class="btn primary" data-open="${next.page}" data-stage="${next.stage}"><span class="task-name">▶ ${esc(t('Continue today’s practice'))}</span><span class="task-page"><span class="badge ${next.stage}">${esc(t(next.stage))}</span> ${esc(t('Page {p}', { p: next.page }))} · ${esc(Quran.rangeLabel(next.page))}</span></button>` : '';
 
     // sabaq
     if (!w.sabaq.length) $('#sabaqCard').innerHTML = `<div class="empty">No sabaq page this week. <button class="btn small" data-go="week">Choose one in Week → Sabaq</button></div>`;
@@ -7562,6 +7583,7 @@ Total memorized: {total}
   function fillSelects() {
     const sOpts = Object.values(Quran.SURAH).map(s => `<option value="${s.num}">${s.num}. ${esc(s.en)} — ${esc(s.ar)} (p.${s.startPage})</option>`).join('');
     const jOpts = Object.values(Quran.JUZ).map(j => `<option value="${j.juz}">Juz ${j.juz} (p.${j.startPage})</option>`).join('');
+    $('#pgInput').innerHTML = Array.from({ length: 604 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
     $('#surahJump').innerHTML = '<option value="">Surah…</option>' + sOpts; $('#juzJump').innerHTML = '<option value="">Juz…</option>' + jOpts;
     $('#startSurah').innerHTML = '<option value="">—</option>' + sOpts; $('#startJuz').innerHTML = '<option value="">—</option>' + jOpts;
     $('#weekStartDay').innerHTML = DAY.map((d, i) => `<option value="${i}">${d}</option>`).join('');
