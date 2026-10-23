@@ -162,6 +162,11 @@ details.panel > summary { cursor: pointer; }
 .card .rng { color: var(--ink2); font-weight: 600; }
 .card .meta { color: var(--muted); font-size: .82em; margin: 2px 0 8px; }
 .card .fb { font-size: .85em; color: var(--ink2); background: var(--bg2); border-radius: 8px; padding: 6px 8px; margin: 6px 0; }
+.card-more > summary { list-style: none; }
+.card-more > summary::-webkit-details-marker { display: none; }
+.card-more[open] { flex-basis: 100%; }
+.card-more[open] > summary { background: var(--bg2); }
+.card-more .more-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--line); }
 .rating { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; margin-top: 6px; }
 .rating .lbl { font-size: .8em; color: var(--muted); flex-basis: 100%; }
 .rating button { flex: 1 1 0; min-width: 36px; min-height: 40px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg2); color: var(--ink); font-weight: 700; cursor: pointer; }
@@ -1616,7 +1621,7 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
     </div>
     <div class="panel">
       <div class="panel-title">The tabs</div>
-      <p><b>Today</b> — the day’s wird. <b>Continue today’s practice</b> opens the first unfinished task in order: sabaq, sabqi, then manzil. The sabaq page’s suggested task is in Study → 🛠 Tools → Practice; today’s sabqi and manzil pages include Play, Ayah by ayah, Open in Study, Tadabbur, Corpus and the rating buttons.</p>
+      <p><b>Today</b> — the day’s wird. <b>Continue today’s practice</b> opens the first unfinished task in order: sabaq, sabqi, then manzil. Each card keeps its main Play and Open in Study actions visible; Ayah by ayah, video lessons, Tadabbur and Corpus are under <b>⋯ More</b>. The sabaq page’s suggested task is in Study → 🛠 Tools → Practice, and revision ratings remain directly on their cards.</p>
       <p><b>Mouse.</b> In Study the wheel <b>scrolls</b> the Mushaf up and down, as in any other document reader, and <b>Ctrl+wheel</b> (⌘+wheel on a Mac, or a trackpad pinch) zooms around the pointer. Shift+wheel moves sideways on a page wider than the window, and you can drag the page with the left button when it is larger than the window. If you prefer the wheel to zoom, Settings → 📖 Mushaf → <b>Mouse wheel in Study</b> swaps the two; Ctrl+wheel zooms either way.</p>
       <p><b>Turning the page.</b> The ‹ › arrows beside the page box step one page (or one whole spread) at a time, lower and higher number; on a computer or tablet there are also large buttons in the margin at each side of the page — left for the next page, right for the previous, as a Mushaf turns. They grey out on page 1 and page 604 and never wrap round. Turning the page <b>does not stop the recitation</b>, keeps the curtain on if it was on, moves the tafīsr panel to the new page, and clears the ayah selection.</p>
       <p><b>Study</b> — the Mushaf page, and the tools for working on it. <b>The toolbar is one row:</b> the page arrows and page dropdown, the <b>Mushaf ⇄ Text</b> switch, <b>Go to ▾</b> (sūrah, juz — beside the page number, since both answer “which page?”), <b>Display ▾</b> and <b>🛠 Tools</b>. Choose any page from 1 to 604 in the dropdown; pointing at it and scrolling the mouse wheel also moves through the pages. Display holds <b>⤢ Focus</b> — which hides the side panels and the tab bar and gives the page the whole window, keeping the toolbar so you can still turn pages (<kbd>Shift</kbd>+<kbd>F</kbd>, and <kbd>Esc</kbd> or the ⤢ button in the toolbar to leave; it is remembered between sessions). In Text view, beside Focus, a <b>Mushaf lines</b> option shows every word on the page in one continuous strip broken exactly where the printed Mushaf's own lines break — including where a line is shared between two āyāt, with a small ring marking where each ayah ends — instead of however the browser fits the words otherwise; it needs Focus on and a wide screen, and does nothing until both are true. Display also holds what applies to the view you are in — single page or spread, and zoom, on the Mushaf; what appears under each ayah, the translations, the word-meaning language and the text size in Text view. Under the page sit <b>Play page</b>, <b>Play selection</b> and <b>Listen…</b>, with the repeats, loop, gap and speed folded into <b>Audio settings ▾</b>, and <b>Ayāt on this page</b>, which opens to the ayah chips (tap one to play it, two for a range; the ✗ for marking a stumble appears on the ayah you have selected). <b>🛠 Tools</b> opens one section at a time — <b>Practice</b> (curtain, gap-fill, recite &amp; compare, look-alike verses, and rating the page when it is due), <b>Understand</b> (video lesson, tafsīr, Tadabbur wa Amal, Quranic Arabic Corpus) and <b>Notes</b> (your notes and the stumbles on this page). Beside the page on a computer, a sheet over it on a phone, closed until you ask for it there. Nothing you have going — the page, the ayah you picked, a recitation playing — is disturbed by opening, switching or closing a section. Full screen (⛶ or <kbd>F</kbd>: only the page, centred — <b>nothing else appears at any time</b>, whatever you touch, move or press. On a computer, <kbd>Esc</kbd> or <kbd>F</kbd> leaves, and resting the pointer at the <b>top centre</b> of the screen brings up a faint ✕ if you would rather click your way out; on a phone or tablet, where there is no Esc key, the small ✕ in the top corner is always faintly there — swipe to turn, pinch to zoom, drag to move around a zoomed page, ↓ ↑ to read down a zoomed page), and the <b>curtain</b> that hides the text line by line so you can test yourself. Tadabbur wa Amal (altadabbur.com) can open beside the page; the Quranic Arabic Corpus link follows the ayah being played.</p>
@@ -2647,6 +2652,9 @@ const I18N = (() => {
  "Close (Esc)": "বন্ধ করুন (Esc)",
  "(opens in a new tab)": "(নতুন ট্যাবে খোলে)",
  "Open in new tab ↗": "নতুন ট্যাবে খুলুন ↗",
+ "More": "আরও",
+ "Retry": "আবার চেষ্টা করুন",
+ "Retrying…": "আবার চেষ্টা হচ্ছে…",
  "Sabaq": "সবক",
  "new lesson": "নতুন পাঠ",
  "Sabqi": "সবকি",
@@ -5655,7 +5663,12 @@ const Meanings = (() => {
    ============================================================ */
 const Tafsir = (() => {
   const SHA = '05d5ba765d77c6ca6d43c30f0e1c273deb137454';   // spa5k/tafsir_api main, 2026-08-02
-  const BASE = `https://cdn.jsdelivr.net/gh/spa5k/tafsir_api@${SHA}/tafsir/`;
+  const BASES = [
+    `https://cdn.jsdelivr.net/gh/spa5k/tafsir_api@${SHA}/tafsir/`,
+    `https://fastly.jsdelivr.net/gh/spa5k/tafsir_api@${SHA}/tafsir/`,
+    `https://raw.githubusercontent.com/spa5k/tafsir_api/${SHA}/tafsir/`
+  ];
+  const BASE = BASES[0];
   /* Order is the order shown in every picker, and SOURCES[0] is the fallback for an id the
      app does not recognise. English first: the interface defaults to English. */
   const SOURCES = [
@@ -5676,9 +5689,18 @@ const Tafsir = (() => {
   async function get(ed, s, a) {
     const k = key(ed, s, a); if (mem.has(k)) return mem.get(k);
     const hit = await kvGet(k); if (hit) { mem.set(k, hit); return hit; }
-    let r;
-    try { const ctrl = new AbortController(); const tm = setTimeout(() => ctrl.abort(), 20000); r = await fetch(`${BASE}${ed}/${s}/${a}.json`, { signal: ctrl.signal }).finally(() => clearTimeout(tm)); }
-    catch (e) { const err = new Error(navigator.onLine === false ? 'offline' : 'the tafsīr server could not be reached'); err.offline = navigator.onLine === false; throw err; }
+    let r = null, lastErr = null;
+    /* A CDN can be blocked or briefly unavailable on one network while the same pinned file is
+       reachable from another host. Try each mirror before showing a manual Retry control. */
+    for (const base of BASES) {
+      try {
+        const ctrl = new AbortController(), tm = setTimeout(() => ctrl.abort(), 10000);
+        r = await fetch(`${base}${ed}/${s}/${a}.json`, { signal: ctrl.signal }).finally(() => clearTimeout(tm));
+        if (r.ok || r.status === 404) break;
+        lastErr = new Error(`HTTP ${r.status}`); r = null;
+      } catch (e) { lastErr = e; r = null; }
+    }
+    if (!r) { const offline = navigator.onLine === false; const err = new Error(offline ? 'offline' : (lastErr && lastErr.name === 'AbortError' ? 'the tafsīr servers timed out' : 'the tafsīr servers could not be reached')); err.offline = offline; throw err; }
     let v;
     if (r.status === 404) v = { text: '', surah: s, ayah: a, missing: true };
     else if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -5704,7 +5726,7 @@ const Tafsir = (() => {
   /** Remove cache entries written by earlier source revisions (keys not carrying the current revision prefix). Learning data lives elsewhere and is untouched. */
   async function purgeOld() { try { const db = await open(); const keys = await new Promise((res, rej) => { const t = db.transaction(STORE, 'readonly').objectStore(STORE).getAllKeys(); t.onsuccess = () => res(t.result || []); t.onerror = () => rej(t.error); }); const old = keys.filter(k => !String(k).startsWith(SHA.slice(0, 12) + '|')); if (!old.length) return 0; await new Promise((res, rej) => { const t = db.transaction(STORE, 'readwrite'); const st = t.objectStore(STORE); old.forEach(k => st.delete(k)); t.oncomplete = res; t.onerror = () => rej(t.error); }); return old.length; } catch (_) { return 0; } }
   const persistent = () => !idbFailed;
-  return { SOURCES, source, get, group, stats, clear, purgeOld, persistent, BASE, SHA };
+  return { SOURCES, source, get, group, stats, clear, purgeOld, persistent, BASE, BASES, SHA };
 })();
 
 /* ============================================================
@@ -5975,6 +5997,18 @@ Total memorized: {total}
     toast(t('Interface language changed'));
   }
   function toast(msg, kind = '') { const t = document.createElement('div'); t.className = 'toast ' + kind; t.textContent = msg; $('#toasts').appendChild(t); setTimeout(() => t.remove(), kind === 'error' ? 6000 : 3000); }
+  /** Every manual retry gets the same progress, double-click protection and failure recovery. */
+  function wireRetry(button, action) {
+    if (!button) return;
+    button.type = 'button';
+    button.addEventListener('click', async e => {
+      e.preventDefault(); if (button.disabled) return;
+      const label = button.textContent; button.disabled = true; button.setAttribute('aria-busy', 'true'); button.textContent = t('Retrying…');
+      try { await action(); }
+      catch (err) { toast((err && err.message) || 'Could not retry', 'error'); }
+      finally { if (button.isConnected) { button.disabled = false; button.removeAttribute('aria-busy'); button.textContent = label; } }
+    });
+  }
 
   // ---------- theme ----------
   function applyTheme() { const t = st.settings.theme; if (t === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', t); }
@@ -6444,14 +6478,17 @@ Total memorized: {total}
         ${pr && !d ? `<details class="sub small"><summary>${esc(t('Adjust where the parts split'))}</summary><div class="row wrap">${partBounds(p, pr.of).map((b, k) => { const all = Quran.ayahsOnPage(p); return `<label class="field">Part ${k + 1} ends after <select data-bound="${k}" data-bpage="${p}">${all.slice(0, all.length - 1).map(([s, a], i) => `<option value="${i + 1}" ${i + 1 === b ? 'selected' : ''}>${esc(Quran.surah(s).en)} ${a}</option>`).join('')}</select></label>`; }).join('')}</div></details>` : ''}
         ${fb ? `<div class="fb">${esc(t('Teacher:'))} ${esc(fb)}</div>` : ''}
         <div class="row wrap">
-          ${pr ? `<button class="btn primary" data-play-part="${p}" data-stage="sabaq">${esc(t('▶ Play part {i}', { i: pr.idx }))}</button><button class="btn" data-play-part="${p}" data-ayah="1" data-stage="sabaq">${esc(t('▶ Ayah by ayah'))}</button><button class="btn" data-play="${p}" data-stage="sabaq">${esc(t('▶ Whole page'))}</button>` : `<button class="btn primary" data-play="${p}" data-stage="sabaq">${esc(t('▶ Play page'))}</button>
-          <button class="btn" data-play-ayah="${p}" data-stage="sabaq">${esc(t('▶ Ayah by ayah'))}</button>`}
+          ${pr ? `<button class="btn primary" data-play-part="${p}" data-stage="sabaq">${esc(t('▶ Play part {i}', { i: pr.idx }))}</button>` : `<button class="btn primary" data-play="${p}" data-stage="sabaq">${esc(t('▶ Play page'))}</button>`}
           ${!d && active ? `<button class="btn" data-play-seg="${p}" data-seg="${Math.min(di, s.segmentsPerPage - 1)}" data-stage="sabaq">${esc(t('▶ Today’s segment'))}</button>` : ''}
           <button class="btn" data-open="${p}">${esc(t('Open in Study'))}</button>
-          ${videosFor(p).length ? `<a class="btn" href="${videoUrl(videosFor(p)[0])}" target="_blank" rel="noopener" title="${esc(videosFor(p)[0].t)}">${esc(t('▶ Video lesson ↗'))}</a>` : ''}
-          <a class="btn" href="${tadabburUrl(p)}" target="_blank" rel="noopener">${esc(t('Tadabbur ↗'))}</a>
-          <a class="btn" href="${corpusUrl('treebank', pg.s, pg.a)}" target="_blank" rel="noopener">${esc(t('Corpus ↗'))}</a>
-          ${!d ? `<button class="btn" data-practised="1">${esc(t('✓ Practised today'))}</button><button class="btn" data-complete="${p}" style="margin-left:auto">${esc(pr && pr.idx < pr.of ? t('Mark part {i} complete', { i: pr.idx }) : pr ? t('Mark page complete (last part)') : t('Mark page complete'))}</button>` : partDone ? `<button class="btn primary" data-continue-part="${p}" style="margin-left:auto">${esc(t('Continue with part {i} of {n} now', { i: px.done + 1, n: px.of }))}</button>` : ''}
+          ${!d ? `<button class="btn" data-practised="1">${esc(t('✓ Practised today'))}</button>` : ''}
+          <details class="card-more"><summary class="btn">⋯ ${esc(t('More'))}</summary><div class="more-actions">
+            ${pr ? `<button class="btn" data-play-part="${p}" data-ayah="1" data-stage="sabaq">${esc(t('▶ Ayah by ayah'))}</button><button class="btn" data-play="${p}" data-stage="sabaq">${esc(t('▶ Whole page'))}</button>` : `<button class="btn" data-play-ayah="${p}" data-stage="sabaq">${esc(t('▶ Ayah by ayah'))}</button>`}
+            ${videosFor(p).length ? `<a class="btn" href="${videoUrl(videosFor(p)[0])}" target="_blank" rel="noopener" title="${esc(videosFor(p)[0].t)}">${esc(t('▶ Video lesson ↗'))}</a>` : ''}
+            <a class="btn" href="${tadabburUrl(p)}" target="_blank" rel="noopener">${esc(t('Tadabbur ↗'))}</a>
+            <a class="btn" href="${corpusUrl('treebank', pg.s, pg.a)}" target="_blank" rel="noopener">${esc(t('Corpus ↗'))}</a>
+          </div></details>
+          ${!d ? `<button class="btn" data-complete="${p}" style="margin-left:auto">${esc(pr && pr.idx < pr.of ? t('Mark part {i} complete', { i: pr.idx }) : pr ? t('Mark page complete (last part)') : t('Mark page complete'))}</button>` : partDone ? `<button class="btn primary" data-continue-part="${p}" style="margin-left:auto">${esc(t('Continue with part {i} of {n} now', { i: px.done + 1, n: px.of }))}</button>` : ''}
         </div></div>`;
     }).join('') + (remaining('sabaq').length ? '' : `<div class="row"><button class="btn small" data-add-next-sabaq="1">＋ Add the next page to this week</button></div>`);
     if (w.lesson) { const L = w.lesson; const all = [...(L.sabaqRanges || []).map(r => ['new hifẓ', r]), ...(L.revisionRanges || []).map(r => ['revision', r])]; $('#sabaqCard').insertAdjacentHTML('beforeend', `<div class="small muted" style="margin-top:8px">📥 Teacher’s lesson${L.journeyWeek != null ? ` (journey week ${L.journeyWeek})` : ''}: ${all.map(([k, r]) => `${k} ${esc(lessonRangeText(r))}`).join(' · ')}${L.deadline && L.deadline.date ? ` · deadline ${fmt(L.deadline.date)}${L.deadline.time ? ' ' + L.deadline.time : ''}` : ''} · <button class="btn small" data-go="week">Week</button></div>`); }
@@ -6477,8 +6514,7 @@ Total memorized: {total}
         <div class="meta">${esc(t('Juz {j}', { j: pg.juz }))} · ${esc(t('{n} reviews', { n: ps.reps || 0 }))} · ${esc(t('{n} lapses', { n: ps.lapses || 0 }))}${ps.lastReviewed ? ` · ${esc(t('last {d}', { d: fmt(ps.lastReviewed) }))}` : ''}</div>
         <div class="why muted small">${esc(why)}</div>
         ${fb ? `<div class="fb">${esc(t('Teacher:'))} ${esc(fb)}</div>` : ''}
-        <div class="playrow"><button class="btn small primary" data-play="${p}" data-stage="${stage}">${esc(t('▶ Page'))}</button><button class="btn small" data-play-ayah="${p}" data-stage="${stage}">${esc(t('▶ Ayah by ayah'))}</button></div>
-        <div class="playrow"><button class="btn small" data-open="${p}">${esc(t('Open in Study'))}</button>${videosFor(p).length ? `<a class="btn small" href="${videoUrl(videosFor(p)[0])}" target="_blank" rel="noopener" title="${esc(videosFor(p)[0].t)}">${esc(t('▶ Video lesson ↗'))}</a>` : ''}<a class="btn small" href="${tadabburUrl(p)}" target="_blank" rel="noopener">${esc(t('Tadabbur ↗'))}</a><a class="btn small" href="${corpusUrl('treebank', pg.s, pg.a)}" target="_blank" rel="noopener">${esc(t('Corpus ↗'))}</a></div>
+        <div class="playrow"><button class="btn small primary" data-play="${p}" data-stage="${stage}">${esc(t('▶ Page'))}</button><button class="btn small" data-open="${p}">${esc(t('Open in Study'))}</button><details class="card-more"><summary class="btn small">⋯ ${esc(t('More'))}</summary><div class="more-actions"><button class="btn small" data-play-ayah="${p}" data-stage="${stage}">${esc(t('▶ Ayah by ayah'))}</button>${videosFor(p).length ? `<a class="btn small" href="${videoUrl(videosFor(p)[0])}" target="_blank" rel="noopener" title="${esc(videosFor(p)[0].t)}">${esc(t('▶ Video lesson ↗'))}</a>` : ''}<a class="btn small" href="${tadabburUrl(p)}" target="_blank" rel="noopener">${esc(t('Tadabbur ↗'))}</a><a class="btn small" href="${corpusUrl('treebank', pg.s, pg.a)}" target="_blank" rel="noopener">${esc(t('Corpus ↗'))}</a></div></details></div>
         ${ratingHTML(p)}</div>`; };
       let html = '';
       if (!list.length) html = `<div class="empty">${esc(t('Nothing planned this week'))}${stage === 'manzil' && !rot.manzil ? esc(t(' — no pages in long-term rotation yet')) : ''}. <button class="btn small" data-go="week">${esc(t('Add pages in Week'))}</button></div>`;
@@ -6753,14 +6789,25 @@ Total memorized: {total}
   async function renderListTafsir(page, seq) {
     const ed = Tafsir.source(st.settings.tafsirEd); const ayahs = Quran.ayahsOnPage(page); const all = !!st.settings.listTafsirAll;
     const box = key => $(`#listBody .qtf[data-qtf="${key}"]`);
+    const showRetry = (el, key, err) => {
+      if (!el) return;
+      el.innerHTML = `<span class="qtf-lbl">${esc(ed.name)}</span><div class="qtf-ptr">${err.offline ? 'Not available offline (not opened before on this device).' : 'Could not load the tafsīr.'} <button class="btn small" type="button" data-qtfretry="${key}">${esc(t('Retry'))}</button></div>`;
+      /* Any one of these buttons retries the whole page: a connection failure normally affects
+         every ayah, and asking the learner to press Retry repeatedly would be pointless. */
+      wireRetry(el.querySelector('[data-qtfretry]'), () => renderListTafsir(page, listSeq));
+    };
     let prevText = null, prevKey = null, groupHead = null;   // group tracking along the page
     for (let i = 0; i < ayahs.length; i++) {
       if (seq !== listSeq) return; const [s, a] = ayahs[i]; const key = `${s}:${a}`; const el = box(key); if (!el) continue;
       let e;
       try { e = await Tafsir.get(ed.id, s, a); } catch (err) {
         if (seq !== listSeq) return;
-        el.innerHTML = `<span class="qtf-lbl">${esc(ed.name)}</span><div class="qtf-ptr">${err.offline ? 'Not available offline (not opened before on this device).' : 'Could not load the tafsīr.'} <button data-qtfretry="${key}">Retry</button></div>`;
-        el.querySelector('[data-qtfretry]').addEventListener('click', () => renderListTafsir(page, listSeq)); prevText = null; prevKey = null; continue;
+        showRetry(el, key, err); prevText = null; prevKey = null;
+        if (err.offline || /servers|timed out|could not be reached/i.test(err.message || '')) {
+          for (let j = i + 1; j < ayahs.length; j++) { const [s2, a2] = ayahs[j], k2 = `${s2}:${a2}`; showRetry(box(k2), k2, err); }
+          return;
+        }
+        continue;
       }
       if (seq !== listSeq) return;
       if (e.missing || !e.text.trim()) { el.innerHTML = `<span class="qtf-lbl">${esc(ed.name)} — ${e.missing ? 'no entry for this ayah' : 'empty entry in the source'}</span>`; prevText = null; prevKey = null; continue; }
@@ -6945,7 +6992,7 @@ Total memorized: {total}
         if (s.listTr !== false && trs.length) bits.push((trPending ? 'translations loading… ' : '') + 'translation: ' + trs.map(t => { const x = Meanings.source(t.lang, t.id); return `${x.name} (${x.via})`; }).join(' · '));
         if (s.listTafsir) { const ed = Tafsir.source(s.tafsirEd); bits.push(`tafsīr: ${ed.name} (${ed.author}, via QUL / tafsir_api)`); }
         $('#listSrc').textContent = bits.join(' · ') + '.';
-        if (!trPending && failed.length) { const b = document.createElement('button'); b.className = 'btn small'; b.style.marginLeft = '8px'; b.textContent = `${[...new Set(failed)].join(', ')} could not be loaded — retry`; b.addEventListener('click', () => renderList()); $('#listSrc').appendChild(b); }
+        if (!trPending && failed.length) { const b = document.createElement('button'); b.className = 'btn small'; b.style.marginLeft = '8px'; b.textContent = `${[...new Set(failed)].join(', ')} could not be loaded — ${t('Retry')}`; wireRetry(b, () => renderList()); $('#listSrc').appendChild(b); }
         listHlCount();
       };
       srcLine(!!trList.length);
@@ -7263,7 +7310,7 @@ Total memorized: {total}
         const p0 = Quran.pageOfAyah(s, g.from), p1 = Quran.pageOfAyah(s, g.to), here = Quran.pageOfAyah(s, a);
         badge.className = 'tf-range'; badge.title = 'The source gives one identical explanation for these ayāt (found by comparing the texts, not stated by the publisher)';
         badge.textContent = `${g.bounded ? 'at least ' : ''}ayāt ${g.from}–${g.to} explained together${p0 < here ? ` (begins on page ${p0})` : ''}${p1 > here ? ` (continues on page ${p1})` : ''}`;
-      } catch (err) { if (seq !== tfSeq) { badge.remove(); return; } badge.className = 'tf-range muted'; badge.innerHTML = 'range not checked <button class="btn small" type="button">retry</button>'; badge.querySelector('button').addEventListener('click', run); }
+      } catch (err) { if (seq !== tfSeq) { badge.remove(); return; } badge.className = 'tf-range muted'; badge.innerHTML = `range not checked <button class="btn small" type="button">${esc(t('Retry'))}</button>`; wireRetry(badge.querySelector('button'), run); }
     };
     run();
   }
@@ -7303,8 +7350,8 @@ Total memorized: {total}
       tfGroupBadge(head, ed.id, s, a, e.text, seq);            // grouped explanation? separate, non-fatal lookup
     } catch (err) {
       if (seq !== tfSeq) return;
-      body.innerHTML = `<span class="tf-msg">${err.offline ? 'Not available offline — this ayah’s tafsīr has not been opened on this device before.' : 'Could not load the tafsīr (' + esc(err.message || 'error') + ').'}<button class="btn small" id="tfRetry">Retry</button></span>`;
-      $('#tfRetry').addEventListener('click', renderTafsir);
+      body.innerHTML = `<span class="tf-msg">${err.offline ? 'Not available offline — this ayah’s tafsīr has not been opened on this device before.' : 'Could not load the tafsīr (' + esc(err.message || 'error') + ').'}<button class="btn small" type="button" id="tfRetry">${esc(t('Retry'))}</button></span>`;
+      wireRetry($('#tfRetry'), renderTafsir);
     }
   }
 
