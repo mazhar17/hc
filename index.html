@@ -3174,7 +3174,7 @@ const I18N = (() => {
  "Continue reading": "পড়া চালিয়ে যান",
  "Your most recently opened or played ayah appears here automatically.": "আপনার সর্বশেষ খোলা বা শোনা আয়াতটি এখানে স্বয়ংক্রিয়ভাবে দেখাবে।",
  "No ayah has been read yet. Open Study and select or play an ayah.": "এখনো কোনো আয়াত পড়া হয়নি। অধ্যয়ন খুলে একটি আয়াত নির্বাচন করুন বা চালান।",
- "Oft-repeated surahs & passages": "বারবার পঠিত সূরা ও আয়াত",
+"Oft-repeated Surahs": "বারবার পঠিত সূরা",
  "Hadith-based": "হাদীসভিত্তিক",
  "Before sleep": "ঘুমের আগে",
  "Friday & protection": "জুমুআ ও সুরক্ষা",
@@ -6402,7 +6402,7 @@ Total memorized: {total}
   }
   function renderSunnahReading(root) {
     const section = document.createElement('details'); section.className = 'panel bookmark-sunnah';
-    section.innerHTML = `<summary><span class="panel-title">${esc(t('Oft-repeated surahs & passages'))}</span><span class="badge">${esc(t('Hadith-based'))}</span></summary><p class="muted small">The reports describe different practices—bedtime, Friday Fajr, protection, or a particular virtue. The exact context and reference are shown for each item.</p>`;
+  section.innerHTML = `<summary><span class="panel-title">${esc(t('Oft-repeated Surahs'))}</span><span class="badge">${esc(t('Hadith-based'))}</span></summary><p class="muted small">The reports describe different practices—bedtime, Friday Fajr, protection, or a particular virtue. The exact context and reference are shown for each item.</p>`;
     for (const group of SUNNAH_READING) {
       const box = document.createElement('div'); box.className = 'sunnah-reading-group';
       box.innerHTML = `<h3>${esc(t(group.group))}</h3><div class="sunnah-reading-list"></div>`;
