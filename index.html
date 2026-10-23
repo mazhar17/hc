@@ -146,6 +146,17 @@ details.panel > summary { cursor: pointer; }
 .bookmark-entry .row { flex-wrap:wrap; }
 .bookmark-note { white-space:pre-wrap; margin:6px 0 0; }
 .bookmark-group h2 { overflow-wrap:anywhere; }
+.bookmark-last { border-color:color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.bookmark-last .bookmark-entry { border-top:0; padding-bottom:2px; }
+.bookmark-sunnah > summary { display:flex; justify-content:space-between; align-items:center; gap:10px; cursor:pointer; }
+.bookmark-sunnah > summary .panel-title { margin:0; }
+.sunnah-reading-group { margin-top:14px; }
+.sunnah-reading-group h3 { margin:0 0 6px; font-size:.9em; color:var(--ink2); }
+.sunnah-reading-list { display:grid; gap:6px; }
+.sunnah-reading-item { display:flex; align-items:center; gap:10px; padding:8px 0; border-top:1px solid var(--line); }
+.sunnah-reading-item > div { flex:1; min-width:0; }
+.sunnah-reading-item .small { margin-top:2px; }
+@media(max-width:600px) { .sunnah-reading-item { align-items:stretch; flex-direction:column; } }
 #view-bookmarks textarea { width:100%; font:inherit; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:8px; }
 @media(max-width:600px) { .bookmark-entry { align-items:stretch; flex-direction:column; } .tab { min-width:0; font-size:.7em; } }
 /* stats */
@@ -561,6 +572,7 @@ body.player-mini .player-info > #plSub { flex: 1 1 auto; min-width: 0; }
 
 /* ---- List mode ---- */
 .listview { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg2); padding: 10px 12px 14px; }
+.list-end-nav { display:flex; justify-content:flex-end; padding:16px 0 2px; }
 .list-toggles { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-left: auto; font-size: .88em; }
 .chk { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
 #lsMushafLinesRow.dim { opacity: .55; }
@@ -1115,8 +1127,8 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
         <div id="listRoot" class="listview" hidden>
           <p class="notice warn small" id="lsTjNote" role="status" hidden></p>
           <div id="listBody" class="qlist"></div>
+          <div class="list-end-nav"><button id="listNextPage" class="btn primary" type="button">Next page →</button></div>
           <p class="muted small" id="listSrc"></p>
-          <p class="muted small">The printed Mushaf pages remain the reference for memorising; this list is for understanding. Text and meanings come from the sources named in the <button class="btn small" data-go="about">Help &amp; About</button> tab.</p>
         </div>
         <!-- reading actions: the player is the playback surface, these three start it -->
         <div class="readbar">
@@ -1621,7 +1633,7 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
     </div>
     <div class="panel">
       <div class="panel-title">The tabs</div>
-      <p><b>Today</b> — the day’s wird. <b>Continue today’s practice</b> opens the first unfinished task in order: sabaq, sabqi, then manzil. Each card keeps its main Play and Open in Study actions visible; Ayah by ayah, video lessons, Tadabbur and Corpus are under <b>⋯ More</b>. The sabaq page’s suggested task is in Study → 🛠 Tools → Practice, and revision ratings remain directly on their cards.</p>
+      <p><b>Today</b> — the day’s wird. <b>Continue today’s practice</b> opens the first unfinished task in order: sabaq, sabqi, then manzil. Each card keeps its main Play and Open in Study actions visible; Ayah by ayah, video lessons, Tadabbur and Corpus are under <b>⋯ More</b>. The sabaq page’s suggested task is in Study → 🛠 Tools → Practice, and revision ratings remain directly on their cards. <b>Bookmarks</b> always keeps the most recently opened or played ayah at the top as <b>Last read</b>, followed by the headings you create.</p>
       <p><b>Mouse.</b> In Study the wheel <b>scrolls</b> the Mushaf up and down, as in any other document reader, and <b>Ctrl+wheel</b> (⌘+wheel on a Mac, or a trackpad pinch) zooms around the pointer. Shift+wheel moves sideways on a page wider than the window, and you can drag the page with the left button when it is larger than the window. If you prefer the wheel to zoom, Settings → 📖 Mushaf → <b>Mouse wheel in Study</b> swaps the two; Ctrl+wheel zooms either way.</p>
       <p><b>Turning the page.</b> The ‹ › arrows beside the page box step one page (or one whole spread) at a time, lower and higher number; on a computer or tablet there are also large buttons in the margin at each side of the page — left for the next page, right for the previous, as a Mushaf turns. They grey out on page 1 and page 604 and never wrap round. Turning the page <b>does not stop the recitation</b>, keeps the curtain on if it was on, moves the tafīsr panel to the new page, and clears the ayah selection.</p>
       <p><b>Study</b> — the Mushaf page, and the tools for working on it. <b>The toolbar is one row:</b> the page arrows and page dropdown, the <b>Mushaf ⇄ Text</b> switch, <b>Go to ▾</b> (sūrah, juz — beside the page number, since both answer “which page?”), <b>Display ▾</b> and <b>🛠 Tools</b>. Choose any page from 1 to 604 in the dropdown; pointing at it and scrolling the mouse wheel also moves through the pages. Display holds <b>⤢ Focus</b> — which hides the side panels and the tab bar and gives the page the whole window, keeping the toolbar so you can still turn pages (<kbd>Shift</kbd>+<kbd>F</kbd>, and <kbd>Esc</kbd> or the ⤢ button in the toolbar to leave; it is remembered between sessions). In Text view, beside Focus, a <b>Mushaf lines</b> option shows every word on the page in one continuous strip broken exactly where the printed Mushaf's own lines break — including where a line is shared between two āyāt, with a small ring marking where each ayah ends — instead of however the browser fits the words otherwise; it needs Focus on and a wide screen, and does nothing until both are true. Display also holds what applies to the view you are in — single page or spread, and zoom, on the Mushaf; what appears under each ayah, the translations, the word-meaning language and the text size in Text view. Under the page sit <b>Play page</b>, <b>Play selection</b> and <b>Listen…</b>, with the repeats, loop, gap and speed folded into <b>Audio settings ▾</b>, and <b>Ayāt on this page</b>, which opens to the ayah chips (tap one to play it, two for a range; the ✗ for marking a stumble appears on the ayah you have selected). <b>🛠 Tools</b> opens one section at a time — <b>Practice</b> (curtain, gap-fill, recite &amp; compare, look-alike verses, and rating the page when it is due), <b>Understand</b> (video lesson, tafsīr, Tadabbur wa Amal, Quranic Arabic Corpus) and <b>Notes</b> (your notes and the stumbles on this page). Beside the page on a computer, a sheet over it on a phone, closed until you ask for it there. Nothing you have going — the page, the ayah you picked, a recitation playing — is disturbed by opening, switching or closing a section. Full screen (⛶ or <kbd>F</kbd>: only the page, centred — <b>nothing else appears at any time</b>, whatever you touch, move or press. On a computer, <kbd>Esc</kbd> or <kbd>F</kbd> leaves, and resting the pointer at the <b>top centre</b> of the screen brings up a faint ✕ if you would rather click your way out; on a phone or tablet, where there is no Esc key, the small ✕ in the top corner is always faintly there — swipe to turn, pinch to zoom, drag to move around a zoomed page, ↓ ↑ to read down a zoomed page), and the <b>curtain</b> that hides the text line by line so you can test yourself. Tadabbur wa Amal (altadabbur.com) can open beside the page; the Quranic Arabic Corpus link follows the ayah being played.</p>
@@ -2736,8 +2748,7 @@ const I18N = (() => {
  "What is shown under each ayah is in": "প্রতিটি আয়াতের নিচে কী দেখানো হবে তা আছে",
  "; the gap-fill drill is in": "; শূন্যস্থান পূরণ অনুশীলন আছে",
  "Tools → Practice": "সরঞ্জাম → অনুশীলন",
- "The printed Mushaf pages remain the reference for memorising; this list is for understanding. Text and meanings come from the sources named in the": "মুখস্থ করার ভিত্তি থাকবে মুদ্রিত মুসহাফের পৃষ্ঠাই; এই তালিকা বোঝার জন্য। টেক্সট ও অর্থ এসেছে সেই উৎসগুলো থেকে যেগুলোর নাম আছে",
- "tab.": "ট্যাবে।",
+ "Next page": "পরবর্তী পৃষ্ঠা",
  "▶ Play page": "▶ পৃষ্ঠা শুনুন",
  "▶ Play selection": "▶ নির্বাচিত অংশ শুনুন",
  "🎧 Listen…": "🎧 শুনুন…",
@@ -3158,6 +3169,17 @@ const I18N = (() => {
  "This ayah is already saved under that heading": "এই আয়াতটি এই শিরোনামে আগেই সংরক্ষিত আছে",
  "Bookmark saved": "বুকমার্ক সংরক্ষিত হয়েছে",
  "Bookmark removed": "বুকমার্ক সরানো হয়েছে",
+ "Last read": "সর্বশেষ পঠিত",
+ "Automatic": "স্বয়ংক্রিয়",
+ "Continue reading": "পড়া চালিয়ে যান",
+ "Your most recently opened or played ayah appears here automatically.": "আপনার সর্বশেষ খোলা বা শোনা আয়াতটি এখানে স্বয়ংক্রিয়ভাবে দেখাবে।",
+ "No ayah has been read yet. Open Study and select or play an ayah.": "এখনো কোনো আয়াত পড়া হয়নি। অধ্যয়ন খুলে একটি আয়াত নির্বাচন করুন বা চালান।",
+ "Oft-repeated surahs & passages": "বারবার পঠিত সূরা ও আয়াত",
+ "Hadith-based": "হাদীসভিত্তিক",
+ "Before sleep": "ঘুমের আগে",
+ "Friday & protection": "জুমুআ ও সুরক্ষা",
+ "Nightly passages": "রাতের আয়াত",
+ "Open in Study": "অধ্যয়নে খুলুন",
  "Keep ayahs under your own headings, with an optional title and note. Open any bookmark to return to that ayah in Study.": "নিজের শিরোনামে আয়াত সংরক্ষণ করুন, চাইলে নাম ও নোট যোগ করুন। বুকমার্ক খুললে অধ্যয়নে সেই আয়াতে ফিরে যাবেন।",
  "day streak": "দিনের ধারা",
  "projected completion": "সম্ভাব্য সমাপ্তি",
@@ -3864,6 +3886,7 @@ const Store = (() => {
       errors: {},         // "529": { "112:3": { n, last, hist[] } }  stumbles logged per ayah (mistake log)
       bookmarkGroups: [], // { id, name } — custom headings
       bookmarks: [],      // { id, groupId, surah, ayah, title, note, createdAt }
+      lastRead: null,      // { surah, ayah, at } — automatic continuation point
       ayahNotes: {},      // "112:3": free text — notes attached to one ayah
       marks: {},          // "112:3": [wordIndex, …]  words highlighted in List mode
       minutes: {}         // "2026-09-09": { total, pages: { "604": minutes } }  time on the Study tab
@@ -4059,6 +4082,11 @@ const Store = (() => {
       b.title = typeof b.title === 'string' ? b.title.slice(0, 160) : '';
       b.note = typeof b.note === 'string' ? b.note.slice(0, 2000) : ''; return true;
     });
+    if (s.lastRead != null) {
+      const su = isPlainObj(s.lastRead) && Quran.surah(s.lastRead.surah);
+      if (!su || !Number.isInteger(s.lastRead.surah) || !Number.isInteger(s.lastRead.ayah) || s.lastRead.ayah < 1 || s.lastRead.ayah > su.ayahs) { warnings.push('An invalid last-read ayah was cleared.'); s.lastRead = null; }
+      else s.lastRead = { surah: s.lastRead.surah, ayah: s.lastRead.ayah, at: isISOStamp(s.lastRead.at) ? s.lastRead.at : new Date().toISOString() };
+    }
     s.weeks = s.weeks.filter((w, i) => { if (isPlainObj(w)) return true; warnings.push(`Week ${i + 1} was not a week record — it was left out.`); return false; });
 
     for (const k of ['calib', 'partial', 'notes', 'errors', 'ayahNotes', 'marks', 'minutes']) {
@@ -4079,6 +4107,7 @@ const Store = (() => {
     if (!isPlainObj(s.settings.vacation)) s.settings.vacation = { ...d.settings.vacation };
     for (const k of OBJ_COLLECTIONS) if (!isPlainObj(s[k])) s[k] = d[k] !== undefined ? d[k] : {};
     for (const k of ARR_COLLECTIONS) if (!Array.isArray(s[k])) s[k] = [];
+    if (!('lastRead' in s)) s.lastRead = null;
     s.schemaVersion = SCHEMA;
     return { ok: true, state: s, errors, warnings };
   }
@@ -6346,6 +6375,48 @@ Total memorized: {total}
   let bookmarkPending = null;
   const bookmarkId = () => 'bm-' + (globalThis.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2));
   function bookmarkData() { st.bookmarkGroups ||= []; st.bookmarks ||= []; return st; }
+/* Built-in reading shortcuts. The wording states the exact practice and grading supported by
+   the cited report, including weaker reports where the grading is made explicit. */
+  const SUNNAH_READING = [
+    { group: 'Before sleep', items: [
+      { s: 17, a: 1, label: 'Al-Isra (Bani Israel)', why: 'Before sleep with Az-Zumar', ref: 'Jamiʿ at-Tirmidhi 2920 · Hasan', href: 'https://sunnah.com/tirmidhi:2920' },
+      { s: 39, a: 1, label: 'Az-Zumar', why: 'Before sleep with Al-Isra', ref: 'Jamiʿ at-Tirmidhi 2920 · Hasan', href: 'https://sunnah.com/tirmidhi:2920' },
+      { s: 32, a: 1, label: 'As-Sajdah', why: 'Reported before sleep with Al-Mulk; also recited in Friday Fajr', refs: [['Jamiʿ at-Tirmidhi 2892 · Daʿif', 'https://sunnah.com/tirmidhi:2892'], ['Sahih al-Bukhari 891 · Friday Fajr', 'https://sunnah.com/bukhari:891']] },
+      { s: 67, a: 1, label: 'Al-Mulk', why: 'Reported before sleep with As-Sajdah; thirty ayat are also described as interceding', refs: [['Jamiʿ at-Tirmidhi 2892 · Daʿif', 'https://sunnah.com/tirmidhi:2892'], ['Jamiʿ at-Tirmidhi 2891 · Hasan', 'https://sunnah.com/tirmidhi:2891']] }
+    ] },
+    { group: 'Friday & protection', items: [
+      { s: 18, a: 1, label: 'Al-Kahf', why: 'Friday recitation; its first ten ayat protect from the Dajjal', refs: [['Mishkat 2175 · Hasan', 'https://sunnah.com/mishkat:2175'], ['Sahih Muslim 809a', 'https://sunnah.com/muslim:809a']] }
+    ] },
+  ];
+  function rememberLastRead(surah, ayah) {
+    const su = Quran.surah(surah); if (!su || !Number.isInteger(ayah) || ayah < 1 || ayah > su.ayahs) return;
+    const old = st.lastRead; if (old && old.surah === surah && old.ayah === ayah) return;
+    st.lastRead = { surah, ayah, at: new Date().toISOString() }; Store.save({ quiet: true });
+    if (!$('#view-bookmarks').hidden) renderBookmarks();
+  }
+  function openBookmarkedAyah(surah, ayah) {
+    openStudy(Quran.pageOfAyah(surah, ayah));
+    const i = Quran.ayahsOnPage(studyPage).findIndex(([s, a]) => s === surah && a === ayah);
+    sel = { a: i, b: null }; rememberLastRead(surah, ayah); renderChips(); renderNotes(); renderCorpus();
+    $('#ayahStrip').open = true; $('#ayahChips').querySelector('[data-ai="' + i + '"]')?.focus();
+  }
+  function renderSunnahReading(root) {
+    const section = document.createElement('details'); section.className = 'panel bookmark-sunnah';
+    section.innerHTML = `<summary><span class="panel-title">${esc(t('Oft-repeated surahs & passages'))}</span><span class="badge">${esc(t('Hadith-based'))}</span></summary><p class="muted small">The reports describe different practices—bedtime, Friday Fajr, protection, or a particular virtue. The exact context and reference are shown for each item.</p>`;
+    for (const group of SUNNAH_READING) {
+      const box = document.createElement('div'); box.className = 'sunnah-reading-group';
+      box.innerHTML = `<h3>${esc(t(group.group))}</h3><div class="sunnah-reading-list"></div>`;
+      const list = box.querySelector('.sunnah-reading-list');
+      for (const item of group.items) {
+        const row = document.createElement('div'); row.className = 'sunnah-reading-item';
+        const refs = item.refs || [[item.ref, item.href]];
+        row.innerHTML = `<div><strong data-notr>${esc(item.label)}</strong><div class="small muted" data-notr>${esc(item.why)} · ${refs.map(([label, href]) => `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(label)} ↗</a>`).join(' · ')}</div></div><button class="btn small" type="button">${esc(t('Open in Study'))}</button>`;
+        row.querySelector('button').onclick = () => openBookmarkedAyah(item.s, item.a); list.appendChild(row);
+      }
+      section.appendChild(box);
+    }
+    root.appendChild(section);
+  }
   function bookmarkMessage(message) { const el = $('#bookmarkError'); el.hidden = !message; el.textContent = message || ''; }
   function bookmarkAyahLimit() { const s = Quran.surah(Number($('#bookmarkSurah').value)); $('#bookmarkAyah').max = s ? s.ayahs : 1; }
   function editBookmark(id = null, ref = null) {
@@ -6374,7 +6445,13 @@ Total memorized: {total}
     bookmarkData();
     const query = ($('#bookmarkSearch').value || '').trim().toLocaleLowerCase();
     const root = $('#bookmarkGroups'); root.replaceChildren();
-    if (!st.bookmarkGroups.length) { root.innerHTML = '<div class="empty">' + esc(t('Create a heading to start collecting ayahs.')) + '</div>'; return; }
+    const last = document.createElement('section'); last.className = 'panel bookmark-group bookmark-last';
+    const ref = st.lastRead, su = ref && Quran.surah(ref.surah);
+    last.innerHTML = '<div class="row between"><h2 class="panel-title">' + esc(t('Last read')) + '</h2><span class="badge">' + esc(t('Automatic')) + '</span></div><p class="muted small" style="margin:0 0 6px">' + esc(t('Your most recently opened or played ayah appears here automatically.')) + '</p>' + (su ? '<article class="bookmark-entry"><div><strong data-notr>' + esc(ayLabel(ref.surah, ref.ayah)) + '</strong><div class="small muted" data-notr>' + esc(su.en) + ' ' + ref.surah + ':' + ref.ayah + ' · ' + esc(t('Page')) + ' ' + Quran.pageOfAyah(ref.surah, ref.ayah) + '</div></div><button class="btn small primary" type="button" data-last-read-open>' + esc(t('Continue reading')) + '</button></article>' : '<p class="muted small">' + esc(t('No ayah has been read yet. Open Study and select or play an ayah.')) + '</p>');
+    if (su) last.querySelector('[data-last-read-open]').onclick = () => openBookmarkedAyah(ref.surah, ref.ayah);
+    root.appendChild(last);
+    renderSunnahReading(root);
+    if (!st.bookmarkGroups.length) { root.insertAdjacentHTML('beforeend', '<div class="empty">' + esc(t('Create a heading to start collecting ayahs.')) + '</div>'); return; }
     let shown = 0;
     for (const g of st.bookmarkGroups) {
       const all = st.bookmarks.filter(b => b.groupId === g.id);
@@ -6397,12 +6474,7 @@ Total memorized: {total}
       for (const b of entries) {
         const item = document.createElement('article'); item.className = 'bookmark-entry';
         item.innerHTML = '<div><strong data-notr>' + esc(b.title || ayLabel(b.surah, b.ayah)) + '</strong><div class="small muted" data-notr>' + esc(Quran.surah(b.surah).en) + ' ' + b.surah + ':' + b.ayah + ' · ' + esc(t('Page')) + ' ' + Quran.pageOfAyah(b.surah, b.ayah) + '</div>' + (b.note ? '<p class="bookmark-note" data-notr>' + esc(b.note) + '</p>' : '') + '</div><div class="row"><button class="btn small primary" type="button" data-bm-open>' + esc(t('Open in Study')) + '</button><button class="btn small" type="button" data-bm-edit>' + esc(t('Edit / move')) + '</button><button class="btn small" type="button" data-bm-remove>' + esc(t('Remove')) + '</button></div>';
-        item.querySelector('[data-bm-open]').onclick = () => {
-          openStudy(Quran.pageOfAyah(b.surah, b.ayah));
-          const i = Quran.ayahsOnPage(studyPage).findIndex(([s, a]) => s === b.surah && a === b.ayah);
-          sel = { a: i, b: null }; renderChips(); renderNotes();
-          $('#ayahStrip').open = true; $('#ayahChips').querySelector('[data-ai="' + i + '"]')?.focus();
-        };
+        item.querySelector('[data-bm-open]').onclick = () => openBookmarkedAyah(b.surah, b.ayah);
         item.querySelector('[data-bm-edit]').onclick = () => editBookmark(b.id);
         item.querySelector('[data-bm-remove]').onclick = () => {
           st.bookmarks = st.bookmarks.filter(x => x.id !== b.id); Store.save(); renderBookmarks();
@@ -6417,7 +6489,7 @@ Total memorized: {total}
       if (!entries.length) list.innerHTML = '<p class="muted small">' + esc(t('No bookmarks under this heading yet.')) + '</p>';
       root.appendChild(section);
     }
-    if (!shown) root.innerHTML = '<div class="empty">' + esc(t('No matching bookmarks')) + '</div>';
+    if (!shown) root.insertAdjacentHTML('beforeend', '<div class="empty">' + esc(t('No matching bookmarks')) + '</div>');
   }
   function wireBookmarks() {
     $('#bookmarkGroupForm').addEventListener('submit', e => {
@@ -6842,6 +6914,7 @@ Total memorized: {total}
   async function renderList() {
     if (!studyPage) return; const seq = ++listSeq; const s = st.settings;
     const body = $('#listBody'), page = studyPage;
+    const nextPage = $('#listNextPage'); nextPage.hidden = page >= 604; nextPage.textContent = t('Next page') + ' →';
     $('#lsArabic').checked = s.listArabic !== false; $('#lsWords').checked = s.listWords !== false; $('#lsTr').checked = s.listTr !== false; $('#lsTajweed').checked = !!s.listTajweed; $('#lsFb').checked = s.listFb !== false; $('#lsMushafLines').checked = !!s.listMushafLines; {
       const need = focusWanted() && focusWide();
       $('#lsMushafLines').closest('label').title = need ? '' : t('Turn on Focus (above) on a wide enough screen first');
@@ -6986,13 +7059,8 @@ Total memorized: {total}
         AudioEngine.set({ label: 'study' }); AudioEngine.playAyahs(all, idx); AudioEngine.set({ page, pages: [page], label: 'study' });
       }));
       const srcLine = (trPending) => {
-        const bits = [];
-        if (s.listArabic !== false) bits.push('Qur’ān text: ' + (wbw || (s.listTajweed && tj) ? 'Uthmani script via Quran.com' : 'Uthmani script, built in (King Fahd Complex edition)') + (s.listTajweed && (wbw || tj) ? ' (tajwīd colouring)' : ''));
-        if (wbw && s.listWords !== false && s.listArabic !== false && !blockTj) bits.push(gapOn ? 'word meanings: Quran.com (hidden in the gap-fill drill)' : 'word meanings: Quran.com');
-        if (s.listTr !== false && trs.length) bits.push((trPending ? 'translations loading… ' : '') + 'translation: ' + trs.map(t => { const x = Meanings.source(t.lang, t.id); return `${x.name} (${x.via})`; }).join(' · '));
-        if (s.listTafsir) { const ed = Tafsir.source(s.tafsirEd); bits.push(`tafsīr: ${ed.name} (${ed.author}, via QUL / tafsir_api)`); }
-        $('#listSrc').textContent = bits.join(' · ') + '.';
-        if (!trPending && failed.length) { const b = document.createElement('button'); b.className = 'btn small'; b.style.marginLeft = '8px'; b.textContent = `${[...new Set(failed)].join(', ')} could not be loaded — ${t('Retry')}`; wireRetry(b, () => renderList()); $('#listSrc').appendChild(b); }
+        const line = $('#listSrc'); line.replaceChildren();
+        if (!trPending && failed.length) { const b = document.createElement('button'); b.className = 'btn small'; b.textContent = `${[...new Set(failed)].join(', ')} could not be loaded — ${t('Retry')}`; wireRetry(b, () => renderList()); line.appendChild(b); }
         listHlCount();
       };
       srcLine(!!trList.length);
@@ -8635,7 +8703,7 @@ Total memorized: {total}
       if (b.dataset.rate != null) { const p = Number(b.closest('[data-rate-page]').dataset.ratePage); rate(p, Number(b.dataset.rate)); }
       if (b.dataset.bmark) { const [su, ay] = b.dataset.bmark.split(':').map(Number); editBookmark(null, [su, ay]); return; }
       if (b.dataset.err) { markErr(studyPage, b.dataset.err); return; }
-      if (b.dataset.ai != null) { const i = Number(b.dataset.ai); if (sel.a == null || (sel.a != null && sel.b != null)) { sel = { a: i, b: null }; AudioEngine.playRange(studyPage, i, i); } else { sel.b = i; playSelection(); } renderChips(); renderCorpus(); renderRec(); renderNotes(); tfCursor = null; renderTafsir(); }
+      if (b.dataset.ai != null) { const i = Number(b.dataset.ai), ref = Quran.ayahsOnPage(studyPage)[i]; if (ref) rememberLastRead(ref[0], ref[1]); if (sel.a == null || (sel.a != null && sel.b != null)) { sel = { a: i, b: null }; AudioEngine.playRange(studyPage, i, i); } else { sel.b = i; playSelection(); } renderChips(); renderCorpus(); renderRec(); renderNotes(); tfCursor = null; renderTafsir(); }
       if (b.dataset.start) { $('#startPage').value = b.dataset.start; $('#direction').value = b.dataset.dir; applyStart(b.dataset.start, b.dataset.dir); }
       if (b.dataset.obstart) finishOnboarding(Number(b.dataset.obstart), Number(b.dataset.obdir));
     });
@@ -8749,6 +8817,7 @@ Total memorized: {total}
     // audio
     $('#playPage').addEventListener('click', () => { if (listMode() && listAllowed()) { AudioEngine.set({ label: 'study' }); AudioEngine.playPagesByAyah([studyPage], 'study'); } else AudioEngine.playPage(studyPage); }); $('#playSel').addEventListener('click', playSelection);
     $('#layoutList').addEventListener('click', () => { const oneBtn = window.matchMedia('(max-width: 460px)').matches; if (oneBtn && listShowing()) goMushaf(); else goText(); });
+    $('#listNextPage').addEventListener('click', () => { if (studyPage >= 604) return; const ayahs = Quran.ayahsOnPage(studyPage), last = ayahs[ayahs.length - 1]; if (last) rememberLastRead(last[0], last[1]); openStudy(studyPage + 1); requestAnimationFrame(() => $('#listRoot').scrollIntoView({ block: 'start', behavior: 'smooth' })); });
     [['#lsArabic', 'listArabic'], ['#lsWords', 'listWords'], ['#lsTr', 'listTr'], ['#lsTajweed', 'listTajweed'], ['#lsFb', 'listFb'], ['#lsMushafLines', 'listMushafLines']].forEach(([id, k]) => $(id).addEventListener('change', e => { st.settings[k] = e.target.checked; Store.save({ quiet: true }); renderList(); }));
     // --- recite & compare
     $('#recStart').addEventListener('click', async () => {
@@ -8846,6 +8915,7 @@ Total memorized: {total}
     $('#gap').addEventListener('change', e => AudioEngine.set({ gapPct: Number(e.target.value) })); $('#rate').addEventListener('change', e => AudioEngine.set({ rate: Number(e.target.value) }));
     $('#loopBtn').addEventListener('click', toggleLoop);
     AudioEngine.on('state', a => { if (a.status === 'loading' && mediaOwner !== 'compare') mediaClaim('audio'); });
+    AudioEngine.on('state', a => { if (a.current && ['loading', 'playing', 'paused', 'gap', 'speaking'].includes(a.status)) rememberLastRead(a.current[0], a.current[1]); });
     AudioEngine.on('state', audioStatus); let fbToasted = false; AudioEngine.on('fallback', () => { if (!fbToasted) { fbToasted = true; toast(t('Primary audio source unavailable — trying 64 kbps')); } });
     let cdnToasted = false; AudioEngine.on('cdn', () => { if (!cdnToasted) { cdnToasted = true; toast(t('EveryAyah is not reachable — playing ayah by ayah from the Islamic Network CDN')); } });
     AudioEngine.on('time', ({ t, d }) => { if (!seeking && isFinite(d) && d > 0) { $('#plSeek').value = Math.round(t / d * 1000); $('#plProg').style.width = (t / d * 100).toFixed(1) + '%'; } $('#plTime').textContent = `${fmtTime(t)} / ${fmtTime(d)}`; });
