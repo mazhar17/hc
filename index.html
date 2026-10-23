@@ -573,6 +573,8 @@ body.player-mini .player-info > #plSub { flex: 1 1 auto; min-width: 0; }
 /* ---- List mode ---- */
 .listview { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg2); padding: 10px 12px 14px; }
 .list-end-nav { display:flex; justify-content:flex-end; padding:16px 0 2px; }
+@media (max-width: 600px) { .list-end-nav { padding: 12px 0 2px; } .list-end-nav .btn { width: 100%; } }
+#listRoot:not([hidden]) ~ .ayah-strip { display: none; }
 .list-toggles { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-left: auto; font-size: .88em; }
 .chk { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
 #lsMushafLinesRow.dim { opacity: .55; }
@@ -1162,7 +1164,6 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
         </div>
         <details class="ayah-strip" id="ayahStrip">
           <summary><span>Ayāt on this page</span> <span class="muted small" id="ayahStripSum"></span></summary>
-          <div class="panel-sub">Ayāt on this page — tap one to play it, tap two to select a range · <span class="errhint">tap <b>✗</b> when you stumble on an ayah</span></div>
           <div id="ayahChips" class="chips"></div>
         </details>
         <div id="tadabburPane" class="tadabbur-pane" hidden>
