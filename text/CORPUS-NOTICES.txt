@@ -1,0 +1,80 @@
+QURANIC ARABIC CORPUS MORPHOLOGY — THIRD-PARTY NOTICES
+
+The adjacent quranic-corpus-morphology-0.4.txt is an unchanged redistribution.
+Original publisher: https://corpus.quran.com/download/
+Retrieved from the Classical Language Toolkit redistribution:
+https://github.com/cltk/arabic_morphology_quranic-corpus
+Verified byte-for-byte against the bnjasim/quranic-corpus redistribution.
+SHA-256: a1d12923815341face765083805d2148ed2d9f5cc3f7d6665219d887675d8c46
+
+Original notices (unchanged):
+
+# PLEASE DO NOT REMOVE OR CHANGE THIS COPYRIGHT BLOCK
+#====================================================================
+#
+#  Quranic Arabic Corpus (morphology, version 0.4)
+#  Copyright (C) 2011 Kais Dukes
+#  License: GNU General Public License
+#
+#  The Quranic Arabic Corpus includes syntactic and morphological
+#  annotation of the Quran, and builds on the verified Arabic text
+#  distributed by the Tanzil project.
+#
+#  TERMS OF USE:
+#
+#  - Permission is granted to copy and distribute verbatim copies
+#    of this file, but CHANGING IT IS NOT ALLOWED.
+#
+#  - This annotation can be used in any website or application,
+#    provided its source (the Quranic Arabic Corpus) is clearly
+#    indicated, and a link is made to http://corpus.quran.com to enable
+#    users to keep track of changes.
+#
+#  - This copyright notice shall be included in all verbatim copies
+#    of the text, and shall be reproduced appropriately in all works
+#    derived from or containing substantial portion of this file.
+#
+#  Please check updates at: http://corpus.quran.com/download
+
+# PLEASE DO NOT REMOVE OR CHANGE THIS COPYRIGHT BLOCK
+#====================================================================
+#
+#  Tanzil Quran Text (Uthmani, version 1.0.2)
+#  Copyright (C) 2008-2009 Tanzil.info
+#  License: Creative Commons BY-ND 3.0 Unported
+#
+#  This copy of quran text is carefully produced, highly
+#  verified and continuously monitored by a group of specialists
+#  at Tanzil project.
+#
+#  TERMS OF USE:
+#
+#  - Permission is granted to copy and distribute verbatim copies
+#    of this text, but CHANGING IT IS NOT ALLOWED.
+#
+#  - This quran text can be used in any website or application,
+#    provided its source (Tanzil.info) is clearly indicated, and
+#    a link is made to http://tanzil.info to enable users to keep
+#    track of changes.
+#
+#  - This copyright notice shall be included in all verbatim copies
+#    of the text, and shall be reproduced appropriately in all files
+#    derived from or containing substantial portion of this text.
+#
+#  Please check updates at: http://tanzil.info/updates/
+#
+#====================================================================
+
+
+Licence references:
+GNU GPL version 3: CORPUS-GPL-3.0.txt (full licence included)
+https://corpus.quran.com/license.jsp
+Tanzil: Creative Commons Attribution-NoDerivs 3.0 Unported
+https://creativecommons.org/licenses/by-nd/3.0/
+https://tanzil.net/docs/text_license
+
+The app reads the original annotations in memory and displays fields by word
+location; it does not modify the source file or redistribute a converted dataset.
+Buckwalter-to-Arabic rendering and plain English tag labels are presentation code.
+Corpus website prose, dictionary entries and Greentech content are not bundled.
+No warranty is provided for this third-party data; see the included licences.

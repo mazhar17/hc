@@ -571,6 +571,16 @@ body.player-mini .player-info > #plSub { flex: 1 1 auto; min-width: 0; }
 @media (max-width: 480px) { .tab { font-size: .68em; padding: 4px 2px; gap: 1px; } .tab .ti { font-size: 1.05em; } }
 
 /* ---- List mode ---- */
+.word-details { box-sizing: border-box; width: min(560px, calc(100vw - 24px)); max-height: 85dvh; overflow: auto; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); color: var(--ink); box-shadow: var(--shadow); }
+.word-morph { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 8px; }
+.word-morph h3 { font-size: 1em; margin: 0 0 10px; }
+.word-morph-segment { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.word-details::backdrop { background: rgba(0,0,0,.55); }
+.word-details-ar { font-family: 'Amiri Quran', 'Noto Naskh Arabic', serif; font-size: 2.7em; text-align: center; padding: 18px 0 4px; }
+.word-details-meaning { text-align: center; font-size: 1.15em; }
+.word-details audio { width: 100%; margin-top: 16px; }
+@media (max-width: 600px) { .word-details { width: 100%; max-width: none; margin: auto 0 0; border-radius: 18px 18px 0 0; padding-bottom: max(20px, env(safe-area-inset-bottom)); } }
+
 .listview { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg2); padding: 10px 12px 14px; }
 .list-end-nav { display:flex; justify-content:flex-end; padding:16px 0 2px; }
 @media (max-width: 600px) { .list-end-nav { padding: 12px 0 2px; } .list-end-nav .btn { width: 100%; } }
@@ -1641,7 +1651,7 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
       <p><b>Turning the page.</b> The ‹ › arrows beside the page box step one page (or one whole spread) at a time, lower and higher number; on a computer or tablet there are also large buttons in the margin at each side of the page — left for the next page, right for the previous, as a Mushaf turns. They grey out on page 1 and page 604 and never wrap round. Turning the page <b>does not stop the recitation</b>, keeps the curtain on if it was on, moves the tafīsr panel to the new page, and clears the ayah selection.</p>
       <p><b>Study</b> — the Mushaf page, and the tools for working on it. <b>The toolbar is one row:</b> the page arrows and page dropdown, the <b>Mushaf ⇄ Text</b> switch, <b>Go to ▾</b> (sūrah, juz — beside the page number, since both answer “which page?”), <b>Display ▾</b> and <b>🛠 Tools</b>. Choose any page from 1 to 604 in the dropdown; pointing at it and scrolling the mouse wheel also moves through the pages. Display holds <b>⤢ Focus</b> — which hides the side panels and the tab bar and gives the page the whole window, keeping the toolbar so you can still turn pages (<kbd>Shift</kbd>+<kbd>F</kbd>, and <kbd>Esc</kbd> or the ⤢ button in the toolbar to leave; it is remembered between sessions). In Text view, beside Focus, a <b>Mushaf lines</b> option shows every word on the page in one continuous strip broken exactly where the printed Mushaf's own lines break — including where a line is shared between two āyāt, with a small ring marking where each ayah ends — instead of however the browser fits the words otherwise; it needs Focus on and a wide screen, and does nothing until both are true. Display also holds what applies to the view you are in — single page or spread, and zoom, on the Mushaf; what appears under each ayah, the translations, the word-meaning language and the text size in Text view. Under the page sit <b>Play page</b>, <b>Play selection</b> and <b>Listen…</b>, with the repeats, loop, gap and speed folded into <b>Audio settings ▾</b>, and <b>Ayāt on this page</b>, which opens to the ayah chips (tap one to play it, two for a range; the ✗ for marking a stumble appears on the ayah you have selected). <b>🛠 Tools</b> opens one section at a time — <b>Practice</b> (curtain, gap-fill, recite &amp; compare, look-alike verses, and rating the page when it is due), <b>Understand</b> (video lesson, tafsīr, Tadabbur wa Amal, Quranic Arabic Corpus) and <b>Notes</b> (your notes and the stumbles on this page). Beside the page on a computer, a sheet over it on a phone, closed until you ask for it there. Nothing you have going — the page, the ayah you picked, a recitation playing — is disturbed by opening, switching or closing a section. Full screen (⛶ or <kbd>F</kbd>: only the page, centred — <b>nothing else appears at any time</b>, whatever you touch, move or press. On a computer, <kbd>Esc</kbd> or <kbd>F</kbd> leaves, and resting the pointer at the <b>top centre</b> of the screen brings up a faint ✕ if you would rather click your way out; on a phone or tablet, where there is no Esc key, the small ✕ in the top corner is always faintly there — swipe to turn, pinch to zoom, drag to move around a zoomed page, ↓ ↑ to read down a zoomed page), and the <b>curtain</b> that hides the text line by line so you can test yourself. Tadabbur wa Amal (altadabbur.com) can open beside the page; the Quranic Arabic Corpus link follows the ayah being played.</p>
       <p><b>Learning part of a page.</b> Settings → Plan → “Weekly portion” lets the sabaq be half, a third or a quarter of a page. The page is split at ayah boundaries (adjustable on the Today card), each week takes the next part, “Play part” and the daily segments cover only that part, and the page enters revision once its last part is done. The teacher message names the ayāt and the part.</p>
-      <p><b>Text view.</b> The <b>☰ Text</b> button in Study shows the same page as text, ayah by ayah: the Arabic text with a word-by-word meaning under each word, and the translation of each ayah from any of the five translations you tick (<b>Display ▾</b> — Bengali: Taisirul Quran, Sheikh Mujibur Rahman; English: Saheeh International, Al-Hilali &amp; Khan, Bridges). The ayah being recited is highlighted. Tajwīd colouring is optional, and works alongside the word meanings and gap-fill — the coloured text comes per word in the same request as the glosses. It is for understanding while you learn, so it is always <b>one page at a time</b> whatever Single/Spread you use on the Mushaf, and the curtain does not apply to it — the Curtain button is greyed out there and works again on the printed page. During revision testing and in full screen the printed page is shown instead. <b>▤ Mushaf</b> returns to the page. If the <b>☰ Text</b> button is greyed out, the app names the reason when you tap it: the curtain is on, you are in full screen, or the page was opened for <b>revision</b> from a Today or Week card — in which case a band above the page reads <b>“Reciting page N unaided”</b> and <b>Leave revision ✕</b> brings the text and the aids back (rating the page, or leaving the Study tab, ends revision too). What is shown under each ayah — Arabic, word meanings, translations, tajwīd colours, tafsīr — is in <b>Display ▾</b>, and the gap-fill drill is in <b>Tools → Practice</b>. <b>Tap any Arabic word to highlight it in yellow</b> (tap again to remove; “clear” at the bottom removes all on the page) — for the words that keep tripping you. Highlights are saved with your data. To make the text bigger, pinch on the list (or A−/A+, or Ctrl + wheel): the text grows and re-wraps, so nothing goes off the edge of the screen. Settings → Mushaf can download the list text for offline use.</p>
+      <p><b>Text view.</b> The <b>☰ Text</b> button in Study shows the same page as text, ayah by ayah: the Arabic text with a word-by-word meaning under each word, and the translation of each ayah from any of the five translations you tick (<b>Display ▾</b> — Bengali: Taisirul Quran, Sheikh Mujibur Rahman; English: Saheeh International, Al-Hilali &amp; Khan, Bridges). The ayah being recited is highlighted. Tajwīd colouring is optional, and works alongside the word meanings and gap-fill — the coloured text comes per word in the same request as the glosses. It is for understanding while you learn, so it is always <b>one page at a time</b> whatever Single/Spread you use on the Mushaf, and the curtain does not apply to it — the Curtain button is greyed out there and works again on the printed page. During revision testing and in full screen the printed page is shown instead. <b>▤ Mushaf</b> returns to the page. If the <b>☰ Text</b> button is greyed out, the app names the reason when you tap it: the curtain is on, you are in full screen, or the page was opened for <b>revision</b> from a Today or Week card — in which case a band above the page reads <b>“Reciting page N unaided”</b> and <b>Leave revision ✕</b> brings the text and the aids back (rating the page, or leaving the Study tab, ends revision too). What is shown under each ayah — Arabic, word meanings, translations, tajwīd colours, tafsīr — is in <b>Display ▾</b>, and the gap-fill drill is in <b>Tools → Practice</b>. <b>Tap any Arabic word for its details</b>: meaning, transliteration, pronunciation and root and grammar annotations from Quranic Arabic Corpus (where the word matches). Choose Highlight word in the details sheet to mark a word in yellow; choose Remove highlight to clear it. Gap-fill words still reveal on tap. Highlights are saved with your data. To make the text bigger, pinch on the list (or A−/A+, or Ctrl + wheel): the text grows and re-wraps, so nothing goes off the edge of the screen. Settings → Mushaf can download the list text for offline use.</p>
       <p><b>Keyboard in Study.</b> Space play/pause · <kbd>Shift</kbd>+<kbd>F</kbd> Focus on/off · ← → previous/next ayah · <b>↓ ↑ scroll down and up the page</b> — while the curtain is on they reveal and hide a line instead · Home/End hide/show all · PageUp/PageDown turn the page · C curtain · F full screen · <kbd>Esc</kbd> leave full screen · S single/spread · + − zoom · <b>Alt+← / Alt+→</b> previous/next ayah in the Tafsīr panel (when it is open). Keys are ignored while you type in a field, and a focused control (curtain handle, gap-fill word, button) keeps its own key.</p>
       <p><b>Mistake log.</b> (Can be switched off in Settings → Mushaf.) When you stumble on an ayah — under the curtain, along with the qari, or with your teacher — tap the small <b>✗</b> beside it (in the Study ayah chips or in Text view). It turns red and stays marked; tap it again when it no longer trips you — the mark goes but the dates and count are kept (History shows it as resolved); a later stumble re-opens it. “Delete this page’s stumble history” under the chips removes the records for good. Marked pages carry a red dot on the page maps, are put first in the day’s revision, and History lists your marked ayāt so you can open them straight away.</p>
       <p><b>Gap-fill drill.</b> In Text view choose <b>Gap-fill</b>: every 3rd or 5th word, the first or last word of each ayah, or every word is hidden behind a blank box (word meanings are hidden too). Recite, then tap a box to check that word, or “Reveal all”. It is the classic consolidation drill: the visible words are prompts, the hidden ones are what your memory must supply.</p>
@@ -5632,9 +5642,9 @@ const Meanings = (() => {
   }
   function words(page, lang) {
     const l = lang === 'bn' ? 'bn' : 'en';
-    return cached(`wbw2:${l}:${page}`, async () => {
+    return cached(`wbw3:${l}:${page}`, async () => {
       const j = await getJSON(QCOM + `verses/by_page/${page}?language=${l}&words=true&word_fields=text_uthmani,text_uthmani_tajweed&per_page=50`);
-      const verses = (j.verses || []).map(v => ({ key: v.verse_key, words: (v.words || []).filter(w => w.char_type_name === 'word').map(w => ({ ar: w.text_uthmani, gloss: w.translation && w.translation.text || '', tl: w.transliteration && w.transliteration.text || '', tj: w.text_uthmani_tajweed || '', ln: w.line_number || 0 })) }));
+      const verses = (j.verses || []).map(v => ({ key: v.verse_key, words: (v.words || []).filter(w => w.char_type_name === 'word').map(w => ({ ar: w.text_uthmani, gloss: w.translation && w.translation.text || '', tl: w.transliteration && w.transliteration.text || '', tj: w.text_uthmani_tajweed || '', ln: w.line_number || 0, pos: w.position || 0, audio: w.audio_url || '' })) }));
       verses.forEach(v => v.words.forEach((w, i) => { const nx = v.words[i + 1]; w.ar = fixMeem(w.ar, nx && nx.ar); w.tj = fixMeem(w.tj, nx && nx.ar); }));
       const hasTajweed = verses.some(v => v.words.some(w => w.tj));
       return { lang: l, verses, hasTajweed };
@@ -6914,6 +6924,102 @@ Total memorized: {total}
     }));
     return out;
   }
+  // Corpus annotations are read from the unchanged, separately licensed source file.
+  const WordMorphology = (() => {
+    let pending;
+    // Standard Buckwalter characters used by the original Corpus release.
+    const BW = {"'":'ء','|':'آ','>':'أ','&':'ؤ','<':'إ','}':'ئ',A:'ا',b:'ب',p:'ة',t:'ت',v:'ث',j:'ج',H:'ح',x:'خ',d:'د','*':'ذ',r:'ر',z:'ز',s:'س','$':'ش',S:'ص',D:'ض',T:'ط',Z:'ظ',E:'ع',g:'غ',f:'ف',q:'ق',k:'ك',l:'ل',m:'م',n:'ن',h:'ه',w:'و',Y:'ى',y:'ي',F:'ً',N:'ٌ',K:'ٍ',a:'َ',u:'ُ',i:'ِ','~':'ّ',o:'ْ','`':'ٰ','{':'ٱ','^':'ٓ','#':'ٔ',':':'ۜ','@':'۟','"':'۠','[':'ۢ',';':'ۣ',',':'ۥ','.':'ۦ','!':'ۨ','-':'۪','+':'۫','%':'۬',']':'ۭ','_':'ـ'};
+    const decode = value => [...value].map(c => BW[c] || c).join('');
+    const skeleton = value => String(value).normalize('NFD').replace(/[\u0610-\u061a\u064b-\u065f\u0670\u06d6-\u06ed\u0640\s]/g, '').replace(/ٱ/g, 'ا');
+    const labels = {N:'Noun',PN:'Proper noun',ADJ:'Adjective',V:'Verb',PRON:'Pronoun',DEM:'Demonstrative',REL:'Relative pronoun',P:'Preposition',DET:'Determiner',CONJ:'Conjunction',ACC:'Accusative particle',NEG:'Negative particle',INTG:'Interrogative',COND:'Conditional particle',T:'Time adverb',LOC:'Location adverb',REM:'Resumption particle',RES:'Restriction particle',PREV:'Preventive particle',IMPV:'Imperative',PERF:'Perfect',IMPF:'Imperfect',ACT:'Active',PASS:'Passive',PCPL:'Participle',VN:'Verbal noun',NOM:'Nominative',ACC:'Accusative',GEN:'Genitive',IND:'Indicative',SUBJ:'Subjunctive',JUS:'Jussive',DEF:'Definite',INDEF:'Indefinite',M:'Masculine',F:'Feminine',S:'Singular',D:'Dual',P:'Preposition',PREFIX:'Prefix',STEM:'Stem',SUFFIX:'Suffix'};
+    function parse(text) {
+      if (!text.includes('Copyright (C) 2011 Kais Dukes') || !text.includes('Tanzil Quran Text')) throw Error('Missing source notices');
+      const words = new Map();
+      for (const line of text.split(/\r?\n/)) {
+        const m = line.match(/^\((\d+):(\d+):(\d+):(\d+)\)\t([^\t]+)\t([^\t]+)\t(.+)$/);
+        if (!m) continue;
+        const key = `${m[1]}:${m[2]}:${m[3]}`, segment = { number: +m[4], form: m[5], tag: m[6], features: m[7].split('|') };
+        if (!words.has(key)) words.set(key, []); words.get(key).push(segment);
+      }
+      if (words.size < 77000) throw Error('Incomplete annotation file');
+      for (const segments of words.values()) segments.sort((a,b) => a.number-b.number);
+      return words;
+    }
+    function load() {
+      if (!pending) pending = (async () => {
+        const url = new URL('quranic-corpus-morphology-0.4.txt', new URL(window.TEXT_BASE || 'text/', document.baseURI));
+        const response = await fetch(url); if (!response.ok) throw Error('Annotation download unavailable');
+        return parse(await response.text());
+      })().catch(e => { pending = null; throw e; });
+      return pending;
+    }
+    function match(words, key, position, arabicWord) {
+      const segments = words.get(`${key}:${position}`);
+      if (!segments || skeleton(decode(segments.map(x => x.form).join(''))) !== skeleton(arabicWord)) return null;
+      return segments;
+    }
+    function field(segments, prefix) { return [...new Set(segments.flatMap(s => s.features.filter(f => f.startsWith(prefix)).map(f => decode(f.slice(prefix.length)))))]; }
+    function render(box, segments) {
+      const roots = field(segments,'ROOT:'), lemmas = field(segments,'LEM:');
+      const row = (name, values) => values.length ? `<div><strong>${name}</strong> <span lang="ar" dir="rtl">${esc(values.join(' · '))}</span></div>` : '';
+      box.innerHTML = row('Root:', roots) + row('Lemma:', lemmas) + segments.map(s => {
+        const features = s.features.filter(f => !/^(ROOT:|LEM:|POS:)/.test(f));
+        return `<div class="word-morph-segment"><span lang="ar" dir="rtl">${esc(decode(s.form))}</span> — ${esc(({ACC:'Accusative particle',P:'Preposition'}[s.tag] || labels[s.tag] || s.tag))}<div class="small muted">${esc(features.map(f => labels[f] || f).join(' · '))}</div></div>`;
+      }).join('') + '<details class="small"><summary>Original annotation</summary><pre style="white-space:pre-wrap;overflow-wrap:anywhere">' + esc(segments.map(s => `${s.number}\t${s.form}\t${s.tag}\t${s.features.join('|')}`).join('\n')) + '</pre></details>';
+    }
+    async function show(box, key, position, word) {
+      box.textContent = 'Loading root and grammar…';
+      try {
+        const words = await load(); if (!box.isConnected) return;
+        const segments = match(words,key,position,word.ar);
+        if (!segments) { box.textContent = 'No matching annotation is available for this word in Corpus v0.4.'; return; }
+        render(box,segments);
+      } catch (_) {
+        if (!box.isConnected) return;
+        box.textContent = location.protocol === 'file:' ? 'Open the hosted app to load root and grammar data.' : 'Root and grammar data could not be loaded. ';
+        if (location.protocol !== 'file:') { const retry = document.createElement('button'); retry.className = 'btn small'; retry.textContent = 'Retry'; retry.onclick = () => show(box,key,position,word); box.appendChild(retry); }
+      }
+    }
+    return { show, parse, match, decode };
+  })();
+
+  function openWordDetails(el, key, index, word, secondWord) {
+    if (!word) return;
+    const [surah, ayah] = key.split(':').map(Number);
+    const dialog = document.createElement('dialog'); dialog.className = 'word-details';
+    const titleId = 'wordDetailsTitle'; dialog.setAttribute('aria-labelledby', titleId);
+    const position = word.pos || index + 1;
+    dialog.innerHTML = `<div class="row between"><strong id="${titleId}">${esc(Quran.surah(surah).en)} ${key}:${position}</strong><button class="btn small" type="button" data-close aria-label="Close word details">✕</button></div><div class="word-details-ar" lang="ar" dir="rtl">${esc(word.ar)}</div><p class="word-details-meaning" dir="auto">${esc(word.gloss)}${secondWord && secondWord.gloss && secondWord.gloss !== word.gloss ? '<br>' + esc(secondWord.gloss) : ''}</p>${word.tl ? '<p class="muted" dir="ltr">' + esc(word.tl) + '</p>' : ''}<div class="row wrap"><button class="btn" type="button" data-highlight></button><a class="btn" target="_blank" rel="noopener" href="https://corpus.quran.com/wordmorphology.jsp?location=(${surah}:${ayah}:${position})">View source ↗</a></div><section class="word-morph"><h3>Root &amp; grammar</h3><div data-word-morph role="status"></div><p class="small muted">Quranic Arabic Corpus v0.4 · © 2011 Kais Dukes. Arabic text: © 2008–2009 Tanzil.info. <a href="https://corpus.quran.com" target="_blank" rel="noopener">Corpus</a> · <a href="https://tanzil.info" target="_blank" rel="noopener">Tanzil</a> · <a href="text/CORPUS-NOTICES.txt" target="_blank" rel="noopener">Notices &amp; licences</a></p></section><div data-word-audio></div><p class="small muted" role="status" data-word-status></p><p class="small muted">Meanings, transliteration and pronunciation: Quran.com. Root and grammar annotations: Quranic Arabic Corpus v0.4.</p>`;
+    const highlight = dialog.querySelector('[data-highlight]');
+    const syncHighlight = () => { const on = ((st.marks || {})[key] || []).includes(index); highlight.textContent = on ? 'Remove highlight' : 'Highlight word'; highlight.setAttribute('aria-pressed', String(on)); };
+    syncHighlight();
+    highlight.onclick = () => {
+      st.marks = st.marks || {}; const arr = st.marks[key] || []; const on = !arr.includes(index);
+      st.marks[key] = on ? [...arr, index].sort((a, b) => a - b) : arr.filter(x => x !== index);
+      if (!st.marks[key].length) delete st.marks[key];
+      el.classList.toggle('hl', on); Store.save({ quiet: true }); listHlCount(); syncHighlight();
+    };
+    let audio = null;
+    if (word.audio) {
+      try {
+        const url = new URL(word.audio, 'https://audio.qurancdn.com/');
+        if (url.protocol === 'https:' && (url.hostname === 'audio.qurancdn.com' || url.hostname.endsWith('.qurancdn.com'))) {
+          audio = document.createElement('audio'); audio.controls = true; audio.preload = 'none'; audio.src = url.href;
+          audio.setAttribute('aria-label', 'Word pronunciation');
+          audio.addEventListener('play', () => AudioEngine.pause());
+          audio.addEventListener('error', () => { dialog.querySelector('[data-word-status]').textContent = 'Word pronunciation could not be loaded. Please try again when online.'; });
+          dialog.querySelector('[data-word-audio]').appendChild(audio);
+        }
+      } catch (_) {}
+    }
+    if (!audio) dialog.querySelector('[data-word-status]').textContent = 'Pronunciation is unavailable for this word.';
+    dialog.querySelector('[data-close]').onclick = () => dialog.close();
+    dialog.addEventListener('click', e => { if (e.target === dialog) { const r = dialog.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close(); } });
+    dialog.addEventListener('keydown', e => { e.stopPropagation(); });
+    dialog.addEventListener('close', () => { if (audio) { audio.pause(); audio.removeAttribute('src'); audio.load(); } dialog.remove(); el.focus({ preventScroll: true }); }, { once: true });
+    document.body.appendChild(dialog); dialog.showModal();
+    WordMorphology.show(dialog.querySelector('[data-word-morph]'), key, position, word);
+  }
   async function renderList() {
     if (!studyPage) return; const seq = ++listSeq; const s = st.settings;
     const body = $('#listBody'), page = studyPage;
@@ -7050,11 +7156,16 @@ Total memorized: {total}
         showSimCompare(k1, k2, box, +kind);
       }));
       body.querySelectorAll('[data-qerr]').forEach(b => b.addEventListener('click', () => markErr(page, b.dataset.qerr)));
-      body.querySelectorAll('.qw:not(.gap)[data-wi]').forEach(el => { const f = () => {
-        const key = el.dataset.key || el.closest('.qv').dataset.qv, i = Number(el.dataset.wi); st.marks = st.marks || {}; const arr = st.marks[key] || [];
-        const on = !arr.includes(i); st.marks[key] = on ? [...arr, i].sort((a, b) => a - b) : arr.filter(x => x !== i); if (!st.marks[key].length) delete st.marks[key];
-        el.classList.toggle('hl', on); el.setAttribute('aria-pressed', on); Store.save({ quiet: true }); listHlCount();
-      }; el.addEventListener('click', f); el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); f(); } }); });
+      body.querySelectorAll('.qw:not(.gap)[data-wi]').forEach(el => {
+        el.removeAttribute('aria-pressed'); el.setAttribute('aria-haspopup', 'dialog');
+        el.title = 'Open word details';
+        const key = el.dataset.key || el.closest('.qv').dataset.qv, i = Number(el.dataset.wi);
+        const word = (byKey[key] || [])[i];
+        el.setAttribute('aria-label', 'Word details: ' + (word ? word.ar : '') + ' · ' + key + ':' + (i + 1));
+        const open = () => openWordDetails(el, key, i, word, (byKey2[key] || [])[i]);
+        el.addEventListener('click', open);
+        el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+      });
       body.querySelectorAll('.qw.gap').forEach(el => { const f = () => el.classList.toggle('shown'); el.addEventListener('click', f); el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); f(); } }); });
       body.querySelectorAll('[data-qplay]').forEach(b => b.addEventListener('click', () => {
         const [x, y] = b.dataset.qplay.split(':').map(Number); const all = Quran.ayahsOnPage(page);
