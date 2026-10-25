@@ -690,8 +690,9 @@ storage on this device only, and are not uploaded, synced or exported. Downloade
 translations, tafsīr text and Mushaf pages are caches, also local, also never uploaded.
 
 ## The single-file edition
-`hifz-companion.html` (about 29 MB, everything embedded, works offline) is too large for the GitHub
-web uploader. If you want to offer it for download, attach it to a **GitHub Release**
+The Settings → Data → Export panel can create a fully standalone HTML containing the app, your data,
+and all 604 full-resolution Mushaf pages (roughly 200 MB, everything embedded, works offline). It is
+too large for the GitHub web uploader. If you want to offer it for download, attach it to a **GitHub Release**
 (*Releases → Draft a new release → attach the file*; releases accept files up to 2 GB), or push it
 with the `git` command line (limit 100 MB). Do not put it on the Pages site itself.
 
