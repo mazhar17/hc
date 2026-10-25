@@ -1,0 +1,2049 @@
+{
+  "version": 1,
+  "source": "Qutrub, Taha Zerrouki and contributors",
+  "revision": "52e1412ccbaaf429136412183318fcbf0cf9bcd7",
+  "license": "GPL-3.0-or-later",
+  "method": "Unique exact vocalised lemma match; Form I also requires an exact root match. Active dictionary forms, not necessarily the selected ayah inflection.",
+  "entries": {
+    "$agafa|$gf": {
+      "form": "I",
+      "perfect": "شَغَفَ",
+      "imperfect": "يَشْغَفُ",
+      "imperative": "اِشْغَفْ"
+    },
+    "$ahida|$hd": {
+      "form": "I",
+      "perfect": "شَهِدَ",
+      "imperfect": "يَشْهَدُ",
+      "imperative": "اِشْهَدْ"
+    },
+    "$ajara|$jr": {
+      "form": "I",
+      "perfect": "شَجَرَ",
+      "imperfect": "يَشْجُرُ",
+      "imperative": "اُشْجُرْ"
+    },
+    "$akara|$kr": {
+      "form": "I",
+      "perfect": "شَكَرَ",
+      "imperfect": "يَشْكُرُ",
+      "imperative": "اُشْكُرْ"
+    },
+    "$araEa|$rE": {
+      "form": "I",
+      "perfect": "شَرَعَ",
+      "imperfect": "يَشْرَعُ",
+      "imperative": "اِشْرَعْ"
+    },
+    "$araHa|$rH": {
+      "form": "I",
+      "perfect": "شَرَحَ",
+      "imperfect": "يَشْرَحُ",
+      "imperative": "اِشْرَحْ"
+    },
+    "$ariba|$rb": {
+      "form": "I",
+      "perfect": "شَرِبَ",
+      "imperfect": "يَشْرَبُ",
+      "imperative": "اِشْرَبْ"
+    },
+    "*ahaba|*hb": {
+      "form": "I",
+      "perfect": "ذَهَبَ",
+      "imperfect": "يَذْهَبُ",
+      "imperative": "اِذْهَبْ"
+    },
+    "*akara|*kr": {
+      "form": "I",
+      "perfect": "ذَكَرَ",
+      "imperfect": "يَذْكُرُ",
+      "imperative": "اُذْكُرْ"
+    },
+    "*ara>a|*rA": {
+      "form": "I",
+      "perfect": "ذَرَأَ",
+      "imperfect": "يَذْرَأُ",
+      "imperative": "اِذْرَأْ"
+    },
+    ">a$ohada|$hd": {
+      "form": "IV",
+      "perfect": "أَشْهَدَ",
+      "imperfect": "يُشْهِدُ",
+      "imperative": "أَشْهِدْ"
+    },
+    ">a$oraka|$rk": {
+      "form": "IV",
+      "perfect": "أَشْرَكَ",
+      "imperfect": "يُشْرِكُ",
+      "imperative": "أَشْرِكْ"
+    },
+    ">a*ina|A*n": {
+      "form": "I",
+      "perfect": "أَذِنَ",
+      "imperfect": "يَأْذَنُ",
+      "imperative": "اِئْذَنْ"
+    },
+    ">a*ohaba|*hb": {
+      "form": "IV",
+      "perfect": "أَذْهَبَ",
+      "imperfect": "يُذْهِبُ",
+      "imperative": "أَذْهِبْ"
+    },
+    ">a*~ana|A*n": {
+      "form": "II",
+      "perfect": "أَذَّنَ",
+      "imperfect": "يُؤَذِّنُ",
+      "imperative": "أَذِّنْ"
+    },
+    ">aDal~a|Dll": {
+      "form": "IV",
+      "perfect": "أَضَلَّ",
+      "imperfect": "يُضِلُّ",
+      "imperative": "أَضْلِلْ"
+    },
+    ">aDoHaka|DHk": {
+      "form": "IV",
+      "perfect": "أَضْحَكَ",
+      "imperfect": "يُضْحِكُ",
+      "imperative": "أَضْحِكْ"
+    },
+    ">aEoTaY`|ETw": {
+      "form": "IV",
+      "perfect": "أَعْطَى",
+      "imperfect": "يُعْطِي",
+      "imperative": "أَعْطِ"
+    },
+    ">aEojaba|Ejb": {
+      "form": "IV",
+      "perfect": "أَعْجَبَ",
+      "imperfect": "يُعْجِبُ",
+      "imperative": "أَعْجِبْ"
+    },
+    ">aEojala|Ejl": {
+      "form": "IV",
+      "perfect": "أَعْجَلَ",
+      "imperfect": "يُعْجِلُ",
+      "imperative": "أَعْجِلْ"
+    },
+    ">aEonata|Ent": {
+      "form": "IV",
+      "perfect": "أَعْنَتَ",
+      "imperfect": "يُعْنِتُ",
+      "imperative": "أَعْنِتْ"
+    },
+    ">aEoqaba|Eqb": {
+      "form": "IV",
+      "perfect": "أَعْقَبَ",
+      "imperfect": "يُعْقِبُ",
+      "imperative": "أَعْقِبْ"
+    },
+    ">aEoraDa|ErD": {
+      "form": "IV",
+      "perfect": "أَعْرَضَ",
+      "imperfect": "يُعْرِضُ",
+      "imperative": "أَعْرِضْ"
+    },
+    ">aHal~a|Hll": {
+      "form": "IV",
+      "perfect": "أَحَلَّ",
+      "imperfect": "يُحِلُّ",
+      "imperative": "أَحْلِلْ"
+    },
+    ">aHas~a|Hss": {
+      "form": "IV",
+      "perfect": "أَحَسَّ",
+      "imperfect": "يُحِسُّ",
+      "imperative": "أَحْسِسْ"
+    },
+    ">aHoSaY`|HSy": {
+      "form": "IV",
+      "perfect": "أَحْصَى",
+      "imperfect": "يُحْصِي",
+      "imperative": "أَحْصِ"
+    },
+    ">aHobaTa|HbT": {
+      "form": "IV",
+      "perfect": "أَحْبَطَ",
+      "imperfect": "يُحْبِطُ",
+      "imperative": "أَحْبِطْ"
+    },
+    ">aHosana|Hsn": {
+      "form": "IV",
+      "perfect": "أَحْسَنَ",
+      "imperfect": "يُحْسِنُ",
+      "imperative": "أَحْسِنْ"
+    },
+    ">aSam~a|Smm": {
+      "form": "IV",
+      "perfect": "أَصَمَّ",
+      "imperfect": "يُصِمُّ",
+      "imperative": "أَصْمِمْ"
+    },
+    ">aSobaHa|SbH": {
+      "form": "IV",
+      "perfect": "أَصْبَحَ",
+      "imperfect": "يُصْبِحُ",
+      "imperative": "أَصْبِحْ"
+    },
+    ">aSofaY`|Sfw": {
+      "form": "IV",
+      "perfect": "أَصْفَى",
+      "imperfect": "يُصْفِي",
+      "imperative": "أَصْفِ"
+    },
+    ">aSolaHa|SlH": {
+      "form": "IV",
+      "perfect": "أَصْلَحَ",
+      "imperfect": "يُصْلِحُ",
+      "imperative": "أَصْلِحْ"
+    },
+    ">aToEama|TEm": {
+      "form": "IV",
+      "perfect": "أَطْعَمَ",
+      "imperfect": "يُطْعِمُ",
+      "imperative": "أَطْعِمْ"
+    },
+    ">aTofa>a|TfA": {
+      "form": "IV",
+      "perfect": "أَطْفَأَ",
+      "imperfect": "يُطْفِئُ",
+      "imperative": "أَطْفِئْ"
+    },
+    ">aZofara|Zfr": {
+      "form": "IV",
+      "perfect": "أَظْفَرَ",
+      "imperfect": "يُظْفِرُ",
+      "imperative": "أَظْفِرْ"
+    },
+    ">aZohara|Zhr": {
+      "form": "IV",
+      "perfect": "أَظْهَرَ",
+      "imperfect": "يُظْهِرُ",
+      "imperative": "أَظْهِرْ"
+    },
+    ">aZolama|Zlm": {
+      "form": "IV",
+      "perfect": "أَظْلَمَ",
+      "imperfect": "يُظْلِمُ",
+      "imperative": "أَظْلِمْ"
+    },
+    ">abaY|Aby": {
+      "form": "I",
+      "perfect": "أَبَى",
+      "imperfect": "يَأْبَى",
+      "imperative": "اِئْبَ"
+    },
+    ">aboSara|bSr": {
+      "form": "IV",
+      "perfect": "أَبْصَرَ",
+      "imperfect": "يُبْصِرُ",
+      "imperative": "أَبْصِرْ"
+    },
+    ">abokaY`|bky": {
+      "form": "IV",
+      "perfect": "أَبْكَى",
+      "imperfect": "يُبْكِي",
+      "imperative": "أَبْكِ"
+    },
+    ">adobara|dbr": {
+      "form": "IV",
+      "perfect": "أَدْبَرَ",
+      "imperfect": "يُدْبِرُ",
+      "imperative": "أَدْبِرْ"
+    },
+    ">adolaY`|dlw": {
+      "form": "IV",
+      "perfect": "أَدْلَى",
+      "imperfect": "يُدْلِي",
+      "imperative": "أَدْلِ"
+    },
+    ">adoraY`|dry": {
+      "form": "IV",
+      "perfect": "أَدْرَى",
+      "imperfect": "يُدْرِي",
+      "imperative": "أَدْرِ"
+    },
+    ">adoraka|drk": {
+      "form": "IV",
+      "perfect": "أَدْرَكَ",
+      "imperfect": "يُدْرِكُ",
+      "imperative": "أَدْرِكْ"
+    },
+    ">afoDaY`|fDw": {
+      "form": "IV",
+      "perfect": "أَفْضَى",
+      "imperfect": "يُفْضِي",
+      "imperative": "أَفْضِ"
+    },
+    ">afolaHa|flH": {
+      "form": "IV",
+      "perfect": "أَفْلَحَ",
+      "imperfect": "يُفْلِحُ",
+      "imperative": "أَفْلِحْ"
+    },
+    ">agoTa$a|gT$": {
+      "form": "IV",
+      "perfect": "أَغْطَشَ",
+      "imperfect": "يُغْطِشُ",
+      "imperative": "أَغْطِشْ"
+    },
+    ">aholaka|hlk": {
+      "form": "IV",
+      "perfect": "أَهْلَكَ",
+      "imperfect": "يُهْلِكُ",
+      "imperative": "أَهْلِكْ"
+    },
+    ">aj~ala|Ajl": {
+      "form": "II",
+      "perfect": "أَجَّلَ",
+      "imperfect": "يُؤَجِّلُ",
+      "imperative": "أَجِّلْ"
+    },
+    ">akala|Akl": {
+      "form": "I",
+      "perfect": "أَكَلَ",
+      "imperfect": "يَأْكُلُ",
+      "imperative": "كُلْ"
+    },
+    ">akofara|kfr": {
+      "form": "IV",
+      "perfect": "أَكْفَرَ",
+      "imperfect": "يُكْفِرُ",
+      "imperative": "أَكْفِرْ"
+    },
+    ">akorama|krm": {
+      "form": "IV",
+      "perfect": "أَكْرَمَ",
+      "imperfect": "يُكْرِمُ",
+      "imperative": "أَكْرِمْ"
+    },
+    ">alohaY`|lhw": {
+      "form": "IV",
+      "perfect": "أَلْهَى",
+      "imperfect": "يُلْهِي",
+      "imperative": "أَلْهِ"
+    },
+    ">alohama|lhm": {
+      "form": "IV",
+      "perfect": "أَلْهَمَ",
+      "imperfect": "يُلْهِمُ",
+      "imperative": "أَلْهِمْ"
+    },
+    ">alozama|lzm": {
+      "form": "IV",
+      "perfect": "أَلْزَمَ",
+      "imperfect": "يُلْزِمُ",
+      "imperative": "أَلْزِمْ"
+    },
+    ">al~afa|Alf": {
+      "form": "II",
+      "perfect": "أَلَّفَ",
+      "imperfect": "يُؤَلِّفُ",
+      "imperative": "أَلِّفْ"
+    },
+    ">amad~a|mdd": {
+      "form": "IV",
+      "perfect": "أَمَدَّ",
+      "imperfect": "يُمِدُّ",
+      "imperative": "أَمْدِدْ"
+    },
+    ">amara|Amr": {
+      "form": "I",
+      "perfect": "أَمَرَ",
+      "imperfect": "يَأْمُرُ",
+      "imperative": "اُؤْمُرْ"
+    },
+    ">amina|Amn": {
+      "form": "I",
+      "perfect": "أَمِنَ",
+      "imperfect": "يَأْمَنُ",
+      "imperative": "اِئْمَنْ"
+    },
+    ">amokana|mkn": {
+      "form": "IV",
+      "perfect": "أَمْكَنَ",
+      "imperfect": "يُمْكِنُ",
+      "imperative": "أَمْكِنْ"
+    },
+    ">amolaY`|mlw": {
+      "form": "IV",
+      "perfect": "أَمْلَى",
+      "imperfect": "يُمْلِي",
+      "imperative": "أَمْلِ"
+    },
+    ">amosaka|msk": {
+      "form": "IV",
+      "perfect": "أَمْسَكَ",
+      "imperfect": "يُمْسِكُ",
+      "imperative": "أَمْسِكْ"
+    },
+    ">anoEama|nEm": {
+      "form": "IV",
+      "perfect": "أَنْعَمَ",
+      "imperfect": "يُنْعِمُ",
+      "imperative": "أَنْعِمْ"
+    },
+    ">aqobala|qbl": {
+      "form": "IV",
+      "perfect": "أَقْبَلَ",
+      "imperfect": "يُقْبِلُ",
+      "imperative": "أَقْبِلْ"
+    },
+    ">aqobara|qbr": {
+      "form": "IV",
+      "perfect": "أَقْبَرَ",
+      "imperfect": "يُقْبِرُ",
+      "imperative": "أَقْبِرْ"
+    },
+    ">arobaY`|rbw": {
+      "form": "IV",
+      "perfect": "أَرْبَى",
+      "imperfect": "يُرْبِي",
+      "imperative": "أَرْبِ"
+    },
+    ">arodaY`|rdy": {
+      "form": "IV",
+      "perfect": "أَرْدَى",
+      "imperfect": "يُرْدِي",
+      "imperative": "أَرْدِ"
+    },
+    ">arokasa|rks": {
+      "form": "IV",
+      "perfect": "أَرْكَسَ",
+      "imperfect": "يُرْكِسُ",
+      "imperative": "أَرْكِسْ"
+    },
+    ">arosala|rsl": {
+      "form": "IV",
+      "perfect": "أَرْسَلَ",
+      "imperfect": "يُرْسِلُ",
+      "imperative": "أَرْسِلْ"
+    },
+    ">asar~a|srr": {
+      "form": "IV",
+      "perfect": "أَسَرَّ",
+      "imperfect": "يُسِرُّ",
+      "imperative": "أَسْرِرْ"
+    },
+    ">asobaga|sbg": {
+      "form": "IV",
+      "perfect": "أَسْبَغَ",
+      "imperfect": "يُسْبِغُ",
+      "imperative": "أَسْبِغْ"
+    },
+    ">asofara|sfr": {
+      "form": "IV",
+      "perfect": "أَسْفَرَ",
+      "imperfect": "يُسْفِرُ",
+      "imperative": "أَسْفِرْ"
+    },
+    ">asolama|slm": {
+      "form": "IV",
+      "perfect": "أَسْلَمَ",
+      "imperfect": "يُسْلِمُ",
+      "imperative": "أَسْلِمْ"
+    },
+    ">asomaEa|smE": {
+      "form": "IV",
+      "perfect": "أَسْمَعَ",
+      "imperfect": "يُسْمِعُ",
+      "imperative": "أَسْمِعْ"
+    },
+    ">asoraY`|sry": {
+      "form": "IV",
+      "perfect": "أَسْرَى",
+      "imperfect": "يُسْرِي",
+      "imperative": "أَسْرِ"
+    },
+    ">asorafa|srf": {
+      "form": "IV",
+      "perfect": "أَسْرَفَ",
+      "imperfect": "يُسْرِفُ",
+      "imperative": "أَسْرِفْ"
+    },
+    ">asoxaTa|sxT": {
+      "form": "IV",
+      "perfect": "أَسْخَطَ",
+      "imperfect": "يُسْخِطُ",
+      "imperative": "أَسْخِطْ"
+    },
+    ">as~asa|Ass": {
+      "form": "II",
+      "perfect": "أَسَّسَ",
+      "imperfect": "يُؤَسِّسُ",
+      "imperative": "أَسِّسْ"
+    },
+    ">ataY|Aty": {
+      "form": "I",
+      "perfect": "أَتَى",
+      "imperfect": "يَأْتِي",
+      "imperative": "اِئْتِ"
+    },
+    ">atam~a|tmm": {
+      "form": "IV",
+      "perfect": "أَتَمَّ",
+      "imperfect": "يُتِمُّ",
+      "imperative": "أَتْمِمْ"
+    },
+    ">atobaEa|tbE": {
+      "form": "IV",
+      "perfect": "أَتْبَعَ",
+      "imperfect": "يُتْبِعُ",
+      "imperative": "أَتْبِعْ"
+    },
+    ">atoqana|tqn": {
+      "form": "IV",
+      "perfect": "أَتْقَنَ",
+      "imperfect": "يُتْقِنُ",
+      "imperative": "أَتْقِنْ"
+    },
+    ">avomara|vmr": {
+      "form": "IV",
+      "perfect": "أَثْمَرَ",
+      "imperfect": "يُثْمِرُ",
+      "imperative": "أَثْمِرْ"
+    },
+    ">awaY|Awy": {
+      "form": "I",
+      "perfect": "أَوَى",
+      "imperfect": "يَأْوِي",
+      "imperative": "اِئْوِ"
+    },
+    ">awofaY`|wfy": {
+      "form": "IV",
+      "perfect": "أَوْفَى",
+      "imperfect": "يُوفِي",
+      "imperative": "أَوْفِ"
+    },
+    ">awojasa|wjs": {
+      "form": "IV",
+      "perfect": "أَوْجَسَ",
+      "imperfect": "يُوجِسُ",
+      "imperative": "أَوْجِسْ"
+    },
+    ">aworada|wrd": {
+      "form": "IV",
+      "perfect": "أَوْرَدَ",
+      "imperfect": "يُورِدُ",
+      "imperative": "أَوْرِدْ"
+    },
+    ">aworava|wrv": {
+      "form": "IV",
+      "perfect": "أَوْرَثَ",
+      "imperfect": "يُورِثُ",
+      "imperative": "أَوْرِثْ"
+    },
+    ">axa*a|Ax*": {
+      "form": "I",
+      "perfect": "أَخَذَ",
+      "imperfect": "يَأْخُذُ",
+      "imperative": "خُذْ"
+    },
+    ">axolada|xld": {
+      "form": "IV",
+      "perfect": "أَخْلَدَ",
+      "imperfect": "يُخْلِدُ",
+      "imperative": "أَخْلِدْ"
+    },
+    ">axoraja|xrj": {
+      "form": "IV",
+      "perfect": "أَخْرَجَ",
+      "imperfect": "يُخْرِجُ",
+      "imperative": "أَخْرِجْ"
+    },
+    ">ax~ara|Axr": {
+      "form": "II",
+      "perfect": "أَخَّرَ",
+      "imperfect": "يُؤَخِّرُ",
+      "imperative": "أَخِّرْ"
+    },
+    ">ay~ada|Ayd": {
+      "form": "II",
+      "perfect": "أَيَّدَ",
+      "imperfect": "يُؤَيِّدُ",
+      "imperative": "أَيِّدْ"
+    },
+    ">azal~a|zll": {
+      "form": "IV",
+      "perfect": "أَزَلَّ",
+      "imperfect": "يُزِلُّ",
+      "imperative": "أَزْلِلْ"
+    },
+    "DaAqa|Dyq": {
+      "form": "I",
+      "perfect": "ضَاقَ",
+      "imperfect": "يَضِيقُ",
+      "imperative": "ضِقْ"
+    },
+    "DaEufa|DEf": {
+      "form": "I",
+      "perfect": "ضَعُفَ",
+      "imperfect": "يَضْعُفُ",
+      "imperative": "اُضْعُفْ"
+    },
+    "Daraba|Drb": {
+      "form": "I",
+      "perfect": "ضَرَبَ",
+      "imperfect": "يَضْرِبُ",
+      "imperative": "اِضْرِبْ"
+    },
+    "Ea*~aba|E*b": {
+      "form": "II",
+      "perfect": "عَذَّبَ",
+      "imperfect": "يُعَذِّبُ",
+      "imperative": "عَذِّبْ"
+    },
+    "EaAda|Ewd": {
+      "form": "I",
+      "perfect": "عَادَ",
+      "imperfect": "يَعُودُ",
+      "imperative": "عُدْ"
+    },
+    "Eabada|Ebd": {
+      "form": "I",
+      "perfect": "عَبَدَ",
+      "imperfect": "يَعْبُدُ",
+      "imperative": "اُعْبُدْ"
+    },
+    "Eabasa|Ebs": {
+      "form": "I",
+      "perfect": "عَبَسَ",
+      "imperfect": "يَعْبِسُ",
+      "imperative": "اِعْبِسْ"
+    },
+    "Eadala|Edl": {
+      "form": "I",
+      "perfect": "عَدَلَ",
+      "imperfect": "يَعْدِلُ",
+      "imperative": "اِعْدِلْ"
+    },
+    "Ead~a|Edd": {
+      "form": "I",
+      "perfect": "عَدَّ",
+      "imperfect": "يَعُدُّ",
+      "imperative": "اُعْدُدْ"
+    },
+    "Ead~ada|Edd": {
+      "form": "II",
+      "perfect": "عَدَّدَ",
+      "imperfect": "يُعَدِّدُ",
+      "imperative": "عَدِّدْ"
+    },
+    "EafaA|Efw": {
+      "form": "I",
+      "perfect": "عَفَا",
+      "imperfect": "يَعْفُو",
+      "imperative": "اُعْفُ"
+    },
+    "Eahida|Ehd": {
+      "form": "I",
+      "perfect": "عَهِدَ",
+      "imperfect": "يَعْهَدُ",
+      "imperative": "اِعْهَدْ"
+    },
+    "Eajila|Ejl": {
+      "form": "I",
+      "perfect": "عَجِلَ",
+      "imperfect": "يَعْجَلُ",
+      "imperative": "اِعْجَلْ"
+    },
+    "Eaj~ala|Ejl": {
+      "form": "II",
+      "perfect": "عَجَّلَ",
+      "imperfect": "يُعَجِّلُ",
+      "imperative": "عَجِّلْ"
+    },
+    "Ealima|Elm": {
+      "form": "I",
+      "perfect": "عَلِمَ",
+      "imperfect": "يَعْلَمُ",
+      "imperative": "اِعْلَمْ"
+    },
+    "Eal~ama|Elm": {
+      "form": "II",
+      "perfect": "عَلَّمَ",
+      "imperfect": "يُعَلِّمُ",
+      "imperative": "عَلِّمْ"
+    },
+    "Eamila|Eml": {
+      "form": "I",
+      "perfect": "عَمِلَ",
+      "imperfect": "يَعْمَلُ",
+      "imperative": "اِعْمَلْ"
+    },
+    "Eaqara|Eqr": {
+      "form": "I",
+      "perfect": "عَقَرَ",
+      "imperfect": "يَعْقِرُ",
+      "imperative": "اِعْقِرْ"
+    },
+    "Ear~afa|Erf": {
+      "form": "II",
+      "perfect": "عَرَّفَ",
+      "imperfect": "يُعَرِّفُ",
+      "imperative": "عَرِّفْ"
+    },
+    "Eazama|Ezm": {
+      "form": "I",
+      "perfect": "عَزَمَ",
+      "imperfect": "يَعْزِمُ",
+      "imperative": "اِعْزِمْ"
+    },
+    "HaAla|Hwl": {
+      "form": "I",
+      "perfect": "حَالَ",
+      "imperfect": "يَحُولُ",
+      "imperative": "حُلْ"
+    },
+    "HaAqa|Hyq": {
+      "form": "I",
+      "perfect": "حَاقَ",
+      "imperfect": "يَحِيقُ",
+      "imperative": "حِقْ"
+    },
+    "HaDara|HDr": {
+      "form": "I",
+      "perfect": "حَضَرَ",
+      "imperfect": "يَحْضُرُ",
+      "imperative": "اُحْضُرْ"
+    },
+    "HabiTa|HbT": {
+      "form": "I",
+      "perfect": "حَبِطَ",
+      "imperfect": "يَحْبَطُ",
+      "imperative": "اِحْبَطْ"
+    },
+    "Hab~aba|Hbb": {
+      "form": "II",
+      "perfect": "حَبَّبَ",
+      "imperfect": "يُحَبِّبُ",
+      "imperative": "حَبِّبْ"
+    },
+    "HafiZa|HfZ": {
+      "form": "I",
+      "perfect": "حَفِظَ",
+      "imperfect": "يَحْفَظُ",
+      "imperative": "اِحْفَظْ"
+    },
+    "Haj~a|Hjj": {
+      "form": "I",
+      "perfect": "حَجَّ",
+      "imperfect": "يَحُجُّ",
+      "imperative": "اُحْجُجْ"
+    },
+    "Hakama|Hkm": {
+      "form": "I",
+      "perfect": "حَكَمَ",
+      "imperfect": "يَحْكُمُ",
+      "imperative": "اُحْكُمْ"
+    },
+    "Hamala|Hml": {
+      "form": "I",
+      "perfect": "حَمَلَ",
+      "imperfect": "يَحْمِلُ",
+      "imperative": "اِحْمِلْ"
+    },
+    "Har~ama|Hrm": {
+      "form": "II",
+      "perfect": "حَرَّمَ",
+      "imperfect": "يُحَرِّمُ",
+      "imperative": "حَرِّمْ"
+    },
+    "Hasuna|Hsn": {
+      "form": "I",
+      "perfect": "حَسُنَ",
+      "imperfect": "يَحْسُنُ",
+      "imperative": "اُحْسُنْ"
+    },
+    "SaEiqa|SEq": {
+      "form": "I",
+      "perfect": "صَعِقَ",
+      "imperfect": "يَصْعَقُ",
+      "imperative": "اِصْعَقْ"
+    },
+    "Sab~aHa|SbH": {
+      "form": "II",
+      "perfect": "صَبَّحَ",
+      "imperfect": "يُصَبِّحُ",
+      "imperative": "صَبِّحْ"
+    },
+    "Sadaqa|Sdq": {
+      "form": "I",
+      "perfect": "صَدَقَ",
+      "imperfect": "يَصْدُقُ",
+      "imperative": "اُصْدُقْ"
+    },
+    "Sad~aqa|Sdq": {
+      "form": "II",
+      "perfect": "صَدَّقَ",
+      "imperfect": "يُصَدِّقُ",
+      "imperative": "صَدِّقْ"
+    },
+    "Sal~aY`|Slw": {
+      "form": "II",
+      "perfect": "صَلَّى",
+      "imperfect": "يُصَلِّي",
+      "imperative": "صَلِّ"
+    },
+    "Sarafa|Srf": {
+      "form": "I",
+      "perfect": "صَرَفَ",
+      "imperfect": "يَصْرِفُ",
+      "imperative": "اِصْرِفْ"
+    },
+    "Saw~ara|Swr": {
+      "form": "II",
+      "perfect": "صَوَّرَ",
+      "imperfect": "يُصَوِّرُ",
+      "imperative": "صَوِّرْ"
+    },
+    "TaAba|Tyb": {
+      "form": "I",
+      "perfect": "طَابَ",
+      "imperfect": "يَطِيبُ",
+      "imperative": "طِبْ"
+    },
+    "TaAfa|Twf": {
+      "form": "I",
+      "perfect": "طَافَ",
+      "imperfect": "يَطُوفُ",
+      "imperative": "طُفْ"
+    },
+    "TaAla|Twl": {
+      "form": "I",
+      "perfect": "طَالَ",
+      "imperfect": "يَطُولُ",
+      "imperative": "طُلْ"
+    },
+    "TabaEa|TbE": {
+      "form": "I",
+      "perfect": "طَبَعَ",
+      "imperfect": "يَطْبَعُ",
+      "imperative": "اِطْبَعْ"
+    },
+    "Tafiqa|Tfq": {
+      "form": "I",
+      "perfect": "طَفِقَ",
+      "imperfect": "يَطْفَقُ",
+      "imperative": "اِطْفَقْ"
+    },
+    "TagaY`|Tgy": {
+      "form": "I",
+      "perfect": "طَغَى",
+      "imperfect": "يَطْغَى",
+      "imperative": "اِطْغَ"
+    },
+    "Tah~ara|Thr": {
+      "form": "II",
+      "perfect": "طَهَّرَ",
+      "imperfect": "يُطَهِّرُ",
+      "imperative": "طَهِّرْ"
+    },
+    "Tal~aqa|Tlq": {
+      "form": "II",
+      "perfect": "طَلَّقَ",
+      "imperfect": "يُطَلِّقُ",
+      "imperative": "طَلِّقْ"
+    },
+    "Zahara|Zhr": {
+      "form": "I",
+      "perfect": "ظَهَرَ",
+      "imperfect": "يَظْهَرُ",
+      "imperative": "اِظْهَرْ"
+    },
+    "Zalama|Zlm": {
+      "form": "I",
+      "perfect": "ظَلَمَ",
+      "imperfect": "يَظْلِمُ",
+      "imperative": "اِظْلِمْ"
+    },
+    "Zan~a|Znn": {
+      "form": "I",
+      "perfect": "ظَنَّ",
+      "imperfect": "يَظُنُّ",
+      "imperative": "اُظْنُنْ"
+    },
+    "baEava|bEv": {
+      "form": "I",
+      "perfect": "بَعَثَ",
+      "imperfect": "يَبْعَثُ",
+      "imperative": "اِبْعَثْ"
+    },
+    "baTala|bTl": {
+      "form": "I",
+      "perfect": "بَطَلَ",
+      "imperfect": "يَبْطُلُ",
+      "imperative": "اُبْطُلْ"
+    },
+    "baTana|bTn": {
+      "form": "I",
+      "perfect": "بَطَنَ",
+      "imperfect": "يَبْطُنُ",
+      "imperative": "اُبْطُنْ"
+    },
+    "bada>a|bdA": {
+      "form": "I",
+      "perfect": "بَدَأَ",
+      "imperfect": "يَبْدَأُ",
+      "imperative": "اِبْدَأْ"
+    },
+    "badaA|bdw": {
+      "form": "I",
+      "perfect": "بَدَا",
+      "imperfect": "يَبْدُو",
+      "imperative": "اُبْدُ"
+    },
+    "bad~ala|bdl": {
+      "form": "II",
+      "perfect": "بَدَّلَ",
+      "imperfect": "يُبَدِّلُ",
+      "imperative": "بَدِّلْ"
+    },
+    "bagaY`|bgy": {
+      "form": "I",
+      "perfect": "بَغَى",
+      "imperfect": "يَبْغِي",
+      "imperative": "اِبْغِ"
+    },
+    "balaga|blg": {
+      "form": "I",
+      "perfect": "بَلَغَ",
+      "imperfect": "يَبْلُغُ",
+      "imperative": "اُبْلُغْ"
+    },
+    "banaY`|bny": {
+      "form": "I",
+      "perfect": "بَنَى",
+      "imperfect": "يَبْنِي",
+      "imperative": "اِبْنِ"
+    },
+    "baraza|brz": {
+      "form": "I",
+      "perfect": "بَرَزَ",
+      "imperfect": "يَبْرُزُ",
+      "imperative": "اُبْرُزْ"
+    },
+    "bariqa|brq": {
+      "form": "I",
+      "perfect": "بَرِقَ",
+      "imperfect": "يَبْرَقُ",
+      "imperative": "اِبْرَقْ"
+    },
+    "bar~a>a|brA": {
+      "form": "II",
+      "perfect": "بَرَّأَ",
+      "imperfect": "يُبَرِّئُ",
+      "imperative": "بَرِّئْ"
+    },
+    "basaTa|bsT": {
+      "form": "I",
+      "perfect": "بَسَطَ",
+      "imperfect": "يَبْسُطُ",
+      "imperative": "اُبْسُطْ"
+    },
+    "basara|bsr": {
+      "form": "I",
+      "perfect": "بَسَرَ",
+      "imperfect": "يَبْسُرُ",
+      "imperative": "اُبْسُرْ"
+    },
+    "baw~a>a|bwA": {
+      "form": "II",
+      "perfect": "بَوَّأَ",
+      "imperfect": "يُبَوِّئُ",
+      "imperative": "بَوِّئْ"
+    },
+    "baxila|bxl": {
+      "form": "I",
+      "perfect": "بَخِلَ",
+      "imperfect": "يَبْخَلُ",
+      "imperative": "اِبْخَلْ"
+    },
+    "bay~ata|byt": {
+      "form": "II",
+      "perfect": "بَيَّتَ",
+      "imperfect": "يُبَيِّتُ",
+      "imperative": "بَيِّتْ"
+    },
+    "daEaA|dEw": {
+      "form": "I",
+      "perfect": "دَعَا",
+      "imperfect": "يَدْعُو",
+      "imperative": "اُدْعُ"
+    },
+    "dam~ara|dmr": {
+      "form": "II",
+      "perfect": "دَمَّرَ",
+      "imperfect": "يُدَمِّرُ",
+      "imperative": "دَمِّرْ"
+    },
+    "danaA|dnw": {
+      "form": "I",
+      "perfect": "دَنَا",
+      "imperfect": "يَدْنُو",
+      "imperative": "اُدْنُ"
+    },
+    "daxala|dxl": {
+      "form": "I",
+      "perfect": "دَخَلَ",
+      "imperfect": "يَدْخُلُ",
+      "imperative": "اُدْخُلْ"
+    },
+    "faAra|fwr": {
+      "form": "I",
+      "perfect": "فَارَ",
+      "imperfect": "يَفُورُ",
+      "imperative": "فُرْ"
+    },
+    "faAta|fwt": {
+      "form": "I",
+      "perfect": "فَاتَ",
+      "imperfect": "يَفُوتُ",
+      "imperative": "فُتْ"
+    },
+    "faAza|fwz": {
+      "form": "I",
+      "perfect": "فَازَ",
+      "imperfect": "يَفُوزُ",
+      "imperative": "فُزْ"
+    },
+    "faD~ala|fDl": {
+      "form": "II",
+      "perfect": "فَضَّلَ",
+      "imperfect": "يُفَضِّلُ",
+      "imperative": "فَضِّلْ"
+    },
+    "faEala|fEl": {
+      "form": "I",
+      "perfect": "فَعَلَ",
+      "imperfect": "يَفْعَلُ",
+      "imperative": "اِفْعَلْ"
+    },
+    "faS~ala|fSl": {
+      "form": "II",
+      "perfect": "فَصَّلَ",
+      "imperfect": "يُفَصِّلُ",
+      "imperative": "فَصِّلْ"
+    },
+    "fak~ara|fkr": {
+      "form": "II",
+      "perfect": "فَكَّرَ",
+      "imperfect": "يُفَكِّرُ",
+      "imperative": "فَكِّرْ"
+    },
+    "faraDa|frD": {
+      "form": "I",
+      "perfect": "فَرَضَ",
+      "imperfect": "يَفْرِضُ",
+      "imperative": "اِفْرِضْ"
+    },
+    "fariHa|frH": {
+      "form": "I",
+      "perfect": "فَرِحَ",
+      "imperfect": "يَفْرَحُ",
+      "imperative": "اِفْرَحْ"
+    },
+    "fataHa|ftH": {
+      "form": "I",
+      "perfect": "فَتَحَ",
+      "imperfect": "يَفْتَحُ",
+      "imperative": "اِفْتَحْ"
+    },
+    "faziEa|fzE": {
+      "form": "I",
+      "perfect": "فَزِعَ",
+      "imperfect": "يَفْزَعُ",
+      "imperative": "اِفْزَعْ"
+    },
+    "ga$~aY`|g$w": {
+      "form": "II",
+      "perfect": "غَشَّى",
+      "imperfect": "يُغَشِّي",
+      "imperative": "غَشِّ"
+    },
+    "gaDiba|gDb": {
+      "form": "I",
+      "perfect": "غَضِبَ",
+      "imperfect": "يَغْضَبُ",
+      "imperative": "اِغْضَبْ"
+    },
+    "gafara|gfr": {
+      "form": "I",
+      "perfect": "غَفَرَ",
+      "imperfect": "يَغْفِرُ",
+      "imperative": "اِغْفِرْ"
+    },
+    "gawaY`|gwy": {
+      "form": "I",
+      "perfect": "غَوَى",
+      "imperfect": "يَغْوِي",
+      "imperative": "اِغْوِ"
+    },
+    "hadaY|hdy": {
+      "form": "I",
+      "perfect": "هَدَى",
+      "imperfect": "يَهْدِي",
+      "imperative": "اِهْدِ"
+    },
+    "halaka|hlk": {
+      "form": "I",
+      "perfect": "هَلَكَ",
+      "imperfect": "يَهْلِكُ",
+      "imperative": "اِهْلِكْ"
+    },
+    "hawaY`|hwy": {
+      "form": "I",
+      "perfect": "هَوَى",
+      "imperfect": "يَهْوِي",
+      "imperative": "اِهْوِ"
+    },
+    "jaEala|jEl": {
+      "form": "I",
+      "perfect": "جَعَلَ",
+      "imperfect": "يَجْعَلُ",
+      "imperative": "اِجْعَلْ"
+    },
+    "jahara|jhr": {
+      "form": "I",
+      "perfect": "جَهَرَ",
+      "imperfect": "يَجْهَرُ",
+      "imperative": "اِجْهَرْ"
+    },
+    "jah~aza|jhz": {
+      "form": "II",
+      "perfect": "جَهَّزَ",
+      "imperfect": "يُجَهِّزُ",
+      "imperative": "جَهِّزْ"
+    },
+    "jal~aY`|jlw": {
+      "form": "II",
+      "perfect": "جَلَّى",
+      "imperfect": "يُجَلِّي",
+      "imperative": "جَلِّ"
+    },
+    "jamaEa|jmE": {
+      "form": "I",
+      "perfect": "جَمَعَ",
+      "imperfect": "يَجْمَعُ",
+      "imperative": "اِجْمَعْ"
+    },
+    "jazaY`|jzy": {
+      "form": "I",
+      "perfect": "جَزَى",
+      "imperfect": "يَجْزِي",
+      "imperative": "اِجْزِ"
+    },
+    "ka$afa|k$f": {
+      "form": "I",
+      "perfect": "كَشَفَ",
+      "imperfect": "يَكْشِفُ",
+      "imperative": "اِكْشِفْ"
+    },
+    "ka*aba|k*b": {
+      "form": "I",
+      "perfect": "كَذَبَ",
+      "imperfect": "يَكْذِبُ",
+      "imperative": "اِكْذِبْ"
+    },
+    "ka*~aba|k*b": {
+      "form": "II",
+      "perfect": "كَذَّبَ",
+      "imperfect": "يُكَذِّبُ",
+      "imperative": "كَذِّبْ"
+    },
+    "kaAda|kwd": {
+      "form": "I",
+      "perfect": "كَادَ",
+      "imperfect": "يَكُودُ",
+      "imperative": "كُدْ"
+    },
+    "kaAna|kwn": {
+      "form": "I",
+      "perfect": "كَانَ",
+      "imperfect": "يَكُونُ",
+      "imperative": "كُنْ"
+    },
+    "kabura|kbr": {
+      "form": "I",
+      "perfect": "كَبُرَ",
+      "imperfect": "يَكْبُرُ",
+      "imperative": "اُكْبُرْ"
+    },
+    "kafaY`|kfy": {
+      "form": "I",
+      "perfect": "كَفَى",
+      "imperfect": "يَكْفِي",
+      "imperative": "اِكْفِ"
+    },
+    "kaf~a|kff": {
+      "form": "I",
+      "perfect": "كَفَّ",
+      "imperfect": "يَكُفُّ",
+      "imperative": "اُكْفُفْ"
+    },
+    "kaf~ala|kfl": {
+      "form": "II",
+      "perfect": "كَفَّلَ",
+      "imperfect": "يُكَفِّلُ",
+      "imperative": "كَفِّلْ"
+    },
+    "kaf~ara|kfr": {
+      "form": "II",
+      "perfect": "كَفَّرَ",
+      "imperfect": "يُكَفِّرُ",
+      "imperative": "كَفِّرْ"
+    },
+    "kal~ama|klm": {
+      "form": "II",
+      "perfect": "كَلَّمَ",
+      "imperfect": "يُكَلِّمُ",
+      "imperative": "كَلِّمْ"
+    },
+    "kariha|krh": {
+      "form": "I",
+      "perfect": "كَرِهَ",
+      "imperfect": "يَكْرَهُ",
+      "imperative": "اِكْرَهْ"
+    },
+    "kar~aha|krh": {
+      "form": "II",
+      "perfect": "كَرَّهَ",
+      "imperfect": "يُكَرِّهُ",
+      "imperative": "كَرِّهْ"
+    },
+    "kasaba|ksb": {
+      "form": "I",
+      "perfect": "كَسَبَ",
+      "imperfect": "يَكْسِبُ",
+      "imperative": "اِكْسِبْ"
+    },
+    "katama|ktm": {
+      "form": "I",
+      "perfect": "كَتَمَ",
+      "imperfect": "يَكْتُمُ",
+      "imperative": "اُكْتُمْ"
+    },
+    "kavura|kvr": {
+      "form": "I",
+      "perfect": "كَثُرَ",
+      "imperfect": "يَكْثُرُ",
+      "imperative": "اُكْثُرْ"
+    },
+    "kav~ara|kvr": {
+      "form": "II",
+      "perfect": "كَثَّرَ",
+      "imperfect": "يُكَثِّرُ",
+      "imperative": "كَثِّرْ"
+    },
+    "laAta|lwt": {
+      "form": "I",
+      "perfect": "لَاتَ",
+      "imperfect": "يَلُوتُ",
+      "imperative": "لُتْ"
+    },
+    "laEana|lEn": {
+      "form": "I",
+      "perfect": "لَعَنَ",
+      "imperfect": "يَلْعَنُ",
+      "imperative": "اِلْعَنْ"
+    },
+    "labiva|lbv": {
+      "form": "I",
+      "perfect": "لَبِثَ",
+      "imperfect": "يَلْبَثُ",
+      "imperative": "اِلْبَثْ"
+    },
+    "laq~aY`|lqy": {
+      "form": "II",
+      "perfect": "لَقَّى",
+      "imperfect": "يُلَقِّي",
+      "imperative": "لَقِّ"
+    },
+    "maDaY`|mDy": {
+      "form": "I",
+      "perfect": "مَضَى",
+      "imperfect": "يَمْضِي",
+      "imperative": "اِمْضِ"
+    },
+    "mad~a|mdd": {
+      "form": "I",
+      "perfect": "مَدَّ",
+      "imperfect": "يَمُدُّ",
+      "imperative": "اُمْدُدْ"
+    },
+    "makara|mkr": {
+      "form": "I",
+      "perfect": "مَكَرَ",
+      "imperfect": "يَمْكُرُ",
+      "imperative": "اُمْكُرْ"
+    },
+    "makava|mkv": {
+      "form": "I",
+      "perfect": "مَكَثَ",
+      "imperfect": "يَمْكُثُ",
+      "imperative": "اُمْكُثْ"
+    },
+    "man~a|mnn": {
+      "form": "I",
+      "perfect": "مَنَّ",
+      "imperfect": "يَمُنُّ",
+      "imperative": "اُمْنُنْ"
+    },
+    "maraja|mrj": {
+      "form": "I",
+      "perfect": "مَرَجَ",
+      "imperfect": "يَمْرُجُ",
+      "imperative": "اُمْرُجْ"
+    },
+    "mas~a|mss": {
+      "form": "I",
+      "perfect": "مَسَّ",
+      "imperfect": "يَمَسُّ",
+      "imperative": "اِمْسَسْ"
+    },
+    "naSara|nSr": {
+      "form": "I",
+      "perfect": "نَصَرَ",
+      "imperfect": "يَنْصُرُ",
+      "imperative": "اُنْصُرْ"
+    },
+    "naba*a|nb*": {
+      "form": "I",
+      "perfect": "نَبَذَ",
+      "imperfect": "يَنْبِذُ",
+      "imperative": "اِنْبِذْ"
+    },
+    "nab~a>a|nbA": {
+      "form": "II",
+      "perfect": "نَبَّأَ",
+      "imperfect": "يُنَبِّئُ",
+      "imperative": "نَبِّئْ"
+    },
+    "nafaEa|nfE": {
+      "form": "I",
+      "perfect": "نَفَعَ",
+      "imperfect": "يَنْفَعُ",
+      "imperative": "اِنْفَعْ"
+    },
+    "nafaxa|nfx": {
+      "form": "I",
+      "perfect": "نَفَخَ",
+      "imperfect": "يَنْفُخُ",
+      "imperative": "اُنْفُخْ"
+    },
+    "nafida|nfd": {
+      "form": "I",
+      "perfect": "نَفِدَ",
+      "imperfect": "يَنْفَدُ",
+      "imperative": "اِنْفَدْ"
+    },
+    "nahaY`|nhy": {
+      "form": "I",
+      "perfect": "نَهَى",
+      "imperfect": "يَنْهَى",
+      "imperative": "اِنْهَ"
+    },
+    "najaA|njw": {
+      "form": "I",
+      "perfect": "نَجَا",
+      "imperfect": "يَنْجُو",
+      "imperative": "اُنْجُ"
+    },
+    "naj~aY`|njw": {
+      "form": "II",
+      "perfect": "نَجَّى",
+      "imperfect": "يُنَجِّي",
+      "imperative": "نَجِّ"
+    },
+    "nakira|nkr": {
+      "form": "I",
+      "perfect": "نَكِرَ",
+      "imperfect": "يَنْكَرُ",
+      "imperative": "اِنْكَرْ"
+    },
+    "nazaEa|nzE": {
+      "form": "I",
+      "perfect": "نَزَعَ",
+      "imperfect": "يَنْزِعُ",
+      "imperative": "اِنْزِعْ"
+    },
+    "nazala|nzl": {
+      "form": "I",
+      "perfect": "نَزَلَ",
+      "imperfect": "يَنْزِلُ",
+      "imperative": "اِنْزِلْ"
+    },
+    "naz~ala|nzl": {
+      "form": "II",
+      "perfect": "نَزَّلَ",
+      "imperfect": "يُنَزِّلُ",
+      "imperative": "نَزِّلْ"
+    },
+    "qa*afa|q*f": {
+      "form": "I",
+      "perfect": "قَذَفَ",
+      "imperfect": "يَقْذِفُ",
+      "imperative": "اِقْذِفْ"
+    },
+    "qaAla|qwl": {
+      "form": "I",
+      "perfect": "قَالَ",
+      "imperfect": "يَقُولُ",
+      "imperative": "قُلْ"
+    },
+    "qaAma|qwm": {
+      "form": "I",
+      "perfect": "قَامَ",
+      "imperfect": "يَقُومُ",
+      "imperative": "قُمْ"
+    },
+    "qaEada|qEd": {
+      "form": "I",
+      "perfect": "قَعَدَ",
+      "imperfect": "يَقْعُدُ",
+      "imperative": "اُقْعُدْ"
+    },
+    "qaS~a|qSS": {
+      "form": "I",
+      "perfect": "قَصَّ",
+      "imperfect": "يَقُصُّ",
+      "imperative": "اُقْصُصْ"
+    },
+    "qaT~aEa|qTE": {
+      "form": "II",
+      "perfect": "قَطَّعَ",
+      "imperfect": "يُقَطِّعُ",
+      "imperative": "قَطِّعْ"
+    },
+    "qad~ama|qdm": {
+      "form": "II",
+      "perfect": "قَدَّمَ",
+      "imperfect": "يُقَدِّمُ",
+      "imperative": "قَدِّمْ"
+    },
+    "qad~ara|qdr": {
+      "form": "II",
+      "perfect": "قَدَّرَ",
+      "imperfect": "يُقَدِّرُ",
+      "imperative": "قَدِّرْ"
+    },
+    "qalaY`|qly": {
+      "form": "I",
+      "perfect": "قَلَى",
+      "imperfect": "يَقْلِي",
+      "imperative": "اِقْلِ"
+    },
+    "qal~a|qll": {
+      "form": "I",
+      "perfect": "قَلَّ",
+      "imperfect": "يَقِلُّ",
+      "imperative": "اِقْلِلْ"
+    },
+    "qara>a|qrA": {
+      "form": "I",
+      "perfect": "قَرَأَ",
+      "imperfect": "يَقْرَأُ",
+      "imperative": "اِقْرَأْ"
+    },
+    "qar~aba|qrb": {
+      "form": "II",
+      "perfect": "قَرَّبَ",
+      "imperfect": "يُقَرِّبُ",
+      "imperative": "قَرِّبْ"
+    },
+    "qatala|qtl": {
+      "form": "I",
+      "perfect": "قَتَلَ",
+      "imperfect": "يَقْتُلُ",
+      "imperative": "اُقْتُلْ"
+    },
+    "raAga|rwg": {
+      "form": "I",
+      "perfect": "رَاغَ",
+      "imperfect": "يَرُوغُ",
+      "imperative": "رُغْ"
+    },
+    "raAna|ryn": {
+      "form": "I",
+      "perfect": "رَانَ",
+      "imperfect": "يَرِينُ",
+      "imperative": "رِنْ"
+    },
+    "radifa|rdf": {
+      "form": "I",
+      "perfect": "رَدِفَ",
+      "imperfect": "يَرْدَفُ",
+      "imperative": "اِرْدَفْ"
+    },
+    "rad~a|rdd": {
+      "form": "I",
+      "perfect": "رَدَّ",
+      "imperfect": "يَرُدُّ",
+      "imperative": "اُرْدُدْ"
+    },
+    "rafaEa|rfE": {
+      "form": "I",
+      "perfect": "رَفَعَ",
+      "imperfect": "يَرْفَعُ",
+      "imperative": "اِرْفَعْ"
+    },
+    "rajaEa|rjE": {
+      "form": "I",
+      "perfect": "رَجَعَ",
+      "imperfect": "يَرْجِعُ",
+      "imperative": "اِرْجِعْ"
+    },
+    "rakiba|rkb": {
+      "form": "I",
+      "perfect": "رَكِبَ",
+      "imperfect": "يَرْكَبُ",
+      "imperative": "اِرْكَبْ"
+    },
+    "rak~aba|rkb": {
+      "form": "II",
+      "perfect": "رَكَّبَ",
+      "imperfect": "يُرَكِّبُ",
+      "imperative": "رَكِّبْ"
+    },
+    "ramaY`|rmy": {
+      "form": "I",
+      "perfect": "رَمَى",
+      "imperfect": "يَرْمِي",
+      "imperative": "اِرْمِ"
+    },
+    "razaqa|rzq": {
+      "form": "I",
+      "perfect": "رَزَقَ",
+      "imperfect": "يَرْزُقُ",
+      "imperative": "اُرْزُقْ"
+    },
+    "sa>ala|sAl": {
+      "form": "I",
+      "perfect": "سَأَلَ",
+      "imperfect": "يَسْأَلُ",
+      "imperative": "اِسْأَلْ"
+    },
+    "saAra|syr": {
+      "form": "I",
+      "perfect": "سَارَ",
+      "imperfect": "يَسِيرُ",
+      "imperative": "سِرْ"
+    },
+    "saEaY`|sEy": {
+      "form": "I",
+      "perfect": "سَعَى",
+      "imperfect": "يَسْعَى",
+      "imperative": "اِسْعَ"
+    },
+    "sab~aHa|sbH": {
+      "form": "II",
+      "perfect": "سَبَّحَ",
+      "imperfect": "يُسَبِّحُ",
+      "imperative": "سَبِّحْ"
+    },
+    "safiha|sfh": {
+      "form": "I",
+      "perfect": "سَفِهَ",
+      "imperfect": "يَسْفَهُ",
+      "imperative": "اِسْفَهْ"
+    },
+    "sajada|sjd": {
+      "form": "I",
+      "perfect": "سَجَدَ",
+      "imperfect": "يَسْجُدُ",
+      "imperative": "اُسْجُدْ"
+    },
+    "sakana|skn": {
+      "form": "I",
+      "perfect": "سَكَنَ",
+      "imperfect": "يَسْكُنُ",
+      "imperative": "اُسْكُنْ"
+    },
+    "sakata|skt": {
+      "form": "I",
+      "perfect": "سَكَتَ",
+      "imperfect": "يَسْكُتُ",
+      "imperative": "اُسْكُتْ"
+    },
+    "salafa|slf": {
+      "form": "I",
+      "perfect": "سَلَفَ",
+      "imperfect": "يَسْلُفُ",
+      "imperative": "اُسْلُفْ"
+    },
+    "salaka|slk": {
+      "form": "I",
+      "perfect": "سَلَكَ",
+      "imperfect": "يَسْلُكُ",
+      "imperative": "اُسْلُكْ"
+    },
+    "sal~aTa|slT": {
+      "form": "II",
+      "perfect": "سَلَّطَ",
+      "imperfect": "يُسَلِّطُ",
+      "imperative": "سَلِّطْ"
+    },
+    "sal~ama|slm": {
+      "form": "II",
+      "perfect": "سَلَّمَ",
+      "imperfect": "يُسَلِّمُ",
+      "imperative": "سَلِّمْ"
+    },
+    "samiEa|smE": {
+      "form": "I",
+      "perfect": "سَمِعَ",
+      "imperfect": "يَسْمَعُ",
+      "imperative": "اِسْمَعْ"
+    },
+    "sam~aY`|smw": {
+      "form": "II",
+      "perfect": "سَمَّى",
+      "imperfect": "يُسَمِّي",
+      "imperative": "سَمِّ"
+    },
+    "saqaY`|sqy": {
+      "form": "I",
+      "perfect": "سَقَى",
+      "imperfect": "يَسْقِي",
+      "imperative": "اِسْقِ"
+    },
+    "saraqa|srq": {
+      "form": "I",
+      "perfect": "سَرَقَ",
+      "imperfect": "يَسْرِقُ",
+      "imperative": "اِسْرِقْ"
+    },
+    "saw~aY`|swy": {
+      "form": "II",
+      "perfect": "سَوَّى",
+      "imperfect": "يُسَوِّي",
+      "imperative": "سَوِّ"
+    },
+    "saw~ala|swl": {
+      "form": "II",
+      "perfect": "سَوَّلَ",
+      "imperfect": "يُسَوِّلُ",
+      "imperative": "سَوِّلْ"
+    },
+    "saxiTa|sxT": {
+      "form": "I",
+      "perfect": "سَخِطَ",
+      "imperfect": "يَسْخَطُ",
+      "imperative": "اِسْخَطْ"
+    },
+    "saxira|sxr": {
+      "form": "I",
+      "perfect": "سَخِرَ",
+      "imperfect": "يَسْخَرُ",
+      "imperative": "اِسْخَرْ"
+    },
+    "sax~ara|sxr": {
+      "form": "II",
+      "perfect": "سَخَّرَ",
+      "imperfect": "يُسَخِّرُ",
+      "imperative": "سَخِّرْ"
+    },
+    "ta*ak~ara|*kr": {
+      "form": "V",
+      "perfect": "تَذَكَّرَ",
+      "imperfect": "يَتَذَكَّرُ",
+      "imperative": "تَذَكَّرْ"
+    },
+    "ta>a*~ana|A*n": {
+      "form": "V",
+      "perfect": "تَأَذَّنَ",
+      "imperfect": "يَتَأَذَّنُ",
+      "imperative": "تَأَذَّنْ"
+    },
+    "ta>ax~ara|Axr": {
+      "form": "V",
+      "perfect": "تَأَخَّرَ",
+      "imperfect": "يَتَأَخَّرُ",
+      "imperative": "تَأَخَّرْ"
+    },
+    "taAba|twb": {
+      "form": "I",
+      "perfect": "تَابَ",
+      "imperfect": "يَتُوبُ",
+      "imperative": "تُبْ"
+    },
+    "taEaj~ala|Ejl": {
+      "form": "V",
+      "perfect": "تَعَجَّلَ",
+      "imperfect": "يَتَعَجَّلُ",
+      "imperative": "تَعَجَّلْ"
+    },
+    "taSad~aY`|Sdy": {
+      "form": "V",
+      "perfect": "تَصَدَّى",
+      "imperfect": "يَتَصَدَّى",
+      "imperative": "تَصَدَّ"
+    },
+    "taSad~aqa|Sdq": {
+      "form": "V",
+      "perfect": "تَصَدَّقَ",
+      "imperfect": "يَتَصَدَّقُ",
+      "imperative": "تَصَدَّقْ"
+    },
+    "taTaw~aEa|TwE": {
+      "form": "V",
+      "perfect": "تَطَوَّعَ",
+      "imperfect": "يَتَطَوَّعُ",
+      "imperative": "تَطَوَّعْ"
+    },
+    "tabar~a>a|brA": {
+      "form": "V",
+      "perfect": "تَبَرَّأَ",
+      "imperfect": "يَتَبَرَّأُ",
+      "imperative": "تَبَرَّأْ"
+    },
+    "tabas~ama|bsm": {
+      "form": "V",
+      "perfect": "تَبَسَّمَ",
+      "imperfect": "يَتَبَسَّمُ",
+      "imperative": "تَبَسَّمْ"
+    },
+    "tabay~ana|byn": {
+      "form": "V",
+      "perfect": "تَبَيَّنَ",
+      "imperfect": "يَتَبَيَّنُ",
+      "imperative": "تَبَيَّنْ"
+    },
+    "tabiEa|tbE": {
+      "form": "I",
+      "perfect": "تَبِعَ",
+      "imperfect": "يَتْبَعُ",
+      "imperative": "اِتْبَعْ"
+    },
+    "tafaq~ada|fqd": {
+      "form": "V",
+      "perfect": "تَفَقَّدَ",
+      "imperfect": "يَتَفَقَّدُ",
+      "imperative": "تَفَقَّدْ"
+    },
+    "tafar~aqa|frq": {
+      "form": "V",
+      "perfect": "تَفَرَّقَ",
+      "imperfect": "يَتَفَرَّقُ",
+      "imperative": "تَفَرَّقْ"
+    },
+    "taga$~aY`|g$w": {
+      "form": "V",
+      "perfect": "تَغَشَّى",
+      "imperfect": "يَتَغَشَّى",
+      "imperative": "تَغَشَّ"
+    },
+    "tamat~aEa|mtE": {
+      "form": "V",
+      "perfect": "تَمَتَّعَ",
+      "imperfect": "يَتَمَتَّعُ",
+      "imperative": "تَمَتَّعْ"
+    },
+    "tamav~ala|mvl": {
+      "form": "V",
+      "perfect": "تَمَثَّلَ",
+      "imperfect": "يَتَمَثَّلُ",
+      "imperative": "تَمَثَّلْ"
+    },
+    "tam~a|tmm": {
+      "form": "I",
+      "perfect": "تَمَّ",
+      "imperfect": "يَتِمُّ",
+      "imperative": "اِتْمِمْ"
+    },
+    "tanaf~asa|nfs": {
+      "form": "V",
+      "perfect": "تَنَفَّسَ",
+      "imperfect": "يَتَنَفَّسُ",
+      "imperative": "تَنَفَّسْ"
+    },
+    "taqab~ala|qbl": {
+      "form": "V",
+      "perfect": "تَقَبَّلَ",
+      "imperfect": "يَتَقَبَّلُ",
+      "imperative": "تَقَبَّلْ"
+    },
+    "taqad~ama|qdm": {
+      "form": "V",
+      "perfect": "تَقَدَّمَ",
+      "imperfect": "يَتَقَدَّمُ",
+      "imperative": "تَقَدَّمْ"
+    },
+    "taqaw~ala|qwl": {
+      "form": "V",
+      "perfect": "تَقَوَّلَ",
+      "imperfect": "يَتَقَوَّلُ",
+      "imperative": "تَقَوَّلْ"
+    },
+    "taraka|trk": {
+      "form": "I",
+      "perfect": "تَرَكَ",
+      "imperfect": "يَتْرُكُ",
+      "imperative": "اُتْرُكْ"
+    },
+    "tawaf~aY`|wfy": {
+      "form": "V",
+      "perfect": "تَوَفَّى",
+      "imperfect": "يَتَوَفَّى",
+      "imperative": "تَوَفَّ"
+    },
+    "tawaj~aha|wjh": {
+      "form": "V",
+      "perfect": "تَوَجَّهَ",
+      "imperfect": "يَتَوَجَّهُ",
+      "imperative": "تَوَجَّهْ"
+    },
+    "tawal~aY`|wly": {
+      "form": "V",
+      "perfect": "تَوَلَّى",
+      "imperfect": "يَتَوَلَّى",
+      "imperative": "تَوَلَّ"
+    },
+    "tayas~ara|ysr": {
+      "form": "V",
+      "perfect": "تَيَسَّرَ",
+      "imperfect": "يَتَيَسَّرُ",
+      "imperative": "تَيَسَّرْ"
+    },
+    "tazak~aY`|zkw": {
+      "form": "V",
+      "perfect": "تَزَكَّى",
+      "imperfect": "يَتَزَكَّى",
+      "imperative": "تَزَكَّ"
+    },
+    "vab~aTa|vbT": {
+      "form": "II",
+      "perfect": "ثَبَّطَ",
+      "imperfect": "يُثَبِّطُ",
+      "imperative": "ثَبِّطْ"
+    },
+    "waDaEa|wDE": {
+      "form": "I",
+      "perfect": "وَضَعَ",
+      "imperfect": "يَضَعُ",
+      "imperative": "ضَعْ"
+    },
+    "waEada|wEd": {
+      "form": "I",
+      "perfect": "وَعَدَ",
+      "imperfect": "يَعِدُ",
+      "imperative": "عِدْ"
+    },
+    "waS~aY`|wSy": {
+      "form": "II",
+      "perfect": "وَصَّى",
+      "imperfect": "يُوَصِّي",
+      "imperative": "وَصِّ"
+    },
+    "wad~a|wdd": {
+      "form": "I",
+      "perfect": "وَدَّ",
+      "imperfect": "يَوَدُّ",
+      "imperative": "دَّْ"
+    },
+    "wad~aEa|wdE": {
+      "form": "II",
+      "perfect": "وَدَّعَ",
+      "imperfect": "يُوَدِّعُ",
+      "imperative": "وَدِّعْ"
+    },
+    "wahaba|whb": {
+      "form": "I",
+      "perfect": "وَهَبَ",
+      "imperfect": "يَهَبُ",
+      "imperative": "هَبْ"
+    },
+    "wahana|whn": {
+      "form": "I",
+      "perfect": "وَهَنَ",
+      "imperfect": "يَهِنُ",
+      "imperative": "هِنْ"
+    },
+    "wajada|wjd": {
+      "form": "I",
+      "perfect": "وَجَدَ",
+      "imperfect": "يَجِدُ",
+      "imperative": "جِدْ"
+    },
+    "wakaza|wkz": {
+      "form": "I",
+      "perfect": "وَكَزَ",
+      "imperfect": "يَكِزُ",
+      "imperative": "كِزْ"
+    },
+    "walada|wld": {
+      "form": "I",
+      "perfect": "وَلَدَ",
+      "imperfect": "يَلِدُ",
+      "imperative": "لِدْ"
+    },
+    "wal~aY`|wly": {
+      "form": "II",
+      "perfect": "وَلَّى",
+      "imperfect": "يُوَلِّي",
+      "imperative": "وَلِّ"
+    },
+    "waqaEa|wqE": {
+      "form": "I",
+      "perfect": "وَقَعَ",
+      "imperfect": "يَقَعُ",
+      "imperative": "قَعْ"
+    },
+    "waqaY`|wqy": {
+      "form": "I",
+      "perfect": "وَقَى",
+      "imperfect": "يَقِي",
+      "imperative": "قِ"
+    },
+    "waqaba|wqb": {
+      "form": "I",
+      "perfect": "وَقَبَ",
+      "imperfect": "يَقِبُ",
+      "imperative": "قِبْ"
+    },
+    "warada|wrd": {
+      "form": "I",
+      "perfect": "وَرَدَ",
+      "imperfect": "يَرِدُ",
+      "imperative": "رِدْ"
+    },
+    "wariva|wrv": {
+      "form": "I",
+      "perfect": "وَرِثَ",
+      "imperfect": "يَرِثُ",
+      "imperative": "رِثْ"
+    },
+    "wasaqa|wsq": {
+      "form": "I",
+      "perfect": "وَسَقَ",
+      "imperfect": "يَسِقُ",
+      "imperative": "سِقْ"
+    },
+    "wasiEa|wsE": {
+      "form": "I",
+      "perfect": "وَسِعَ",
+      "imperfect": "يَسَعُ",
+      "imperative": "سَعْ"
+    },
+    "xaAba|xyb": {
+      "form": "I",
+      "perfect": "خَابَ",
+      "imperfect": "يَخِيبُ",
+      "imperative": "خِبْ"
+    },
+    "xaAfa|xwf": {
+      "form": "I",
+      "perfect": "خَافَ",
+      "imperfect": "يَخَافُ",
+      "imperative": "خِفْ"
+    },
+    "xaTifa|xTf": {
+      "form": "I",
+      "perfect": "خَطِفَ",
+      "imperfect": "يَخْطَفُ",
+      "imperative": "اِخْطَفْ"
+    },
+    "xabuva|xbv": {
+      "form": "I",
+      "perfect": "خَبُثَ",
+      "imperfect": "يَخْبُثُ",
+      "imperative": "اُخْبُثْ"
+    },
+    "xaf~afa|xff": {
+      "form": "II",
+      "perfect": "خَفَّفَ",
+      "imperfect": "يُخَفِّفُ",
+      "imperative": "خَفِّفْ"
+    },
+    "xalaA|xlw": {
+      "form": "I",
+      "perfect": "خَلَا",
+      "imperfect": "يَخْلُو",
+      "imperative": "اُخْلُ"
+    },
+    "xalafa|xlf": {
+      "form": "I",
+      "perfect": "خَلَفَ",
+      "imperfect": "يَخْلُفُ",
+      "imperative": "اُخْلُفْ"
+    },
+    "xalaqa|xlq": {
+      "form": "I",
+      "perfect": "خَلَقَ",
+      "imperfect": "يَخْلُقُ",
+      "imperative": "اُخْلُقْ"
+    },
+    "xaraja|xrj": {
+      "form": "I",
+      "perfect": "خَرَجَ",
+      "imperfect": "يَخْرُجُ",
+      "imperative": "اُخْرُجْ"
+    },
+    "xasafa|xsf": {
+      "form": "I",
+      "perfect": "خَسَفَ",
+      "imperfect": "يَخْسِفُ",
+      "imperative": "اِخْسِفْ"
+    },
+    "xasira|xsr": {
+      "form": "I",
+      "perfect": "خَسِرَ",
+      "imperfect": "يَخْسَرُ",
+      "imperative": "اِخْسَرْ"
+    },
+    "xatama|xtm": {
+      "form": "I",
+      "perfect": "خَتَمَ",
+      "imperfect": "يَخْتِمُ",
+      "imperative": "اِخْتِمْ"
+    },
+    "xaw~ala|xwl": {
+      "form": "II",
+      "perfect": "خَوَّلَ",
+      "imperfect": "يُخَوِّلُ",
+      "imperative": "خَوِّلْ"
+    },
+    "yas~ara|ysr": {
+      "form": "II",
+      "perfect": "يَسَّرَ",
+      "imperfect": "يُيَسِّرُ",
+      "imperative": "يَسِّرْ"
+    },
+    "zaAda|zyd": {
+      "form": "I",
+      "perfect": "زَادَ",
+      "imperfect": "يَزِيدُ",
+      "imperative": "زِدْ"
+    },
+    "zaAga|zyg": {
+      "form": "I",
+      "perfect": "زَاغَ",
+      "imperfect": "يَزِيغُ",
+      "imperative": "زِغْ"
+    },
+    "zaAla|zwl": {
+      "form": "I",
+      "perfect": "زَالَ",
+      "imperfect": "يَزُولُ",
+      "imperative": "زُلْ"
+    },
+    "zahaqa|zhq": {
+      "form": "I",
+      "perfect": "زَهَقَ",
+      "imperfect": "يَزْهَقُ",
+      "imperative": "اِزْهَقْ"
+    },
+    "zak~aY`|zkw": {
+      "form": "II",
+      "perfect": "زَكَّى",
+      "imperfect": "يُزَكِّي",
+      "imperative": "زَكِّ"
+    },
+    "zay~ana|zyn": {
+      "form": "II",
+      "perfect": "زَيَّنَ",
+      "imperfect": "يُزَيِّنُ",
+      "imperative": "زَيِّنْ"
+    }
+  }
+}

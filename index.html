@@ -573,6 +573,13 @@ body.player-mini .player-info > #plSub { flex: 1 1 auto; min-width: 0; }
 /* ---- List mode ---- */
 .word-details { box-sizing: border-box; width: min(560px, calc(100vw - 24px)); max-height: 85dvh; overflow: auto; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); color: var(--ink); box-shadow: var(--shadow); }
 .word-morph { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 8px; }
+.verb-forms { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); }
+.verb-form-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.verb-form { min-width: 0; display: flex; flex-direction: column; gap: 6px; text-align: center; border: 1px solid var(--line); border-radius: 10px; padding: 10px 4px; }
+.verb-form strong { font-size: .85em; }
+.verb-form .small { font-size: .7em; }
+.verb-form-ar { font-family: 'Amiri Quran', 'Noto Naskh Arabic', serif; font-size: 1.7em; line-height: 1.8; overflow-wrap: anywhere; }
+@media (max-width: 360px) { .verb-form-grid { grid-template-columns: 1fr; } }
 .word-morph h3 { font-size: 1em; margin: 0 0 10px; }
 .word-morph-segment { padding: 8px 0; border-bottom: 1px solid var(--line); }
 .word-details::backdrop { background: rgba(0,0,0,.55); }
@@ -6925,6 +6932,44 @@ Total memorized: {total}
     return out;
   }
   // Corpus annotations are read from the unchanged, separately licensed source file.
+  const VerbForms = (() => {
+    let pending;
+    function load() {
+      if (!pending) pending = (async () => {
+        const url = new URL('verb-forms.json', new URL(window.TEXT_BASE || 'text/', document.baseURI));
+        const response = await fetch(url); if (!response.ok) throw Error('Verb forms unavailable');
+        const data = await response.json();
+        if (data.version !== 1 || !data.entries) throw Error('Unsupported verb data');
+        return data.entries;
+      })().catch(error => { pending = null; throw error; });
+      return pending;
+    }
+    async function show(box, segments) {
+      const stem = segments.find(s => s.tag === 'V' && s.features.includes('STEM'));
+      if (!stem) return;
+      const get = prefix => { const f = stem.features.find(f => f.startsWith(prefix)); return f ? f.slice(prefix.length) : ''; };
+      const lemma = get('LEM:'), root = get('ROOT:');
+      const section = document.createElement('section'); section.className = 'verb-forms';
+      section.innerHTML = '<h3>Verb forms</h3><div data-forms role="status">Loading verb forms…</div>';
+      box.appendChild(section); const content = section.querySelector('[data-forms]');
+      try {
+        const entries = await load(); if (!section.isConnected) return;
+        const entry = entries[lemma + '|' + root];
+        const form = (stem.features.find(f => /^\([IVX]+\)$/.test(f)) || '(I)').slice(1,-1);
+        if (!entry || entry.form !== form) { content.textContent = 'Verb forms are not available for this entry.'; return; }
+        section.querySelector('h3').textContent = 'Verb forms · Form ' + entry.form;
+        const items = [['Perfect', 'He', entry.perfect], ['Imperfect', 'He', entry.imperfect], ['Imperative', 'You · masculine singular', entry.imperative]];
+        content.innerHTML = '<p class="small muted">Active voice · dictionary forms</p><div class="verb-form-grid">' + items.map(([label,pronoun,arabic]) => '<div class="verb-form"><strong>' + label + '</strong><span class="small muted">' + pronoun + '</span><span class="verb-form-ar" lang="ar" dir="rtl">' + esc(arabic) + '</span></div>').join('') + '</div><p class="small muted">Generated with <a href="https://github.com/linuxscout/qutrub" target="_blank" rel="noopener">Qutrub</a> from matching lexical entries. These forms can differ from the person or voice used in the selected ayah. <a href="text/QUTRUB-NOTICES.txt" target="_blank" rel="noopener">Credits, licences &amp; source</a></p>';
+      } catch (_) {
+        if (!section.isConnected) return;
+        content.textContent = 'Verb forms could not be loaded. ';
+        const retry = document.createElement('button'); retry.type = 'button'; retry.className = 'btn small'; retry.textContent = 'Retry';
+        retry.onclick = () => { section.remove(); show(box,segments); }; content.appendChild(retry);
+      }
+    }
+    return { show };
+  })();
+
   const WordMorphology = (() => {
     let pending;
     // Standard Buckwalter characters used by the original Corpus release.
@@ -6974,6 +7019,7 @@ Total memorized: {total}
         const segments = match(words,key,position,word.ar);
         if (!segments) { box.textContent = 'No matching annotation is available for this word in Corpus v0.4.'; return; }
         render(box,segments);
+        VerbForms.show(box,segments);
       } catch (_) {
         if (!box.isConnected) return;
         box.textContent = location.protocol === 'file:' ? 'Open the hosted app to load root and grammar data.' : 'Root and grammar data could not be loaded. ';
