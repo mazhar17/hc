@@ -4891,7 +4891,7 @@ const AudioEngine = (() => {
     S.playing = false; setStatus('error', `Audio could not be loaded (${S.lastError.why}). Tried ${list.length + (S.forceCdn ? 1 : 0)} source${list.length > 1 ? 's' : ''} — use “Test audio” in Settings → Audio Manager.`);
   });
   /** Convert the remaining pages of a page queue into an ayah queue (keeps label/pages for the UI). */
-  function toAyahQueue() { const pagesLeft = S.pages.slice(S.pidx); const q = []; for (const p of pagesLeft) q.push(...Quran.ayahsOnPage(p)); S.mode = 'ayah'; S.queue = q; S.idx = 0; S.repEach = 0; S.attempt = 0; }
+  function toAyahQueue() { const pagesLeft = S.pages.slice(S.pidx); const q = []; for (const p of pagesLeft) q.push(...Quran.ayahsOnPage(p)); S.mode = 'ayah'; S.queue = q; S.idx = 0; S.repEach = 0; S.attempt = 0; S.page = pagesLeft[0] || S.page; }
   let objUrl = null; const revoke = () => { if (objUrl) { try { URL.revokeObjectURL(objUrl); } catch (_) { } objUrl = null; } };
   function loadSrc(src, autoplay) {
     revoke(); if (src instanceof Blob) { objUrl = URL.createObjectURL(src); src = objUrl; }
@@ -7278,8 +7278,8 @@ Total memorized: {total}
   function listHighlight() {
     if ($('#listRoot').hidden) return; const a = AudioEngine.state(); const cur = a.active && a.current ? `${a.current[0]}:${a.current[1]}` : null;
     const strip = $('#listBody .qstrip');
-    $$('#listBody .qv').forEach(el => { const on = el.dataset.qv === cur; el.classList.toggle('playing', on); if (on && a.status === 'playing' && !strip) el.scrollIntoView({ block: 'nearest' }); });
-    if (strip) { let first = null; strip.querySelectorAll('[data-key]').forEach(el => { const on = el.dataset.key === cur; el.classList.toggle('curword', on); if (on && !first) first = el; }); if (first && a.status === 'playing') first.scrollIntoView({ block: 'nearest' }); }
+    $$('#listBody .qv').forEach(el => { const on = el.dataset.qv === cur; el.classList.toggle('playing', on); if (on && a.status === 'playing' && !strip) el.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' }); });
+    if (strip) { let first = null; strip.querySelectorAll('[data-key]').forEach(el => { const on = el.dataset.key === cur; el.classList.toggle('curword', on); if (on && !first) first = el; }); if (first && a.status === 'playing') first.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' }); }
   }
 
   // ---------- MEANINGS & VOCABULARY (study aids) ----------
@@ -7867,8 +7867,14 @@ Total memorized: {total}
     // keep the Study panel's controls in sync too
     $('#repEach').value = a.repeatEach; $('#repAll').value = loopValue(a); $('#gap').value = a.gapPct; $('#rate').value = a.rate; $('#loopBtn').setAttribute('aria-pressed', a.loop);
   }
-  function audioStatus() {
-    renderPlayer(); if (!$('#view-study').hidden && studyPage) { renderCorpus(); aidsHighlight(); listHighlight(); }
+  function syncStudyAudioPage(a) {
+    if (!a || !a.active || $('#view-study').hidden) return;
+    const pg = a.mode === 'page' ? (a.pages && a.pages[a.pidx]) : (a.current ? Quran.pageOfAyah(a.current[0], a.current[1]) : a.page);
+    if (!pg || pg === studyPage) return;
+    openStudy(pg);
+  }
+  function audioStatus(snapshot) {
+    syncStudyAudioPage(snapshot); renderPlayer(); if (!$('#view-study').hidden && studyPage) { renderCorpus(); aidsHighlight(); listHighlight(); }
     const a = AudioEngine.state(); const el = $('#audStatus'); el.className = 'audstatus muted small ' + (a.status === 'error' ? 'error' : a.status === 'playing' ? 'playing' : '');
     let what = a.mode === 'page' ? `Page ${a.page}` : (a.current ? `${Quran.surah(a.current[0]).en} ${a.current[1]}${a.currentKind === 'en' ? ' — English (Ibrahim Walk)' : a.currentKind === 'tafsir' ? ' — tafsīr, device voice' : ''} (ayah ${a.ayahIndex + 1}/${a.ayahs})` : '');
     const rep = a.mode === 'ayah' && a.repeatEach > 1 ? ` · rep ${a.repEach + 1}/${a.repeatEach}` : '';
