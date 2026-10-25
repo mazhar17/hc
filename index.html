@@ -620,6 +620,8 @@ body.player-mini .player-info > #plSub { flex: 1 1 auto; min-width: 0; }
 @media (hover:hover) { .qbookmark:not(.has) { opacity: 0; pointer-events: none; } .qv:hover .qbookmark, .qv:focus-within .qbookmark { opacity: 1; pointer-events: auto; } }
 .qv-h .qplay { margin-left: auto; }
 .qwords { display: flex; flex-wrap: wrap; direction: rtl; gap: .75em .6em; justify-content: flex-start; }
+.qwords:not(.mlines) { display: block; direction: rtl; text-align: right; line-height: 1.35; }
+.qwords:not(.mlines) .qw { display: inline-flex; vertical-align: top; margin: 0 .3em .65em; }
 .qw { display: flex; flex-direction: column; align-items: center; gap: 1em; padding: 4px 6px; border-radius: 8px; cursor: default; }
 .qw:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); }
 .qw .qar { font-family: 'Amiri Quran', 'Noto Naskh Arabic', 'Scheherazade New', 'Traditional Arabic', serif; font-size: 1.75em; line-height: 2.05; color: var(--ink); }
@@ -1101,7 +1103,7 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
                 <label class="chk"><input type="checkbox" id="lsTajweed"> Tajwīd colours</label>
                 <label class="chk"><input type="checkbox" id="lsTafsir"> Tafsīr</label>
                 <label class="chk"><input type="checkbox" id="lsFb" checked> Teacher’s corrections</label>
-                <label class="chk" id="lsMushafLinesRow"><input type="checkbox" id="lsMushafLines"> Mushaf lines <small class="muted">(with Focus on, wide screens)</small></label>
+                <label class="chk" id="lsMushafLinesRow"><input type="checkbox" id="lsMushafLines"> Mushaf lines <small class="muted">(with Focus on)</small></label>
                 <span id="lsTafsirOpts" class="list-tfopts" hidden><select id="lsTafsirEd" aria-label="Tafsir edition"></select><label class="chk"><input type="checkbox" id="lsTafsirAll"> expand all</label></span>
                 <div class="pop-h">Translations</div>
                 <p class="muted small pop-val" id="lsTrNames"></p>
@@ -6775,7 +6777,7 @@ Total memorized: {total}
     if (toolsInited) return; toolsInited = true;
     const pref = st.settings.studyToolsOpen;
     syncGotoPlacement();
-    window.addEventListener('resize', () => { syncGotoPlacement(); syncToolsForWidth(); if (listMode() && st.settings.listMushafLines && (focusWanted() && focusWide()) !== mushafLinesLive) renderList(); }, { passive: true });
+    window.addEventListener('resize', () => { syncGotoPlacement(); syncToolsForWidth(); if (listMode() && st.settings.listMushafLines && focusWanted() !== mushafLinesLive) renderList(); }, { passive: true });
     toolsOpen(isSheet() ? false : (pref == null ? true : !!pref));
     applyFocus();
     showTool(st.settings.studyTool || 'practice');
@@ -6917,8 +6919,8 @@ Total memorized: {total}
     const body = $('#listBody'), page = studyPage;
     const nextPage = $('#listNextPage'); nextPage.hidden = page >= 604; nextPage.textContent = t('Next page') + ' →';
     $('#lsArabic').checked = s.listArabic !== false; $('#lsWords').checked = s.listWords !== false; $('#lsTr').checked = s.listTr !== false; $('#lsTajweed').checked = !!s.listTajweed; $('#lsFb').checked = s.listFb !== false; $('#lsMushafLines').checked = !!s.listMushafLines; {
-      const need = focusWanted() && focusWide();
-      $('#lsMushafLines').closest('label').title = need ? '' : t('Turn on Focus (above) on a wide enough screen first');
+      const need = focusWanted();
+      $('#lsMushafLines').closest('label').title = need ? '' : t('Turn on Focus above first');
       $('#lsMushafLinesRow').classList.toggle('dim', !need);
     } $('#lsTafsir').checked = !!s.listTafsir; $('#lsTafsirOpts').hidden = !s.listTafsir; if (!$('#lsTafsirEd').options.length) $('#lsTafsirEd').innerHTML = Tafsir.SOURCES.map(x => `<option value="${x.id}">${esc(x.label)}</option>`).join(''); $('#lsTafsirEd').value = Tafsir.source(s.tafsirEd).id; $('#lsTafsirAll').checked = !!s.listTafsirAll; $('#lsLang').value = s.aidsLang || 'en'; if (!$('#lsTrPick').children.length) syncTrPickers();
     const trs = listTrs(); const gap = s.listGap || 'off'; $('#lsGap').value = gap;
@@ -6990,7 +6992,7 @@ Total memorized: {total}
          line_number, fetched but unused until v1.25.0 — no extra request). It needs the room
          Focus gives the page, so it does nothing without Focus on — turning it on elsewhere
          would just wrap unpredictably, which is worse than not trying. */
-      const mushafLinesOn = !!s.listMushafLines && focusWanted() && focusWide();
+      const mushafLinesOn = !!s.listMushafLines && focusWanted();
       mushafLinesLive = mushafLinesOn;
       const byKey = {}; if (wbw) for (const v of wbw.verses) byKey[v.key] = v.words;
       const byKey2 = {}; if (wbw2) for (const v of wbw2.verses) byKey2[v.key] = v.words;
