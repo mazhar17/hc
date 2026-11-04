@@ -21,7 +21,7 @@ const V = '1.29.1-ayah-resources';
 const SHELL = 'hifz-shell-' + V, PAGES = 'hifz-pages-v1', TEXT = 'hifz-text-v1';
 /* The built-in Qur’ān text and translations: stored with the app and kept across updates (a
    different TEXT name is used only if the files themselves ever change). */
-const TEXT_URLS = ['quran-uthmani.json', 'tr-en-sahih.json', 'tr-en-hilali.json', 'tr-bn-muhiuddin.json', 'tr-bn-zakaria.json'].map(f => './text/' + f);
+const TEXT_URLS = ['quran-uthmani.json', 'tr-en-sahih.json', 'tr-en-hilali.json'].map(f => './text/' + f);
 const SHELL_URLS = ['./', './index.html'];
 
 self.addEventListener('install', e => {
