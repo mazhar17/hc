@@ -498,7 +498,7 @@ If the PDF opens instead of downloading, use your browser’s download button. I
 <thead><tr><th>Control</th><th>Meaning</th><th>Default</th></tr></thead>
 <tbody>
 <tr><td><span class="ui">From</span> / <span class="ui">To</span></td><td>Any range of ayāt, not only whole pages. Quick buttons above set the current page, the page ±1 ayah, the whole sūrah or the juz.</td><td>The current page</td></tr>
-<tr><td><span class="ui">Qari</span></td><td>Which reciter for this session. Leave as <span class="ui">Default</span> to use your usual one.</td><td>ʿAbdul Bāsiṭ ʿAbd uṣ-Ṣamad</td></tr>
+<tr><td><span class="ui">Qari</span></td><td>Which reciter for this session. Leave as <span class="ui">Default</span> to use your Study qari.</td><td>Muḥammad Ṣiddīq al-Minshāwī — Murattal</td></tr>
 <tr><td><span class="ui">Repeat each ayah</span></td><td>Plays each ayah N times before moving on. Three to five is the classic way to take a new ayah.</td><td>1</td></tr>
 <tr><td><span class="ui">Repeat the whole range</span></td><td>Plays the entire selection again from the start, N times, or loops for ever.</td><td>off</td></tr>
 <tr><td><span class="ui">Silence after each ayah</span> <span class="pill">Advanced</span></td><td>Leaves a gap for you to recite the ayah back. The gap is a percentage of how long the ayah just took at the current speed, so it scales with the ayah.</td><td>0</td></tr>
@@ -583,7 +583,7 @@ If the PDF opens instead of downloading, use your browser’s download button. I
 <p>It does <b>not</b> follow the audio unless you tick <span class="ui">Follow the audio</span> in <span class="ui">🛠 Tools → Understand</span>, which is off by default. In <b>Text view</b> the behaviour is different again: tafsīr is shown under <i>every</i> ayah of the page, not one at a time.</p>
 
 <h4 id="read-aloud">Read aloud</h4>
-<p>The loudspeaker button reads the tafsīr with <b>your device's own voice</b> — a synthetic voice built into the phone or computer, not a recording, so nothing is downloaded. Choose the Bengali and English voices and the speed in <span class="ui">Settings → Audio → Read aloud</span>. The app prefers a male-sounding voice where the device's name for it suggests one, but the system does not report a voice's gender, so please check with the test buttons. If your phone has no Bengali voice, install one in its text-to-speech settings and it will appear here.</p>
+<p>The loudspeaker button reads English tafsīr with <b>your device's own voice</b> — a synthetic voice built into the phone or computer, not a recording, so nothing is downloaded. Bengali tafsīr is for reading and is not read aloud.</p>
 <div class="note"><b>Note</b> On some phones the speech engine itself contacts its maker's servers to fetch voices. That is a setting of your device, not of this app.</div>
 
 <h4 id="tadabbur">Tadabbur wa Amal and the Quranic Arabic Corpus</h4>
@@ -950,12 +950,11 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 
 <h3 id="set-audio">9.2 Audio<a class="permalink" href="#set-audio">#</a></h3>
 <ul>
-<li><b>Memorisation qari (sabaq)</b> — keep one voice for new material; the ear learns the page with the voice. 25 reciters are available; ʿAbdul Bāsiṭ ʿAbd uṣ-Ṣamad is the default.</li>
-<li><b>Listening qari for revision</b> — optional second voice for revision pages only.</li>
-<li><b>Translation audio</b> — <span class="ui">Off</span> (default), <span class="ui">Arabic, then English — each ayah</span>, or <span class="ui">English only</span>. The recording is Saheeh International read by Ibrahim Walk. There is no recorded Bengali translation.</li>
+<li><b>Memorisation qari (sabaq)</b> — keep one voice for new material; Maḥmūd Khalīl al-Ḥuṣarī — Murattal is the default. Sabaq playback follows each Arabic ayah with the Saheeh International translation read by Ibrahim Walk.</li>
+<li><b>Listening qari for revision</b> — choose a voice for revision; Muḥammad Ṣiddīq al-Minshāwī — Murattal is the default.</li>
+<li><b>Study qari</b> — choose a separate voice for Study playback; Muḥammad Ṣiddīq al-Minshāwī — Murattal is the default.</li>
 <li><b>Quality</b> — higher or lower bitrate, affecting download size.</li>
 <li><b>Audio Manager</b> — what is downloaded, how much space it uses, and where it is stored (in the browser, or in a folder you choose if your browser supports that).</li>
-<li><b>Read aloud</b> — the Bengali and English device voices used for tafsīr, with a speed control and test buttons. See <a href="#read-aloud">section 3.6.4</a>.</li>
 </ul>
 
 <h3 id="set-mushaf">9.3 Mushaf<a class="permalink" href="#set-mushaf">#</a></h3>
