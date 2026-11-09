@@ -1028,6 +1028,7 @@ After   stage: sabqi · interval: 1 · ease: 2.10 · lapses: 1 · weak: YES · d
 
 <h3 id="sync">10.5 Cloud sync between devices<a class="permalink" href="#sync">#</a></h3>
 <p>Sync is optional. Nothing goes to the author or to any service belonging to this app: your data is written to a file in <b>your own</b> Google Drive, through a small script you install once in your own Google account. <span class="ui">Settings → Data → Cloud sync</span> explains the three-minute setup, and the download package contains the script (<code>Code.gs</code>) with instructions.</p>
+<p>When the app opens, it shows the copy on this device while checking the cloud in the background. The sync indicator shows the check; if your local edits and the cloud both changed, sync pauses for your decision instead of overwriting either copy.</p>
 <p>Once it is on, the app loads the newest data when it opens and saves after <b>every</b> change, without your doing anything.</p>
 <div class="note"><b>When each save happens</b>
 <ul>
