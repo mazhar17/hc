@@ -188,7 +188,11 @@ details.panel > summary { cursor: pointer; }
 .task .dl { font-size: .78em; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
 
 /* study */
-.sdir[hidden], .study-layout[hidden] { display: none; }
+.sdir[hidden] { display: none; }
+#view-study.sdir-on .study-main > :not(.toolbar):not(#studyDir), #view-study.sdir-on .study-side { display: none !important; }
+#view-study.sdir-on .study-layout { grid-template-columns: minmax(0, 1fr); }
+.sdir { margin-top: 12px; }
+.sdir-head { top: var(--sdir-top, 0px); }
 .sdir-head { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 8px 0 10px; }
 .sdir-head h1 { margin: 0 0 8px; font-size: 1.25rem; }
 .sdir-head input[type=search] { width: 100%; box-sizing: border-box; padding: 10px 12px; font-size: 1rem; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: inherit; }
@@ -1094,14 +1098,6 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
 
   <!-- ================= STUDY ================= -->
   <section id="view-study" class="view" data-view="study" hidden>
-    <div id="studyDir" class="sdir" hidden>
-      <div class="sdir-head">
-        <h1>Sūrahs</h1>
-        <input id="sdirSearch" type="search" placeholder="Search sūrah by name or number" aria-label="Search sūrahs" autocomplete="off">
-      </div>
-      <ul id="sdirList" class="sdir-list"></ul>
-      <p id="sdirEmpty" class="muted sdir-empty" hidden>No matching sūrah.</p>
-    </div>
     <div class="study-layout">
       <div class="study-main">
         <div class="toolbar">
@@ -1172,6 +1168,15 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
             <button id="studyShareBtn" class="tbtn" title="Share this Study page" aria-label="Share this Study page">🔗</button>
           </div>
         </div>
+        <div id="studyDir" class="sdir" hidden>
+          <div class="sdir-head">
+            <h1>Sūrahs</h1>
+            <input id="sdirSearch" type="search" placeholder="Search sūrah by name or number" aria-label="Search sūrahs" autocomplete="off">
+          </div>
+          <ul id="sdirList" class="sdir-list"></ul>
+          <p id="sdirEmpty" class="muted sdir-empty" hidden>No matching sūrah.</p>
+        </div>
+
         <div class="revbar" id="revBar" hidden>
           <span class="revdot" aria-hidden="true"></span>
           <span class="revtext">Reciting <b id="revPage">this page</b> unaided — the text and the aids are hidden.</span>
@@ -6927,7 +6932,7 @@ Total memorized: {total}
      openStudy() caller still land straight on the Mushaf page. */
   let sdirBuilt = false;
   function setStudyDir(on) {
-    $('#studyDir').hidden = !on; $('.study-layout').hidden = on;
+    $('#studyDir').hidden = !on; $('#view-study').classList.toggle('sdir-on', on);
     if (on) { buildStudyDir(); window.scrollTo(0, 0); }
     else if (studyPage) requestAnimationFrame(() => Viewer.render(studyPage, true));
   }
@@ -6947,6 +6952,8 @@ Total memorized: {total}
         $('#sdirEmpty').hidden = n > 0;
       });
       $('#sdirBtn').addEventListener('click', () => setStudyDir(true));
+      /* Controls that act on the page leave the directory first so they work on a visible page. */
+      $('#view-study .toolbar').addEventListener('click', e => { if (e.target.closest('#toolsBtn, #viewMushaf, #layoutList')) setStudyDir(false); }, true);
     }
   }
   function openStudy(page, opts = {}) { if (!$('#studyDir').hidden) setStudyDir(false); studyPage = Math.max(1, Math.min(604, page)); studyTestMode = !!opts.test; testPage = studyTestMode ? studyPage : null; recallPrompt = opts.recall || null; aidsPeek = false; showTabSilent('study'); $('#pgInput').value = studyPage; sel = { a: null, b: null }; renderStudyMeta(); Viewer.show(studyPage); renderChips(); renderRatePanel(); renderTadabbur(); renderCorpus(); renderAids(); renderExtras(); applyViewMode(); renderRevChip(); renderTargetedPractice(); toolsInit(); }
