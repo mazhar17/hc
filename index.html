@@ -974,7 +974,8 @@ body.focus .study-layout { grid-template-columns: minmax(0, 1fr); }
 
 /* While Focus is on, the tab bar is gone — so the way out must be on screen, not inside a
    menu. This button exists only in Focus, where the toolbar has the width to spare. */
-#focusExit { display: none; }
+#focusExit, #sdirFocusBtn { display: none; }
+body.focus #sdirFocusBtn { display: inline-flex; }
 body.focus #focusExit { display: inline-flex; background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 
 /* Bengali interface: prefer the platform's Bengali UI face. No webfont is bundled — the app is
@@ -1102,7 +1103,6 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
       <div class="study-main">
         <div class="toolbar">
           <div class="tb-group">
-            <button id="sdirBtn" class="tbtn" title="All sūrahs">☰ Sūrahs</button>
             <button id="pgPrev"  class="tbtn" aria-label="Previous Mushaf page" title="Previous Mushaf page (lower number)">‹</button>
             <label class="pgfield">Page <select id="pgInput" aria-label="Mushaf page number"></select></label>
             <button id="pgNext" class="tbtn" aria-label="Next Mushaf page" title="Next Mushaf page (higher number)">›</button>
@@ -1160,6 +1160,7 @@ body.lang-bn .tab, body.lang-bn .tbtn, body.lang-bn .btn { letter-spacing: 0; }
               </div>
             </div>
           </details>
+          <button id="sdirFocusBtn" class="tbtn" title="Back to the sūrah list">☰ Sūrahs</button>
           <button id="focusExit" class="tbtn" aria-pressed="true" title="Leave Focus and bring the side panels back (Esc)">⤢ Focus on</button>
           <button id="fullBtn" class="tbtn" title="Full screen (F)">⛶</button>
           <div class="tb-group">
@@ -6951,7 +6952,7 @@ Total memorized: {total}
         list.querySelectorAll('li').forEach(li => { const show = !q || li.dataset.key.includes(q); li.hidden = !show; if (show) n++; });
         $('#sdirEmpty').hidden = n > 0;
       });
-      $('#sdirBtn').addEventListener('click', () => setStudyDir(true));
+      $('#sdirFocusBtn').addEventListener('click', () => { setFocus(false); setStudyDir(true); });
       /* Controls that act on the page leave the directory first so they work on a visible page. */
       $('#view-study .toolbar').addEventListener('click', e => { if (e.target.closest('#toolsBtn, #viewMushaf, #layoutList')) setStudyDir(false); }, true);
     }
